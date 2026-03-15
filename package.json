@@ -1,6 +1,7 @@
 {
   "name": "dyvix-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.jsx",
-  "type": "module"
+  "type": "module",
+  "license": "MIT"
 }
