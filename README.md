@@ -32,12 +32,12 @@ function ModalExample()
           Id="register-modal"
           Class="modal"
           elements={[
-            { type: "text", placeholder: ["First Name", "Last Name"], id: "name", className: "ex-text", amount: 2 },
-            { type: "email", placeholder: "Email", id: "email", className: "ex-text", amount: 1 },
-            { type: "password", placeholder: "Password", id: "password", className: "ex-text", amount: 1 },
+            { type: "text", placeholder: ["First Name", "Last Name"], id: "name", name: ["firstName", "lastName"], className: "ex-text", amount: 2 },
+            { type: "email", placeholder: "Email", id: "email", name: "email", className: "ex-text", amount: 1 },
+            { type: "password", placeholder: "Password", id: "password", name: "password", className: "ex-text", amount: 1 },
           ]}
           onSubmit={(data) => console.log(data)}
-      />
+        />
     )
 }
 ```
