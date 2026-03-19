@@ -1,0 +1,12 @@
+[
+    {
+        "theme": "Singularity",
+        "class": "dyvix-modal-lens",
+        "default-amination": "fade"
+    },
+    {
+        "theme": "Industrial",
+        "class": "dyvix-modal-industrial",
+        "default-amination": "fade"
+    }
+]

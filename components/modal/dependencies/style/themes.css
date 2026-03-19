@@ -1,0 +1,16 @@
+.dyvix-modal-lens
+{
+    font-family: "Geist";
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: #1f2937;
+    aspect-ratio: 1 / 1;
+}
+.dyvix-modal-industrial
+{
+    font-family: "Geist";
+    border: 10px solid #374151;
+    border-radius: 10px;
+    background-color: #0a1429;
+    padding: 1.5rem;
+}

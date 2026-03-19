@@ -5,9 +5,7 @@
     margin: 5rem auto;
     width: 30rem;
     height: 30rem;
-    font-family: "Geist";
-    border: 1px solid black;
-    border-radius: 50%;
+    overflow: hidden;
 }
 #modal-header
 {
@@ -16,6 +14,7 @@
     font-size: xx-large;
     font-weight: bolder;
     margin-bottom: 0;
+    color: rgb(103, 102, 102);
 }
 .grouped-elements
 {

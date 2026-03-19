@@ -1,16 +1,19 @@
 import elementsData from "./dependencies/elements.json"
+import themesData from "./dependencies/themes.json"
 import SelectEngine from "../select/SelectEngine";
 import "./dependencies/style/elements.css"
+import "./dependencies/style/themes.css"
 import React from "react";
 
+const vaildThemes = themesData.map(e => e.theme);
 const defaultElement = {type: "!", placeholder: ["!"], id: "!",   className: "!", amount: 1 };
 const supportedTypes = ["text", "select", "email", "password", "search", "url", "tel"]
 const componentsMap = {"SelectEngine": SelectEngine};
 
-function Modal({title, type, elements, animation, Id, Class, onSubmit})
+function Modal({title, type, elements, theme = "Singularity", animation, Id, Class, onSubmit})
 {
   const [data, SetData] = React.useState({});
-  const fields = SerializeData(title, type, elements, animation, Id, Class, onSubmit); 
+  const fields = SerializeData(title, type, elements, theme, animation, Id, Class, onSubmit); 
 
   function handleInputChange(name, value)
   {
@@ -21,12 +24,16 @@ function Modal({title, type, elements, animation, Id, Class, onSubmit})
   {
     return null;
   }
+  
+  const currentTheme = themesData.find(e => e.theme === theme);
+  const serilaizedClass = Class + ` ${currentTheme.class}`;
 
+  console.log(serilaizedClass)
   console.log(fields);
   //console.log(elementsData);
   return (
     <>
-      <div className={Class} id={Id}>
+      <div className={serilaizedClass} id={Id}>
         <h3 id="modal-header">{title}</h3>
         {fields.map((field, i) => {
           const elementDef = elementsData.find(e => e.element === field.type) || elementsData.find(e => e["inherited-element"]?.includes(field.type));
@@ -42,7 +49,7 @@ function Modal({title, type, elements, animation, Id, Class, onSubmit})
                     name: name,
                     ...(elementDef["supports-placeholder"] && ({placeholder: field.placeholder[j]})),
                     ...(elementDef["supports_type"] && ({type: field.type})),
-                    ...(elementDef["supports_autocomplete"] && ({autocomplete: field.type === "password" ? "current-password": "on"}))
+                    ...(elementDef["supports_autocomplete"] && ({autoComplete: field.type === "password" ? "current-password": "on"}))
                   }
                   return <Tag key={j} {...Tagprobs} onChange={(e) => handleInputChange(name, e.target.value)} />
               })
@@ -56,9 +63,9 @@ function Modal({title, type, elements, animation, Id, Class, onSubmit})
   )
 }
 
-function SerializeData(title, type, elements, animation, Id, Class, onSubmit)
+function SerializeData(title, type, elements, theme, animation, Id, Class, onSubmit)
 {
-  const validator = ValidateInput(title, type, elements, animation, Id, Class, onSubmit)
+  const validator = ValidateInput(title, type, elements, theme, animation, Id, Class, onSubmit)
 
     if(validator.status !== 1)
     {
@@ -77,7 +84,7 @@ function SerializeData(title, type, elements, animation, Id, Class, onSubmit)
 
     return normalizeElements(normalizedElements); 
 }
-function ValidateInput(title, type, elements = [], animation, Id, Class, onSubmit)
+function ValidateInput(title, type, elements, theme, animation, Id, Class, onSubmit)
 {
   if(!title)
   {
@@ -91,7 +98,10 @@ function ValidateInput(title, type, elements = [], animation, Id, Class, onSubmi
   {
     // todo when you figure out animations configue you need to write a great validation here
   }
-
+  if(!vaildThemes.includes(theme))
+  {
+    return {status: -1, error: "Please provide a vaild theme."};
+  }
   if(onSubmit !== null && typeof onSubmit !== 'function')
   {
     return {status: -1, error: "onSubmit should be provided as a function."};
