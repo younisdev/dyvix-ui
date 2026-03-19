@@ -31,6 +31,7 @@ function ModalExample()
           animation="bubble"
           Id="register-modal"
           Class="modal"
+          theme='Singularity' // Or Industrial
           elements={[
             { type: "text", placeholder: ["First Name", "Last Name"], id: "name", name: ["firstName", "lastName"], className: "ex-text", amount: 2 },
             { type: "email", placeholder: "Email", id: "email", name: "email", className: "ex-text", amount: 1 },
