@@ -2,7 +2,7 @@
 {
     display: flex;
     flex-direction: column;
-    margin: 5rem auto;
+    margin: 11rem auto;
     width: 30rem;
     height: 30rem;
     overflow: hidden;
@@ -32,7 +32,7 @@
 }
 .grouped-elements:first-of-type
 {
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 .modal-text
 {
@@ -49,11 +49,13 @@
     border-color: #0ea5e9;
 }
 .modal-btn {
-    width: 8rem;
-    height: 2.5rem;
-    margin: 1rem auto;
+    width: 10rem;
+    height: 2.8rem;
+    margin: 2rem auto;
     border: 1px solid black;
-    border-radius: 1rem;
+    border-radius: 3rem;
     background-color: #0ea5e9;
-    margin-top: 3rem;
+    flex: 0;
+    min-width: 10rem;
+    min-height: 2.8rem;
 }

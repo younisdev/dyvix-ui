@@ -27,13 +27,13 @@ function Modal({title, type, elements, theme = "Singularity", animation, Id, Cla
   
   const currentTheme = themesData.find(e => e.theme === theme);
   const serilaizedClass = Class + ` ${currentTheme.class}`;
+  const rowOffset = elements.length / 4;
+  const dynamicHeight = rowOffset > 1 ? `${30 + (rowOffset - 1) * 15}rem` : "30rem"
+  const dynamicWidth = currentTheme.radiused || rowOffset > 1  ? `${30 + rowOffset * 10}rem` : "30rem"
 
-  console.log(serilaizedClass)
-  console.log(fields);
-  //console.log(elementsData);
   return (
     <>
-      <div className={serilaizedClass} id={Id}>
+      <div className={serilaizedClass} id={Id} style={{height: dynamicHeight, width: dynamicWidth}}>
         <h3 id="modal-header">{title}</h3>
         {fields.map((field, i) => {
           const elementDef = elementsData.find(e => e.element === field.type) || elementsData.find(e => e["inherited-element"]?.includes(field.type));
@@ -46,7 +46,7 @@ function Modal({title, type, elements, theme = "Singularity", animation, Id, Cla
                   const Tagprobs = {
                     className: elementDef["default-class"],
                     role: elementDef.aria.role,
-                    name: name,
+                    name: name,                    
                     ...(elementDef["supports-placeholder"] && ({placeholder: field.placeholder[j]})),
                     ...(elementDef["supports_type"] && ({type: field.type})),
                     ...(elementDef["supports_autocomplete"] && ({autoComplete: field.type === "password" ? "current-password": "on"}))

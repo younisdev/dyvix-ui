@@ -2,11 +2,13 @@
     {
         "theme": "Singularity",
         "class": "dyvix-modal-lens",
-        "default-amination": "fade"
+        "default-amination": "fade",
+        "radiused": true
     },
     {
         "theme": "Industrial",
         "class": "dyvix-modal-industrial",
-        "default-amination": "fade"
+        "default-amination": "fade",
+        "radiused": false
     }
 ]
