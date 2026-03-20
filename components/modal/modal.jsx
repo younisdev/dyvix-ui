@@ -1,19 +1,24 @@
 import elementsData from "./dependencies/elements.json"
 import themesData from "./dependencies/themes.json"
 import SelectEngine from "../select/SelectEngine";
+import animationsData from "../animations.json";
 import "./dependencies/style/elements.css"
 import "./dependencies/style/themes.css"
 import React from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const vaildThemes = themesData.map(e => e.theme);
+const validAnimations = animationsData.map(e => e.animation);
 const defaultElement = {type: "!", placeholder: ["!"], id: "!",   className: "!", amount: 1 };
 const supportedTypes = ["text", "select", "email", "password", "search", "url", "tel"]
 const componentsMap = {"SelectEngine": SelectEngine};
 
-function Modal({title, type, elements, theme = "Singularity", animation, Id, Class, onSubmit})
+function Modal({title, type, elements, theme = "Singularity", animation = "fade", Id, Class, onSubmit})
 {
   const [data, SetData] = React.useState({});
   const fields = SerializeData(title, type, elements, theme, animation, Id, Class, onSubmit); 
+  const modalRef = React.useRef(null);
 
   function handleInputChange(name, value)
   {
@@ -24,16 +29,26 @@ function Modal({title, type, elements, theme = "Singularity", animation, Id, Cla
   {
     return null;
   }
-  
+
   const currentTheme = themesData.find(e => e.theme === theme);
+  const currentAnimation = animationsData.find(e => e.animation === animation);
   const serilaizedClass = Class + ` ${currentTheme.class}`;
   const rowOffset = elements.length / 4;
-  const dynamicHeight = rowOffset > 1 ? `${30 + (rowOffset - 1) * 15}rem` : "30rem"
-  const dynamicWidth = currentTheme.radiused || rowOffset > 1  ? `${30 + rowOffset * 10}rem` : "30rem"
+  const dynamicHeight = rowOffset > 1 ? `${30 + (rowOffset - 1) * 15}rem` : "30rem";
+  const dynamicWidth = currentTheme.radiused || rowOffset > 1  ? `${30 + rowOffset * 10}rem` : "30rem";
+  console.log(currentAnimation.from)
+  useGSAP(()=> {
+    gsap.fromTo(modalRef.current, currentAnimation.from, {
+      ...currentAnimation.to,
+      duration: currentAnimation["default-duration"],
+      ease: currentAnimation.ease,
+      clearProps: "transform"
+    })
+  }, []);
 
   return (
     <>
-      <div className={serilaizedClass} id={Id} style={{height: dynamicHeight, width: dynamicWidth}}>
+      <div className={serilaizedClass} id={Id} ref={modalRef} style={{height: dynamicHeight, width: dynamicWidth}}>
         <h3 id="modal-header">{title}</h3>
         {fields.map((field, i) => {
           const elementDef = elementsData.find(e => e.element === field.type) || elementsData.find(e => e["inherited-element"]?.includes(field.type));
@@ -65,7 +80,7 @@ function Modal({title, type, elements, theme = "Singularity", animation, Id, Cla
 
 function SerializeData(title, type, elements, theme, animation, Id, Class, onSubmit)
 {
-  const validator = ValidateInput(title, type, elements, theme, animation, Id, Class, onSubmit)
+  const validator = ValidateInput(title, type, elements, theme, animation, Id, Class, onSubmit);
 
     if(validator.status !== 1)
     {
@@ -94,9 +109,9 @@ function ValidateInput(title, type, elements, theme, animation, Id, Class, onSub
   {
     return {status: -1, error: "Element should be provided as an array of objects."};
   }
-  if(animation && typeof animation === 'string')
+  if(!validAnimations.includes(animation))
   {
-    // todo when you figure out animations configue you need to write a great validation here
+    return {status: -1, error: "Please provide a vaild animation."};
   }
   if(!vaildThemes.includes(theme))
   {

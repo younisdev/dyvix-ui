@@ -1,0 +1,21 @@
+[
+    {
+        "animation": "fade",
+        "type": "in",
+        "default-duration": 1.5,
+        "ease": "power2.out",
+        "stagger": 0.08,
+        "from": { "opacity": 0, "y": 100 },
+        "to": { "opacity": 1, "y": 0 }
+    },
+    {
+        "animation": "bubble",
+        "type": "in",
+        "default-duration": 0.6,
+        "ease": "elastic.out(1, 0.5)",
+        "stagger": 0,
+        "components": ["modal"],
+        "from": { "scale": 0, "opacity": 0 },
+        "to": { "scale": 1, "opacity": 1 }
+    }
+]
