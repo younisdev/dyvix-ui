@@ -54,13 +54,36 @@ function Modal({title, type, elements, theme = "Singularity", animation = "fade"
           const elementDef = elementsData.find(e => e.element === field.type) || elementsData.find(e => e["inherited-element"]?.includes(field.type));
           const Tag = elementDef.is_custom? componentsMap[elementDef.tag] : elementDef.tag;
 
+          // Safely get base aria props with defensive check for undefined/null
+          let ariaProps = elementDef.aria ? { ...elementDef.aria } : {};
+          
+          // Apply inherit-overrides if the element type has specific overrides
+          // Safe navigation to prevent errors if nested properties are missing
+          const overrideConfig = elementDef["inherit-overrides"]?.[field.type];
+          if (overrideConfig && overrideConfig.aria) {
+            ariaProps = { ...ariaProps, ...overrideConfig.aria };
+          }
+
           return(
             <div className="grouped-elements" key={field.id || i} >
               {Array.from({ length: field.amount }, (_, j) => {
                   const name = field.name[j]
+                  
+                  // Build aria props object - only include defined values to avoid passing undefined attributes
+                  const ariaAttributes = {};
+                  if (ariaProps.role !== undefined && ariaProps.role !== null) {
+                    ariaAttributes.role = ariaProps.role;
+                  }
+                  if (ariaProps["aria-label"] !== undefined && ariaProps["aria-label"] !== null) {
+                    ariaAttributes["aria-label"] = ariaProps["aria-label"];
+                  }
+                  if (ariaProps["aria-required"] === true || ariaProps["aria-required"] === false) {
+                    ariaAttributes["aria-required"] = ariaProps["aria-required"];
+                  }
+
                   const Tagprobs = {
                     className: elementDef["default-class"],
-                    role: elementDef.aria.role,
+                    ...ariaAttributes,
                     name: name,                    
                     ...(elementDef["supports-placeholder"] && ({placeholder: field.placeholder[j]})),
                     ...(elementDef["supports_type"] && ({type: field.type})),
