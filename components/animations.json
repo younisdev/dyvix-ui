@@ -34,5 +34,5 @@
         "components": ["modal"],
         "from": { "scaleY": -0.1, "opacity": 0, "transformOrigin": "top center" },
         "to": { "scaleY": 1, "opacity": 1 }
-    }
+    },
 ]
