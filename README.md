@@ -12,7 +12,10 @@
   <img src="https://img.shields.io/github/stars/younisdev/dyvix-ui?color=ff6ac1&style=flat-square" />
 </p>
 
-```bash
+<p align="center">
+  <img src="https://raw.githubusercontent.com/younisdev/dyvix-ui/main/demo.gif" alt="Dyvix UI Demo" width="300" height="300" />
+</p>
+
 # React
 npm i dyvix-ui
 ```
