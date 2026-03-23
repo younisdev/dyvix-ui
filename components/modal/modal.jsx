@@ -2,15 +2,17 @@ import elementsData from "./dependencies/elements.json"
 import themesData from "./dependencies/themes.json"
 import SelectEngine from "../select/SelectEngine";
 import animationsData from "../animations.json";
-import "./dependencies/style/elements.css"
-import "./dependencies/style/themes.css"
+import validationData from  "./dependencies/validator/validators.json";
+import "./dependencies/style/elements.css";
+import "./dependencies/style/themes.css";
+import * as validatorsFunctions from "./dependencies/validator/validators";
 import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const vaildThemes = themesData.map(e => e.theme);
 const validAnimations = animationsData.map(e => e.animation);
-const defaultElement = {type: "!/", placeholder: ["!/"], id: "!/",   className: "!/", amount: 1 };
+const defaultElement = {type: "!/", placeholder: ["!/"], id: "!/", className: "!/", amount: 1 };
 const supportedTypes = ["text", "select", "email", "password", "search", "url", "tel"]
 const componentsMap = {"SelectEngine": SelectEngine};
 
@@ -22,7 +24,44 @@ function Modal({title, type, elements, theme = "Singularity", animation = "!/", 
 
   function handleInputChange(name, value)
   {
-    SetData(prev => ({...prev, [name]: value}))
+    SetData(prev => ({...prev, [name]: value}));
+  }
+  function handleValidation()
+  {
+    for(const field of fields)
+    {
+      if(!field.validation) continue;
+
+      for(const [index, currentName] of field.name.entries())
+      {
+        const currentValidation = field.validation[index];
+
+        if(!currentValidation) continue;
+
+        const validators = validationData.find(e => e.preset.trim().toLowerCase() === currentValidation.trim().toLowerCase());
+        
+        if(!validators) continue;
+
+        for(const validator of validators.validators)
+        {
+          const result = validatorsFunctions[validator](data[currentName]);
+          
+          return result
+        }
+      }
+    }
+  }
+  function handleSubmit()
+  {
+    const validation = handleValidation();
+
+    if(!validation.status)
+    {
+      console.log(validation.error);
+      return;
+    }
+
+    onSubmit(data);
   }
   
   if(fields === null)
@@ -37,6 +76,14 @@ function Modal({title, type, elements, theme = "Singularity", animation = "!/", 
   const rowOffset = elements.length / 4;
   const dynamicHeight = rowOffset > 1 ? `${30 + (rowOffset - 1) * 15}rem` : "30rem";
   const dynamicWidth = currentTheme.radiused || rowOffset > 1  ? `${30 + rowOffset * 10}rem` : "30rem";
+  
+  React.useEffect(()=> {
+    fields.forEach(field => {
+      field.name.forEach(name => {
+        SetData(prev => ({...prev, [name]: null}));
+      });
+    });
+  }, []);
 
   useGSAP(()=> {
     if (!modalRef.current || !currentAnimation) return;
@@ -99,7 +146,7 @@ function Modal({title, type, elements, theme = "Singularity", animation = "!/", 
             </div>
           )
         })}
-        <button className="modal-btn" onClick={()=> onSubmit(data)}>Submit</button>
+        <button className="modal-btn" onClick={()=> handleSubmit()}>Submit</button>
       </div>
     </div>
   )
@@ -209,6 +256,7 @@ function normalizeElements(elements)
     placeholder: typeof ele.placeholder === "string" ? [ele.placeholder] : ele.placeholder,
     name: typeof ele.name === "string" ? [ele.name] : ele.name,
     id: typeof ele.id === "string" ? [ele.id] : ele.id,
+    validation: typeof ele.validation === "string" ? [ele.validation] : ele.validation
   }));
 }
 function checkDuplicates(elements, field)
