@@ -65,3 +65,23 @@
     -moz-box-shadow: 0px 17px 20px -9px rgba(255,69,0,0.9),
                      0px 0px 40px -5px rgba(255,69,0,0.5);
 }
+.dyvix-modal-frost
+{
+    background-color: #ffffff1a;
+    border: 5px groove #ffffff40;
+    border-radius: 20px;
+    backdrop-filter: blur(50px);
+    box-shadow: -6px 2px 51px -7px rgba(213,255,248,1) inset;
+    -webkit-box-shadow: -6px 2px 51px -7px rgba(213,255,248,1) inset;
+    -moz-box-shadow: -6px 2px 51px -7px rgba(213,255,248,1) inset;
+    transition: trasform 0.5s ease-in-out, 0.4s ease-in-out, box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out, -moz-box-shadow 0.3s ease-in-out, border 0.2s ease-in-out;
+
+}
+.dyvix-modal-frost:hover
+{
+    border: 8px groove #f8f8f840;
+    transform: scale(1.01);
+    box-shadow: -6px 2px 51px -23px rgba(213,255,248,1) inset;
+    -webkit-box-shadow: -6px 2px 51px -23px rgba(213,255,248,1) inset;
+    -moz-box-shadow: -6px 2px 51px -23px rgba(213,255,248,1) inset;
+}

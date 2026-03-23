@@ -8,12 +8,18 @@
     {
         "theme": "Industrial",
         "class": "dyvix-modal-industrial",
-        "default-amination": "fade",
+        "default-amination": "bubble",
         "radiused": false
     },
     {
         "theme": "Ember",
         "class": "dyvix-modal-ember",
+        "default-amination": "fade",
+        "radiused": false
+    },
+    {
+        "theme": "Frost",
+        "class": "dyvix-modal-frost",
         "default-amination": "fade",
         "radiused": false
     }
