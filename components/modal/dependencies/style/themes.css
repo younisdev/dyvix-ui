@@ -1,109 +1,127 @@
-.dyvix-modal-lens
-{
-    font-family: "Geist";
-    border: 4px solid #3c0349;
-    color: white;
-    border-radius: 50%;
-    background-color: #1f2937;
-    background: radial-gradient(circle, #000000 0%, #1a1a1a 100%);
-    box-shadow: 0 0 30px #b903e2;
-    -webkit-box-shadow: 0 0 30px #b903e2;
-    -moz-box-shadow: 0 0 30px #b903e2;
-    aspect-ratio: 1 /1 ;
-    transition:  transform ease-in-out 0.7s, box-shadow ease-in-out 0.6s, border ease-in-out 0.3s, background ease-in-out 0.2s;
+.dyvix-modal-lens {
+  font-family: 'Geist';
+  border: 4px solid #3c0349;
+  color: white;
+  border-radius: 50%;
+  background-color: #1f2937;
+  background: radial-gradient(circle, #000000 0%, #1a1a1a 100%);
+  box-shadow: 0 0 30px #b903e2;
+  -webkit-box-shadow: 0 0 30px #b903e2;
+  -moz-box-shadow: 0 0 30px #b903e2;
+  aspect-ratio: 1 /1;
+  transition:
+    transform ease-in-out 0.7s,
+    box-shadow ease-in-out 0.6s,
+    border ease-in-out 0.3s,
+    background ease-in-out 0.2s;
 }
-.dyvix-modal-lens:hover
-{
-    border: 4px solid #27032f;
-    background: radial-gradient(circle, #000000 0%, #1a1a1a 120%);
-    box-shadow: 0 0 50px #b903e2;
-    transform: scale(1.02);
+.dyvix-modal-lens:hover {
+  border: 4px solid #27032f;
+  background: radial-gradient(circle, #000000 0%, #1a1a1a 120%);
+  box-shadow: 0 0 50px #b903e2;
+  transform: scale(1.02);
 }
-.dyvix-modal-lens > div > .modal-text
-{
-    color: white;
+.dyvix-modal-lens > div > .modal-text {
+  color: white;
 }
 
-.dyvix-modal-industrial
-{
-    font-family: "Geist";
-    border: 10px solid #374151;
-    border-radius: 10px;
-    background-color: #0a1429;
-    padding: 1.5rem;
-    transition: box-shadow ease-in-out 0.6s, border-color ease-in-out 0.3s, background-color ease-in-out 0.2s, transform ease-in-out 0.1s;
+.dyvix-modal-industrial {
+  font-family: 'Geist';
+  border: 10px solid #374151;
+  border-radius: 10px;
+  background-color: #0a1429;
+  padding: 1.5rem;
+  transition:
+    box-shadow ease-in-out 0.6s,
+    border-color ease-in-out 0.3s,
+    background-color ease-in-out 0.2s,
+    transform ease-in-out 0.1s;
 }
-.dyvix-modal-industrial:hover
-{
-    border-color: #6a6a6a;
-    box-shadow: inset 0 0 30px rgba(106, 106, 106, 0.1), 0 0 20px rgba(106, 106, 106, 0.15);
-    background-color: #101f39;
-    transform: scale(1.01);
-    border-radius: 11px;
+.dyvix-modal-industrial:hover {
+  border-color: #6a6a6a;
+  box-shadow:
+    inset 0 0 30px rgba(106, 106, 106, 0.1),
+    0 0 20px rgba(106, 106, 106, 0.15);
+  background-color: #101f39;
+  transform: scale(1.01);
+  border-radius: 11px;
 }
-.dyvix-modal-ember
-{
-    border-radius: 10px;
-    background-color: #0f0a08;
-    border-bottom: #ff4500 3px solid;
-    box-shadow: 0px 17px 12px -9px rgba(255,69,0,0.73),
-                0px 0px 30px -10px rgba(255,69,0,0.3);
-    -webkit-box-shadow: 0px 17px 12px -9px rgba(255,69,0,0.73),
-                        0px 0px 30px -10px rgba(255,69,0,0.3);
-    -moz-box-shadow: 0px 17px 12px -9px rgba(255,69,0,0.73),
-                     0px 0px 30px -10px rgba(255,69,0,0.3);
-    transition: trasform 0.5s ease-in-out, 0.4s ease-in-out, box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out, -moz-box-shadow 0.3s ease-in-out;
+.dyvix-modal-ember {
+  border-radius: 10px;
+  background-color: #0f0a08;
+  border-bottom: #ff4500 3px solid;
+  box-shadow:
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
+  -webkit-box-shadow:
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
+  -moz-box-shadow:
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
+  transition:
+    trasform 0.5s ease-in-out,
+    0.4s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out;
 }
-.dyvix-modal-ember:hover
-{
-    border-bottom: #ff6b00 3.1px solid;
-    transform: scale(1.002);
-    box-shadow: 0px 17px 20px -9px rgba(255,69,0,0.9),
-                0px 0px 40px -5px rgba(255,69,0,0.5);
-    -webkit-box-shadow: 0px 17px 20px -9px rgba(255,69,0,0.9),
-                        0px 0px 40px -5px rgba(255,69,0,0.5);
-    -moz-box-shadow: 0px 17px 20px -9px rgba(255,69,0,0.9),
-                     0px 0px 40px -5px rgba(255,69,0,0.5);
+.dyvix-modal-ember:hover {
+  border-bottom: #ff6b00 3.1px solid;
+  transform: scale(1.002);
+  box-shadow:
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
+  -webkit-box-shadow:
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
+  -moz-box-shadow:
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
 }
-.dyvix-modal-frost
-{
-    background-color: #ffffff1a;
-    border: 5px groove #ffffff40;
-    border-radius: 20px;
-    backdrop-filter: blur(50px);
-    box-shadow: -6px 2px 51px -7px rgba(213,255,248,1) inset;
-    -webkit-box-shadow: -6px 2px 51px -7px rgba(213,255,248,1) inset;
-    -moz-box-shadow: -6px 2px 51px -7px rgba(213,255,248,1) inset;
-    transition: transform 0.5s ease-in-out,  box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out, -moz-box-shadow 0.3s ease-in-out, border 0.2s ease-in-out;
-
+.dyvix-modal-frost {
+  background-color: #ffffff1a;
+  border: 5px groove #ffffff40;
+  border-radius: 20px;
+  backdrop-filter: blur(50px);
+  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.2s ease-in-out;
 }
-.dyvix-modal-frost:hover
-{
-    border: 8px groove #f8f8f840;
-    transform: scale(1.01);
-    box-shadow: -6px 2px 51px -23px rgba(213,255,248,1) inset;
-    -webkit-box-shadow: -6px 2px 51px -23px rgba(213,255,248,1) inset;
-    -moz-box-shadow: -6px 2px 51px -23px rgba(213,255,248,1) inset;
+.dyvix-modal-frost:hover {
+  border: 8px groove #f8f8f840;
+  transform: scale(1.01);
+  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
 }
-.dyvix-modal-blade
-{
-    background-color: #0a0a0a;
-    border-radius: 0px;
-    border-left: 3px solid #e2e8f0;
-    border-top: 3px solid #e2e8f0;
-    border-right: 1px solid #ffffff20;
-    border-bottom: 1px solid #ffffff20;
-    box-shadow: -4px -4px 20px rgba(255,255,255,0.05);
-    -webkit-box-shadow: -4px -4px 20px rgba(255,255,255,0.05);
-    -moz-box-shadow: -4px -4px 20px rgba(255,255,255,0.05);
-    transition: border-left 0.1s ease-in-out, border-top 0.1s ease-in-out, box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out, -moz-box-shadow 0.2s ease-in-out;
-
+.dyvix-modal-blade {
+  background-color: #0a0a0a;
+  border-radius: 0px;
+  border-left: 3px solid #e2e8f0;
+  border-top: 3px solid #e2e8f0;
+  border-right: 1px solid #ffffff20;
+  border-bottom: 1px solid #ffffff20;
+  box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
+  -webkit-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
+  -moz-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
+  transition:
+    border-left 0.1s ease-in-out,
+    border-top 0.1s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out,
+    -moz-box-shadow 0.2s ease-in-out;
 }
-.dyvix-modal-blade:hover
-{
-    border-left: 4px solid #ffffff;
-    border-top: 4px solid #ffffff;
-    box-shadow: -6px -6px 30px rgba(255,255,255,0.1);
-    -webkit-box-shadow: -6px -6px 30px rgba(255,255,255,0.1);
-    -moz-box-shadow: -6px -6px 30px rgba(255,255,255,0.1);
+.dyvix-modal-blade:hover {
+  border-left: 4px solid #ffffff;
+  border-top: 4px solid #ffffff;
+  box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
 }

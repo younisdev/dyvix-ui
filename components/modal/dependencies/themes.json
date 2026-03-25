@@ -1,32 +1,32 @@
 [
-    {
-        "theme": "Singularity",
-        "class": "dyvix-modal-lens",
-        "default-animation": "bubble",
-        "radiused": true
-    },
-    {
-        "theme": "Industrial",
-        "class": "dyvix-modal-industrial",
-        "default-animation": "fade",
-        "radiused": false
-    },
-    {
-        "theme": "Ember",
-        "class": "dyvix-modal-ember",
-        "default-animation": "glitch",
-        "radiused": false
-    },
-    {
-        "theme": "Frost",
-        "class": "dyvix-modal-frost",
-        "default-animation": "unfold",
-        "radiused": false
-    },
-    {
-        "theme": "Blade",
-        "class": "dyvix-modal-blade",
-        "default-animation": "zoom",
-        "radiused": false
-    }
+  {
+    "theme": "Singularity",
+    "class": "dyvix-modal-lens",
+    "default-animation": "bubble",
+    "radiused": true
+  },
+  {
+    "theme": "Industrial",
+    "class": "dyvix-modal-industrial",
+    "default-animation": "fade",
+    "radiused": false
+  },
+  {
+    "theme": "Ember",
+    "class": "dyvix-modal-ember",
+    "default-animation": "glitch",
+    "radiused": false
+  },
+  {
+    "theme": "Frost",
+    "class": "dyvix-modal-frost",
+    "default-animation": "unfold",
+    "radiused": false
+  },
+  {
+    "theme": "Blade",
+    "class": "dyvix-modal-blade",
+    "default-animation": "zoom",
+    "radiused": false
+  }
 ]

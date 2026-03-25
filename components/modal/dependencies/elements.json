@@ -1,44 +1,44 @@
 [
-    {
-        "element": "text",
-        "tag": "input",
-        "tag-type": "text",
-        "default-class": "modal-text",
-        "aria": {
-            "role": "textbox",
-            "aria-required": false,
-            "aria-label": ""
-         },
-        "inherited-element": ["email", "password", "search", "url", "tel"],
-        "inherit-overrides": {
-            "search": {
-                "aria": { "role": "searchbox" }
-            },
-            "password": {
-                "aria": { "aria-label": "password" }
-            }
-        },
-        "supports-placeholder": true,
-        "supports_type": true,
-        "supports_autocomplete": true,
-        "is_custom": false,
-        "requires-options": false,
-        "r-variant": true
+  {
+    "element": "text",
+    "tag": "input",
+    "tag-type": "text",
+    "default-class": "modal-text",
+    "aria": {
+      "role": "textbox",
+      "aria-required": false,
+      "aria-label": ""
     },
-    {
-        "element": "select",
-        "tag": "select",
-        "default-class": "select",
-        "aria": {
-            "role": "combobox",
-            "aria-required": false,
-            "aria-label": ""
-        },
-        "supports-placeholder": true,
-        "supports_type": false,
-        "supports_autocomplete": false,
-        "is_custom": true,
-        "requires-options": true,
-        "r-variant": true
-    }
+    "inherited-element": ["email", "password", "search", "url", "tel"],
+    "inherit-overrides": {
+      "search": {
+        "aria": { "role": "searchbox" }
+      },
+      "password": {
+        "aria": { "aria-label": "password" }
+      }
+    },
+    "supports-placeholder": true,
+    "supports_type": true,
+    "supports_autocomplete": true,
+    "is_custom": false,
+    "requires-options": false,
+    "r-variant": true
+  },
+  {
+    "element": "select",
+    "tag": "select",
+    "default-class": "select",
+    "aria": {
+      "role": "combobox",
+      "aria-required": false,
+      "aria-label": ""
+    },
+    "supports-placeholder": true,
+    "supports_type": false,
+    "supports_autocomplete": false,
+    "is_custom": true,
+    "requires-options": true,
+    "r-variant": true
+  }
 ]

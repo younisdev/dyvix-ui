@@ -1,10 +1,10 @@
 [
-    {
-        "preset": "email",
-        "validators": ["isEmail"]
-    },
-    {
-        "preset": "password",
-        "validators": ["validatePasswd"]
-    }
+  {
+    "preset": "email",
+    "validators": ["isEmail"]
+  },
+  {
+    "preset": "password",
+    "validators": ["validatePasswd"]
+  }
 ]

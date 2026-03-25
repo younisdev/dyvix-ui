@@ -1,6 +1,7 @@
-//needs testing and polishing
 import React, { forwardRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
 const SelectEngine = forwardRef(
   (
     {
@@ -21,13 +22,13 @@ const SelectEngine = forwardRef(
       inputRef.current.value = value;
       controller((prevData) => ({
         ...prevData,
-        is_open: false,
+        is_open: false
       }));
-      // Fixes major bug
+
       OnChangeCallback();
     }
 
-    React.useEffect(() => {
+    useGSAP(() => {
       if (!ref?.current) return;
 
       if (is_open) {
@@ -35,13 +36,13 @@ const SelectEngine = forwardRef(
           ref.current,
           {
             height: 0,
-            opacity: 0,
+            opacity: 0
           },
           {
             height: 'auto',
             opacity: 1,
             duration: 1.1,
-            ease: 'power2.inOut',
+            ease: 'power2.inOut'
           }
         );
       } else {
@@ -49,16 +50,25 @@ const SelectEngine = forwardRef(
           height: 0,
           opacity: 0,
           duration: 0.3,
-          ease: 'power2.inOut',
+          ease: 'power2.inOut'
         });
       }
     }, [is_open, elements]);
+
+    useEffect(() => {
+      const observer = new ResizeObserver(() => {
+        ref.current.style.width = (inputRef.current.offsetWidth - 20) + "px";
+        ref.current.style.marginLeft += 20;
+      });
+      observer.observe(inputRef.current);
+      return () => observer.disconnect();
+    }, []);
 
     return (
       <>
         {is_rendered && (
           <ul
-            id="dropdown-select"
+            className="dyvix-dropdown-select"
             role="listbox"
             style={
               is_open
@@ -84,7 +94,7 @@ const SelectEngine = forwardRef(
                 style={{
                   fontSize: '.5rem',
                   color: '#888',
-                  textAlign: 'center',
+                  textAlign: 'center'
                 }}
               >
                 Not Found!
