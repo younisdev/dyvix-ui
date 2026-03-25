@@ -1,7 +1,7 @@
+import './dependencies/style/styles.css';
 import React, { forwardRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import './dependencies/style/styles.css';
 
 const SelectEngine = forwardRef(
   (
@@ -61,11 +61,10 @@ const SelectEngine = forwardRef(
 
     useEffect(() => {
       const observer = new ResizeObserver(() => {
-        ref.current.style.width = (inputRef.current.offsetWidth - 20) + "px";
+        ref.current.style.width = inputRef.current.offsetWidth - 20 + 'px';
         ref.current.style.marginLeft = 5;
-        ref.style.top = `${inputRef.offsetHeight}px`;
       });
-      
+
       observer.observe(inputRef.current);
 
       return () => observer.disconnect();

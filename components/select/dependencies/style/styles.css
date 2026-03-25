@@ -1,9 +1,8 @@
-.dyvix-select-warper
-{
+.dyvix-select-warper {
   width: 12rem;
 }
 .dyvi-select {
-  width: 12rem;;
+  width: 12rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
   height: 30px;
@@ -28,7 +27,7 @@
   background-color: whitesmoke;
   border: solid 1px #e2e8f0;
   margin-left: 10px;
-  margin-top: .1rem;
+  margin-top: 0.1rem;
 }
 .dyvix-dropdown-select::-webkit-scrollbar {
   width: 5px;
