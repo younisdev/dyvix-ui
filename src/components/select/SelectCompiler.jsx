@@ -125,10 +125,8 @@ function DynamicSelect({
 }
 
 function ValidateInput(elements, type, animation) {
-  if(!Array.isArray(elements))
-  {
+  if (!Array.isArray(elements)) {
     return { status: -1, error: 'Elements should be included as an array.' };
-
   }
   if (!supportedTypes.includes(type)) {
     return { status: -1, error: 'Please provide a vaild select type.' };

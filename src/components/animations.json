@@ -50,7 +50,7 @@
     "default-duration": 0.8,
     "ease": "elastic.out(0.6, 0.4)",
     "components": ["modal"],
-    "from": { "scale": 0.8, "opacity": 0, "filter": "blur(50px)"},
+    "from": { "scale": 0.8, "opacity": 0, "filter": "blur(50px)" },
     "to": { "scale": 1, "opacity": 1, "filter": "blur(0px)" }
   },
   {
@@ -59,7 +59,7 @@
     "default-duration": 0.8,
     "ease": "power2.out",
     "components": ["modal"],
-    "from": { "y": 80, "opacity": 0, "filter": "blur(35px)"},
+    "from": { "y": 80, "opacity": 0, "filter": "blur(35px)" },
     "to": { "y": 0, "opacity": 1, "filter": "blur(0px)" }
   }
 ]

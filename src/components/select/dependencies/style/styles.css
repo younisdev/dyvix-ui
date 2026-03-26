@@ -1,14 +1,11 @@
-.dyvix-select-warper
-{
+.dyvix-select-warper {
   width: 12rem;
   transition: all 0.5s ease-in-out;
 }
-.dyvix-select-warper:hover
-{
+.dyvix-select-warper:hover {
   transform: scale(1.02);
 }
-.dyvi-select
-{
+.dyvi-select {
   width: 12rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
@@ -17,13 +14,11 @@
   background: transparent;
   padding: 0.5rem 1rem;
 }
-.dyvi-select:focus
-{
+.dyvi-select:focus {
   outline: none;
   border-color: #0ea5e9;
 }
-.dyvix-dropdown-select
-{
+.dyvix-dropdown-select {
   position: absolute;
   list-style: none;
   text-align: left;
@@ -38,21 +33,17 @@
   margin-left: 10px;
   margin-top: 0.1rem;
 }
-.dyvix-dropdown-select::-webkit-scrollbar
-{
+.dyvix-dropdown-select::-webkit-scrollbar {
   width: 5px;
 }
-.dyvix-dropdown-select::-webkit-scrollbar-track
-{
+.dyvix-dropdown-select::-webkit-scrollbar-track {
   background: transparent;
 }
-.dyvix-dropdown-select::-webkit-scrollbar-thumb
-{
+.dyvix-dropdown-select::-webkit-scrollbar-thumb {
   background-color: #06b6d4;
   border-radius: 25px;
 }
-.dyvix-dropdown-select li
-{
+.dyvix-dropdown-select li {
   background-color: whitesmoke;
   border-bottom: gainsboro 0.1px solid;
   height: 20px !important;
@@ -62,14 +53,12 @@
   letter-spacing: 0.5px;
   margin-left: 0.4rem;
 }
-.dyvix-dropdown-select li:hover
-{
+.dyvix-dropdown-select li:hover {
   transform: scale(1.003);
   background-color: #e0f7fa;
   cursor: pointer;
 }
-.dyvix-dropdown-select li:active
-{
+.dyvix-dropdown-select li:active {
   background-color: #b2ebf2;
   color: white;
 }

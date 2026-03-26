@@ -6,6 +6,7 @@ import validationData from './dependencies/validator/validators.json';
 import './dependencies/style/elements.css';
 import './dependencies/style/themes.css';
 import * as validatorsFunctions from './dependencies/validator/validators';
+import ExecuteValidator from './dependencies/validator/validators';
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -73,11 +74,7 @@ function Modal({
 
         if (!validators) continue;
 
-        for (const validator of validators.validators) {
-          const result = validatorsFunctions[validator](data[currentName]);
-
-          return result;
-        }
+        return ExecuteValidator(data[currentName], validators.validators);
       }
     }
   }
