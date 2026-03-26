@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img width="100" height="100" alt="Dyvix logo" src="https://raw.githubusercontent.com/younisdev/dyvix-ui/main/logo.png" />
+  <img width="100" height="100" alt="Dyvix logo" src="https://raw.githubusercontent.com/younisdev/dyvix-ui/main/src/static/logo.png" />
   <br />
   Dyvix UI
 </h1>
@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/younisdev/dyvix-ui/main/demo.gif" alt="Dyvix UI Demo" width="300" height="300" />
+  <img src="https://raw.githubusercontent.com/younisdev/dyvix-ui/main/src/static/demo.gif" alt="Dyvix UI Demo" width="300" height="300" />
 </p>
 
 # React
