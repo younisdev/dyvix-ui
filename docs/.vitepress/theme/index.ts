@@ -1,4 +1,11 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
+import { inject } from '@vercel/analytics'
 
-export default DefaultTheme
+export default {
+  extends: DefaultTheme,
+  enhanceApp() {
+    // Initialize Vercel Analytics
+    inject()
+  }
+}
