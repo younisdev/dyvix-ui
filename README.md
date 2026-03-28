@@ -18,7 +18,9 @@
 
 # React
 
+```bash
 npm i dyvix-ui
+```
 
 ### Basic usage
 ```jsx
