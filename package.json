@@ -36,8 +36,10 @@
   "scripts": {
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint \"**/*.{js,jsx}\"",
+    "prebuild": "npm run dyvix:build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "dyvix:build": "node dev-engine/scripts/generate-constants.js"
   }
 }
