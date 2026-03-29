@@ -10,6 +10,11 @@ export const DYVIX_MODAL_THEME =
   "NEON": "Neon",
   "AURORA": "Aurora"
 }
+export const DYVIX_TYPES_TYPE = 
+ {
+  "AUTH": "auth",
+  "FORM": "form"
+}
 export const DYVIX_GLOBAL_ANIMATION = 
  {
   "FADE": "fade",

@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 GenerateConstants('./src/components/modal/dependencies/themes.json', "theme", "modal", "entry");
+GenerateConstants('./src/components/modal/dependencies/types.json', "type", "types", "post");
 GenerateConstants('./src/components/animations.json', "animation", "global", "post");
 GenerateConstants('./src/components/modal/dependencies/validator/validators.json', "preset", "modal_validation", "post");
 
