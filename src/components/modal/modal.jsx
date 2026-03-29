@@ -13,6 +13,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 const vaildThemes = themesData.map((e) => e.theme);
+const validType = typesData.map((e) => e.type);
 const validAnimations = animationsData.map((e) => e.animation);
 const defaultElement = {
   type: '!/',
@@ -48,7 +49,7 @@ const componentsMap = { SelectEngine: SelectEngine };
  */
 function Modal({
   title,
-  type,
+  type = `form`,
   elements,
   theme = 'Singularity',
   animation = '!/',
@@ -110,7 +111,9 @@ function Modal({
   if (fields === null) {
     return null;
   }
-
+  const currentType = typesData.find(
+    (e) => e.type.trim().toLowerCase() === type.trim().toLowerCase()
+  );
   const currentTheme = themesData.find(
     (e) => e.theme.trim().toLowerCase() === theme.trim().toLowerCase()
   );
@@ -120,7 +123,7 @@ function Modal({
     (e) =>
       e.animation.trim().toLowerCase() === animationQuery.trim().toLowerCase()
   );
-  const serilaizedClass = Class + ` ${currentTheme.class}`;
+  const serilaizedClass = Class + ` ${currentTheme.class}` + ` ${currentType.class}`;
   const rowOffset = elements.length / 4;
   const dynamicHeight =
     rowOffset > 1 ? `${30 + (rowOffset - 1) * 15}rem` : '30rem';
@@ -226,9 +229,11 @@ function Modal({
             </div>
           );
         })}
+        {currentType.submit && 
         <button className="modal-btn" onClick={() => handleSubmit()}>
-          Submit
+          {currentType.submitLabel}
         </button>
+        }
       </div>
     </div>
   );
@@ -284,6 +289,9 @@ function ValidateInput(
 ) {
   if (!title) {
     return { status: -1, error: 'Please provide a title' };
+  }
+  if (!validType.includes(type)) {
+    return { status: -1, error: 'Please provide a vaild type.' };
   }
   if (
     !Array.isArray(elements) ||
