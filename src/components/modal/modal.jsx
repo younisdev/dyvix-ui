@@ -40,7 +40,8 @@ function Modal({
   Id,
   Class,
   onSubmit,
-  onChange
+  onChange,
+  onClose
 }) {
   const [data, SetData] = React.useState({});
   const fields = SerializeData(
@@ -138,8 +139,9 @@ function Modal({
         className={serilaizedClass}
         id={Id}
         ref={modalRef}
-        style={{ height: dynamicHeight, width: dynamicWidth }}
+        style={{ height: dynamicHeight, width: dynamicWidth, position: 'relative' }}
       >
+        {onClose && <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">✕</button>}
         <h3 id="modal-header">{title}</h3>
         {fields.map((field, i) => {
           const elementDef =
