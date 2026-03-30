@@ -7,24 +7,24 @@ Thank you for your interest in contributing! Dyvix is **config-driven** library 
 1. Fork the repository.
 2. Clone your newly forked repository:
 
-    ```bash
-    git clone https://github.com/YOUR_USERNAME/dyvix-ui/
-    cd dyvix-ui
-    npm install
-    ```
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/dyvix-ui/
+   cd dyvix-ui
+   npm install
+   ```
 
 3. Create a branch:
 
-    ```bash
-    git checkout -b your-feature-name
-    ```
+   ```bash
+   git checkout -b your-feature-name
+   ```
 
 4. Make your Changes.
 5. Run the Dyvix automated engine:
 
-    ```bash
-    npm run dyvix:build
-    ```
+   ```bash
+   npm run dyvix:build
+   ```
 
 6. Commit and push your changes.
 7. Open a pull request.
@@ -36,12 +36,12 @@ Thank you for your interest in contributing! Dyvix is **config-driven** library 
 Themes are defined in `src/components/modal/dependencies/themes.json` and styled in `src/components/modal/dependencies/style/themes.css`.
 
 1. Add a unique theme entry in [themes.json](https://github.com/younisdev/dyvix-ui/blob/main/src/components/modal/dependencies/themes.json) file referencing the css class of the new theme.
-2. Add your CSS class in  [themes.css](https://github.com/younisdev/dyvix-ui/blob/main/src/components/modal/dependencies/style/themes.css).
+2. Add your CSS class in [themes.css](https://github.com/younisdev/dyvix-ui/blob/main/src/components/modal/dependencies/style/themes.css).
 3. Run the Dyvix automated engine:
 
-    ```bash
-    npm run dyvix:build
-    ```
+   ```bash
+   npm run dyvix:build
+   ```
 
 ### Add an Animation
 
@@ -50,9 +50,9 @@ Animations are defined in `src/components/animations.json`.
 1. Create an entry into [animations.json](https://github.com/younisdev/dyvix-ui/blob/main/src/components/animations.json).
 2. Run the Dyvix automated engine:
 
-    ```bash
-    npm run dyvix:build
-    ```
+   ```bash
+   npm run dyvix:build
+   ```
 
 ### Report a Bug
 

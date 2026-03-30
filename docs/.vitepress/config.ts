@@ -1,15 +1,13 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Dyvix UI",
-  description: "Beautiful by default, customizable by design.",
-  head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
-  ],
+  title: 'Dyvix UI',
+  description: 'Beautiful by default, customizable by design.',
+  head: [['link', { rel: 'icon', href: '/logo.png' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    
+
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Introduction', link: 'guide/introduction' },
@@ -22,7 +20,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction', link: 'guide/introduction' },
           { text: 'Quickstart', link: 'guide/quickstart' },
-          { text: 'Modal', link: 'components/modal/modal'}
+          { text: 'Modal', link: 'components/modal/modal' }
         ]
       }
     ],
@@ -31,4 +29,4 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/younisdev/dyvix-ui/' }
     ]
   }
-})
+});

@@ -8,12 +8,12 @@ Dyvix is a premium, JSON-driven UI Library. It is designed and engineered for de
 
 Dyvix UI is built around the following foundations:
 
-    . Theme Architecture: Identity as Data. Easily swap the entire personality of your application. 
-      By simply passing a pre-defined JSON file. Whether using our built-in configs or using yours, 
+    . Theme Architecture: Identity as Data. Easily swap the entire personality of your application.
+      By simply passing a pre-defined JSON file. Whether using our built-in configs or using yours,
       your UI adapts instantly without changing a single manual override.
 
 
-    . Scalable JSON Architecture: Zero Glue-Code. Easily define animations, themes, 
+    . Scalable JSON Architecture: Zero Glue-Code. Easily define animations, themes,
       and elements without writing a single javascript code.
 
 

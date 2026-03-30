@@ -1,16 +1,16 @@
 [
-    {
-        "type": "auth",
-        "closable": false,
-        "submit": true,
-        "submitLabel": "Submit",
-        "class": "modal-auth"
-    },
-    {
-        "type": "form",
-        "closable": true,
-        "submit": true,
-        "submitLabel": "Submit",
-        "class": "modal-form"
-    }
+  {
+    "type": "auth",
+    "closable": false,
+    "submit": true,
+    "submitLabel": "Submit",
+    "class": "modal-auth"
+  },
+  {
+    "type": "form",
+    "closable": true,
+    "submit": true,
+    "submitLabel": "Submit",
+    "class": "modal-form"
+  }
 ]

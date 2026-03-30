@@ -3,7 +3,7 @@ import themesData from './dependencies/themes.json';
 import SelectEngine from '../select/SelectEngine';
 import animationsData from '../animations.json';
 import validationData from './dependencies/validator/validators.json';
-import typesData from './dependencies/types.json'
+import typesData from './dependencies/types.json';
 import './dependencies/style/elements.css';
 import './dependencies/style/themes.css';
 import * as validatorsFunctions from './dependencies/validator/validators';
@@ -27,7 +27,7 @@ const componentsMap = { SelectEngine: SelectEngine };
  * @param {string} [props.Id] - modal id
  * @param {string} [props.class] - modal class
  * @param {Function} [props.onClose] - Close callback
- * @param {Function} [props.onChange] - Change callback 
+ * @param {Function} [props.onChange] - Change callback
  * @param {Function} [props.onSubmit] - Submit callback
  * @param {Array<Object>} props.elements - Array of element configs
  */
@@ -40,7 +40,8 @@ function Modal({
   Id,
   Class,
   onSubmit,
-  onChange
+  onChange,
+  onClose
 }) {
   const [data, SetData] = React.useState({});
   const fields = SerializeData(
@@ -107,7 +108,8 @@ function Modal({
     (e) =>
       e.animation.trim().toLowerCase() === animationQuery.trim().toLowerCase()
   );
-  const serilaizedClass = Class + ` ${currentTheme.class}` + ` ${currentType.class}`;
+  const serilaizedClass =
+    Class + ` ${currentTheme.class}` + ` ${currentType.class}`;
   const rowOffset = elements.length / 4;
   const dynamicHeight =
     rowOffset > 1 ? `${30 + (rowOffset - 1) * 15}rem` : '30rem';
@@ -140,8 +142,25 @@ function Modal({
         className={serilaizedClass}
         id={Id}
         ref={modalRef}
-        style={{ height: dynamicHeight, width: dynamicWidth }}
+        style={{
+          height: dynamicHeight,
+          width: dynamicWidth,
+          position: 'relative'
+        }}
       >
+        {currentType.closable && (
+          <button
+            className="modal-close-btn"
+            onClick={onClose}
+            aria-label="Close modal"
+            style={{
+              top: currentTheme.radiused ? '2rem' : '1rem',
+              right: currentTheme.radiused ? '9rem' : '1rem'
+            }}
+          >
+            ✕
+          </button>
+        )}
         <h3 id="modal-header">{title}</h3>
         {fields.map((field, i) => {
           const elementDef =
@@ -202,8 +221,7 @@ function Modal({
                   })
                 };
 
-                if(elementDef["requires-options"] && Tag === "select")
-                {
+                if (elementDef['requires-options'] && Tag === 'select') {
                   return (
                     <Tag
                       key={j}
@@ -226,11 +244,11 @@ function Modal({
             </div>
           );
         })}
-        {currentType.submit && 
-        <button className="modal-btn" onClick={() => handleSubmit()}>
-          {currentType.submitLabel}
-        </button>
-        }
+        {currentType.submit && (
+          <button className="modal-btn" onClick={() => handleSubmit()}>
+            {currentType.submitLabel}
+          </button>
+        )}
       </div>
     </div>
   );

@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Dyvix UI"
-  text: "Beautiful by default, customizable by design."
+  name: 'Dyvix UI'
+  text: 'Beautiful by default, customizable by design.'
   tagline: An open source, modern, config-driven, animated component UI library.
   image:
     src: /logo.png
@@ -31,4 +31,3 @@ features:
   - title: Open Source
     details: MIT licensed. Active contributor community with good first issues always open.
 ---
-

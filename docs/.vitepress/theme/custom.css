@@ -1,29 +1,43 @@
 .VPImage.image-src {
-  background: linear-gradient(135deg, rgba(0,255,136,0.2) 0%, rgba(188,0,255,0.2) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 136, 0.2) 0%,
+    rgba(188, 0, 255, 0.2) 100%
+  );
   opacity: 0.9;
-  border-radius: .5rem;
-  -webkit-box-shadow:0px 0px 197px 7px rgba(191,9,232,0.9);
-  -moz-box-shadow: 0px 0px 197px 7px rgba(191,9,232,0.9);
-  box-shadow: 0px 0px 197px 7px rgba(191,9,232,0.9);
-  transition: box-shadow 0.2s ease-in-out, -moz-box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out, scale 0.3s ease-in-out;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0px 0px 197px 7px rgba(191, 9, 232, 0.9);
+  -moz-box-shadow: 0px 0px 197px 7px rgba(191, 9, 232, 0.9);
+  box-shadow: 0px 0px 197px 7px rgba(191, 9, 232, 0.9);
+  transition:
+    box-shadow 0.2s ease-in-out,
+    -moz-box-shadow 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out,
+    scale 0.3s ease-in-out;
 }
-.VPImage.image-src:hover
-{
+.VPImage.image-src:hover {
   scale: 1.02;
-  -webkit-box-shadow: 0px 0px 254px 43px rgba(176,9,232,0.9);
-  -moz-box-shadow: 0px 0px 254px 43px rgba(176,9,232,0.9);
-  box-shadow: 0px 0px 254px 43px rgba(176,9,232,0.9);
+  -webkit-box-shadow: 0px 0px 254px 43px rgba(176, 9, 232, 0.9);
+  -moz-box-shadow: 0px 0px 254px 43px rgba(176, 9, 232, 0.9);
+  box-shadow: 0px 0px 254px 43px rgba(176, 9, 232, 0.9);
 }
-.name.clip
-{
+.name.clip {
   color: red;
 }
-.item{
-  transition: box-shadow 0.2s ease-in-out, -moz-box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out, scale 0.3s ease-in-out;
+.item {
+  transition:
+    box-shadow 0.2s ease-in-out,
+    -moz-box-shadow 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out,
+    scale 0.3s ease-in-out;
 }
-.item :hover{
-  transition: box-shadow 0.2s ease-in-out, -moz-box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out, scale 0.3s ease-in-out;
-  -webkit-box-shadow:0px 0px 300px 0px rgba(9,232,165,0.39);
-  -moz-box-shadow: 0px 0px 300px 0px rgba(9,232,165,0.39);
-  box-shadow: 0px 0px 300px 0px rgba(9,232,165,0.39);
+.item :hover {
+  transition:
+    box-shadow 0.2s ease-in-out,
+    -moz-box-shadow 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out,
+    scale 0.3s ease-in-out;
+  -webkit-box-shadow: 0px 0px 300px 0px rgba(9, 232, 165, 0.39);
+  -moz-box-shadow: 0px 0px 300px 0px rgba(9, 232, 165, 0.39);
+  box-shadow: 0px 0px 300px 0px rgba(9, 232, 165, 0.39);
 }

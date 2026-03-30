@@ -1,4 +1,4 @@
-import { validType, vaildThemes, validAnimations } from "./modal";
+import { validType, vaildThemes, validAnimations } from './modal';
 
 const defaultElement = {
   type: '!/',
@@ -7,6 +7,7 @@ const defaultElement = {
   className: '!/',
   amount: 1
 };
+// auto generate these soon
 const supportedTypes = [
   'text',
   'select',
