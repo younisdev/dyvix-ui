@@ -42,7 +42,7 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
 Dyvix constants are a built-in configuration engine designed to eliminate "magic strings" and provide a type-safe environment for dyvix users. By using these exported constants you benefit from IDE autocompletion preventing common typos that could break your UI. The modal component currently supports 5 constants groups:
 
 - `DYVIX_MODAL_THEME`
-  - : Used in the theme attribute e.g. `theme={DYVIX_MODAL_THEME.SINGULARITY}`.
+  - : Used in the theme attribute e.g. `theme={DYVIX_MODAL_THEME.NEON}`.
 - `DYVIX_GLOBAL_ANIMATION`
   - : Used in the animation attribute e.g. `animation={DYVIX_GLOBAL_ANIMATION.AURORA}`.
 - `DYVIX_MODAL_TYPE`
@@ -65,7 +65,7 @@ function ModalExample() {
       title="Register"
       Id="register-modal"
       Class="modal"
-      theme="Singularity"
+      theme="Aurora"
       animation="glitch"
       type="form"
       elements={[
@@ -121,7 +121,7 @@ function ModalExample() {
       title="Register"
       Id="register-modal"
       Class="modal"
-      theme={DYVIX_MODAL_THEME.SINGULARITY}
+      theme={DYVIX_MODAL_THEME.AURORA}
       animation={DYVIX_GLOBAL_ANIMATION.GLITCH}
       type={DYVIX_MODAL_TYPE.AUTH}
       elements={[

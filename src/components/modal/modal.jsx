@@ -138,12 +138,16 @@ function Modal({
   );
   const serilaizedClass =
     Class + ` ${currentTheme.class}` + ` ${currentType.class}`;
+  // Dynamicily calculate modal sizing and position
   const heightMap = { 1: '23rem', 2: '25rem', 3: '26rem', 4: '30rem', 5: '34rem', 6: '40rem', 7: '43rem', 8: '48rem', 9: '53rem' };
-  const idealSize = heightMap[fields.length] || '26rem';
+  let idealSize = heightMap[fields.length] || '26rem';
+  const geometryBuffer = currentTheme["radiused"] ? 2.5 * fields.length / 3 : 0;
+  idealSize = `calc(${idealSize} + ${geometryBuffer}rem)`;
+
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const dynamicHeight = isMobile ? `min(${idealSize}, 95vh)` : idealSize;
   const dynamicWidth = `min(${idealSize}, 95vw, 95vh)`;
-  
+
   // unused 
   const isCentered = fields.length <= 5;
   const dynamicMargin = isCentered 
