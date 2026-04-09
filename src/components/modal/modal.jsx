@@ -138,17 +138,20 @@ function Modal({
   );
   const serilaizedClass =
     Class + ` ${currentTheme.class}` + ` ${currentType.class}`;
+  // Dynamicily calculate modal sizing and position
   const heightMap = { 1: '23rem', 2: '25rem', 3: '26rem', 4: '30rem', 5: '34rem', 6: '40rem', 7: '43rem', 8: '48rem', 9: '53rem' };
-  const idealSize = heightMap[fields.length] || '26rem';
+  let idealSize = heightMap[fields.length] || '26rem';
+  const geometryBuffer = currentTheme["radiused"] ? 2.5 * fields.length / 3 : 0;
+  idealSize = `calc(${idealSize} + ${geometryBuffer}rem)`;
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const dynamicHeight = isMobile ? `min(${idealSize}, 95vh)` : idealSize;
   const dynamicWidth = `min(${idealSize}, 95vw, 95vh)`;
-  
+
   // unused 
   const isCentered = fields.length <= 5;
   const dynamicMargin = isCentered 
-  ? "auto auto"
-  : "2rem auto";
+  ? "15vh auto"
+  : "1.5rem auto";
 
   if (currentPreset) {
     title = title !== '!/' ? title : currentPreset['default-title'];
@@ -179,7 +182,7 @@ function Modal({
 
   useGSAP(() => {
     if (!modalRef.current || !currentAnimation) return;
-
+    gsap.set(modalRef.current, { margin: dynamicMargin });
     gsap.fromTo(modalRef.current, currentAnimation.from, {
       ...currentAnimation.to,
       duration: currentAnimation['default-duration'],
