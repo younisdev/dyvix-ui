@@ -1,3 +1,10 @@
+---
+title: Dyvix Modal
+next:
+  text: 'Select'
+  link: 'components/select/select'
+---
+
 # Modal
 
 The modal component is a core Dyvix UI component. It's a config driven, animated modal engine that supports multiple themes, animations, and validation presets out of the box.

@@ -5,21 +5,14 @@ import {
 } from '../../utils/DyvixGuard';
 import { validPositions, validAnimations, validTypes } from './toastContainer';
 
-export function ValidateContainer(
-  position,
-  segments,
-  duration,
-  animation
-) {
-
+export function ValidateContainer(position, segments, duration, animation) {
   if (!validPositions.includes(position)) {
     return {
       status: GaurdStatus.Error,
       error: 'Please provide a valid position.'
     };
   }
-  if(typeof duration !== "number" || duration <= 0)
-  {
+  if (typeof duration !== 'number' || duration <= 0) {
     return {
       status: GaurdStatus.Error,
       error: 'Please provide a valid duration that is greater than 0.'

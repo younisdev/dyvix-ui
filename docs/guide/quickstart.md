@@ -1,16 +1,19 @@
 ---
-- title: Quick start
+title: Quick start
+next:
+  text: 'Modal'
+  link: 'components/modal/modal'
 ---
 
 # Quick start
 
-1 - Installation
+## 1 - Installation
 
 ```bash
 npm i dyvix-ui
 ```
 
-2 - Setup basic modal
+## 2 - Setup basic modal
 
 ```jsx
 // Basic usage
@@ -61,7 +64,7 @@ function ModalExample() {
 }
 ```
 
-3 - Setup basic select
+## 3 - Setup basic select
 
 ```jsx
 import { DynamicSelect } from 'dyvix-ui';
@@ -69,11 +72,10 @@ import { DynamicSelect } from 'dyvix-ui';
 function SelectExample() {
   return (
     <DynamicSelect
-      id="theme-select"
-      className="ex-select"
+      Class="ex-select"
       type="select"
       elements={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-      onChangeCallback={(data) => console.log(data)}
+      onChange={(data) => console.log(data)}
     />
   );
 }

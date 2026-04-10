@@ -16,11 +16,17 @@ export default defineConfig({
     logo: '/logo.png',
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Guide',
         items: [
           { text: 'Introduction', link: 'guide/introduction' },
-          { text: 'Quickstart', link: 'guide/quickstart' },
-          { text: 'Modal', link: 'components/modal/modal' }
+          { text: 'Quickstart', link: 'guide/quickstart' }
+        ]
+      },
+      {
+        text: 'Components',
+        items: [
+          { text: 'Modal', link: 'components/modal/modal' },
+          { text: 'Select', link: 'components/select/select' }
         ]
       }
     ],

@@ -1,5 +1,8 @@
 ---
-- title: Introduction
+title: Introduction
+next:
+  text: 'Quick Start'
+  link: '/guide/quickstart'
 ---
 
 # Introduction

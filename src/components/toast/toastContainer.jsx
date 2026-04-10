@@ -18,12 +18,7 @@ function DyvixToastContainer({
   duration = 5000,
   animation = 'zoom'
 }) {
-  const validator = ValidateContainer(
-  position,
-  segments,
-  duration,
-  animation
-  );
+  const validator = ValidateContainer(position, segments, duration, animation);
 
   if (validator.status === GaurdStatus.Error) {
     return EvaluateFailure(validator.error, validator.status);
