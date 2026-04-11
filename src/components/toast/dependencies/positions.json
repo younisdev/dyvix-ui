@@ -18,5 +18,9 @@
   {
     "position": "top-center",
     "class": "dyvix-top-center"
+  },
+  {
+    "position": "bottom-center",
+    "class": "dyvix-bottom-center"
   }
 ]
