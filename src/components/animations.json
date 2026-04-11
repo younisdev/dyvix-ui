@@ -88,5 +88,14 @@
     "components": ["modal"],
     "from": { "rotationX": -10, "opacity": 0, "scale": 0.9, "y": 30 },
     "to": { "rotationX": 0, "opacity": 1, "scale": 1, "y": 0 }
+  },
+  {
+    "animation": "drift",
+    "type": "in",
+    "default-duration": 0.97,
+    "ease": "power3.inOut",
+    "components": ["modal"],
+    "from": { "opacity": 0.1, "scale": 0.77, "y": 60 },
+    "to": { "opacity": 1, "scale": 1, "y": 0 }
   }
 ]

@@ -33,6 +33,7 @@ export function DyvixToastItem({
       tl.fromTo(toastRef.current, currentAnimation.to, {
         ...currentAnimation.from,
         duration: currentAnimation['default-duration'],
+        delay: Math.random() * 0.3,
         ease: currentAnimation.ease,
         onComplete: onClose
       });
