@@ -4,7 +4,12 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'Dyvix UI',
   description: 'Beautiful by default, customizable by design.',
-  head: [['link', { rel: 'icon', href: '/logo.png' }]],
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }],
+    ['meta', { property: 'og:image', content: 'https://dyvix-ui.vercel.app/logo.png' }],
+    ['meta', { property: 'og:title', content: 'Dyvix UI' }],
+    ['meta', { property: 'og:description', content: 'Beautiful by default, customizable by design.' }],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
 
