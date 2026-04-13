@@ -14,7 +14,7 @@ export const validAnimations = animationsData.map((e) => e.animation);
 
 function DyvixToastContainer({
   position = 'top-right',
-  segments,
+  segments = 10,
   duration = 5000,
   animation = 'zoom'
 }) {
@@ -41,7 +41,7 @@ function DyvixToastContainer({
 
   return (
     <div className={`dyvix-toast-container ${currentPosition.class}`}>
-      {toasts.map((toast, i) => {
+      {toasts.slice(0, segments).map((toast, i) => {
         const currentType = TypesData.find(
           (e) => e.type.trim().toLowerCase() === toast.type.trim().toLowerCase()
         );
