@@ -15,11 +15,11 @@ The container holds & manages toast settings for all outgoing toasts
 - `position`
   - : `string`. The position where the container docks. Supported type are : `top-right`, `top-left`, `bottom-right`, `bottom-left`.
 - `duration`
-  - : `number`. The default duration is `5000` ms. Controls how the duration that indivisual toast is showed.
+  - : `number`. Determine how long an indivisual toast remains visible on the screen. Defaults to `5000` ms.
 - `animation`
   - : `string`. Controls the entrance animation of the indivisual toast. Defaults to `zoom`. See the [Animation Presets](/guide/animations) for a full list.
 - `segments`
-  - : `number`. The default segment is 10. Controls how many toast is shown per container.
+  - : `number`. Controls how many toast are shown per container. Defaults to `10`.
 
 ### Toast
 
