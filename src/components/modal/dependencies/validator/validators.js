@@ -1,4 +1,4 @@
-export default function ExecuteValidator(value, validators) {
+export function ExecuteValidator(value, validators) {
   for (const validator of validators) {
     const [funcName, optionParam] = validator.split('(');
     const param = optionParam ? JSON.parse(optionParam.replace(')', '')) : null;
@@ -13,6 +13,11 @@ export default function ExecuteValidator(value, validators) {
     }
   }
   return { status: true, error: null };
+}
+
+export function ExecuteRegex(value, Rgx, errorMsg = 'Invalid format') {
+  const Regex = new RegExp(Rgx);
+  return { status: Regex.test(value), error: errorMsg };
 }
 
 const VALIDATORS_REGISTERY = {

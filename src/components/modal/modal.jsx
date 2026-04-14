@@ -8,7 +8,10 @@ import presetData from './dependencies/presets.json';
 import './dependencies/style/elements.css';
 import './dependencies/style/themes.css';
 import * as validatorsFunctions from './dependencies/validator/validators';
-import ExecuteValidator from './dependencies/validator/validators';
+import {
+  ExecuteValidator,
+  ExecuteRegex
+} from './dependencies/validator/validators';
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -83,24 +86,25 @@ function Modal({
     const newErrors = {};
     for (const field of fields) {
       if (!field.validation) continue;
-
       for (const [index, currentName] of field.name.entries()) {
-        const currentValidation = field.validation[index];
-
+        let currentValidation = field.validation[index];
+        let result = null;
         if (!currentValidation) continue;
 
-        const validators = validationData.find(
-          (e) =>
-            e.preset.trim().toLowerCase() ===
-            currentValidation.trim().toLowerCase()
-        );
+        if (currentValidation.startsWith('$R')) {
+          const [pattern, customError] = currentValidation.slice(2).split('|');
+          result = ExecuteRegex(data[currentName], pattern, customError);
+        } else {
+          const validators = validationData.find(
+            (e) =>
+              e.preset.trim().toLowerCase() ===
+              currentValidation.trim().toLowerCase()
+          );
 
-        if (!validators) continue;
+          if (!validators) continue;
 
-        const result = ExecuteValidator(
-          data[currentName],
-          validators.validators
-        );
+          result = ExecuteValidator(data[currentName], validators.validators);
+        }
         if (result) {
           newErrors[currentName] = result.status ? null : result.error;
         }
@@ -252,7 +256,7 @@ function Modal({
                   {Array.from({ length: field.amount }, (_, j) => {
                     const name = field.name[j];
                     const id = field.id[j];
-                    const fontSize = field.amount === 3 ? '0.5rem' : 'normal';
+                    const fontSize = field.amount === 3 ? '0.6rem' : 'normal';
                     const fontWeight = field.amount === 3 ? '520' : '200';
                     // Spread aria props safely to avoid runtime errors if elementDef.aria is missing or null
                     let ariaProps = elementDef.aria
