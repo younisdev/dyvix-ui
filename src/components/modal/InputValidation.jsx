@@ -225,46 +225,39 @@ function validateElements(elements) {
         };
       }
     }
-    
+
     // Handels Validator engine validator
     // Supports regex
-    const rules = Array.isArray(element.validation) 
-              ? element.validation 
-              : [element.validation];
+    const rules = Array.isArray(element.validation)
+      ? element.validation
+      : [element.validation];
 
-    if(rules.length > element.amount) {
+    if (rules.length > element.amount) {
       return {
         status: GaurdStatus.Error,
         error: `Validation overflow: maximum of amount of ${element.amount} reached.`
       };
     }
 
-    for(const rule of rules)
-    {
-      if (rule === "!/") break;
+    for (const rule of rules) {
+      if (rule === '!/') break;
       if (!rule || typeof rule !== 'string') continue;
 
-      if (rule.startsWith('$R'))
-      {
+      if (rule.startsWith('$R')) {
         const [pattern, customError] = rule.slice(2).split('|');
 
-        if(!isValidRegex(pattern))
-        {
+        if (!isValidRegex(pattern)) {
           return {
             status: GaurdStatus.Error,
             error: `Invalid Regular Expression was provided.`
           };
         }
-        
-      }
-      else if (!validRules.includes(rule))
-      {
+      } else if (!validRules.includes(rule)) {
         return {
           status: GaurdStatus.Error,
           error: `'${rule}' is not a recognized validator.`
         };
       }
-
     }
   }
 

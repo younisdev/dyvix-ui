@@ -16,7 +16,7 @@ export function ExecuteValidator(value, validators) {
 }
 
 export function ExecuteRegex(value, Rgx, errorMsg = 'Invalid format') {
-  console.log(Rgx)
+  console.log(Rgx);
   const Regex = new RegExp(Rgx);
   return { status: Regex.test(value), error: errorMsg };
 }
@@ -25,8 +25,7 @@ export function isValidRegex(pattern) {
   try {
     new RegExp(pattern);
     return true;
-  }
-  catch(e) {
+  } catch (e) {
     return false;
   }
 }

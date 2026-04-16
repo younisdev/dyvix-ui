@@ -1,3 +1,70 @@
 body {
-  background-color: rgb(121, 116, 116);
+  background: radial-gradient(circle, #1f2937 0%, #202429 100%);
+}
+#dyvix-test-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 99vw;
+  padding-top: 2rem;
+  gap: 4rem;
+}
+#dyvix-test-logo {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 3rem;
+  -webkit-box-shadow: 0px 0px 80px 1px rgba(126, 29, 237, 0.9);
+  -moz-box-shadow: 0px 0px 80px 1px rgba(126, 29, 237, 0.9);
+  box-shadow: 0px 0px 80px 1px rgba(126, 29, 237, 0.9);
+  transition: all 0.7s cubic-bezier(0.17, 0.88, 0.3, 1.67);
+  backdrop-filter: blur(10px);
+}
+#dyvix-test-logo:hover {
+  border-radius: 2rem;
+  -webkit-box-shadow: 0px 0px 159px 17px rgba(126, 29, 237, 0.9);
+  -moz-box-shadow: 0px 0px 159px 17px rgba(126, 29, 237, 0.9);
+  box-shadow: 0px 0px 159px 17px rgba(126, 29, 237, 0.9);
+  transform: scale(1.01);
+}
+#dyvix-test-header {
+  font-size: larger;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(44, 5, 44);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+#dyvix-test-header:hover {
+  transform: scale(1.001);
+  color: rgb(220, 16, 220);
+}
+#dyvix-test-btnhldr {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: auto;
+  gap: 1.5rem;
+}
+.dyvix-test-btn {
+  background: #fb3f3f;
+  background: radial-gradient(
+    circle,
+    rgba(251, 63, 63, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+  color: aliceblue;
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  border: 1px transparent solid;
+  -webkit-box-shadow: 0px 0px 104px 0px rgba(186, 48, 78, 0.9);
+  -moz-box-shadow: 0px 0px 104px 0px rgba(186, 48, 78, 0.9);
+  box-shadow: 0px 0px 104px 0px rgba(186, 48, 78, 0.9);
+  transition: all 0.7s cubic-bezier(0.12, 0.58, 0.2, 1.57);
+}
+.dyvix-test-btn:hover {
+  transform: scale(1.09);
+  -webkit-box-shadow: 0px 0px 131px 37px rgba(186, 48, 78, 0.9);
+  -moz-box-shadow: 0px 0px 131px 37px rgba(186, 48, 78, 0.9);
+  box-shadow: 0px 0px 131px 37px rgba(186, 48, 78, 0.9);
+  cursor: pointer;
 }

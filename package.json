@@ -10,14 +10,14 @@
     "devbench"
   ],
   "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "globals": "^17.4.0",
     "prettier": "^3.8.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "vite": "8.0.8",
     "vitepress": "^1.6.4"
   },
@@ -44,7 +44,7 @@
     "docs:preview": "vitepress preview docs",
     "dyvix:build": "node dev-engine/scripts/generate-constants.js"
   },
-"overrides": {
-  "esbuild": "^0.25.0"
-}
+  "overrides": {
+    "esbuild": "^0.25.0"
+  }
 }
