@@ -1,19 +1,21 @@
 import { EvaluateFailure, GaurdStatus} from "../DyvixGuard";
+import Version from "../../../package.json"
 
 export const CACHETYPE = { CSS: 'css', ANIMATION: 'animation' };
+const VERSION = Version['version'];
 
-export function cachelayerThree(jsonpath, csspath) {
-  let rawJSON;
-  let rawCSS;
+export function cachelayerThree(jsonpath, csspath, type) {
+  let rawJSON = await extractFile(jsonpath);;
+  let rawCSS = null;
 
-  rawJSON = extractFile(jsonpath);
   if (type === CACHETYPE.CSS) {
-    rawCSS = extractFile(csspath);
+    rawCSS = await extractFile(csspath);
   }
+  const key = generateCacheKey(3, "Modal", "theme");
 }
 
 
-function extractFile(path)
+async function extractFile(path)
 {
   try {
     const module = await import(/* @vite-ignore */ `${path}?raw`);
@@ -22,6 +24,12 @@ function extractFile(path)
     console.log('DyvixUI Sys error');
     return null;
   }
+}
+
+function generateCacheKey(layer, component, utility) {
+  const key = `DYVIX_${VERSION}_${layer}_${component}_${utility}`;
+
+  return key;
 }
 
 export function cachelayerOne(type, classname = 'None', jsonpath) {
