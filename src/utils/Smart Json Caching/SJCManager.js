@@ -4,14 +4,26 @@ import Version from "../../../package.json"
 export const CACHETYPE = { CSS: 'css', ANIMATION: 'animation' };
 const VERSION = Version['version'];
 
-export function cachelayerThree(jsonpath, csspath, type) {
+export async function cachelayerThree(jsonpath, csspath, type) {
+  const key = generateCacheKey(3, "Modal", "theme");
+
+  if(!localStorage.getItem(key)) return true;
+
   let rawJSON = await extractFile(jsonpath);;
   let rawCSS = null;
 
   if (type === CACHETYPE.CSS) {
     rawCSS = await extractFile(csspath);
   }
-  const key = generateCacheKey(3, "Modal", "theme");
+
+  let value = {
+    ...(rawCSS !== null && {"CSS": rawCSS}),
+    ...(rawJSON !== null && {"JSON": JSON.stringify(rawJSON)}),
+  };
+
+  localStorage.setItem(key, JSON.stringify(value));
+
+  return true;
 }
 
 
