@@ -5,7 +5,6 @@ import validationData from './dependencies/validator/validators.json';
 import typesData from './dependencies/types.json';
 import presetData from './dependencies/presets.json';
 import './dependencies/style/elements.css';
-import './dependencies/style/themes.css';
 import * as validatorsFunctions from './dependencies/validator/validators';
 import {
   ExecuteValidator,

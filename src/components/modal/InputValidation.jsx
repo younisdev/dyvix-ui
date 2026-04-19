@@ -14,6 +14,24 @@ import {
 import { isValidRegex } from './dependencies/validator/validators';
 import { SJCManager, CACHETYPE } from '../../utils/Smart Json Caching/SJCManager';
 
+const CacheMapping = {
+  "theme": {
+    "jsonpath": "../../components/modal/dependencies/themes.json",
+    "csspath": "../../components/modal/dependencies/style/themes.css",
+  },
+  "animation": {
+    "jsonpath": "../../components/modal/dependencies/animations.json",
+    "csspath": null,
+  },
+  "presets": {
+    "jsonpath": "../../components/modal/dependencies/presets.json",
+    "csspath": null,
+  },
+  "types": {
+    "jsonpath": "../../components/modal/dependencies/types.json",
+    "csspath": null,
+  },
+}
 const defaultElement = {
   type: '!/',
   placeholder: ['!/'],
@@ -35,6 +53,8 @@ const supportedTypes = [
   'tel',
   'checkbox'
 ];
+
+
 
 export async function SerializeData(
   title,
@@ -310,20 +330,39 @@ function checkDuplicates(elements, field) {
   return { status: GaurdStatus.Success };
 }
 
-async function ValidatAndLoadTheme(theme, callback) {
+async function ValidatAndLoadTheme(jsonpath, csspath, theme, callback, component, utility) {
+
   const res = await SJCManager(
-    '../../components/modal/dependencies/themes.json',
-    '../../components/modal/dependencies/style/themes.css',
+    jsonpath,
+    csspath,
     CACHETYPE.CSS,
-    'Modal',
-    'theme',
+    component,
+    utility,
     theme,
     'class'
   );
 
   callback((prev) => {
-    if (prev.theme === theme) return prev;
+    if (prev.theme === res) return prev;
     return { ...prev, theme: res };
+  });
+  return res !== null;
+}
+
+async function ValidatAndLoadJSONDEP(jsonpath, callback, component, utility, jsonKey) {
+  const res = await SJCManager(
+    jsonpath,
+    null,
+    CACHETYPE.ANIMATION,
+    component,
+    utility,
+    jsonKey,
+    ''
+  );
+
+  callback((prev) => {
+    if (prev[utility] === res) return prev;
+    return { ...prev, [utility]: res };
   });
   return res !== null;
 }
