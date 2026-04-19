@@ -12,7 +12,7 @@ import {
   allowsNull
 } from '../../utils/DyvixGuard';
 import { isValidRegex } from './dependencies/validator/validators';
-import { SJCManager, CACHETYPE } from '../../utils/Smart Json Caching/SJCManager';
+import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
 
 const CacheMapping = {
   "theme": {
@@ -20,11 +20,11 @@ const CacheMapping = {
     "csspath": "../../components/modal/dependencies/style/themes.css",
   },
   "animation": {
-    "jsonpath": "../../components/modal/dependencies/animations.json",
+    "jsonpath": "../../../animations.json",
     "csspath": null,
   },
   "presets": {
-    "jsonpath": "../../components/modal/dependencies/presets.json",
+    "jsonpath": "../../.components/modal/dependencies/presets.json",
     "csspath": null,
   },
   "types": {
@@ -32,6 +32,7 @@ const CacheMapping = {
     "csspath": null,
   },
 }
+const component = "Modal"
 const defaultElement = {
   type: '!/',
   placeholder: ['!/'],
@@ -121,10 +122,11 @@ export async function ValidateInput(
       };
     }
   }
+  const isAnimation = await ValidatAndLoadJSON(CacheMapping, animation, callback, "animation", component);
 
   if (
     animation !== '!/' &&
-    !validAnimations.includes(animation) &&
+    !isAnimation &&
     allowsNull(animation)
   ) {
     return {
@@ -132,7 +134,7 @@ export async function ValidateInput(
       error: 'Please provide a vaild animation.'
     };
   }
-  const isTheme = await ValidatAndLoadTheme(theme, callback);
+  const isTheme = await ValidatAndLoadJSON(CacheMapping, theme, callback, "theme", component);
   if (!isTheme) {
     return {
       status: GaurdStatus.Error,
@@ -328,41 +330,4 @@ function checkDuplicates(elements, field) {
   }
 
   return { status: GaurdStatus.Success };
-}
-
-async function ValidatAndLoadTheme(jsonpath, csspath, theme, callback, component, utility) {
-
-  const res = await SJCManager(
-    jsonpath,
-    csspath,
-    CACHETYPE.CSS,
-    component,
-    utility,
-    theme,
-    'class'
-  );
-
-  callback((prev) => {
-    if (prev.theme === res) return prev;
-    return { ...prev, theme: res };
-  });
-  return res !== null;
-}
-
-async function ValidatAndLoadJSONDEP(jsonpath, callback, component, utility, jsonKey) {
-  const res = await SJCManager(
-    jsonpath,
-    null,
-    CACHETYPE.ANIMATION,
-    component,
-    utility,
-    jsonKey,
-    ''
-  );
-
-  callback((prev) => {
-    if (prev[utility] === res) return prev;
-    return { ...prev, [utility]: res };
-  });
-  return res !== null;
 }

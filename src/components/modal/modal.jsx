@@ -158,7 +158,7 @@ function Modal({
   if (currentPreset) {
     title = title !== '!/' ? title : currentPreset['default-title'];
   }
-  //console.log(configs)
+  console.log(configs)
   React.useEffect(()=> {    
     async function GetFields() {
       const data = await SerializeData(

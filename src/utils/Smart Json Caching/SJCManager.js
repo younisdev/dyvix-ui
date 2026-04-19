@@ -1,7 +1,7 @@
 import { EvaluateFailure, GaurdStatus } from '../DyvixGuard';
 import Version from '../../../package.json';
 
-export const CACHETYPE = { CSS: 'css', ANIMATION: 'animation' };
+export const CACHETYPE = { CSS: 'css', Default: 'default' };
 const VERSION = Version['version'];
 
 export async function SJCManager(
@@ -179,4 +179,27 @@ function InjectCSS(csstext, Key) {
   style.type = 'text/css';
   style.textContent = csstext;
   document.head.appendChild(style);
+}
+
+export async function ValidatAndLoadJSON(mapper, key, callback, utilityKey, component) {
+  if (!mapper) return false;
+  
+  mapper = mapper[utilityKey];
+  let type = mapper["csspath"] !== null ? CACHETYPE.CSS : CACHETYPE.Default;
+
+  const res = await SJCManager(
+    mapper["jsonpath"],
+    mapper["csspath"],
+    type,
+    component,
+    utilityKey,
+    key,
+    'class'
+  );
+
+  callback((prev) => {
+    if (prev[utilityKey] === res) return prev;
+    return { ...prev, [utilityKey]: res };
+  });
+  return res !== null;
 }
