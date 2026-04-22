@@ -92,6 +92,35 @@
     0px 17px 20px -12px rgba(255, 69, 0, 0.9),
     0px 0px 40px -5px rgba(255, 69, 0, 0.5);
 }
+.dyvix-button-frost {
+  background-color: #ffffff1a;
+  border: 5px groove #ffffff40;
+  border-radius: 20px;
+  backdrop-filter: blur(50px);
+  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.2s ease-in-out;
+}
+.dyvix-button-frost:hover {
+  border: 6px groove #f8f8f840;
+  transform: scale(1.07);
+  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+}
+.dyvix-button-frost:active {
+  border: 2px groove #f8f8f840;
+  transform: scale(0.95);
+  box-shadow: -6px 2px 51px -13px rgb(172, 242, 230) inset;
+  -webkit-box-shadow: -6px 2px 51px -13px rgb(172, 242, 230) inset;
+  -moz-box-shadow: -6px 2px 51px -13px rgb(172, 242, 230) inset;
+}
 .dyvix-button-neon {
   background: #4deeea;
   background: radial-gradient(

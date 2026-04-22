@@ -12,8 +12,12 @@
   {
     "theme": "Ember",
     "class": "dyvix-button-ember",
-    "default-animation": "glitch",
-    "radiused": false
+    "default-animation": "glitch"
+  },
+  {
+    "theme": "Frost",
+    "class": "dyvix-button-frost",
+    "default-animation": "unfold"
   },
   {
     "theme": "Neon",
