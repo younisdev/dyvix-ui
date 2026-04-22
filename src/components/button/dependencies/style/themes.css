@@ -241,3 +241,45 @@
   filter: brightness(1.2);
   box-shadow: 0px 0px 5px 8px rgba(1, 176, 179, 1);
 }
+.dyvix-button-sunset {
+  background: #1a0a00;
+  background: linear-gradient(
+    140deg,
+    #1a0a00 0%,
+    #3d1a00 40%,
+    #6b2d00 70%,
+    #8b3a00 100%
+  );
+  border-bottom: 5px solid #a84600;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 198, 15, 0.1);
+  box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
+  -webkit-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
+  -moz-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border-radius 0.2s ease-in-out;
+}
+.dyvix-button-sunset:hover {
+  background: #1a0a00;
+  background: linear-gradient(
+    140deg,
+    #1a0a00 0%,
+    #3d1a00 40%,
+    #6b2d00 70%,
+    #af4901 100%
+  );
+  transform: translateY(5px);
+  box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
+  -webkit-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
+  -moz-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
+  border-radius: 20px;
+}
+.dyvix-button-sunset:active {
+  background: #1a0a00;
+  transform: translateY(1px);
+  scale: 0.9;
+}
