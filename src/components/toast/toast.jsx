@@ -3,7 +3,7 @@ import animationsData from '../animations.json';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 export function DyvixToastItem({
-  Class,
+  className,
   message,
   animation,
   type,
@@ -55,7 +55,7 @@ export function DyvixToastItem({
   }, [status]);
 
   return (
-    <div className={Class} ref={toastRef}>
+    <div className={className} ref={toastRef}>
       <span className={`dyvix-toast-title toast-${type.toLowerCase()}`}>
         <span className="dyvix-toast-icon">{icons[type.toLowerCase()]}</span>{' '}
         {type}

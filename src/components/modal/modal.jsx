@@ -37,7 +37,7 @@ const componentsMap = { DynamicSelect: DynamicSelect };
  * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora')} props.theme - Modal theme
  * @param {string} [props.animation] - Animation name, defaults to theme default
  * @param {string} [props.Id] - modal id
- * @param {string} [props.class] - modal class
+ * @param {string} [props.className] - modal className
  * @param {Function} [props.onClose] - Close callback
  * @param {Function} [props.onChange] - Change callback
  * @param {Function} [props.onSubmit] - Submit callback
@@ -51,7 +51,7 @@ function Modal({
   theme = 'Singularity',
   animation = '!/',
   Id,
-  Class,
+  className,
   onSubmit,
   onChange,
   onClose
@@ -124,8 +124,8 @@ function Modal({
     animation === '!/' ? currentTheme?.['default-animation'] : animation;
   const currentAnimation = configs['animation']; // add default animation for this new update
   const currentPreset = configs['preset'];
-  const serilaizedClass =
-    Class + ` ${currentTheme?.class}` + ` ${currentType.class}`;
+  const serilaizedclassName =
+    className + ` ${currentTheme?.class}` + ` ${currentType.class}`;
   // Dynamicily calculate modal sizing and position
   const heightMap = {
     1: '23rem',
@@ -167,7 +167,7 @@ function Modal({
         theme,
         animation,
         Id,
-        Class,
+        className,
         onSubmit,
         SetConfig,
         instanceId
@@ -232,7 +232,7 @@ function Modal({
       {visibility && (
         <div ref={modalRef} className="dyvix-modal-wrapper">
           <div
-            className={`modal ${serilaizedClass}`}
+            className={`modal ${serilaizedclassName}`}
             id={Id}
             ref={modalRef}
             style={modalStyles}
@@ -329,7 +329,7 @@ function Modal({
                       ...(elementDef.tag === 'DynamicSelect' && {
                         elements: options,
                         animation: '!/',
-                        Class: 'modal-element'
+                        className: 'modal-element'
                       })
                     };
                     const fieldError = errors[name];

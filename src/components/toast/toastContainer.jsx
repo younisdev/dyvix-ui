@@ -61,7 +61,7 @@ function DyvixToastContainer({
             onClose={() =>
               setToasts((prev) => prev.filter((t) => t.id !== toast.id))
             }
-            Class={currentclass}
+            className={currentclass}
             duration={duration}
             animation={animation}
             type={currentType.type}

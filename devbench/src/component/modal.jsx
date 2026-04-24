@@ -11,12 +11,46 @@ export function ModalTest() {
   return (
       <ReleaseBenchmark theme="AURORA">
 
-        <Modal
-      preset={"Login"}
-      theme={DYVIX_MODAL_THEME.NEON}
-      animation={DYVIX_GLOBAL_ANIMATION.AURORA}
-      //onSubmit={(data) => console.log(data)}
+    <Modal
+      title="Register"
+      Id="register-modal"
+      className="modalsss"
+      theme="Aurora"
+      animation="glitch"
+      type="form"
+      elements={[
+        {
+          type: 'text',
+          placeholder: ['First Name', 'Last Name'],
+          id: 'name',
+          name: ['firstName', 'lastName'],
+          className: 'ex-text',
+          amount: 2
+        },    {
+      type: "d-select",
+      amount: 3,
+      placeholder: ["Select Size", "Choose Color", "Shipping Method"],
+      name: ["Size", "Color", "Method"],
+      options: [
+        ["Small", "Medium", "Large"],
+        ["Red", "Blue", "Green"],
+        ["Standard", "Express", "Prime"]
+      ]
+    },
+        {
+          type: 'password',
+          placeholder: 'Password',
+          validation: 'password',
+          id: 'password',
+          name: 'password',
+          className: 'ex-text',
+          amount: 1
+        }
+      ]}
+      onSubmit={(data) => console.log(data)}
+      onChange={(data) => console.log(data)}
     />
+
     </ReleaseBenchmark>
 
   );
