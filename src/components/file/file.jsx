@@ -13,7 +13,7 @@ function DyvixFile({ label = 'Upload File', onUpload }) {
       Setfile(e.target.files[0].name);
       if(typeof onUpload === 'function')
       {
-        onUpload(e.target.files[0])
+        onUpload(e.target.files[0]);
       }
     }
   }
