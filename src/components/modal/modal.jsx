@@ -392,7 +392,11 @@ function Modal({
               );
             })}
             {currentType.submit && (
-              <DyvixButton className="modal-btn" onClick={() => handleSubmit()} theme={theme.toLowerCase()}>
+              <DyvixButton
+                className="modal-btn"
+                onClick={() => handleSubmit()}
+                theme={theme.toLowerCase()}
+              >
                 {currentType.submitLabel}
               </DyvixButton>
             )}

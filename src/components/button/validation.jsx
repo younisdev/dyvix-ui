@@ -5,7 +5,7 @@ import {
 } from '../../utils/DyvixGuard';
 import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
 
-const component = "Button"
+const component = 'Button';
 const CacheMapping = {
   theme: {
     jsonpath: '../../components/button/dependencies/themes.json',
@@ -22,7 +22,7 @@ export async function Validatebtn(animation, theme, callback, instance) {
   const normalizedTheme =
     theme?.trim().charAt(0).toUpperCase() + theme.trim().slice(1);
 
-    const [isAnimation, isTheme] = await Promise.all([
+  const [isAnimation, isTheme] = await Promise.all([
     ValidatAndLoadJSON(
       CacheMapping,
       normalizedAnimation,
@@ -38,11 +38,8 @@ export async function Validatebtn(animation, theme, callback, instance) {
       component,
       instance
     )
-    ]);
-  if (
-    normalizedAnimation !== null &&
-    !isAnimation.status
-  ) {
+  ]);
+  if (normalizedAnimation !== null && !isAnimation.status) {
     return {
       status: GaurdStatus.Error,
       error: 'Please provide a valid animation.'

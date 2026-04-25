@@ -1,15 +1,15 @@
-import { DyvixButton } from 'dyvix-ui';
+import { DyvixFile } from 'dyvix-ui';
 import { DYVIX_MODAL_THEME } from 'dyvix-ui';
-export function ButtonTest() {
+export function FileTest() {
   return (
     <>
-      <DyvixButton
+      <DyvixFile
         onClick={() => console.log('clicked')}
         animation={'bubble'}
         theme={DYVIX_MODAL_THEME.MIDNIGHT}
       >
         Submit
-      </DyvixButton>
+      </DyvixFile>
     </>
   );
 }

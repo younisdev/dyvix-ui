@@ -22,9 +22,7 @@ function DyvixButton({
   const instanceId = React.useId();
 
   const currentTheme = configs['theme'];
-  const currentAnimation = animation
-    ? configs['animation']
-    : null;
+  const currentAnimation = animation ? configs['animation'] : null;
 
   function handleClick() {
     if (typeof onClick === 'function') {
@@ -34,12 +32,17 @@ function DyvixButton({
 
   className = `dyvix-button${currentTheme ? ` ${currentTheme.class}` : ''}${className !== '' ? ` ${className}` : ''}`;
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     async function validate() {
-      const validator = await Validatebtn(animation, theme, SetConfig, instanceId);
+      const validator = await Validatebtn(
+        animation,
+        theme,
+        SetConfig,
+        instanceId
+      );
 
       if (validator.status === GaurdStatus.Error) {
-       return EvaluateFailure(validator.error, validator.status);
+        return EvaluateFailure(validator.error, validator.status);
       }
     }
 
@@ -49,8 +52,7 @@ function DyvixButton({
       const ele = document.getElementById(key);
       if (ele) ele.remove();
     };
- 
-  },[theme, animation]);
+  }, [theme, animation]);
   useGSAP(() => {
     if (!btnRef.current || !currentAnimation) return;
 

@@ -1,0 +1,48 @@
+.dyvix-file-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dyvix-file {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border: 3px dashed black;
+  border-radius: 2rem;
+  background-color: rgb(73, 220, 237);
+}
+.dyvix-file-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  opacity: 0;
+}
+.dyvix-file-ui {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+.dyvix-file-ui p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.8);
+}
+.dyvix-file-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
