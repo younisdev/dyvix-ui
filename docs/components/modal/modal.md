@@ -15,7 +15,7 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
   - : `string`. Represents the header of the modal.
 - `Id`
   - : `string`. A Unique ID for your modal, allowing more control for the developer.
-- `Class`
+- `className`
   - : `string`. Contains a custom class for your modal, allowing more control for the developer.
 - `type`
   - : `string`. Represents the type of the modal. Defaults to `form`. Supported types are `form` and `auth`.
@@ -96,7 +96,7 @@ function ModalExample() {
     <Modal
       title="Register"
       Id="register-modal"
-      Class="modal"
+      className="modal"
       theme="Aurora"
       animation="glitch"
       type="form"
@@ -152,7 +152,7 @@ function ModalExample() {
     <Modal
       title="Register"
       Id="register-modal"
-      Class="modal"
+      className="modal"
       theme={DYVIX_MODAL_THEME.AURORA}
       animation={DYVIX_GLOBAL_ANIMATION.GLITCH}
       type={DYVIX_MODAL_TYPE.AUTH}

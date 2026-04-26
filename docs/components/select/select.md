@@ -19,7 +19,7 @@ A config-driven animated select component with support for normal and autocomple
   - : `string`. The type of the select component. Defaults to `select`.
 - `animation`
   - : `string`. Controls the entrance animation of the select. See the [Animation Presets](/guide/animations) for a full list.
-- `Class`
+- `className`
   - : `string`. Contains a custom class for your select, allowing more control for the developer.
 - `placeholder`
   - : `string`. The text displayed when no option is selected.
@@ -41,7 +41,7 @@ import { DynamicSelect } from 'dyvix-ui';
 function SelectExample() {
   return (
     <DynamicSelect
-      Class="ex-select"
+      className="ex-select"
       type="select"
       elements={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
       onChange={(data) => console.log(data)}
