@@ -5,16 +5,17 @@
   box-shadow: 0 0 30px #b903e2;
   -webkit-box-shadow: 0 0 30px #b903e2;
   -moz-box-shadow: 0 0 30px #b903e2;
-  transition: border-color 0.2s ease-in-out,
-              background 0.3s ease-in-out,
-              transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition:
+    border-color 0.2s ease-in-out,
+    background 0.3s ease-in-out,
+    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .dyvix-file-lens p {
   color: whitesmoke;
   transition: color 0.2s ease;
 }
 .dyvix-file-lens:hover {
-  border-color: #6a2a7a; 
+  border-color: #6a2a7a;
   background: rgb(47, 4, 47);
   transform: scale(1.02);
 }
@@ -25,9 +26,10 @@
   border: 2px dashed #374151;
   border-radius: 5px;
   background-color: #0a1429;
-  transition: border-radius 0.2s ease,
-              background-color 0.3s ease,
-              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    border-radius 0.2s ease,
+    background-color 0.3s ease,
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .dyvix-file-industrial p {
   font-family: 'Geist';
@@ -36,7 +38,7 @@
 }
 .dyvix-file-industrial:hover {
   border-radius: 10px;
-  background-color: #6b7280;  
+  background-color: #6b7280;
   transform: scale(1.03);
 }
 .dyvix-file-industrial:hover p {
@@ -64,7 +66,9 @@
 }
 .dyvix-file-ember p {
   color: rgba(255, 69, 0, 0.9);
-  transition: color 0.2s ease-in-out, transform 0.22s ease-in-out;
+  transition:
+    color 0.2s ease-in-out,
+    transform 0.22s ease-in-out;
 }
 .dyvix-file-ember:hover {
   background-color: #0f0a08;
@@ -92,16 +96,17 @@
   box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
   -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
   -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.3s ease,
-              border-width 0.2s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease,
+    border-width 0.2s ease;
 }
 .dyvix-file-frost p {
   color: rgba(213, 255, 248, 1);
   transform: scale(1.01);
   transition:
-  text-shadow 0.3s ease-in-out,
-  color 0.2s ease-in-out;
+    text-shadow 0.3s ease-in-out,
+    color 0.2s ease-in-out;
 }
 .dyvix-file-frost:hover {
   background-color: #ffffff1a;
@@ -159,9 +164,10 @@
   -moz-box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 0.6);
   box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 0.6);
   border-radius: 4rem;
-  transition: border-radius 0.2s ease-in-out,
-              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              box-shadow 0.3s ease;
+  transition:
+    border-radius 0.2s ease-in-out,
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease;
 }
 .dyvix-file-neon p {
   color: #1b1d1d;

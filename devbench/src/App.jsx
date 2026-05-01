@@ -118,10 +118,47 @@ function App() {
       {mode === 'Selected' &&
         (() => {
           const Component = Links[current];
-          return <Component />;
+          return (
+            <ReleaseBenchmark>
+              <Component />
+            </ReleaseBenchmark>
+          );
         })()}
     </>
   );
 }
 
+const ReleaseBenchmark = ({ children }) => {
+  const [report, setReport] = React.useState(null);
+  const startTime = React.useRef(performance.now());
+
+  React.useLayoutEffect(() => {
+    const endTime = performance.now();
+    const total = (endTime - startTime.current).toFixed(3);
+    setReport(total);
+    startTime.current = performance.now();
+    console.log(
+      `%c [DYVIX TEST] ${total}ms`,
+      'color: #00ffcc; font-weight: bold;'
+    );
+  }, [children]);
+
+  return (
+    <div>
+      <div
+        style={{
+          fontSize: '10px',
+          color: '#888',
+          position: 'absolute',
+          right: '2rem',
+          top: '1rem'
+        }}
+      >
+        Estimated Render Time:{' '}
+        <span style={{ color: '#00ffcc' }}>{report}ms</span>
+      </div>
+      {children}
+    </div>
+  );
+};
 export default App;

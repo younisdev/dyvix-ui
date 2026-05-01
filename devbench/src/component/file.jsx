@@ -8,7 +8,7 @@ export function FileTest() {
         multiple={true}
         theme={DYVIX_GLOBAL_THEME.MIDNIGHT}
         animation={DYVIX_GLOBAL_ANIMATION.AURORA}
-        accept={".jpg, .jpeg, .png"}
+        accept={'.jpg, .jpeg, .png'}
       />
     </>
   );

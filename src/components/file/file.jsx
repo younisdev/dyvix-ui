@@ -14,7 +14,7 @@ function DyvixFile({
   background,
   color,
   multiple = false,
-  accept = "*/*",
+  accept = '*/*',
   onUpload,
   style,
   ...rest

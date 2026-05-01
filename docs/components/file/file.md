@@ -30,7 +30,11 @@ A config-driven animated File component with support for themed and default colo
 ## Example
 
 ```jsx
-import { DyvixFile, DYVIX_GLOBAL_ANIMATION, DYVIX_GLOBAL_THEME } from 'dyvix-ui';
+import {
+  DyvixFile,
+  DYVIX_GLOBAL_ANIMATION,
+  DYVIX_GLOBAL_THEME
+} from 'dyvix-ui';
 
 function FileExample() {
   return (
@@ -39,7 +43,7 @@ function FileExample() {
       multiple={true}
       theme={DYVIX_GLOBAL_THEME.MIDNIGHT}
       animation={DYVIX_GLOBAL_ANIMATION.AURORA}
-      accept={".jpg, .jpeg, .png"}
+      accept={'.jpg, .jpeg, .png'}
     />
   );
 }
