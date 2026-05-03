@@ -199,12 +199,22 @@ function ModalExample() {
 
 ## Available Themes 🎨
 
-|                  Singularity                   |               Ember                |               Neon               |
-| :--------------------------------------------: | :--------------------------------: | :------------------------------: |
-| ![Singularity](/sitedemos/singularityanim.gif) | ![Ember](/sitedemos/emberanim.gif) | ![Neon](/sitedemos/neonanim.gif) |
-|        `DYVIX_MODAL_THEME.SINGULARITY`         |     `DYVIX_MODAL_THEME.EMBER`      |     `DYVIX_MODAL_THEME.NEON`     |
+|                   Singularity                    |                Ember                 |                Neon                |
+| :----------------------------------------------: | :----------------------------------: | :--------------------------------: |
+| ![Singularity](/sitedemos/singularity_theme.gif) | ![Ember](/sitedemos/ember_theme.gif) | ![Neon](/sitedemos/neon_theme.gif) |
+|         `DYVIX_GLOBAL_THEME.SINGULARITY`         |      `DYVIX_GLOBAL_THEME.EMBER`      |     `DYVIX_GLOBAL_THEME.NEON`      |
 
-|                Aurora                |               Frost                |               Blade                |
-| :----------------------------------: | :--------------------------------: | :--------------------------------: |
-| ![Aurora](/sitedemos/auroraanim.gif) | ![Frost](/sitedemos/frostanim.gif) | ![Blade](/sitedemos/bladeanim.gif) |
-|      `DYVIX_MODAL_THEME.AURORA`      |     `DYVIX_MODAL_THEME.FROST`      |     `DYVIX_MODAL_THEME.BLADE`      |
+|                 Aurora                 |                Frost                 |                Blade                 |
+| :------------------------------------: | :----------------------------------: | :----------------------------------: |
+| ![Aurora](/sitedemos/aurora_theme.gif) | ![Frost](/sitedemos/frost_theme.gif) | ![Blade](/sitedemos/blade_theme.gif) |
+|      `DYVIX_GLOBAL_THEME.AURORA`       |      `DYVIX_GLOBAL_THEME.FROST`      |      `DYVIX_GLOBAL_THEME.BLADE`      |
+
+|                   Industrial                   |                  Midnight                  |                Ocean                 |
+| :--------------------------------------------: | :----------------------------------------: | :----------------------------------: |
+| ![Industrial](/sitedemos/industrial_theme.gif) | ![Midnight](/sitedemos/midnight_theme.gif) | ![Ocean](/sitedemos/ocean_theme.gif) |
+|        `DYVIX_GLOBAL_THEME.INDUSTRIAL`         |       `DYVIX_GLOBAL_THEME.MIDNIGHT`        |      `DYVIX_GLOBAL_THEME.OCEAN`      |
+
+|                 Forest                 |                 Sunset                 |
+| :------------------------------------: | :------------------------------------: |
+| ![Forest](/sitedemos/forest_theme.gif) | ![Sunset](/sitedemos/sunset_theme.gif) |
+|      `DYVIX_GLOBAL_THEME.FOREST`       |      `DYVIX_GLOBAL_THEME.SUNSET`       |
