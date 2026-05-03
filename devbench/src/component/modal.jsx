@@ -13,8 +13,7 @@ export function ModalTest() {
       title="Register"
       Id="register-modal"
       className="modalsss"
-      theme={DYVIX_MODAL_THEME.MIDNIGHT}
-      animation="bubble"
+      theme={DYVIX_MODAL_THEME.SUNSET}
       preset={'Register'}
       type="auth"
       elements={[
