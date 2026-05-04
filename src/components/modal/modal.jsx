@@ -307,7 +307,7 @@ function Modal({
                           : field.options
                         : [];
                     const fieldError = errors[name];
-                    const ErrorId = `${id ? id: field.placeholder[j]}-error`.toLowerCase().replace(/[^a-z0-9-]/g, '-');;
+                    const ErrorId = `${id && id !== '!/' ? id: field.placeholder[j]}-error`.toLowerCase().replace(/[^a-z0-9-]/g, '-');;
                     const Tagprobs = {
                       className: `modal-element ` + elementDef['default-class'],
                       name: name,
