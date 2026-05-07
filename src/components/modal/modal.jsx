@@ -91,11 +91,12 @@ function Modal({
                 (f) => f === matchTo
               );
               const matchToName = matchToFields.name[matchToIndex];
+              const matchToPlaceholder = matchToFields.placeholder[matchToIndex];
               const sourceValue = data[field.name[i]];
               const targetValue = data[matchToName];
               if (sourceValue && targetValue && sourceValue !== targetValue) {
                 newErrors[field.name[i]] =
-                  `${field.id[i]} must match ${matchTo}`;
+                  `${field.placeholder[i]} must match ${matchToPlaceholder}`;
               }
             }
           }

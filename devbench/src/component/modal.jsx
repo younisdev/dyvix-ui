@@ -10,11 +10,11 @@ export function ModalTest() {
 
   return (
     <Modal
-      title="Register"
+     // title="Register"
       Id="register-modal"
       className="modalsss"
       theme={DYVIX_GLOBAL_THEME.FROST}
-      //preset={'ResetPassword'}
+      preset={'ResetPassword'}
       type="auth"
       elements={[
         {
