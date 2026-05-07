@@ -83,9 +83,9 @@
       {
         "type": "password",
         "placeholder": "Confirm Password",
-        "validation": "password",
         "id": "confirm-password",
         "name": "confirmPassword",
+        "match": "new-password",
         "amount": 1
       }
     ],
@@ -115,9 +115,9 @@
       {
         "type": "password",
         "placeholder": "Confirm New Password",
-        "validation": "password",
         "id": "confirm-new-password",
         "name": "confirmNewPassword",
+        "match": "new-password",
         "amount": 1
       }
     ],
