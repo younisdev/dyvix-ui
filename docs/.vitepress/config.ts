@@ -23,9 +23,9 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Introduction', link: 'guide/introduction' },
-      { text: 'Quickstart', link: 'guide/quickstart' }
+      { text: 'Guide', link: '/guide/introduction' },
+      { text: 'Components', link: '/components/modal/modal' },
+      { text: 'GitHub', link: 'https://github.com/younisdev/dyvix-ui/' }
     ],
     logo: '/logo.png',
     sidebar: [
@@ -33,9 +33,7 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Introduction', link: 'guide/introduction' },
-          { text: 'Quickstart', link: 'guide/quickstart' },
-          { text: 'Animations', link: 'guide/animations' },
-          { text: 'Themes', link: 'guide/themes' }
+          { text: 'Quickstart', link: 'guide/quickstart' }
         ]
       },
       {
@@ -61,6 +59,13 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/younisdev/dyvix-ui/' }
-    ]
+    ],
+    editLink: {
+      pattern: 'https://github.com/younisdev/dyvix-ui/edit/main/docs/:path'
+    },
+    outline: {
+      level: 'deep',
+      label: 'On this page'
+    }
   }
 });
