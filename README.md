@@ -15,6 +15,14 @@
   <img src="https://raw.githubusercontent.com/younisdev/dyvix-ui/main/src/static/demo.gif" alt="Dyvix UI Demo" width="350" height="300" />
 </p>
 
+## Features
+
+- 🎨 **Multiple themes** - Singularity, Industrial, Ember, Frost, Blade
+- ✨ **Rich animations** - bubble, fade, zoom, unfold, glitch
+- 🔧 **Config-driven components** - Flexible props for forms, modals, toasts
+- ♿ **Accessible** - Built with accessibility in mind
+- 📦 **Lightweight** - Minimal dependencies
+
 # React
 
 ```bash
