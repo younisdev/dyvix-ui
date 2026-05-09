@@ -1,8 +1,5 @@
 ---
 title: Quick start
-next:
-  text: 'Animations'
-  link: '/guide/animations'
 ---
 
 # Quick start
