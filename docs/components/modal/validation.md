@@ -17,3 +17,5 @@ Dyvix provides a wide range of validation presets. You can trigger these by pass
 - `DYVIX_MODAL_VALIDATION_PRESET.PASSWORD`: `'password'`
 - `DYVIX_MODAL_VALIDATION_PRESET.NUMBER`: `'number'`
 - `DYVIX_MODAL_VALIDATION_PRESET.URL`: `'url'`
+- `DYVIX_MODAL_VALIDATION_PRESET.MANDATORY`: `mandatory`,
+- `DYVIX_MODAL_VALIDATION_PRESET.DATE`: `date`
