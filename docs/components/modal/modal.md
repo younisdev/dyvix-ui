@@ -58,8 +58,24 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
       - : `string | string[]`. Defines the validation logic of the field. If the amount is greater than 1 this must be provided as an array of strings with length matching that of the amount. Support built-in preset found in [validators list](/components/modal/validation) or custom patterns by using pattern-embeding prefix `$R`. Moreover, you can embed a custom error message using the | separator. For example:
 
         ```jsx
+        {
           amount: 3,
           validation: ["email", "$R^\\d+$|Numbers only", DYVIX_MODAL_VALIDATION_PRESET.PASSWORD],
+        }
+        ```
+
+    - `match`
+      - : `string | string[]`. Links two modal fields where the current field will only pass validation if its value matches the value of the referenced field's `id`. For example:
+
+        ```jsx
+        {
+          "type": "password",
+          "placeholder": "Confirm Password",
+          "id": "confirm-password",
+          "name": "confirmPassword",
+          "match": "new-password", // The id of the target field
+          "amount": 1
+        }
         ```
 
 - `onSubmit`
