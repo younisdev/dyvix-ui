@@ -1,4 +1,9 @@
 import DefaultTheme from 'vitepress/theme';
-import './custom.css';
+import ButtonPlayground from './components/button/ButtonPlayground.vue';
 
-export default DefaultTheme;
+export default {
+  ...DefaultTheme,
+  enhanceApp({ app }) {
+    app.component('ButtonPlayground', ButtonPlayground);
+  }
+}
