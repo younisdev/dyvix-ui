@@ -1,19 +1,9 @@
 import { EvaluateFailure, GaurdStatus } from '../DyvixGuard';
 import Version from '../../../package.json';
 import { set, get } from 'idb-keyval';
-
+import { CSS_LIBRARY, JSON_LIBRARY } from './SJCRegistry';
 export const CACHETYPE = { CSS: 'css', Default: 'default' };
 const VERSION = Version['version'];
-const CSS_LIBRARY = import.meta.glob('/src/components/**/*.css', { 
-  query: '?raw', 
-  import: 'default',
-  eager: true 
-});
-const JSON_LIBRARY = import.meta.glob('/src/components/**/*.json', { 
-  query: '?raw', 
-  import: 'default',
-  eager: true 
-});
 
 export async function SJCManager(
   jsonpath,
@@ -25,6 +15,7 @@ export async function SJCManager(
   jsonclasskey = '',
   instance
 ) {
+
   let result = null;
   const key = generateCacheKey(component, utility);
   result = await cachelayerOne(
@@ -91,7 +82,7 @@ async function cachelayerThree(
     rawCSS = cachedData.CSS;
   } else {
     const rawJSONText = await extractFile(jsonpath);
-    JsonArray = JSON.parse(rawJSONText);
+    JsonArray = typeof rawJSONText === 'string' ? JSON.parse(rawJSONText) : rawJSONText;
     if (type === CACHETYPE.CSS) {
       rawCSS = await extractFile(csspath);
     }
@@ -206,35 +197,39 @@ async function cachelayerOne(
 }
 
 async function extractFile(path) {
-  if(!path) {
-    console.warn("DyvixUI: Invalid path")
+  if (!path) {
+    console.warn("DyvixUI: Invalid path");
     return null;
   }
 
   let content = null;
-  if (typeof CSS_LIBRARY !== 'undefined' && path.endsWith('.css')) {
+
+  if (path.endsWith('.css')) {
     content = CSS_LIBRARY[path];
-  } 
-  
-  if (typeof JSON_LIBRARY !== 'undefined' && path.endsWith('.json')) {
+  } else if (path.endsWith('.json')) {
     content = JSON_LIBRARY[path];
   }
-  if(!content)
-  {
-    console.log("fail")
-    // fallback
-    try {
-      const module = await fetch(`${path}?raw`);
-      content =  module.default || module;
-    } catch (error) {
+
+  if (content) return content;
+
+  // dev fallback only
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
       console.warn(`DyvixUI: Content not found at ${path}`);
       return null;
     }
+    const text = await response.text();
+    if (text.trim().startsWith('<')) {
+      console.warn(`DyvixUI: Got HTML instead of content at ${path}`);
+      return null;
+    }
+    return text;
+  } catch {
+    console.warn(`DyvixUI: Failed to fetch ${path}`);
+    return null;
   }
-
-  return content;
 }
-
 function generateCacheKey(component, utility) {
   const key = `DYVIX_${VERSION}_${component}_${utility}`;
 

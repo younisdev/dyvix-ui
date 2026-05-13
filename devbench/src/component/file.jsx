@@ -7,6 +7,7 @@ export function FileTest() {
         onUpload={(data) => console.log(data)}
         multiple={true}
         accept={'.jpg, .jpeg, .png'}
+        theme={DYVIX_GLOBAL_THEME.FOREST}
       />
     </>
   );

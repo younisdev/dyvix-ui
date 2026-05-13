@@ -12,6 +12,7 @@ import { FileTest } from './component/file';
 import dyvixLogo from './assets/logo.png';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { clear } from 'idb-keyval';
 
 const Links = {
   Modal: ModalTest,
@@ -34,7 +35,7 @@ function App() {
   }
 
   localStorage.clear(); // Never do in production. Only in development env.
-
+  clear()
   useGSAP(() => {
     let tl = gsap.timeline();
 
