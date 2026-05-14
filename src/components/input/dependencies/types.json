@@ -1,0 +1,38 @@
+[
+  {
+    "type": "text",
+    "class": "dyvix-input-text"
+  },
+  {
+    "type": "password",
+    "class": "dyvix-input-password"
+  },
+  {
+    "type": "email",
+    "class": "dyvix-input-email"
+  },
+  {
+    "type": "number",
+    "class": "dyvix-input-number"
+  },
+  {
+    "type": "tel",
+    "class": "dyvix-input-tel"
+  },
+  {
+    "type": "url",
+    "class": "dyvix-input-url"
+  },
+  {
+    "type": "search",
+    "class": "dyvix-input-search"
+  },
+  {
+    "type": "date",
+    "class": "dyvix-input-date"
+  },
+  {
+    "type": "datetime-local",
+    "class": "dyvix-input-datetime"
+  }
+]
