@@ -8,9 +8,13 @@ import { Validateinput } from './validation';
 function DyvixInput({
   type = 'text',
   background,
+  color,
   animation = '!/',
   className = '',
-  color
+  onFocus,
+  onBlur,
+  style,
+  ...rest
 }) {
 
   const inputRef = React.useRef(null);
@@ -39,7 +43,16 @@ function DyvixInput({
   const currentAnimation = animation ? configs['animation'] : null;
   const currentType = type ? configs['type'] : null;
   const currentClass = className ? `${className} ${currentType?.class}` : currentType?.class;
-
+  const props = {
+    className: `dyvix-input ${currentClass}`,
+    type: currentType?.type,
+    style: {
+      ...(background && {background: background}),
+      ...(color && {color: color}),
+      ...style
+    }
+  }
+  
   useGSAP(() => {
     if (!inputRef.current || !currentAnimation) return;
 
@@ -51,8 +64,8 @@ function DyvixInput({
   }, [currentAnimation]);
 
   return (
-    <div className='dyvix-input-wrapper' ref={inputRef}>
-      <input className={`dyvix-input ${currentClass}`} type='search'></input>
+    <div className='dyvix-input-wrapper' ref={inputRef} {...rest}>
+      <input {...props}></input>
     </div>
   )
 }
