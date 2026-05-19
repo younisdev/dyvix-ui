@@ -100,6 +100,7 @@ export default function Wrapper({
           ? JSON.stringify(ele.current, null, 2)
           : ele.current;
       const formattedVal = ele.format === 'string' ? `"${val}"` : `{${val}}`;
+      if(formattedVal.includes("!/")) continue;
       curr += ele.current ? `${ele.utility}=${formattedVal}\n` : '';
     }
     curr += '>';
