@@ -25,6 +25,21 @@
     "r-variant": true
   },
   {
+    "element": "textarea",
+    "tag": "textarea",
+    "default-class": "modal-textarea",
+    "aria": {
+      "role": "textbox",
+      "aria-label": ""
+    },
+    "supports-placeholder": true,
+    "supports_type": false,
+    "supports_autocomplete": true,
+    "is_custom": false,
+    "requires-options": false,
+    "r-variant": true
+  },
+  {
     "element": "select",
     "tag": "select",
     "default-class": "modal-select",

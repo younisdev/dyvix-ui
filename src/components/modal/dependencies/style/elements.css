@@ -181,3 +181,8 @@
   gap: 0.5rem;
   cursor: pointer;
 }
+.modal-textarea {
+  max-height: 70px;
+  min-height: 35px;
+  resize: vertical;
+}

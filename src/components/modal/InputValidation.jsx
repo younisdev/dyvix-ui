@@ -46,7 +46,8 @@ const supportedTypes = [
   'search',
   'url',
   'tel',
-  'checkbox'
+  'checkbox',
+  'textarea'
 ];
 let config = null;
 
