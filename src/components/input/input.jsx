@@ -7,6 +7,7 @@ import { Validateinput } from './validation';
 
 function DyvixInput({
   type = 'text',
+  placeholder,
   background,
   color,
   animation = '!/',
@@ -15,6 +16,7 @@ function DyvixInput({
   onBlur,
   style,
   onChange,
+  
   ...rest
 }) {
   const inputRef = React.useRef(null);
@@ -46,6 +48,7 @@ function DyvixInput({
   const props = {
     className: inputClasses,
     type: currentType?.type,
+    ...(placeholder && {placeholder: placeholder}),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
