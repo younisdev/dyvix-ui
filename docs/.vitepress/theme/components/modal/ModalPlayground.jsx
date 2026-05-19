@@ -128,35 +128,45 @@ export default function ModalPlayground() {
     ...(type && { type: type }),
     ...(elements && { elements: elements }),
     ...(preset && (!elements || elements.length === 0) && { preset: preset })
-};
+  };
 
   React.useEffect(() => {
     if (!probs.elements) return;
 
-    const needsIntialization = probs.elements.some((e) => (e.type === "select" || e.type === "d-select" || e.type === "autocomplete") && (!e.options || e.options.length === 0) );
+    const needsIntialization = probs.elements.some(
+      (e) =>
+        (e.type === 'select' ||
+          e.type === 'd-select' ||
+          e.type === 'autocomplete') &&
+        (!e.options || e.options.length === 0)
+    );
 
-    if(!needsIntialization) return;
+    if (!needsIntialization) return;
 
     setConfig((prev) => {
       return prev.map((item) => {
-        if(item.utility !== 'elements') return item;
+        if (item.utility !== 'elements') return item;
 
         const updatedCurrent = item.current.map((el) => {
-          if (el.type !== "select" && el.type !== "d-select" && el.type !== "autocomplete") return el;
+          if (
+            el.type !== 'select' &&
+            el.type !== 'd-select' &&
+            el.type !== 'autocomplete'
+          )
+            return el;
 
           const options = [];
 
-          for(let i = 0; i < el.amount; i++)
-          {
+          for (let i = 0; i < el.amount; i++) {
             options[i] = [1, 2, 3, 4, 5];
           }
 
-          return {...el, options: options};
+          return { ...el, options: options };
         });
 
-        return {...item, current: updatedCurrent};
-      })
-    })
+        return { ...item, current: updatedCurrent };
+      });
+    });
   }, [probs.elements]);
   return (
     <Wrapper

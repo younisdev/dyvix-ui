@@ -100,7 +100,7 @@ export default function Wrapper({
           ? JSON.stringify(ele.current, null, 2)
           : ele.current;
       const formattedVal = ele.format === 'string' ? `"${val}"` : `{${val}}`;
-      if(formattedVal.includes("!/")) continue;
+      if (formattedVal.includes('!/')) continue;
       curr += ele.current ? `${ele.utility}=${formattedVal}\n` : '';
     }
     curr += '>';
@@ -130,7 +130,7 @@ export default function Wrapper({
                     )
                   }
                 >
-                  {ele.allowNull && <option value={"!/"}>None</option>}
+                  {ele.allowNull && <option value={'!/'}>None</option>}
                   {Object.entries(ele.options).map(([key, value]) => (
                     <option key={key} value={value}>
                       {key}
