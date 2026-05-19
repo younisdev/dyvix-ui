@@ -6,6 +6,7 @@ import {
 } from '../../utils/DyvixGuard';
 import { isValidRegex } from './dependencies/validator/validators';
 import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import { DYVIX_MODAL_PRESET } from '../../constants';
 
 const CacheMapping = {
   theme: {
@@ -35,20 +36,10 @@ const defaultElement = {
   validation: '!/',
   amount: 1
 };
-// auto generate these soon
-const supportedTypes = [
-  'text',
-  'select',
-  'd-select',
-  'autocomplete',
-  'email',
-  'password',
-  'search',
-  'url',
-  'tel',
-  'checkbox',
-  'textarea'
-];
+
+const { DYVIX_MODAL_ELEMENT } = await import('../../constants');
+const supportedTypes = Object.values(DYVIX_MODAL_ELEMENT);
+
 let config = null;
 
 export async function SerializeData(
