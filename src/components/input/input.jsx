@@ -18,6 +18,7 @@ function DyvixInput({
   onChange,
   name,
   id,
+  disabled,
   ...rest
 }) {
   const inputRef = React.useRef(null);
@@ -52,6 +53,7 @@ function DyvixInput({
     ...(placeholder && {placeholder: placeholder}),
     ...(name && {name: name}),
     ...(id && {id: id}),
+    ...(disabled && {disabled: disabled}),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
