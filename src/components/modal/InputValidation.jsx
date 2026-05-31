@@ -134,13 +134,13 @@ export async function ValidateInput(
   if (animation !== '!/' && !isAnimation.status && allowsNull(animation)) {
     return {
       status: GaurdStatus.Error,
-      error: 'Please provide a vaild animation.'
+      error: 'Please provide a valid animation.'
     };
   }
   if (!isTheme.status && preset === '!/') {
     return {
       status: GaurdStatus.Error,
-      error: 'Please provide a vaild theme.'
+      error: 'Please provide a valid theme.'
     };
   }
 
@@ -157,7 +157,7 @@ export async function ValidateInput(
     return { status: GaurdStatus.Error, error: 'Please provide a title' };
   }
   if (!validType.includes(type)) {
-    return { status: GaurdStatus.Error, error: 'Please provide a vaild type.' };
+    return { status: GaurdStatus.Error, error: 'Please provide a valid type.' };
   }
   if (
     !Array.isArray(elements) ||

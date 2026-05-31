@@ -191,10 +191,10 @@ function ValidateInput(elements, type, animation) {
     return { status: -1, error: 'Elements should be included as an array.' };
   }
   if (!supportedTypes.includes(type)) {
-    return { status: -1, error: 'Please provide a vaild select type.' };
+    return { status: -1, error: 'Please provide a valid select type.' };
   }
   if (animation !== '!/' && !validAnimations.includes(animation)) {
-    return { status: -1, error: 'Please provide a vaild animation.' };
+    return { status: -1, error: 'Please provide a valid animation.' };
   }
   return { status: 1 };
 }
