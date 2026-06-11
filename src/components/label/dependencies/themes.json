@@ -1,32 +1,16 @@
-[
-  {
-    "theme": "Singularity",
-    "class": "dyvix-label-lens",
-    "default-animation": "bubble"
-  },
-  {
-    "theme": "Industrial",
-    "class": "dyvix-label-industrial",
-    "default-animation": "fade"
-  },
-  {
-    "theme": "Ember",
-    "class": "dyvix-label-ember",
-    "default-animation": "glitch"
-  },
-  {
-    "theme": "Ocean",
-    "class": "dyvix-label-ocean",
-    "default-animation": "flip"
-  },
-  {
-    "theme": "Crimson",
-    "class": "dyvix-label-crimson",
-    "default-animation": "float"
-  },
-  {
-    "theme": "Forest",
-    "class": "dyvix-label-forest",
-    "default-animation": "glide"
-  }
-]
+{
+  "themes": [
+    {
+      "name": "Singularity",
+      "class": "dyvix-label-singularity"
+    },
+    {
+      "name": "Blade",
+      "class": "dyvix-label-blade"
+    },
+    {
+      "name": "Neon",
+      "class": "dyvix-label-neon"
+    }
+  ]
+}
