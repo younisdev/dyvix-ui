@@ -222,3 +222,60 @@
 .modal-file .dyvix-file-ui p {
   font-size: 0.5rem;
 }
+
+/* Multi-step modal navigation (steps mechanism) */
+/* Classic (non-stepped) modals render fields through this wrapper, which is
+   transparent to layout so existing modals are unaffected. */
+.modal-fields-body {
+  display: contents;
+}
+.modal-steps-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: inherit;
+}
+.modal-step-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.85;
+  text-align: center;
+}
+.modal-steps-progress {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0.25rem 0 0.75rem;
+}
+.modal-step-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.25;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+.modal-step-dot.done {
+  opacity: 0.55;
+}
+.modal-step-dot.active {
+  opacity: 1;
+  transform: scale(1.25);
+}
+.modal-steps-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+.modal-steps-nav .modal-btn {
+  flex: 1;
+  min-width: 0;
+}
+.modal-steps-nav .modal-step-back {
+  opacity: 0.85;
+}

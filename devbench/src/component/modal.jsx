@@ -39,6 +39,64 @@ export function ModalTest() {
     return props;
   });
 
+  // Multi-step modal example: a two-page registration flow. Toggle `useSteps`
+  // to compare against the classic single-view `elements` modal above.
+  const useSteps = true;
+  const registrationSteps = [
+    {
+      title: 'Account Details',
+      elements: [
+        {
+          type: 'text',
+          name: 'firstName',
+          placeholder: 'First Name',
+          amount: 1
+        },
+        {
+          type: 'email',
+          name: 'email',
+          placeholder: 'Email',
+          amount: 1,
+          validation: 'email'
+        }
+      ]
+    },
+    {
+      title: 'Security',
+      elements: [
+        {
+          type: 'password',
+          name: 'password',
+          placeholder: 'Password',
+          id: 'password',
+          amount: 1
+        },
+        {
+          type: 'password',
+          name: 'confirmPassword',
+          placeholder: 'Confirm Password',
+          match: 'password',
+          amount: 1
+        }
+      ]
+    }
+  ];
+
+  if (useSteps) {
+    return (
+      <Modal
+        title="Register"
+        Id="register-modal"
+        className="testmodal"
+        theme={'Crimson'}
+        type="form"
+        steps={registrationSteps}
+        onSubmit={(data) => console.log('submitted', data)}
+        onChange={(data) => console.log(data)}
+      />
+    );
+  }
+
   return (
     <Modal
       title="Register"
