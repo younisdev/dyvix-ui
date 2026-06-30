@@ -7,7 +7,7 @@ next:
 
 # Modal Presets
 
-Modal presets represet a premade config for common modal usecases.
+Modal presets represent a premade config for common modal usecases.
 
 ## Available elements
 

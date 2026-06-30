@@ -7,7 +7,7 @@ next:
 
 # Modal Elements
 
-Modal elements represet the specific type of the fields present in the modal
+Modal elements represent the specific type of the fields present in the modal
 
 ## Available elements
 
