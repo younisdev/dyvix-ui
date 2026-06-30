@@ -294,3 +294,28 @@
   -moz-box-shadow: 0px 0px 55px 0px rgba(1, 176, 179, 0.55);
   transform: translateY(-2px) scale(1.005);
 }
+
+.dyvix-table-frost {
+  border-radius: 1rem;
+  font-family: 'Geist';
+  background-color: #ffffff1a;
+  border: 5px groove #ffffff40;
+  color: #d5fff8;
+  backdrop-filter: blur(50px);
+  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.2s ease-in-out;
+}
+.dyvix-table-frost:hover {
+  border: 8px groove #f8f8f840;
+  transform: scale(1.005);
+  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+}

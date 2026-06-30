@@ -43,5 +43,10 @@
     "theme": "Aurora",
     "class": "dyvix-table-aurora",
     "default-animation": "aurora"
+  },
+  {
+    "theme": "Frost",
+    "class": "dyvix-table-frost",
+    "default-animation": "float"
   }
 ]
