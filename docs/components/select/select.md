@@ -38,11 +38,11 @@ Dyvix Select Includes 2 types of select each type behaving differnetly:
 ## Example
 
 ```jsx
-import { DynamicSelect } from 'dyvix-ui';
+import { DyvixSelect } from 'dyvix-ui';
 
 function SelectExample() {
   return (
-    <DynamicSelect
+    <DyvixSelect
       className="ex-select"
       type="select"
       theme="Singularity"
