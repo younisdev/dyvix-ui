@@ -302,14 +302,8 @@
 }
 .dyvix-modal-obsidian {
   background: radial-gradient(circle at top, #2a2a2a 0%, #151515 45%, #050505 100%);
-  border: 2px solid rgba(150, 120, 255, 0.25);
   border-radius: 1.75rem;
   color: #f3f4f6;
-
-  box-shadow:
-    inset 0 0 25px rgba(255, 255, 255, 0.03),
-    0 0 30px rgba(110, 80, 255, 0.12);
-
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -318,8 +312,8 @@
   border: 2px solid rgba(160, 130, 255, 0.4);
 
   box-shadow:
-    inset 0 0 30px rgba(255,255,255,0.04),
-    0 0 40px rgba(120,90,255,0.18);
+    inset 0 0 40px rgba(255,255,255,0.04),
+    0 0 50px rgba(120,90,255,0.18);
 }
 
 .dyvix-modal-obsidian:hover {
