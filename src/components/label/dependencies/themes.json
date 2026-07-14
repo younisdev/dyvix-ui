@@ -63,5 +63,10 @@
     "theme": "Sunset",
     "class": "dyvix-label-sunset",
     "default-animation": "sunset"
+  },
+  {
+    "theme": "Coffee",
+    "class": "dyvix-label-coffee",
+    "default-animation": "fade"
   }
 ]
