@@ -1,0 +1,106 @@
+.dyvix-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dyvix-tooltip {
+  position: absolute;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 9999;
+  line-height: 1.4;
+}
+
+.dyvix-tooltip-visible {
+  opacity: 1;
+}
+
+/* Placement: Top */
+.dyvix-tooltip-top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.dyvix-tooltip-top.dyvix-tooltip-visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.dyvix-tooltip-top::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: inherit;
+}
+
+/* Placement: Bottom */
+.dyvix-tooltip-bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.dyvix-tooltip-bottom.dyvix-tooltip-visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.dyvix-tooltip-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: inherit;
+}
+
+/* Placement: Left */
+.dyvix-tooltip-left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+}
+
+.dyvix-tooltip-left.dyvix-tooltip-visible {
+  transform: translateY(-50%) translateX(0);
+}
+
+.dyvix-tooltip-left::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: inherit;
+}
+
+/* Placement: Right */
+.dyvix-tooltip-right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.dyvix-tooltip-right.dyvix-tooltip-visible {
+  transform: translateY(-50%) translateX(0);
+}
+
+.dyvix-tooltip-right::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: inherit;
+}

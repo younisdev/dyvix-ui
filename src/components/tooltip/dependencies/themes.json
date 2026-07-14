@@ -1,0 +1,9 @@
+[
+  { "theme": "Default", "class": "dyvix-tooltip-theme-default" },
+  { "theme": "Light", "class": "dyvix-tooltip-theme-light" },
+  { "theme": "Singularity", "class": "dyvix-tooltip-theme-singularity" },
+  { "theme": "Industrial", "class": "dyvix-tooltip-theme-industrial" },
+  { "theme": "Ember", "class": "dyvix-tooltip-theme-ember" },
+  { "theme": "Crimson", "class": "dyvix-tooltip-theme-crimson" },
+  { "theme": "Aurora", "class": "dyvix-tooltip-theme-aurora" }
+]

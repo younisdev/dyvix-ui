@@ -1,0 +1,71 @@
+/* Theme: Default */
+.dyvix-tooltip-theme-default {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border-top-color: #1e293b;
+  border-bottom-color: #1e293b;
+  border-left-color: #1e293b;
+  border-right-color: #1e293b;
+}
+
+/* Theme: Light */
+.dyvix-tooltip-theme-light {
+  background-color: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+  border-left-color: #ffffff;
+  border-right-color: #ffffff;
+}
+
+/* Theme: Singularity */
+.dyvix-tooltip-theme-singularity {
+  background-color: #4c1d95;
+  color: #e9d5ff;
+  border-top-color: #4c1d95;
+  border-bottom-color: #4c1d95;
+  border-left-color: #4c1d95;
+  border-right-color: #4c1d95;
+}
+
+/* Theme: Industrial */
+.dyvix-tooltip-theme-industrial {
+  background-color: #374151;
+  color: #e5e7eb;
+  border-top-color: #374151;
+  border-bottom-color: #374151;
+  border-left-color: #374151;
+  border-right-color: #374151;
+}
+
+/* Theme: Ember */
+.dyvix-tooltip-theme-ember {
+  background-color: #9a3412;
+  color: #fed7aa;
+  border-top-color: #9a3412;
+  border-bottom-color: #9a3412;
+  border-left-color: #9a3412;
+  border-right-color: #9a3412;
+}
+
+/* Theme: Crimson */
+.dyvix-tooltip-theme-crimson {
+  background-color: #9f1239;
+  color: #fecdd3;
+  border-top-color: #9f1239;
+  border-bottom-color: #9f1239;
+  border-left-color: #9f1239;
+  border-right-color: #9f1239;
+}
+
+/* Theme: Aurora */
+.dyvix-tooltip-theme-aurora {
+  background-color: #0e7490;
+  color: #cffafe;
+  border-top-color: #0e7490;
+  border-bottom-color: #0e7490;
+  border-left-color: #0e7490;
+  border-right-color: #0e7490;
+}
