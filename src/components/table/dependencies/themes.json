@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "theme": "Coffee",
+    "class": "dyvix-table-coffee",
+    "default-animation": "drop"
+  }
+]
