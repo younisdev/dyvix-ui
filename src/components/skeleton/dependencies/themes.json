@@ -1,0 +1,22 @@
+[
+  {
+    "theme": "Default",
+    "class": "dyvix-skeleton-theme-default"
+  },
+  {
+    "theme": "Dark",
+    "class": "dyvix-skeleton-theme-dark"
+  },
+  {
+    "theme": "Singularity",
+    "class": "dyvix-skeleton-theme-singularity"
+  },
+  {
+    "theme": "Industrial",
+    "class": "dyvix-skeleton-theme-industrial"
+  },
+  {
+    "theme": "Ember",
+    "class": "dyvix-skeleton-theme-ember"
+  }
+]
