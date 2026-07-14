@@ -33,5 +33,10 @@
     "input-class": "dyvix-select-input-neon",
     "dropdown-class": "dyvix-select-dropdown-neon",
     "default-animation": "pulse"
+  },
+  {
+    "theme": "Sakura",
+    "class": "dyvix-select-sakura",
+    "default-animation": "unfold"
   }
 ]
