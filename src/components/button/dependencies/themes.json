@@ -68,5 +68,15 @@
     "theme": "Obsidian",
     "class": "dyvix-button-obsidian",
     "default-animation": "fade"
+  },
+  {
+    "theme": "Sakura",
+    "class": "dyvix-button-sakura",
+    "default-animation": "unfold"
+  },
+  {
+    "theme": "Volcanic",
+    "class": "dyvix-button-volcanic",
+    "default-animation": "swing"
   }
 ]

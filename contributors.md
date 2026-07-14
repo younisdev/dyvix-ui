@@ -52,3 +52,5 @@ Thanks for everyone who has contributed to Dyvix UI!
 - [@mysterio-Apoorva](https://github.com/mysterio-Apoorva)
 - [@nirupam-06](https://github.com/nirupam-06)
 - [@gautami1407](https://github.com/gautami1407)
+- [@AliMahmoudDev](https://github.com/AliMahmoudDev)
+

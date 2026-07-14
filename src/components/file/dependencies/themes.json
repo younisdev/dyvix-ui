@@ -63,5 +63,10 @@
     "theme": "Obsidian",
     "class": "dyvix-file-obsidian",
     "default-animation": "fade"
+  },
+  {
+    "theme": "Coffee",
+    "class": "dyvix-file-coffee",
+    "default-animation": "drop"
   }
 ]

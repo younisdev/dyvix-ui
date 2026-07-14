@@ -397,3 +397,74 @@
 .dyvix-modal-cosmos > div > .modal-text {
   color: #eef2ff;
 }
+.dyvix-modal-sakura {
+  background:
+    radial-gradient(circle at top left, rgba(255, 183, 197, 0.25), transparent 50%),
+    radial-gradient(circle at bottom right, rgba(255, 105, 140, 0.15), transparent 50%),
+    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%);
+  border-radius: 2rem;
+  color: #fce4ec;
+  border: 2px solid rgba(255, 150, 170, 0.5);
+
+  box-shadow:
+    inset 0 0 40px rgba(255, 183, 197, 0.08),
+    0 0 50px rgba(255, 105, 140, 0.25);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.3s ease;
+}
+
+.dyvix-modal-sakura:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(255, 180, 200, 0.8);
+  box-shadow:
+    inset 0 0 35px rgba(255, 183, 197, 0.12),
+    0 0 75px rgba(255, 105, 140, 0.4);
+}
+
+.dyvix-modal-sakura > div > .modal-text {
+  color: #fce4ec;
+}
+.dyvix-modal-volcanic {
+  background:
+    radial-gradient(circle at 50% 80%, rgba(255, 80, 0, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%);
+  border: 2px solid rgba(255, 120, 0, 0.35);
+  border-radius: 2rem;
+  color: #ffe0c0;
+  box-shadow:
+    0 0 40px rgba(255, 80, 0, 0.15),
+    inset 0 0 30px rgba(255, 100, 0, 0.06);
+  -webkit-box-shadow:
+    0 0 40px rgba(255, 80, 0, 0.15),
+    inset 0 0 30px rgba(255, 100, 0, 0.06);
+  -moz-box-shadow:
+    0 0 40px rgba(255, 80, 0, 0.15),
+    inset 0 0 30px rgba(255, 100, 0, 0.06);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+}
+
+.dyvix-modal-volcanic:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255, 140, 0, 0.65);
+  box-shadow:
+    0 0 60px rgba(255, 80, 0, 0.3),
+    inset 0 0 40px rgba(255, 120, 0, 0.1);
+  -webkit-box-shadow:
+    0 0 60px rgba(255, 80, 0, 0.3),
+    inset 0 0 40px rgba(255, 120, 0, 0.1);
+  -moz-box-shadow:
+    0 0 60px rgba(255, 80, 0, 0.3),
+    inset 0 0 40px rgba(255, 120, 0, 0.1);
+}
+
+.dyvix-modal-volcanic > div > .modal-text {
+  color: #ffe8d0;
+}

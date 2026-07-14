@@ -101,15 +101,31 @@
     "type": "in",
     "default-duration": 1.1,
     "ease": "back.out(2)",
-    "from": {
-      "rotation": -15,
-      "y": -40,
-      "opacity": 0
-    },
-    "to": {
-      "rotation": 0,
-      "y": 0,
-      "opacity": 1
-    }
+    "from": { "rotation": -15, "y": -40, "opacity": 0 },
+    "to": { "rotation": 0, "y": 0, "opacity": 1 }
+  },
+  {
+    "animation": "slideRight",
+    "type": "in",
+    "default-duration": 0.8,
+    "ease": "power3.out",
+    "from": { "x": -120, "opacity": 0 },
+    "to": { "x": 0, "opacity": 1 }
+  },
+  {
+    "animation": "spiral",
+    "type": "in",
+    "default-duration": 1.2,
+    "ease": "power2.out",
+    "from": { "rotation": -180, "scale": 0, "opacity": 0 },
+    "to": { "rotation": 0, "scale": 1, "opacity": 1 }
+  },
+  {
+    "animation": "bounce",
+    "type": "in",
+    "default-duration": 1,
+    "ease": "bounce.out",
+    "from": { "y": -200, "opacity": 0, "scale": 0.5 },
+    "to": { "y": 0, "opacity": 1, "scale": 1 }
   }
 ]

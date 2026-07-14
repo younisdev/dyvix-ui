@@ -484,3 +484,64 @@
     inset 0 0 50px rgba(255, 255, 255, 0.06),
     0 0 30px rgba(120, 90, 255, 0.15);
 }
+.dyvix-button-sakura {
+  background:
+    radial-gradient(circle at top left, rgba(255, 183, 197, 0.25), transparent 50%),
+    radial-gradient(circle at bottom right, rgba(255, 105, 140, 0.15), transparent 50%),
+    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%);
+  color: #fce4ec;
+  border: 2px solid rgba(255, 150, 170, 0.5);
+  border-radius: 2rem;
+  box-shadow:
+    inset 0 0 40px rgba(255, 183, 197, 0.08),
+    0 0 50px rgba(255, 105, 140, 0.25);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.3s ease;
+}
+
+.dyvix-button-sakura:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 180, 200, 0.8);
+  box-shadow:
+    inset 0 0 35px rgba(255, 183, 197, 0.12),
+    0 0 75px rgba(255, 105, 140, 0.4);
+}
+
+.dyvix-button-sakura:active {
+  transform: scale(0.95);
+  border-color: rgba(255, 150, 170, 0.6);
+  box-shadow:
+    inset 0 0 45px rgba(255, 183, 197, 0.15),
+    0 0 30px rgba(255, 105, 140, 0.2);
+}
+.dyvix-button-volcanic {
+  background: linear-gradient(180deg, #1a0800 0%, #2d0e00 50%, #3d1200 100%);
+  color: #ffe0c0;
+  border: 2px solid rgba(255, 120, 0, 0.35);
+  border-radius: 2rem;
+  box-shadow: 0 0 25px rgba(255, 80, 0, 0.2);
+  -webkit-box-shadow: 0 0 25px rgba(255, 80, 0, 0.2);
+  -moz-box-shadow: 0 0 25px rgba(255, 80, 0, 0.2);
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.dyvix-button-volcanic:hover {
+  transform: scale(1.04) translateY(-2px);
+  border-color: rgba(255, 140, 0, 0.7);
+  box-shadow: 0 0 45px rgba(255, 80, 0, 0.35);
+  -webkit-box-shadow: 0 0 45px rgba(255, 80, 0, 0.35);
+  -moz-box-shadow: 0 0 45px rgba(255, 80, 0, 0.35);
+}
+
+.dyvix-button-volcanic:active {
+  transform: scale(0.97);
+  border-color: rgba(255, 160, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 80, 0, 0.15);
+  -webkit-box-shadow: 0 0 20px rgba(255, 80, 0, 0.15);
+  -moz-box-shadow: 0 0 20px rgba(255, 80, 0, 0.15);
+}

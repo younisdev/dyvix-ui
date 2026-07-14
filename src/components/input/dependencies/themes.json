@@ -58,5 +58,20 @@
     "theme": "Crimson",
     "class": "dyvix-input-crimson",
     "default-animation": "float"
+  },
+  {
+    "theme": "Sakura",
+    "class": "dyvix-input-sakura",
+    "default-animation": "unfold"
+  },
+  {
+    "theme": "Obsidian",
+    "class": "dyvix-input-obsidian",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Coffee",
+    "class": "dyvix-input-coffee",
+    "default-animation": "drop"
   }
 ]
