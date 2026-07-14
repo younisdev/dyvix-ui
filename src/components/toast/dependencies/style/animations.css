@@ -1,0 +1,246 @@
+/* ============================================
+   DyvixUI - Toast CSS Animations & Auto-Dismiss
+   Pure CSS slide-in, fade-out, and progress bar
+   ============================================ */
+
+/* --- Keyframes: Slide In --- */
+@keyframes dyvix-toast-slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dyvix-toast-slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dyvix-toast-slide-in-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dyvix-toast-slide-in-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- Keyframes: Fade Out --- */
+@keyframes dyvix-toast-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+}
+
+@keyframes dyvix-toast-slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes dyvix-toast-slide-out-left {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes dyvix-toast-slide-out-up {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes dyvix-toast-slide-out-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* --- Keyframes: Progress Bar --- */
+@keyframes dyvix-toast-progress-shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes dyvix-toast-pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* --- Animation Entry Classes --- */
+.dyvix-toast--slide-in-right {
+  animation: dyvix-toast-slide-in-right 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.dyvix-toast--slide-in-left {
+  animation: dyvix-toast-slide-in-left 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.dyvix-toast--slide-in-down {
+  animation: dyvix-toast-slide-in-down 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.dyvix-toast--slide-in-up {
+  animation: dyvix-toast-slide-in-up 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+/* --- Animation Exit Classes --- */
+.dyvix-toast--fade-out {
+  animation: dyvix-toast-fade-out 0.3s ease-in forwards;
+}
+
+.dyvix-toast--slide-out-right {
+  animation: dyvix-toast-slide-out-right 0.35s ease-in forwards;
+}
+
+.dyvix-toast--slide-out-left {
+  animation: dyvix-toast-slide-out-left 0.35s ease-in forwards;
+}
+
+.dyvix-toast--slide-out-up {
+  animation: dyvix-toast-slide-out-up 0.35s ease-in forwards;
+}
+
+.dyvix-toast--slide-out-down {
+  animation: dyvix-toast-slide-out-down 0.35s ease-in forwards;
+}
+
+/* --- Auto-Dismiss Progress Bar --- */
+.dyvix-toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 0 0 1.5rem 1.5rem;
+  animation: dyvix-toast-progress-shrink linear forwards;
+}
+
+.dyvix-toast-progress--success {
+  background: linear-gradient(90deg, #14ce4f, #1df13c);
+}
+
+.dyvix-toast-progress--error {
+  background: linear-gradient(90deg, #ff3366, #ff6680);
+}
+
+.dyvix-toast-progress--warning {
+  background: linear-gradient(90deg, #e6a800, #ffc107);
+}
+
+.dyvix-toast-progress--info {
+  background: linear-gradient(90deg, #12899a, #17a2b8);
+}
+
+/* --- Position-based auto-select animation --- */
+.dyvix-top-right .dyvix-toast,
+.dyvix-bottom-right .dyvix-toast {
+  animation: dyvix-toast-slide-in-right 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.dyvix-top-left .dyvix-toast,
+.dyvix-bottom-left .dyvix-toast {
+  animation: dyvix-toast-slide-in-left 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.dyvix-top-center .dyvix-toast {
+  animation: dyvix-toast-slide-in-down 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.dyvix-bottom-center .dyvix-toast {
+  animation: dyvix-toast-slide-in-up 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+/* --- Close Button --- */
+.dyvix-toast-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.5;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.dyvix-toast-close:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.dyvix-toast-close:active {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* --- Pulse Glow (for active toasts) --- */
+.dyvix-toast--pulse {
+  animation:
+    dyvix-toast-slide-in-right 0.4s cubic-bezier(0.21, 1.02, 0.73, 1) forwards,
+    dyvix-toast-pulse-glow 2s ease-in-out 0.4s infinite;
+}
+
+/* --- Toast position relative for progress bar --- */
+.dyvix-toast {
+  position: relative;
+  overflow: hidden;
+}

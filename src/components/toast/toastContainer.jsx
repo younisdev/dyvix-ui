@@ -1,5 +1,6 @@
 import './dependencies/style/style.css';
 import './dependencies/style/positions.css';
+import './dependencies/style/animations.css';
 import positionData from './dependencies/positions.json';
 import TypesData from './dependencies/types.json';
 import animationsData from '../animations.json';
@@ -19,12 +20,14 @@ export const validAnimations = animationsData.map((e) => e.animation);
  * @param {number} props.segments - The max amount of toast at a time
  * @param {number} props.duration - The duration to show the toast for in mile seconds.
  * @param {string} [props.animation] - Animation name, defaults to zoom
+ * @param {boolean} [props.cssAnimation] - Use pure CSS animations instead of GSAP (default: true)
  */
 function DyvixToastContainer({
   position = 'top-right',
   segments = 10,
   duration = 5000,
-  animation = 'zoom'
+  animation = 'zoom',
+  cssAnimation = true
 }) {
   const validator = ValidateContainer(position, segments, duration, animation);
 
@@ -64,7 +67,8 @@ function DyvixToastContainer({
             }
             className={currentclass}
             duration={duration}
-            animation={animation}
+            animation={cssAnimation ? null : animation}
+            cssAnimation={cssAnimation}
             type={currentType.type}
           />
         );
