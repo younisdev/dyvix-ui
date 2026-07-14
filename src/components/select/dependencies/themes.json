@@ -33,5 +33,15 @@
     "input-class": "dyvix-select-input-neon",
     "dropdown-class": "dyvix-select-dropdown-neon",
     "default-animation": "pulse"
+  },
+  {
+    "theme": "Obsidian",
+    "class": "dyvix-select-obsidian",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Coffee",
+    "class": "dyvix-select-coffee",
+    "default-animation": "drop"
   }
 ]
