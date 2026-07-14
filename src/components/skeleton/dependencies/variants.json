@@ -1,0 +1,42 @@
+[
+  {
+    "variant": "text",
+    "class": "dyvix-skeleton--text"
+  },
+  {
+    "variant": "text-lg",
+    "class": "dyvix-skeleton--text-lg"
+  },
+  {
+    "variant": "title",
+    "class": "dyvix-skeleton--title"
+  },
+  {
+    "variant": "circle",
+    "class": "dyvix-skeleton--circle"
+  },
+  {
+    "variant": "circle-lg",
+    "class": "dyvix-skeleton--circle-lg"
+  },
+  {
+    "variant": "rectangle",
+    "class": "dyvix-skeleton--rectangle"
+  },
+  {
+    "variant": "rectangle-lg",
+    "class": "dyvix-skeleton--rectangle-lg"
+  },
+  {
+    "variant": "button",
+    "class": "dyvix-skeleton--button"
+  },
+  {
+    "variant": "avatar",
+    "class": "dyvix-skeleton--avatar"
+  },
+  {
+    "variant": "card",
+    "class": "dyvix-skeleton--card"
+  }
+]

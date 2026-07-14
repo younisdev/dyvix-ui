@@ -13,3 +13,4 @@ export { default as DyvixTableHeader } from './components/table/DyvixTableHeader
 export { default as DyvixTableRow } from './components/table/DyvixTableRow';
 export { default as DyvixTableCell } from './components/table/DyvixTableCell';
 export { default as DyvixTableHead } from './components/table/DyvixTableHead';
+export { default as DyvixSkeleton, DyvixSkeletonAvatarText, DyvixSkeletonCard } from './components/skeleton/skeleton';

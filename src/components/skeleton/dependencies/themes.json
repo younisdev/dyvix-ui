@@ -1,0 +1,77 @@
+[
+  {
+    "theme": "Singularity",
+    "class": "dyvix-skeleton-singularity",
+    "default-animation": "bubble"
+  },
+  {
+    "theme": "Industrial",
+    "class": "dyvix-skeleton-industrial",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Ember",
+    "class": "dyvix-skeleton-ember",
+    "default-animation": "glitch"
+  },
+  {
+    "theme": "Frost",
+    "class": "dyvix-skeleton-frost",
+    "default-animation": "unfold"
+  },
+  {
+    "theme": "Blade",
+    "class": "dyvix-skeleton-blade",
+    "default-animation": "zoom"
+  },
+  {
+    "theme": "Neon",
+    "class": "dyvix-skeleton-neon",
+    "default-animation": "pulse"
+  },
+  {
+    "theme": "Aurora",
+    "class": "dyvix-skeleton-aurora",
+    "default-animation": "aurora"
+  },
+  {
+    "theme": "Sunset",
+    "class": "dyvix-skeleton-sunset",
+    "default-animation": "drop"
+  },
+  {
+    "theme": "Ocean",
+    "class": "dyvix-skeleton-ocean",
+    "default-animation": "flip"
+  },
+  {
+    "theme": "Forest",
+    "class": "dyvix-skeleton-forest",
+    "default-animation": "glide"
+  },
+  {
+    "theme": "Midnight",
+    "class": "dyvix-skeleton-midnight",
+    "default-animation": "drift"
+  },
+  {
+    "theme": "Crimson",
+    "class": "dyvix-skeleton-crimson",
+    "default-animation": "float"
+  },
+  {
+    "theme": "Obsidian",
+    "class": "dyvix-skeleton-obsidian",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Coffee",
+    "class": "dyvix-skeleton-coffee",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Cosmos",
+    "class": "dyvix-skeleton-cosmos",
+    "default-animation": "drift"
+  }
+]

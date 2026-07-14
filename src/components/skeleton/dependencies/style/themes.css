@@ -1,0 +1,150 @@
+/* ============================================
+   DyvixUI - Skeleton Theme Styles
+   Theme-specific skeleton loading colors
+   ============================================ */
+
+.dyvix-skeleton-singularity {
+  background: radial-gradient(circle, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 50%;
+}
+.dyvix-skeleton-singularity::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(185, 3, 226, 0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-industrial {
+  background-color: #1a2744;
+  border-radius: 10px;
+}
+.dyvix-skeleton-industrial::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(106, 106, 106, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-ember {
+  background-color: #1c120e;
+  border-radius: 10px;
+}
+.dyvix-skeleton-ember::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 69, 0, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-frost {
+  background-color: #d5fff83a;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(213, 255, 248, 0.15);
+}
+.dyvix-skeleton-frost::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(213, 255, 248, 0.25) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-blade {
+  background-color: #1a1a1a;
+  border-radius: 0px;
+  border-left: 2px solid rgba(226, 232, 240, 0.15);
+  border-top: 2px solid rgba(226, 232, 240, 0.15);
+}
+.dyvix-skeleton-blade::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(226, 232, 240, 0.12) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-neon {
+  background: linear-gradient(135deg, #0a2a2a 0%, #1a1040 100%);
+  border-radius: 4rem;
+}
+.dyvix-skeleton-neon::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(77, 238, 234, 0.25) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-aurora {
+  background: linear-gradient(135deg, #0d1f0e 0%, #0d1520 100%);
+  border-radius: 2rem;
+}
+.dyvix-skeleton-aurora::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(20, 232, 30, 0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-sunset {
+  background: linear-gradient(135deg, #1a0a00 0%, #2d1400 100%);
+  border-radius: 20px;
+}
+.dyvix-skeleton-sunset::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 198, 15, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-ocean {
+  background: linear-gradient(200deg, #001220 0%, #012040 100%);
+  border-radius: 2rem;
+  border: 1px solid rgba(0, 150, 255, 0.1);
+}
+.dyvix-skeleton-ocean::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 150, 255, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-forest {
+  background: radial-gradient(circle, #1a2e20 14%, #2a1f15 71%);
+  border-radius: 5rem;
+  border: 2px double rgba(134, 168, 107, 0.2);
+}
+.dyvix-skeleton-forest::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(163, 236, 101, 0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-midnight {
+  background: radial-gradient(circle at center, #00024d 0%, #0a0a2a 100%);
+  border-radius: 3.67rem;
+  border: 1px solid rgba(112, 168, 247, 0.1);
+}
+.dyvix-skeleton-midnight::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-crimson {
+  background: linear-gradient(135deg, #200000 0%, #3a0000 100%);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 80, 80, 0.15);
+}
+.dyvix-skeleton-crimson::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 80, 80, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-obsidian {
+  background: radial-gradient(circle at top, #2a2a2a 0%, #151515 45%, #050505 100%);
+  border-radius: 1.75rem;
+  border: 1px solid rgba(160, 130, 255, 0.15);
+}
+.dyvix-skeleton-obsidian::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(160, 130, 255, 0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-coffee {
+  background: linear-gradient(135deg, #2d1b14 0%, #4a2d1f 100%);
+  border-radius: 2rem;
+  border: 1px solid rgba(210, 166, 121, 0.15);
+}
+.dyvix-skeleton-coffee::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(210, 166, 121, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+.dyvix-skeleton-cosmos {
+  background: radial-gradient(circle at top, #24104f 0%, #090b1d 75%);
+  border-radius: 2rem;
+  border: 1px solid rgba(140, 120, 255, 0.15);
+}
+.dyvix-skeleton-cosmos::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(140, 120, 255, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
