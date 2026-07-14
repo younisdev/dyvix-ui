@@ -63,5 +63,10 @@
     "theme": "Coffee",
     "class": "dyvix-button-coffee",
     "default-animation": "fade"
+  },
+  {
+    "theme": "Cosmos",
+    "class": "dyvix-button-cosmos",
+    "default-animation": "drift"
   }
 ]
