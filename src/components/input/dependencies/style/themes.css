@@ -471,3 +471,47 @@
 .dyvix-input-crimson::placeholder {
   color: rgba(255, 214, 214, 0.7);
 }
+.dyvix-input-obsidian {
+  background: radial-gradient(ellipse at 30% 20%, #1c1c2e 0%, #0a0a12 50%, #050508 100%);
+  color: #c4b5fd;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 12px;
+  box-shadow:
+    0 0 25px rgba(139, 92, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.25s ease,
+    background 0.3s ease;
+}
+.dyvix-input-obsidian:hover {
+  background: radial-gradient(ellipse at 30% 20%, #252540 0%, #0f0f1a 50%, #050508 100%);
+  border-color: rgba(139, 92, 246, 0.55);
+  box-shadow:
+    0 0 35px rgba(139, 92, 246, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+.dyvix-input-obsidian:focus {
+  outline: none;
+  background: radial-gradient(ellipse at 30% 20%, #2a2a48 0%, #0f0f1a 50%, #050508 100%);
+  border-color: rgba(167, 139, 250, 0.7);
+  box-shadow:
+    0 0 40px rgba(139, 92, 246, 0.35),
+    0 0 0 3px rgba(139, 92, 246, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: scale(1.01);
+}
+.dyvix-input-obsidian::placeholder {
+  color: rgba(196, 181, 253, 0.4);
+}
+.dyvix-input-obsidian:disabled {
+  background: #0a0a12;
+  border-color: rgba(139, 92, 246, 0.15);
+  color: #4c4c6a;
+  box-shadow: none;
+}
+.dyvix-input-obsidian:disabled::placeholder {
+  color: #3a3a52;
+}
