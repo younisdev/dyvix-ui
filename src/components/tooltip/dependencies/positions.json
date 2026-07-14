@@ -1,0 +1,18 @@
+[
+  {
+    "position": "top",
+    "class": "dyvix-tooltip--top"
+  },
+  {
+    "position": "bottom",
+    "class": "dyvix-tooltip--bottom"
+  },
+  {
+    "position": "left",
+    "class": "dyvix-tooltip--left"
+  },
+  {
+    "position": "right",
+    "class": "dyvix-tooltip--right"
+  }
+]

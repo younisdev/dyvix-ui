@@ -1,0 +1,218 @@
+/* ============================================
+   DyvixUI - Tooltip Theme Styles
+   Theme-specific tooltip styling
+   ============================================ */
+
+.dyvix-tooltip-theme-singularity {
+  background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+  color: #f0e6ff;
+  border: 1px solid rgba(185, 3, 226, 0.3);
+  box-shadow: 0 0 15px rgba(185, 3, 226, 0.2);
+}
+.dyvix-tooltip-theme-singularity .dyvix-tooltip-arrow {
+  border-top-color: #1a1a1a;
+  border-bottom-color: #1a1a1a;
+  border-left-color: #1a1a1a;
+  border-right-color: #1a1a1a;
+}
+
+.dyvix-tooltip-theme-industrial {
+  background-color: #0a1429;
+  color: #c0c8d8;
+  border: 2px solid #374151;
+  border-radius: 4px;
+  box-shadow: inset 0 0 12px rgba(106, 106, 106, 0.08);
+}
+.dyvix-tooltip-theme-industrial .dyvix-tooltip-arrow {
+  border-top-color: #0a1429;
+  border-bottom-color: #0a1429;
+  border-left-color: #0a1429;
+  border-right-color: #0a1429;
+}
+
+.dyvix-tooltip-theme-ember {
+  background-color: #1c120e;
+  color: #ffc8a0;
+  border-bottom: 2px solid #ff4500;
+  border-radius: 4px;
+  box-shadow: 0 8px 20px -6px rgba(255, 69, 0, 0.35);
+}
+.dyvix-tooltip-theme-ember .dyvix-tooltip-arrow {
+  border-top-color: #1c120e;
+  border-bottom-color: #1c120e;
+  border-left-color: #1c120e;
+  border-right-color: #1c120e;
+}
+
+.dyvix-tooltip-theme-frost {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #e0f7ff;
+  border: 2px solid rgba(213, 255, 248, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  box-shadow: inset 0 0 15px rgba(213, 255, 248, 0.08);
+}
+.dyvix-tooltip-theme-frost .dyvix-tooltip-arrow {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-left-color: rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.2);
+}
+
+.dyvix-tooltip-theme-blade {
+  background-color: #0a0a0a;
+  color: #e2e8f0;
+  border-left: 2px solid #e2e8f0;
+  border-top: 2px solid #e2e8f0;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0px;
+  box-shadow: -3px -3px 10px rgba(255, 255, 255, 0.03);
+}
+.dyvix-tooltip-theme-blade .dyvix-tooltip-arrow {
+  border-top-color: #0a0a0a;
+  border-bottom-color: #0a0a0a;
+  border-left-color: #0a0a0a;
+  border-right-color: #0a0a0a;
+}
+
+.dyvix-tooltip-theme-neon {
+  background: linear-gradient(135deg, #0a2a2a 0%, #1a1040 100%);
+  color: #4deeea;
+  border: 1px solid rgba(77, 238, 234, 0.3);
+  border-radius: 2rem;
+  box-shadow: 0 0 18px rgba(252, 46, 255, 0.2);
+}
+.dyvix-tooltip-theme-neon .dyvix-tooltip-arrow {
+  border-top-color: #1a1040;
+  border-bottom-color: #1a1040;
+  border-left-color: #1a1040;
+  border-right-color: #1a1040;
+}
+
+.dyvix-tooltip-theme-aurora {
+  background: linear-gradient(90deg, #0d1f0e 0%, #0d1520 100%);
+  color: #a0ffd0;
+  border: 1px solid rgba(20, 232, 30, 0.15);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 20px rgba(1, 176, 179, 0.15);
+}
+.dyvix-tooltip-theme-aurora .dyvix-tooltip-arrow {
+  border-top-color: #0d1f0e;
+  border-bottom-color: #0d1f0e;
+  border-left-color: #0d1f0e;
+  border-right-color: #0d1f0e;
+}
+
+.dyvix-tooltip-theme-sunset {
+  background: linear-gradient(135deg, #1a0a00 0%, #2d1400 100%);
+  color: #ffc60f;
+  border: 1px solid rgba(255, 198, 15, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px -4px rgba(255, 198, 15, 0.3);
+}
+.dyvix-tooltip-theme-sunset .dyvix-tooltip-arrow {
+  border-top-color: #1a0a00;
+  border-bottom-color: #1a0a00;
+  border-left-color: #1a0a00;
+  border-right-color: #1a0a00;
+}
+
+.dyvix-tooltip-theme-ocean {
+  background: linear-gradient(200deg, #001220 0%, #012040 100%);
+  color: #90c8ff;
+  border: 1px solid rgba(0, 150, 255, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 20px rgba(0, 100, 255, 0.12);
+}
+.dyvix-tooltip-theme-ocean .dyvix-tooltip-arrow {
+  border-top-color: #001220;
+  border-bottom-color: #001220;
+  border-left-color: #001220;
+  border-right-color: #001220;
+}
+
+.dyvix-tooltip-theme-forest {
+  background: radial-gradient(circle, #1a2e20 14%, #2a1f15 71%);
+  color: #c0f0a0;
+  border: 2px double rgba(134, 168, 107, 0.25);
+  border-radius: 2rem;
+  box-shadow: inset 0 0 15px rgba(163, 236, 101, 0.08);
+}
+.dyvix-tooltip-theme-forest .dyvix-tooltip-arrow {
+  border-top-color: #1a2e20;
+  border-bottom-color: #1a2e20;
+  border-left-color: #1a2e20;
+  border-right-color: #1a2e20;
+}
+
+.dyvix-tooltip-theme-midnight {
+  background: radial-gradient(circle at center, #00024d 0%, #0a0a2a 100%);
+  color: #a8c8ff;
+  border: 1px solid rgba(112, 168, 247, 0.2);
+  border-radius: 2rem;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.12);
+  backdrop-filter: blur(8px);
+}
+.dyvix-tooltip-theme-midnight .dyvix-tooltip-arrow {
+  border-top-color: #00024d;
+  border-bottom-color: #00024d;
+  border-left-color: #00024d;
+  border-right-color: #00024d;
+}
+
+.dyvix-tooltip-theme-crimson {
+  background: linear-gradient(135deg, #200000 0%, #3a0000 100%);
+  color: #ff9999;
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.1);
+}
+.dyvix-tooltip-theme-crimson .dyvix-tooltip-arrow {
+  border-top-color: #200000;
+  border-bottom-color: #200000;
+  border-left-color: #200000;
+  border-right-color: #200000;
+}
+
+.dyvix-tooltip-theme-obsidian {
+  background: radial-gradient(circle at top, #2a2a2a 0%, #151515 45%, #050505 100%);
+  color: #e5edff;
+  border: 1px solid rgba(160, 130, 255, 0.25);
+  border-radius: 1rem;
+  box-shadow: 0 0 22px rgba(120, 90, 255, 0.1);
+}
+.dyvix-tooltip-theme-obsidian .dyvix-tooltip-arrow {
+  border-top-color: #2a2a2a;
+  border-bottom-color: #2a2a2a;
+  border-left-color: #2a2a2a;
+  border-right-color: #2a2a2a;
+}
+
+.dyvix-tooltip-theme-coffee {
+  background: linear-gradient(135deg, #2d1b14 0%, #4a2d1f 100%);
+  color: #f3c88c;
+  border: 1px solid rgba(210, 166, 121, 0.25);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 20px rgba(155, 100, 55, 0.15);
+}
+.dyvix-tooltip-theme-coffee .dyvix-tooltip-arrow {
+  border-top-color: #2d1b14;
+  border-bottom-color: #2d1b14;
+  border-left-color: #2d1b14;
+  border-right-color: #2d1b14;
+}
+
+.dyvix-tooltip-theme-cosmos {
+  background: radial-gradient(circle at top, #24104f 0%, #090b1d 75%);
+  color: #d0c0ff;
+  border: 1px solid rgba(140, 120, 255, 0.25);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 22px rgba(111, 76, 255, 0.12);
+}
+.dyvix-tooltip-theme-cosmos .dyvix-tooltip-arrow {
+  border-top-color: #24104f;
+  border-bottom-color: #24104f;
+  border-left-color: #24104f;
+  border-right-color: #24104f;
+}

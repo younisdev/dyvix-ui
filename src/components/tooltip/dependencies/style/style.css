@@ -1,0 +1,241 @@
+/* ============================================
+   DyvixUI - Tooltip Component
+   CSS tooltip with hover animations & themes
+   ============================================ */
+
+/* --- Tooltip Keyframes --- */
+@keyframes dyvix-tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dyvix-tooltip-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes dyvix-tooltip-slide-top {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes dyvix-tooltip-slide-bottom {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes dyvix-tooltip-slide-left {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes dyvix-tooltip-slide-right {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes dyvix-tooltip-bounce {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px) scale(0.8);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* --- Base Tooltip Wrapper --- */
+.dyvix-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* --- Base Tooltip --- */
+.dyvix-tooltip {
+  position: absolute;
+  z-index: 9999;
+  padding: 0.45rem 0.85rem;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.dyvix-tooltip-wrapper:hover .dyvix-tooltip,
+.dyvix-tooltip-wrapper:focus-within .dyvix-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Position: Top --- */
+.dyvix-tooltip--top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: dyvix-tooltip-slide-top 0.25s ease-out forwards;
+}
+
+.dyvix-tooltip--top .dyvix-tooltip-arrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #1e293b;
+}
+
+/* --- Position: Bottom --- */
+.dyvix-tooltip--bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: dyvix-tooltip-slide-bottom 0.25s ease-out forwards;
+}
+
+.dyvix-tooltip--bottom .dyvix-tooltip-arrow {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #1e293b;
+}
+
+/* --- Position: Left --- */
+.dyvix-tooltip--left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  animation: dyvix-tooltip-slide-left 0.25s ease-out forwards;
+}
+
+.dyvix-tooltip--left .dyvix-tooltip-arrow {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #1e293b;
+}
+
+/* --- Position: Right --- */
+.dyvix-tooltip--right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  animation: dyvix-tooltip-slide-right 0.25s ease-out forwards;
+}
+
+.dyvix-tooltip--right .dyvix-tooltip-arrow {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #1e293b;
+}
+
+/* --- Animation Variants --- */
+.dyvix-tooltip--fade {
+  animation: dyvix-tooltip-fade-in 0.2s ease-out forwards;
+}
+
+.dyvix-tooltip--bounce {
+  animation: dyvix-tooltip-bounce 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* --- Default (no-theme) Tooltip --- */
+.dyvix-tooltip:not([class*="dyvix-tooltip-theme"]) {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dyvix-tooltip:not([class*="dyvix-tooltip-theme"]) .dyvix-tooltip-arrow {
+  border-top-color: #1e293b;
+  border-bottom-color: #1e293b;
+  border-left-color: #1e293b;
+  border-right-color: #1e293b;
+}
+
+/* --- Multi-line Tooltip --- */
+.dyvix-tooltip--multiline {
+  white-space: normal;
+  min-width: 10rem;
+  max-width: 18rem;
+  text-align: center;
+}
+
+/* --- Delay Utilities --- */
+.dyvix-tooltip--delay-short .dyvix-tooltip {
+  transition-delay: 0.15s;
+}
+
+.dyvix-tooltip--delay-medium .dyvix-tooltip {
+  transition-delay: 0.4s;
+}
+
+.dyvix-tooltip--delay-long .dyvix-tooltip {
+  transition-delay: 0.8s;
+}

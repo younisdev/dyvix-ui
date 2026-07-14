@@ -1,0 +1,77 @@
+[
+  {
+    "theme": "Singularity",
+    "class": "dyvix-tooltip-theme-singularity",
+    "default-animation": "bubble"
+  },
+  {
+    "theme": "Industrial",
+    "class": "dyvix-tooltip-theme-industrial",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Ember",
+    "class": "dyvix-tooltip-theme-ember",
+    "default-animation": "glitch"
+  },
+  {
+    "theme": "Frost",
+    "class": "dyvix-tooltip-theme-frost",
+    "default-animation": "unfold"
+  },
+  {
+    "theme": "Blade",
+    "class": "dyvix-tooltip-theme-blade",
+    "default-animation": "zoom"
+  },
+  {
+    "theme": "Neon",
+    "class": "dyvix-tooltip-theme-neon",
+    "default-animation": "pulse"
+  },
+  {
+    "theme": "Aurora",
+    "class": "dyvix-tooltip-theme-aurora",
+    "default-animation": "aurora"
+  },
+  {
+    "theme": "Sunset",
+    "class": "dyvix-tooltip-theme-sunset",
+    "default-animation": "drop"
+  },
+  {
+    "theme": "Ocean",
+    "class": "dyvix-tooltip-theme-ocean",
+    "default-animation": "flip"
+  },
+  {
+    "theme": "Forest",
+    "class": "dyvix-tooltip-theme-forest",
+    "default-animation": "glide"
+  },
+  {
+    "theme": "Midnight",
+    "class": "dyvix-tooltip-theme-midnight",
+    "default-animation": "drift"
+  },
+  {
+    "theme": "Crimson",
+    "class": "dyvix-tooltip-theme-crimson",
+    "default-animation": "float"
+  },
+  {
+    "theme": "Obsidian",
+    "class": "dyvix-tooltip-theme-obsidian",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Coffee",
+    "class": "dyvix-tooltip-theme-coffee",
+    "default-animation": "fade"
+  },
+  {
+    "theme": "Cosmos",
+    "class": "dyvix-tooltip-theme-cosmos",
+    "default-animation": "drift"
+  }
+]
