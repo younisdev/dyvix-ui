@@ -511,9 +511,6 @@
 }
 .dyvix-button-cosmos {
   background:
-    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.9) 0 1px, transparent 2px),
-    radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
-    radial-gradient(circle at 45% 75%, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
     linear-gradient(135deg, #09001f 0%, #1b0b4f 45%, #3b146f 75%, #07142f 100%);
   color: #f5f3ff;
   border: 2px solid rgba(167, 139, 250, 0.55);
