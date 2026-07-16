@@ -511,13 +511,13 @@
 }
 .dyvix-button-cosmos {
   background:
-    linear-gradient(135deg, #09001f 0%, #1b0b4f 45%, #3b146f 75%, #07142f 100%);
-  color: #f5f3ff;
-  border: 2px solid rgba(167, 139, 250, 0.55);
-  border-radius: 2rem;
-  box-shadow:
-    inset 0 0 30px rgba(129, 92, 246, 0.15),
-    0 0 35px rgba(124, 58, 237, 0.35);
+  background: linear-gradient(
+    135deg,
+    #09001f 0%,
+    #1b0b4f 45%,
+    #3b146f 75%,
+    #07142f 100%
+  );
   -webkit-box-shadow:
     inset 0 0 30px rgba(129, 92, 246, 0.15),
     0 0 35px rgba(124, 58, 237, 0.35);
