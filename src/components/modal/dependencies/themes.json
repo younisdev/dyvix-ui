@@ -102,8 +102,8 @@
     "radiused": false
   },
   {
-  "theme": "Cosmos",
-  "class": "dyvix-button-cosmos",
-  "default-animation": "drift"
-}
+    "theme": "Cosmos",
+    "class": "dyvix-button-cosmos",
+    "default-animation": "drift"
+  }
 ]
