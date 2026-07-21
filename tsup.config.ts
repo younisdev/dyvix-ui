@@ -39,7 +39,15 @@ export default defineConfig({
   injectStyle: true,
   dts: true,
   splitting: true,
-  external: ['react', 'react-dom', 'gsap', '@gsap/react'],
+  treeshake: true,
+  external: [
+    'react',
+    'react-dom',
+    'gsap',
+    '@gsap/react',
+    'sugar-high',
+    'idb-keyval'
+  ],
   minify: true,
   sourcemap: false,
   clean: true,
