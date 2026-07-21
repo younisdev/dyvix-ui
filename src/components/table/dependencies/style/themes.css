@@ -555,13 +555,7 @@
       rgba(255, 80, 0, 0.15) 0%,
       transparent 50%
     ),
-    linear-gradient(
-      180deg,
-      #1a0800 0%,
-      #2d0e00 30%,
-      #3d1200 60%,
-      #1a0800 100%
-    );
+    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%);
   border: 2px solid rgba(255, 120, 0, 0.35);
   color: #ffe0c0;
   box-shadow:
