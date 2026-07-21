@@ -1,4 +1,4 @@
-name: Quality Check
+name: Dyvix Quality Check
 
 on:
   pull_request_target:
@@ -61,6 +61,14 @@ jobs:
             fi
           done < files.txt
           rm -rf pr_head
+
+      - name: Snapshot PR files
+        if: steps.files.outputs.has_files == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "PR snapshot" --no-verify || true
 
       - uses: actions/setup-node@v4
         if: steps.files.outputs.has_files == 'true'
