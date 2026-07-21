@@ -40,7 +40,14 @@ export default defineConfig({
   dts: true,
   splitting: true,
   treeshake: true,
-  external: ['react', 'react-dom', 'gsap', '@gsap/react','sugar-high', 'idb-keyval'],
+  external: [
+    'react',
+    'react-dom',
+    'gsap',
+    '@gsap/react',
+    'sugar-high',
+    'idb-keyval'
+  ],
   minify: true,
   sourcemap: false,
   clean: true,
