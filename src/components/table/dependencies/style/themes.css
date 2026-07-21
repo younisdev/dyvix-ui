@@ -574,7 +574,7 @@
 }
 
 .dyvix-table-volcanic:hover {
-  transform: translateY(-4px) scale(1.01);
+  transform: translateY(-3px) scale(1.01);
   border-color: rgba(255, 140, 0, 0.65);
   box-shadow:
     0 0 60px rgba(255, 80, 0, 0.3),
