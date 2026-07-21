@@ -12,7 +12,7 @@ export function TableTest() {
     <>
       <DyvixTable
         animation={DYVIX_GLOBAL_ANIMATION.PULSE}
-        theme={DYVIX_GLOBAL_THEME.SAKURA}
+        theme={DYVIX_GLOBAL_THEME.VOLCANIC}
         columns={[
           { key: 'id', label: 'ID', sortable: true },
           { key: 'name', label: 'Name', sortable: true },

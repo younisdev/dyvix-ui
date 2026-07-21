@@ -545,3 +545,51 @@
 .dyvix-table-sakura tbody tr:hover {
   background: rgba(255, 183, 197, 0.08);
 }
+
+.dyvix-table-volcanic {
+  border-radius: 1rem;
+  font-family: 'Geist';
+  background:
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 80, 0, 0.15) 0%,
+      transparent 50%
+    ),
+    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%);
+  border: 2px solid rgba(255, 120, 0, 0.35);
+  color: #ffe0c0;
+  box-shadow:
+    0 0 40px rgba(255, 80, 0, 0.15),
+    inset 0 0 30px rgba(255, 100, 0, 0.06);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+}
+
+.dyvix-table-volcanic:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(255, 140, 0, 0.65);
+  box-shadow:
+    0 0 60px rgba(255, 80, 0, 0.3),
+    inset 0 0 40px rgba(255, 120, 0, 0.1);
+}
+
+.dyvix-table-volcanic thead tr {
+  background: rgba(255, 80, 0, 0.08);
+  border-bottom-color: rgba(255, 120, 0, 0.2);
+}
+
+.dyvix-table-volcanic th {
+  color: #fff2e6;
+  border-bottom-color: rgba(255, 120, 0, 0.2);
+}
+
+.dyvix-table-volcanic td {
+  color: #ffe0c0;
+  border-bottom-color: rgba(255, 120, 0, 0.16);
+}
+
+.dyvix-table-volcanic tbody tr:hover {
+  background: rgba(255, 80, 0, 0.08);
+}
