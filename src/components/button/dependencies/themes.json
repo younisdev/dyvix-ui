@@ -73,5 +73,10 @@
     "theme": "Volcanic",
     "class": "dyvix-button-volcanic",
     "default-animation": "swing"
+  },
+  {
+    "theme": "Cosmos",
+    "class": "dyvix-button-cosmos",
+    "default-animation": "pulse"
   }
 ]

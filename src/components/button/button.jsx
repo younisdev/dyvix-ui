@@ -10,7 +10,7 @@ import Version from '../../../package.json';
  * @param {Object} props
  * @param {string} [props.animation] - Animation name, defaults to fade
  * @param {string} [props.className] - Button className
- * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Crimson'|'Midnight'|'Coffee')} props.theme - Button theme
+ * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Ocean'|'Forest'|'Crimson'|'Midnight'|'Coffee'|'Sakura'|'Volcanic'|'Cosmos')} props.theme - Button theme
  * @param {string} [props.background] - Button background color
  * @param {string} [props.color] - Button color
  * @param {Function} [props.onClick] - Click callback
