@@ -100,10 +100,5 @@
     "class": "dyvix-modal-volcanic",
     "default-animation": "swing",
     "radiused": false
-  },
-  {
-    "theme": "Cosmos",
-    "class": "dyvix-button-cosmos",
-    "default-animation": "drift"
   }
 ]
