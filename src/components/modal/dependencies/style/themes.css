@@ -399,8 +399,16 @@
 }
 .dyvix-modal-sakura {
   background:
-    radial-gradient(circle at top left, rgba(255, 183, 197, 0.25), transparent 50%),
-    radial-gradient(circle at bottom right, rgba(255, 105, 140, 0.15), transparent 50%),
+    radial-gradient(
+      circle at top left,
+      rgba(255, 183, 197, 0.25),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 105, 140, 0.15),
+      transparent 50%
+    ),
     linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%);
   border-radius: 2rem;
   color: #fce4ec;
@@ -429,7 +437,11 @@
 }
 .dyvix-modal-volcanic {
   background:
-    radial-gradient(circle at 50% 80%, rgba(255, 80, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 80, 0, 0.15) 0%,
+      transparent 50%
+    ),
     linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%);
   border: 2px solid rgba(255, 120, 0, 0.35);
   border-radius: 2rem;
@@ -467,59 +479,4 @@
 
 .dyvix-modal-volcanic > div > .modal-text {
   color: #ffe8d0;
-}
-.dyvix-button-cosmos {
-  background: radial-gradient(
-    circle at top,
-    #24104f 0%,
-    #161b4b 40%,
-    #090b1d 75%,
-    #03030a 100%
-  );
-  border: 2px solid rgba(140, 120, 255, 0.45);
-  border-radius: 2rem;
-  color: #f8fafc;
-  box-shadow:
-    inset 0 0 35px rgba(255, 255, 255, 0.05),
-    0 0 55px rgba(111, 76, 255, 0.25);
-  -webkit-box-shadow:
-    inset 0 0 35px rgba(255, 255, 255, 0.05),
-    0 0 55px rgba(111, 76, 255, 0.25);
-  -moz-box-shadow:
-    inset 0 0 35px rgba(255, 255, 255, 0.05),
-    0 0 55px rgba(111, 76, 255, 0.25);
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    -webkit-box-shadow 0.35s ease,
-    -moz-box-shadow 0.35s ease,
-    border-color 0.35s ease;
-}
-
-.dyvix-button-cosmos:hover {
-  transform: translateY(-4px) scale(1.01);
-  border-color: rgba(170, 150, 255, 0.8);
-  box-shadow:
-    inset 0 0 45px rgba(255, 255, 255, 0.08),
-    0 0 80px rgba(120, 90, 255, 0.45);
-  -webkit-box-shadow:
-    inset 0 0 45px rgba(255, 255, 255, 0.08),
-    0 0 80px rgba(120, 90, 255, 0.45);
-  -moz-box-shadow:
-    inset 0 0 45px rgba(255, 255, 255, 0.08),
-    0 0 80px rgba(120, 90, 255, 0.45);
-}
-
-.dyvix-button-cosmos:active {
-  transform: scale(0.96);
-  border-color: rgba(190, 175, 255, 0.9);
-  box-shadow:
-    inset 0 0 40px rgba(255, 255, 255, 0.07),
-    0 0 35px rgba(120, 90, 255, 0.3);
-  -webkit-box-shadow:
-    inset 0 0 40px rgba(255, 255, 255, 0.07),
-    0 0 35px rgba(120, 90, 255, 0.3);
-  -moz-box-shadow:
-    inset 0 0 40px rgba(255, 255, 255, 0.07),
-    0 0 35px rgba(120, 90, 255, 0.3);
 }
