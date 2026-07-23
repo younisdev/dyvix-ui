@@ -41,3 +41,8 @@
   -moz-box-shadow: 0px 0px 300px 0px rgba(9, 232, 165, 0.39);
   box-shadow: 0px 0px 300px 0px rgba(9, 232, 165, 0.39);
 }
+
+.toast-btn {
+  padding: 6px 12px;
+  border-radius: 4px;
+}
