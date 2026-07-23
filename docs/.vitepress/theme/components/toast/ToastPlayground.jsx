@@ -94,7 +94,9 @@ export default function ToastPlayground() {
             className={'toast-btn'}
             style={{ backgroundColor: '#22c55e' }}
             onClick={() => dyvixToast.success('Operation completed')}
-          ></button>
+          >
+            Success toast
+          </button>
           <button
             className={'toast-btn'}
             style={{ backgroundColor: '#ef4444' }}
