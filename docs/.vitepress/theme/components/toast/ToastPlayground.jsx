@@ -106,15 +106,15 @@ export default function ToastPlayground() {
           </button>
           <button
             className={'toast-btn'}
-            style={{ backgroundColor: '#ef4444' }}
-            onClick={() => dyvixToast.error('Something went wrong')}
+            style={{ backgroundColor: '#eab308' }}
+            onClick={() => dyvixToast.warning('Something went wrong')}
           >
             Warning toast
           </button>
           <button
             className={'toast-btn'}
-            style={{ backgroundColor: '#eab308' }}
-            onClick={() => dyvixToast.warning('Please review this action')}
+            style={{ backgroundColor: 'blue' }}
+            onClick={() => dyvixToast.info('Please review this action')}
           >
             Info toast
           </button>
