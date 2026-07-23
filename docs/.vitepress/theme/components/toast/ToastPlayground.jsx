@@ -94,9 +94,12 @@ export default function ToastPlayground() {
             className={'toast-btn'}
             style={{ backgroundColor: '#22c55e' }}
             onClick={() => dyvixToast.success('Operation completed')}
+          ></button>
+          <button
+            className={'toast-btn'}
+            style={{ backgroundColor: '#ef4444' }}
+            onClick={() => dyvixToast.error('Something went wrong')}
           >
-          </button>
-          <button className={'toast-btn'} style={{ backgroundColor: '#ef4444'}} onClick={() => dyvixToast.error('Something went wrong')}>
             Error toast
           </button>
           <button
