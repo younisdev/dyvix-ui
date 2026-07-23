@@ -52,3 +52,9 @@ function ToastExample() {
   );
 }
 ```
+
+## Try it
+
+Use the controls to configure the container, then trigger a toast to preview each notification type.
+
+<ToastPlayground />

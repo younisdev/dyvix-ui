@@ -5,6 +5,7 @@ import InputPlayground from './components/input/InputPlayground.vue';
 import ModalPlayground from './components/modal/ModalPlayground.vue';
 import SelectPlayground from './components/select/SelectPlayground.vue';
 import LabelPlayground from './components/label/LabelPlayground.vue';
+import ToastPlayground from './components/toast/ToastPlayground.vue';
 import './custom.css';
 
 export default {
@@ -16,5 +17,6 @@ export default {
     app.component('ModalPlayground', ModalPlayground);
     app.component('SelectPlayground', SelectPlayground);
     app.component('LabelPlayground', LabelPlayground);
+    app.component('ToastPlayground', ToastPlayground);
   }
 };
