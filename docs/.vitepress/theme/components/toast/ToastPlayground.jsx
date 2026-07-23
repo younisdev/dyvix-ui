@@ -82,17 +82,35 @@ export default function ToastPlayground() {
           animation={animation}
           segments={segments}
         />
-        <div style={{display: 'flex', gap: '5px', flexWrap: 'wrap', padding: '16px 0'}}>
-          <button className={'toast-btn'} style={{ backgroundColor: '#22c55e'}} onClick={() => dyvixToast.success('Operation completed')}>
-            Success toast
+        <div
+          style={{
+            display: 'flex',
+            gap: '5px',
+            flexWrap: 'wrap',
+            padding: '16px 0'
+          }}
+        >
+          <button
+            className={'toast-btn'}
+            style={{ backgroundColor: '#22c55e' }}
+            onClick={() => dyvixToast.success('Operation completed')}
+          >
           </button>
           <button className={'toast-btn'} style={{ backgroundColor: '#ef4444'}} onClick={() => dyvixToast.error('Something went wrong')}>
             Error toast
           </button>
-          <button className={'toast-btn'} style={{ backgroundColor: '#eab308'}} onClick={() => dyvixToast.warning('Please review this action')}>
+          <button
+            className={'toast-btn'}
+            style={{ backgroundColor: '#ef4444' }}
+            onClick={() => dyvixToast.error('Something went wrong')}
+          >
             Warning toast
           </button>
-          <button className={'toast-btn'} style={{ backgroundColor: '#3b82f6'}} onClick={() => dyvixToast.info('Here is an update')}>
+          <button
+            className={'toast-btn'}
+            style={{ backgroundColor: '#eab308' }}
+            onClick={() => dyvixToast.warning('Please review this action')}
+          >
             Info toast
           </button>
         </div>
