@@ -6,7 +6,7 @@
   "sideEffects": [
     "**/*.css",
     "**/*.json"
-  ],  
+  ],
   "workspaces": [
     "devbench"
   ],
@@ -129,6 +129,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "dyvix:build": "node dev-engine/scripts/generate-constants.js",
+    "dyvix:types": "node dev-engine/scripts/generate-types.js",
     "dyvix:chktheme": "node dev-engine/scripts/check-themes.js"
   },
   "overrides": {
