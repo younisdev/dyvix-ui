@@ -17,10 +17,17 @@ const CacheMapping = {
   }
 };
 
-export async function Validatebtn(animation, theme, callback, instance) {
+export async function Validatebtn(
+  animation: String | null | undefined,
+  theme: String | null | undefined,
+  callback: Function,
+  instance: any
+) {
   let normalizedAnimation = animation?.trim().toLowerCase();
-  const normalizedTheme =
-    theme?.trim().charAt(0).toUpperCase() + theme.trim().slice(1);
+  const trimedTheme = theme?.trim();
+  const normalizedTheme = trimedTheme
+    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
+    : undefined;
 
   const isTheme = await ValidatAndLoadJSON(
     CacheMapping,
@@ -30,8 +37,8 @@ export async function Validatebtn(animation, theme, callback, instance) {
     component,
     instance
   );
-  if (normalizedAnimation === '!/' && isTheme?.config?.theme) {
-    normalizedAnimation = isTheme?.config?.theme['default-animation'];
+  if (normalizedAnimation === '!/' && (isTheme as any)?.config?.theme) {
+    normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
   const isAnimation = await ValidatAndLoadJSON(
     CacheMapping,
@@ -40,13 +47,15 @@ export async function Validatebtn(animation, theme, callback, instance) {
     'animation',
     component
   );
-  if (!isAnimation.status && !allowsNull(normalizedAnimation)) {
+
+  if (!(isAnimation as any).status && !allowsNull(normalizedAnimation)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'
     };
   }
-  if (normalizedTheme !== '!/' && !isTheme.status) {
+
+  if (normalizedTheme !== undefined && !(isTheme as any).status) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid theme.'

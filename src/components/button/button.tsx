@@ -5,40 +5,31 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Validatebtn } from './validation';
 import Version from '../../../package.json';
+import type { DyvixButtonProps } from './dependencies/button.types';
+import { ConstructClasses } from '../../utils/utils';
 
-/**
- * @param {Object} props
- * @param {string} [props.animation] - Animation name, defaults to fade
- * @param {string} [props.className] - Button className
- * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Ocean'|'Forest'|'Crimson'|'Midnight'|'Coffee'|'Sakura'|'Volcanic'|'Cosmos')} props.theme - Button theme
- * @param {string} [props.background] - Button background color
- * @param {string} [props.color] - Button color
- * @param {Function} [props.onClick] - Click callback
- */
-function DyvixButton({
-  children = 'Click Me',
-  animation = '!/',
-  className = '',
-  theme = '!/',
+const DyvixButton: React.FC<DyvixButtonProps> = ({
+  children,
+  animation,
+  className,
+  theme,
   background,
   color,
   onClick,
   style,
   ...rest
-}) {
-  const btnRef = React.useRef(null);
+}) => {
+  const btnRef = React.useRef<HTMLDivElement>(null);
   const [configs, SetConfig] = React.useState({});
   const instanceId = React.useId();
 
-  const currentTheme = configs['theme'];
-  const currentAnimation = animation ? configs['animation'] : null;
-  function handleClick() {
+  const currentTheme = (configs as any)['theme'];
+  const currentAnimation = animation ? (configs as any)['animation'] : null;
+  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
     if (typeof onClick === 'function') {
-      onClick();
+      onClick(e);
     }
   }
-
-  className = `dyvix-button${currentTheme ? ` ${currentTheme.class}` : ''}${className !== '' ? ` ${className}` : ''}`;
 
   React.useEffect(() => {
     async function validate() {
@@ -72,8 +63,7 @@ function DyvixButton({
   }, [currentAnimation]);
 
   const props = {
-    className: className,
-    disabled: rest.disabled,
+    className: ConstructClasses('dyvix-button', currentTheme?.class, className),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
@@ -82,12 +72,12 @@ function DyvixButton({
   };
 
   return (
-    <div className="dyvix-btn-wrapper" ref={btnRef} {...rest}>
-      <button {...props} onClick={handleClick}>
+    <div className="dyvix-btn-wrapper" ref={btnRef}>
+      <button {...props} {...rest} onClick={handleClick}>
         {children}
       </button>
     </div>
   );
-}
+};
 
 export default DyvixButton;
