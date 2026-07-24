@@ -3,11 +3,11 @@
   "version": "0.4.1",
   "description": "Dyvix is an open source, modern, config-driven, animated component UI library. Beautiful by default, customizable by design.",
   "type": "module",
-  "sideEffects": false,
-  "license": "MIT",
-  "workspaces": [
-    "devbench"
+  "sideEffects": [
+    "**/*.css",
+    "**/*.json"
   ],
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -67,21 +67,21 @@
     "dist"
   ],
   "peerDependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "sugar-high": "^1.1.0"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "globals": "^17.4.0",
     "prettier": "^3.8.1",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react": ">=19",
+    "react-dom": ">=19",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "vite": "8.0.8",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "sugar-high": "^1.1.0"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -95,8 +95,26 @@
     "gsap",
     "animation",
     "components",
-    "ui-library"
+    "ui-library",
+    "react-components",
+    "typescript",
+    "css",
+    "theme",
+    "design-system",
+    "headless",
+    "modal",
+    "toast",
+    "table",
+    "navigation"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/younisdev/dyvix-ui.git"
+  },
+  "homepage": "https://dyvix-ui.vercel.app",
+  "bugs": {
+    "url": "https://github.com/younisdev/dyvix-ui/issues"
+  },
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "npm run build",
