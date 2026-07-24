@@ -6,6 +6,9 @@
   "sideEffects": [
     "**/*.css",
     "**/*.json"
+  ],  
+  "workspaces": [
+    "devbench"
   ],
   "license": "MIT",
   "main": "./dist/index.js",
