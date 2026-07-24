@@ -17,7 +17,12 @@ const CacheMapping = {
   }
 };
 
-export async function Validatebtn(animation: String | null | undefined, theme: String | null | undefined, callback: Function, instance: any) {
+export async function Validatebtn(
+  animation: String | null | undefined,
+  theme: String | null | undefined,
+  callback: Function,
+  instance: any
+) {
   let normalizedAnimation = animation?.trim().toLowerCase();
   const trimedTheme = theme?.trim();
   const normalizedTheme = trimedTheme

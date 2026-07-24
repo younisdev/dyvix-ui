@@ -78,6 +78,6 @@ const DyvixButton: React.FC<DyvixButtonProps> = ({
       </button>
     </div>
   );
-}
+};
 
 export default DyvixButton;
