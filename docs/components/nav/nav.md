@@ -69,10 +69,8 @@ function NavExample() {
   return (
     <DyvixNav animation="bubble" theme="Singularity">
       <DyvixNav.Brand href="/">Dyvix UI</DyvixNav.Brand>
-
       <DyvixNav.Menu>
         <DyvixNav.Link href="/docs">Docs</DyvixNav.Link>
-
         <DyvixNav.Link href="/components">Components</DyvixNav.Link>
       </DyvixNav.Menu>
     </DyvixNav>
