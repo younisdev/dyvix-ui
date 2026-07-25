@@ -47,7 +47,7 @@ export function ModalTest() {
       //background="red"
       // background={'Red'}
       //  preset={'ResetPassword'}
-      theme='Ocean'
+      theme="Ocean"
       type="auth"
       elements={[
         {
