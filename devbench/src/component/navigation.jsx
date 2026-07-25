@@ -4,7 +4,7 @@ import { DYVIX_GLOBAL_ANIMATION, DYVIX_GLOBAL_THEME } from '../../../src';
 export function NavTest() {
   return (
     <>
-      <DyvixNav animation="bubble" theme="Singularity">
+      <DyvixNav animation="bubble" theme="Industrial">
         <DyvixNav.Brand href="/">GOO</DyvixNav.Brand>
 
         <DyvixNav.Menu>
@@ -24,7 +24,7 @@ export function NavTest() {
         ]}
         animation="fade"
         microanimation="pulse"
-        theme={'Singularity'}
+        theme={'Industrial'}
       />
     </>
   );
