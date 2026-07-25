@@ -41,8 +41,7 @@ type DyvixButtonThemes =
 /*--!/--*/
 // Edit here safely
 
-export interface DyvixButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface DyvixButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   background?: string;
   color?: string;

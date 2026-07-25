@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { GuardStatus, allowsNull } from '../../utils/DyvixGuard';
 import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import type { StateSetter } from '../../utils/Smart Json Caching/SJCManager';
 
 const component = 'Nav';
 const CacheMapping = {
@@ -24,14 +25,14 @@ export async function ValidateNavigation(
   microanimation: string | null | undefined,
   theme: string | null | undefined,
   children: ReactNode,
-  callback: Function,
+  callback: StateSetter,
   instance: any
 ) {
-  let normalizedAnimation = animation?.trim().toLowerCase();
+  let normalizedAnimation = animation?.trim().toLowerCase() || '';
   const trimedTheme = theme?.trim();
   const normalizedTheme = trimedTheme
     ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
-    : undefined;
+    : '';
 
   const isTheme = await ValidatAndLoadJSON(
     CacheMapping,
@@ -63,7 +64,7 @@ export async function ValidateNavigation(
       component
     );
 
-    if (!(isMicroAnimation as any).status && !allowsNull(microanimation)) {
+    if (!isMicroAnimation.status && !allowsNull(microanimation)) {
       return {
         status: GuardStatus.Error,
         error: 'Please provide a valid micro animation.'
