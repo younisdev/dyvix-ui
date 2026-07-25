@@ -3,10 +3,11 @@ export const GuardStatus = {
   Warn: 'warn',
   Log: 'log',
   Success: 'success'
-};
+} as const;
 const PREFIX = '[DyvixUI]';
 
-export function EvaluateFailure(message = '', status) {
+type statusType = (typeof GuardStatus)[keyof typeof GuardStatus];
+export function EvaluateFailure(message: string, status: statusType) {
   const formatedmsg = `${PREFIX} - ${message}`;
 
   switch (status) {
@@ -15,12 +16,15 @@ export function EvaluateFailure(message = '', status) {
       return null;
     case GuardStatus.Warn:
       console.warn(formatedmsg);
-      break;
+      return null;
     case GuardStatus.Log:
       console.log(formatedmsg);
+      return null;
+    case GuardStatus.Success:
+      return null;
   }
 }
 
-export function allowsNull(value) {
+export function allowsNull(value: any) {
   return value !== null;
 }

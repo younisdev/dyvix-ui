@@ -4,7 +4,7 @@ import {
   allowsNull
 } from '../../utils/DyvixGuard';
 import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
-
+import type { StateSetter } from '../../utils/Smart Json Caching/SJCManager';
 const component = 'Button';
 const CacheMapping = {
   theme: {
@@ -20,14 +20,14 @@ const CacheMapping = {
 export async function Validatebtn(
   animation: String | null | undefined,
   theme: String | null | undefined,
-  callback: Function,
+  callback: StateSetter,
   instance: any
 ) {
-  let normalizedAnimation = animation?.trim().toLowerCase();
+  let normalizedAnimation = animation?.trim().toLowerCase() || '';
   const trimedTheme = theme?.trim();
   const normalizedTheme = trimedTheme
     ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
-    : undefined;
+    : '';
 
   const isTheme = await ValidatAndLoadJSON(
     CacheMapping,

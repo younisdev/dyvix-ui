@@ -19,7 +19,7 @@ import selectThemesCSS from '../../components/select/dependencies/style/themes.c
 import navThemesJSON from '../../components/nav/dependencies/themes.json?raw';
 import navThemesCSS from '../../components/nav/dependencies/style/themes.css?raw';
 
-export const JSON_LIBRARY = {
+export const JSON_LIBRARY: Record<string, string> = {
   '../../themeRegistry/themes.json': globalThemesJSON,
   '../../components/button/dependencies/themes.json': buttonThemesJSON,
   '../../components/modal/dependencies/themes.json': modalThemesJSON,
@@ -34,7 +34,7 @@ export const JSON_LIBRARY = {
   '../../components/nav/dependencies/themes.json': navThemesJSON
 };
 
-export const CSS_LIBRARY = {
+export const CSS_LIBRARY: Record<string, string> = {
   '../../components/button/dependencies/style/themes.css': buttonThemesCSS,
   '../../components/modal/dependencies/style/themes.css': modalThemesCSS,
   '../../components/file/dependencies/style/themes.css': fileThemesCSS,
