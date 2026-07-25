@@ -49,15 +49,16 @@
 
 .dyvix-nav-industrial {
   font-family: 'Geist';
-  border: 2px solid #374151;
+  border: 6px solid var(--dyvix-nav-border, #374151);
   border-radius: 10px;
-  background-color: #0a1429;
+  background-color: var(--dyvix-nav-bg, #0a1429);
   padding: 0.5rem;
   transition:
     box-shadow ease-in-out 0.6s,
     border-color ease-in-out 0.3s,
     background-color ease-in-out 0.2s,
-    transform ease-in-out 0.1s;
+    transform ease-in-out 0.1s,
+    border-radius ease-in-out 0.3s;
 }
 
 .dyvix-nav-industrial:hover {
