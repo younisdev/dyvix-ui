@@ -60,3 +60,4 @@ Thanks for everyone who has contributed to Dyvix UI!
 - [@hgshreyas](https://github.com/hgshreyas)
 - [@ANONYMOUSZED-beep](https://github.com/ANONYMOUSZED-beep)
 - [@smacica](https://github.com/smacica)
+- [@shreyabyte](https://github.com/shreyabyte)
