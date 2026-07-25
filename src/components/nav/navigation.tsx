@@ -9,41 +9,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ValidateNavigation } from './validation';
 import Version from '../../../package.json';
-type DyvixAnimationType =
-  | 'fade'
-  | 'bubble'
-  | 'zoom'
-  | 'unfold'
-  | 'glitch'
-  | 'pulse'
-  | 'aurora'
-  | 'drop'
-  | 'flip'
-  | 'glide'
-  | 'drift'
-  | 'float'
-  | 'swing';
-
-interface DyvixConfigBrandProps {
-  label: string;
-  href?: string;
-  onClick?: Function;
-}
-interface DyvixConfigItemsProps {
-  label: string;
-  href?: string;
-  onClick?: Function;
-}
-
-interface DyvixNavProps {
-  children?: ReactNode;
-  className?: string;
-  animation?: DyvixAnimationType | null;
-  microanimation?: DyvixAnimationType | null;
-  theme?: 'Singularity' | null;
-  brand?: DyvixConfigBrandProps;
-  items?: DyvixConfigItemsProps[];
-}
+import type { DyvixNavProps } from './dependencies/navigation.types';
 
 interface DyvixNavComponents extends FC<DyvixNavProps> {
   Menu: typeof DyvixNavMenu;

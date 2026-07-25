@@ -73,6 +73,14 @@
     "react": ">=19",
     "react-dom": ">=19"
   },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
@@ -80,15 +88,15 @@
     "prettier": "^3.8.1",
     "react": ">=19",
     "react-dom": ">=19",
+    "sugar-high": "^1.1.0",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "vite": "8.0.8",
-    "vitepress": "^1.6.4",
-    "sugar-high": "^1.1.0"
+    "vitepress": "^1.6.4"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "gsap": "^3.14.2",
+    "gsap": "^3.15.0",
     "idb-keyval": "^6.2.2"
   },
   "keywords": [
@@ -124,12 +132,12 @@
     "dev": "npm run dev -w devbench",
     "bench:install": "npm install -w devbench",
     "format": "prettier --write . --ignore-path .gitignore",
-    "prebuild": "npm run dyvix:build",
+    "prebuild": "npm run dyvix:build && npm run dyvix:types",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "dyvix:build": "node dev-engine/scripts/generate-constants.js",
-    "dyvix:types": "node dev-engine/scripts/generate-types.js",
+    "dyvix:build": "node dev-engine/scripts/generate-constants.js && npm run format",
+    "dyvix:types": "node dev-engine/scripts/generate-types.js && npm run format",
     "dyvix:chktheme": "node dev-engine/scripts/check-themes.js"
   },
   "overrides": {

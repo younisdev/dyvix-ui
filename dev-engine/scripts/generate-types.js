@@ -25,7 +25,22 @@ GenerateTypes(
   '',
   'button'
 );
-
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixNavAnimation',
+  './src/components/nav/dependencies/navigation.types.tsx',
+  'animation',
+  'nav'
+);
+GenerateTypes(
+  null,
+  './src/components/nav/dependencies/style/themes.css',
+  'DyvixNavThemes',
+  './src/components/nav/dependencies/navigation.types.tsx',
+  '',
+  'nav'
+);
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
  *
@@ -80,7 +95,7 @@ function GenerateTypes(
   const seperator = '/*--!/--*/';
   const [dynamicPart, staticPart] = targetFile.split(seperator);
   const typeRegex = new RegExp(
-    `type ${varname} =\\s*(?:\\|?\\s*'[^']*'\\s*)+;`,
+    `export type ${varname} =\\s*(?:\\|?\\s*'[^']*'\\s*)+;`,
     'g'
   );
   let newPart;
@@ -89,6 +104,8 @@ function GenerateTypes(
   } else {
     newPart = `${dynamicPart}\n${newTypeDefinition}`;
   }
+
+  newPart = newPart.trimEnd();
 
   fs.writeFileSync(
     absoluteTargetPath,
