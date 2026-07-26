@@ -24,7 +24,11 @@ const DyvixNav: DyvixNavComponents = ({
   microanimation,
   brand,
   items,
-  theme
+  theme,
+  background,
+  color,
+  style,
+  ...rest
 }) => {
   const instanceId = React.useId();
   const [configs, SetConfig] = React.useState({});
@@ -129,27 +133,26 @@ const DyvixNav: DyvixNavComponents = ({
     [brand, items, children]
   );
 
+  const wrapperProps = {
+    className: 'dyvix-nav-wrapper',
+    style: {
+      visibility:
+        (animation && !currentAnimation) ||
+        (microanimation && !currentMicroAnimation)
+          ? 'hidden'
+          : 'visible',
+      ...style,
+      ...(background && { '--dyvix-nav-bg': background }),
+      ...(color && {
+        '--dyvix-nav-color': color,
+        '--dyvix-nav-link-color': color
+      } )
+    } as React.CSSProperties
+  };
+
   return (
-    <div
-      className="dyvix-nav-wrapper"
-      ref={navigationRef}
-      style={{
-        opacity:
-          (animation && !currentAnimation) ||
-          (microanimation && !currentMicroAnimation)
-            ? 0
-            : undefined
-      }}
-    >
-      <nav
-        className={ConstructClasses(
-          'dyvix-nav',
-          className,
-          currentTheme?.class
-        )}
-      >
-        {resultJSX}
-      </nav>
+    <div ref={navigationRef} {...wrapperProps}>
+      <nav className={ConstructClasses('dyvix-nav', className, currentTheme?.class)} {...rest}>{resultJSX}</nav>
     </div>
   );
 };

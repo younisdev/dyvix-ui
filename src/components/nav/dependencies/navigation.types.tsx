@@ -19,7 +19,7 @@ export type DyvixNavAnimation =
   | 'spiral'
   | 'bounce';
 
-export type DyvixNavThemes = 'Singularity' | 'Ember';
+export type DyvixNavThemes = 'Singularity' | 'Industrial' | 'Ember';
 
 /*--!/--*/
 
@@ -36,7 +36,7 @@ interface DyvixConfigItemsProps {
   onClick?: Function;
 }
 
-export interface DyvixNavProps {
+export interface DyvixNavProps extends React.HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   className?: string;
   animation?: DyvixNavAnimation | null;
@@ -44,4 +44,7 @@ export interface DyvixNavProps {
   theme?: DyvixNavThemes | null;
   brand?: DyvixConfigBrandProps;
   items?: DyvixConfigItemsProps[];
+  style?: React.CSSProperties;
+  background?: string;
+  color?: string;
 }
