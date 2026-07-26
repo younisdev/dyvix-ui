@@ -1,9 +1,11 @@
+import type { ReactNode } from 'react';
 import {
   EvaluateFailure,
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import { ValidatAndLoadJSON, type StateSetter } from '../../utils/Smart Json Caching/SJCManager';
+import type { DyvixConfigDataProps, DyvixConfigColumnsProps, DyvixTableThemes } from './dependencies/table.types';
 
 const component = 'Table';
 const CacheMapping = {
@@ -17,18 +19,20 @@ const CacheMapping = {
   }
 };
 
-export async function ValidateTable(
-  animation,
-  theme,
-  children,
-  columns,
-  data,
-  callback,
-  instance
+export async function ValidateTable<T extends DyvixConfigDataProps = DyvixConfigDataProps>(
+  animation: string | null,
+  theme:  string | null | undefined,
+  children : ReactNode,
+  columns: DyvixConfigColumnsProps[] | undefined,
+  data: T[] | undefined,
+  callback: StateSetter,
+  instance: number | string
 ) {
-  let normalizedAnimation = animation?.trim().toLowerCase();
-  const normalizedTheme =
-    theme?.trim().charAt(0).toUpperCase() + theme.trim().slice(1);
+  let normalizedAnimation = animation?.trim().toLowerCase() || '';
+  const trimedTheme = theme?.trim();
+  const normalizedTheme = trimedTheme
+    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
+    : '';
 
   const isTheme = await ValidatAndLoadJSON(
     CacheMapping,
@@ -39,9 +43,10 @@ export async function ValidateTable(
     instance
   );
 
-  if (normalizedAnimation === '!/' && isTheme?.config?.theme) {
-    normalizedAnimation = isTheme?.config?.theme['default-animation'];
+  if (normalizedAnimation === '' && (isTheme as any)?.config?.theme) {
+    normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
+  
   const isAnimation = await ValidatAndLoadJSON(
     CacheMapping,
     normalizedAnimation,
@@ -125,7 +130,7 @@ export async function ValidateTable(
   return { status: GuardStatus.Success };
 }
 
-function checkDuplicates(elements, field) {
+function checkDuplicates(elements: Record<string, any>[], field: string) {
   let found = new Set();
   for (const element of elements) {
     const val = element[field];

@@ -146,13 +146,22 @@ const DyvixNav: DyvixNavComponents = ({
       ...(color && {
         '--dyvix-nav-color': color,
         '--dyvix-nav-link-color': color
-      } )
+      })
     } as React.CSSProperties
   };
 
   return (
     <div ref={navigationRef} {...wrapperProps}>
-      <nav className={ConstructClasses('dyvix-nav', className, currentTheme?.class)} {...rest}>{resultJSX}</nav>
+      <nav
+        className={ConstructClasses(
+          'dyvix-nav',
+          className,
+          currentTheme?.class
+        )}
+        {...rest}
+      >
+        {resultJSX}
+      </nav>
     </div>
   );
 };

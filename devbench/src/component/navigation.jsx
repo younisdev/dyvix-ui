@@ -24,8 +24,7 @@ export function NavTest() {
         ]}
         animation="bounce"
         microanimation="pulse"
-        theme='Singularity'
-
+        theme="Singularity"
       />
     </>
   );

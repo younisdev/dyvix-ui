@@ -32,13 +32,13 @@ export function TableTest() {
         theme={DYVIX_GLOBAL_THEME.COSMOS}
         animation={DYVIX_GLOBAL_ANIMATION.PULSE}
       >
-        <DyvixTableHeader>
-          <DyvixTableRow>
+        <DyvixTable.Header>
+          <DyvixTable.Row>
             <DyvixTableHead>Vehicle</DyvixTableHead>
             <DyvixTableHead>Class</DyvixTableHead>
             <DyvixTableHead>Top Speed</DyvixTableHead>
-          </DyvixTableRow>
-        </DyvixTableHeader>
+          </DyvixTable.Row>
+        </DyvixTable.Header>
         <DyvixTableBody>
           <DyvixTableRow>
             <DyvixTableCell>Nissan Skyline GT-R R34</DyvixTableCell>
