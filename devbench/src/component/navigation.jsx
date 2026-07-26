@@ -22,9 +22,9 @@ export function NavTest() {
           { label: 'Docs', href: '/docs' },
           { label: 'Components', href: '/components' }
         ]}
-        animation="fade"
+        animation="bounce"
         microanimation="pulse"
-        theme={'Industrial'}
+        theme="Singularity"
       />
     </>
   );

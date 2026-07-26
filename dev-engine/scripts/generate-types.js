@@ -41,6 +41,23 @@ GenerateTypes(
   '',
   'nav'
 );
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixTableAnimation',
+  './src/components/table/dependencies/table.types.tsx',
+  'animation',
+  'table'
+);
+GenerateTypes(
+  null,
+  './src/components/table/dependencies/style/themes.css',
+  'DyvixTableThemes',
+  './src/components/table/dependencies/table.types.tsx',
+  '',
+  'table'
+);
+
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
  *

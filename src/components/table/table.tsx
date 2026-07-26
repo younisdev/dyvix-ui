@@ -10,38 +10,33 @@ import gsap from 'gsap';
 import { ValidateTable } from './validation';
 import { GuardStatus, EvaluateFailure } from '../../utils/DyvixGuard';
 import Version from '../../../package.json';
+import type { DyvixTableProps, DyvixConfigDataProps } from './dependencies/table.types';
 
-/**
- * @param {Object} props
- * @param {React.ReactNode} [props.children] - Composable mode content (DyvixTableHeader, DyvixTableBody, etc.)
- * @param {string} [props.className] - Additional className
- * @param {('fade'|'bubble'|'zoom'|'unfold'|'glitch'|'pulse'|'aurora'|'drop'|'flip'|'glide'|'drift'|'float'|'swing')} [props.animation] - Animation name, defaults to 'fade'
- * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Ocean'|'Forest'|'Midnight'|'Crimson'|'Obsidian')} [props.theme] - Table theme
- * @param {string} [props.background] - Custom background color
- * @param {string} [props.color] - Custom text color
- * @param {Array<{key: string, label: string, sortable?: boolean}>} [props.columns] - Column definitions for config-driven mode
- * @param {Array<Object>} [props.data] - Row data for config-driven mode, keys must match column keys
- * @param {Object} [props.style] - Inline style overrides
- */
-function DyvixTable({
+interface SortConfigItem {
+  key: string,
+  direction: 'asc' | 'desc' | 'none',
+  index: number
+}
+
+const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps> ({
   children,
-  className = '',
+  className,
   animation = 'fade',
-  theme = '!/',
+  theme,
   background,
   color,
   columns,
   data,
   style,
   ...rest
-}) {
+}: DyvixTableProps<T>) => {
   const instanceId = React.useId();
   const [configs, SetConfig] = React.useState({});
-  const [sortConfig, setSortConfig] = React.useState([]);
-  const tableRef = React.useRef();
+  const [sortConfig, setSortConfig] = React.useState<SortConfigItem[]>([]);
+  const tableRef = React.useRef(null);
   const [isValid, SetIsvalid] = React.useState(false);
-  const currentAnimation = animation ? configs['animation'] : null;
-  const currentTheme = theme !== '!/' ? configs['theme'] : null;
+  const currentAnimation = animation ? (configs as any)['animation'] : null;
+  const currentTheme = theme ? (configs as any)['theme'] : null;
   const tableClasses =
     `dyvix-table  ${currentTheme?.class ?? ''} ${className}`.trim();
 
@@ -80,9 +75,9 @@ function DyvixTable({
 
   const ConstructTable = () => {
     const bodyRows = processedData.map((row) =>
-      columns.map((col) => row[col.key])
+      columns?.map((col) => row[col.key])
     );
-    const handleSortClick = (key) => {
+    const handleSortClick = (key: string) => {
       const isfound = sortConfig?.find((config) => config['key'] === key);
 
       if (isfound) {
@@ -97,7 +92,8 @@ function DyvixTable({
           })
         );
       } else {
-        const index = columns.findIndex((col) => col['key'] === key);
+        
+        const index = columns!.findIndex((col) => col['key'] === key);
         setSortConfig((prev) => [
           ...(prev || []),
           { key: key, direction: 'asc', index: index }
@@ -109,7 +105,7 @@ function DyvixTable({
       <>
         <DyvixTableHeader>
           <DyvixTableRow>
-            {columns.map((col, i) => {
+            {columns?.map((col, i) => {
               const isColumnSortable = col.sortable === true;
               const activeSort = isColumnSortable
                 ? sortConfig.find((config) => config.key === col.key)
@@ -146,7 +142,7 @@ function DyvixTable({
           {bodyRows.map((row, i) => {
             return (
               <DyvixTableRow key={i}>
-                {row.map((col, j) => (
+                {row?.map((col, j) => (
                   <DyvixTableCell key={`${i}-${j}`}>{col}</DyvixTableCell>
                 ))}
               </DyvixTableRow>
@@ -203,6 +199,22 @@ function DyvixTable({
       <table {...props}>{children}</table>
     </div>
   );
+};
+
+type DyvixTableComponents = typeof Table & {
+  Header: typeof DyvixTableHeader;
+  Head: typeof DyvixTableHead;
+  Row: typeof DyvixTableRow;
+  Body: typeof DyvixTableBody;
+  Cell: typeof DyvixTableCell;
 }
+
+const DyvixTable = Table as DyvixTableComponents
+
+DyvixTable.Body = DyvixTableBody;
+DyvixTable.Cell = DyvixTableCell;
+DyvixTable.Head = DyvixTableHead;
+DyvixTable.Header = DyvixTableHeader;
+DyvixTable.Row = DyvixTableRow;
 
 export default DyvixTable;

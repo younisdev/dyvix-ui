@@ -26,7 +26,7 @@ export async function ValidateNavigation(
   theme: string | null | undefined,
   children: ReactNode,
   callback: StateSetter,
-  instance: any
+  instance: string | number
 ) {
   let normalizedAnimation = animation?.trim().toLowerCase() || '';
   const trimedTheme = theme?.trim();
@@ -43,7 +43,7 @@ export async function ValidateNavigation(
     instance
   );
 
-  if (normalizedAnimation === '!/' && (isTheme as any)?.config?.theme) {
+  if (normalizedAnimation === '' && (isTheme as any)?.config?.theme) {
     normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
   const isAnimation = await ValidatAndLoadJSON(
