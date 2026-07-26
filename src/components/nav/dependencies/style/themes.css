@@ -149,3 +149,52 @@
   background-color: #ff4500;
   box-shadow: 0 0 8px #ff4500;
 }
+
+.dyvix-nav-frost {
+  background: var(--dyvix-nav-bg, #ffffff1a);
+  border: 5px groove var(--dyvix-nav-border, #ffffff40);
+  border-radius: 20px;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.2s ease-in-out;
+}
+
+.dyvix-nav-frost:hover {
+  border: 5px groove #f8f8f840;
+  transform: scale(1.01);
+  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+}
+
+.dyvix-nav-frost .dyvix-nav-brand {
+  color: rgba(213, 255, 248, 1);
+  text-shadow:
+    0 0 8px rgba(213, 255, 248, 0.65),
+    0 0 20px rgba(248, 248, 248, 0.25);
+}
+
+.dyvix-nav-frost .dyvix-nav-brand:hover {
+  color: var(--dyvix-nav-brand-hover, #f8f8f8);
+}
+
+.dyvix-nav-frost .dyvix-nav-link {
+  color: var(--dyvix-nav-link-color, rgba(213, 255, 248, 0.65));
+}
+
+.dyvix-nav-frost .dyvix-nav-link:hover {
+  color: var(--dyvix-nav-link-hover, #f8f8f8);
+}
+
+.dyvix-nav-frost .dyvix-nav-link::after {
+  background-color: rgba(213, 255, 248, 1);
+  box-shadow: 0 0 8px rgba(213, 255, 248, 0.65);
+}
