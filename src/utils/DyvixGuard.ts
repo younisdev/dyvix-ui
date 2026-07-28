@@ -25,6 +25,6 @@ export function EvaluateFailure(message: string, status: statusType) {
   }
 }
 
-export function allowsNull(value: any) {
-  return value !== null;
+export function allowsNull(value: any): boolean {
+  return value === null || value === undefined || value === '';
 }

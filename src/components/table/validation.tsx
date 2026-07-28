@@ -4,8 +4,15 @@ import {
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidatAndLoadJSON, type StateSetter } from '../../utils/Smart Json Caching/SJCManager';
-import type { DyvixConfigDataProps, DyvixConfigColumnsProps, DyvixTableThemes } from './dependencies/table.types';
+import {
+  ValidatAndLoadJSON,
+  type StateSetter
+} from '../../utils/Smart Json Caching/SJCManager';
+import type {
+  DyvixConfigDataProps,
+  DyvixConfigColumnsProps,
+  DyvixTableThemes
+} from './dependencies/table.types';
 
 const component = 'Table';
 const CacheMapping = {
@@ -19,10 +26,12 @@ const CacheMapping = {
   }
 };
 
-export async function ValidateTable<T extends DyvixConfigDataProps = DyvixConfigDataProps>(
+export async function ValidateTable<
+  T extends DyvixConfigDataProps = DyvixConfigDataProps
+>(
   animation: string | null,
-  theme:  string | null | undefined,
-  children : ReactNode,
+  theme: string | null | undefined,
+  children: ReactNode,
   columns: DyvixConfigColumnsProps[] | undefined,
   data: T[] | undefined,
   callback: StateSetter,
@@ -46,7 +55,7 @@ export async function ValidateTable<T extends DyvixConfigDataProps = DyvixConfig
   if (normalizedAnimation === '' && (isTheme as any)?.config?.theme) {
     normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
-  
+
   const isAnimation = await ValidatAndLoadJSON(
     CacheMapping,
     normalizedAnimation,

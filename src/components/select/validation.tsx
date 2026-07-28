@@ -3,7 +3,7 @@ import {
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import { ValidatAndLoadJSON, type StateSetter } from '../../utils/Smart Json Caching/SJCManager';
 
 const component = 'Select';
 const CacheMapping = {
@@ -19,16 +19,19 @@ const CacheMapping = {
 const supportedTypes = ['select', 'autocomplete'];
 
 export async function ValidateSelect(
-  elements,
-  type,
-  animation,
-  theme,
-  callback,
-  instance
+  elements: (string | number) [],
+  type: string | undefined,
+  animation: string | null,
+  theme: string | null | undefined,
+  callback: StateSetter,
+  instance: number | string
 ) {
-  let normalizedAnimation = animation?.trim().toLowerCase();
-  const normalizedTheme =
-    theme?.trim().charAt(0).toUpperCase() + theme.trim().slice(1);
+  let normalizedAnimation = animation?.trim().toLowerCase() || '';
+  const trimedTheme = theme?.trim();
+  const normalizedTheme = trimedTheme
+    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
+    : '';
+
   const isTheme = await ValidatAndLoadJSON(
     CacheMapping,
     normalizedTheme,
@@ -37,9 +40,11 @@ export async function ValidateSelect(
     component,
     instance
   );
-  if (normalizedAnimation === '!/' && isTheme?.config?.theme) {
-    normalizedAnimation = isTheme?.config?.theme['default-animation'];
+
+  if (normalizedAnimation === '' && (isTheme as any)?.config?.theme) {
+    normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
+
   const isAnimation = await ValidatAndLoadJSON(
     CacheMapping,
     normalizedAnimation,
@@ -47,6 +52,7 @@ export async function ValidateSelect(
     'animation',
     component
   );
+
   if (!isAnimation.status && !allowsNull(normalizedAnimation)) {
     return {
       status: GuardStatus.Error,
@@ -59,7 +65,7 @@ export async function ValidateSelect(
       error: 'Elements should be included as an array.'
     };
   }
-  if (!supportedTypes.includes(type)) {
+  if (!supportedTypes.includes(type || '')) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid select type.'

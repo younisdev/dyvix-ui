@@ -57,6 +57,22 @@ GenerateTypes(
   '',
   'table'
 );
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixSelectAnimation',
+  './src/components/select/dependencies/select.types.tsx',
+  'animation',
+  'select'
+);
+GenerateTypes(
+  null,
+  './src/components/select/dependencies/style/themes.css',
+  'DyvixSelectThemes',
+  './src/components/select/dependencies/select.types.tsx',
+  '',
+  'select'
+);
 
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)

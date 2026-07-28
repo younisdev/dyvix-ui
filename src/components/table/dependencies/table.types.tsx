@@ -46,9 +46,11 @@ export interface DyvixConfigColumnsProps<T = Record<string, any>> {
   label: string;
   sortable?: boolean;
 }
-export type DyvixConfigDataProps = Record<string, any>
+export type DyvixConfigDataProps = Record<string, any>;
 
-export interface DyvixTableProps <T extends Record<string, any> = DyvixConfigDataProps> {
+export interface DyvixTableProps<
+  T extends Record<string, any> = DyvixConfigDataProps
+> {
   children?: ReactNode;
   className?: string;
   animation?: DyvixTableAnimation | null;

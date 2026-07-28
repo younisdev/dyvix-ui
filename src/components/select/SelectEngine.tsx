@@ -2,8 +2,9 @@ import './dependencies/style/styles.css';
 import React, { forwardRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import type { DyvixSelectEngineProps } from './dependencies/select.types';
 
-const SelectEngine = forwardRef(
+const SelectEngine = forwardRef<HTMLUListElement ,DyvixSelectEngineProps>(
   (
     {
       elements = [],
@@ -17,18 +18,21 @@ const SelectEngine = forwardRef(
       OnChangeCallback,
       type,
       background,
-      className
+      className,
+      activeOptionId
     },
     ref
   ) => {
-    const itemsRef = React.useRef([]);
+    const itemsRef = React.useRef<(HTMLLIElement | null) []>([]);
 
-    function ChangeValue(value) {
+    function ChangeValue(value: string | number) {
       if (!value) {
         return;
       }
 
-      inputRef.current.value = value;
+      if(inputRef.current) {
+        inputRef.current.value = String(value);
+      }
       controller((prevData) => ({
         ...prevData,
         is_open: false,
@@ -39,7 +43,7 @@ const SelectEngine = forwardRef(
     }
 
     useGSAP(() => {
-      if (!ref?.current) return;
+      if (!ref || typeof ref === 'function' || !ref?.current) return;
 
       if (is_open) {
         gsap.fromTo(
@@ -51,7 +55,7 @@ const SelectEngine = forwardRef(
           {
             height: 'auto',
             opacity: 1,
-            duration: 1.1,
+            duration: 0.5,
             ease: 'power2.inOut',
             overwrite: 'auto'
           }
@@ -81,14 +85,15 @@ const SelectEngine = forwardRef(
             ref={ref}
             style={{
               ...(background && { '--dyvix-select-dropdown-color': background })
-            }}
+            } as React.CSSProperties}
           >
             {is_open &&
               elements.map((element, index) => (
                 <li
                   role="option"
-                  ref={(ele) => (itemsRef.current[index] = ele)}
-                  key={index}
+                  ref={(ele) => {if(ele) itemsRef.current[index] = ele}}
+                  aria-selected={index === activeIndex}
+                  key={`${element}-${index}`}
                   style={
                     index === activeIndex
                       ? {
@@ -109,6 +114,7 @@ const SelectEngine = forwardRef(
                       activeIndex: index
                     }));
                   }}
+                  {...(index === activeIndex && { id: activeOptionId })}
                 >
                   {element}
                 </li>
