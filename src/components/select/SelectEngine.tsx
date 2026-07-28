@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import type { DyvixSelectEngineProps } from './dependencies/select.types';
 
-const SelectEngine = forwardRef<HTMLUListElement ,DyvixSelectEngineProps>(
+const SelectEngine = forwardRef<HTMLUListElement, DyvixSelectEngineProps>(
   (
     {
       elements = [],
@@ -23,14 +23,14 @@ const SelectEngine = forwardRef<HTMLUListElement ,DyvixSelectEngineProps>(
     },
     ref
   ) => {
-    const itemsRef = React.useRef<(HTMLLIElement | null) []>([]);
+    const itemsRef = React.useRef<(HTMLLIElement | null)[]>([]);
 
     function ChangeValue(value: string | number) {
       if (!value) {
         return;
       }
 
-      if(inputRef.current) {
+      if (inputRef.current) {
         inputRef.current.value = String(value);
       }
       controller((prevData) => ({
@@ -83,15 +83,21 @@ const SelectEngine = forwardRef<HTMLUListElement ,DyvixSelectEngineProps>(
             className={`dyvix-dropdown-select ${className}`.trim()}
             role="listbox"
             ref={ref}
-            style={{
-              ...(background && { '--dyvix-select-dropdown-color': background })
-            } as React.CSSProperties}
+            style={
+              {
+                ...(background && {
+                  '--dyvix-select-dropdown-color': background
+                })
+              } as React.CSSProperties
+            }
           >
             {is_open &&
               elements.map((element, index) => (
                 <li
                   role="option"
-                  ref={(ele) => {if(ele) itemsRef.current[index] = ele}}
+                  ref={(ele) => {
+                    if (ele) itemsRef.current[index] = ele;
+                  }}
                   aria-selected={index === activeIndex}
                   key={`${element}-${index}`}
                   style={

@@ -6,11 +6,13 @@ import { gsap } from 'gsap';
 import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard';
 import { ValidateSelect } from './validation';
 import Version from '../../../package.json';
-import type { DyvixSelectProps, DyvixSelectState } from './dependencies/select.types';
+import type {
+  DyvixSelectProps,
+  DyvixSelectState
+} from './dependencies/select.types';
 import { ConstructClasses } from '../../utils/utils';
 
-
-const DyvixSelect : React.FC<DyvixSelectProps> =({
+const DyvixSelect: React.FC<DyvixSelectProps> = ({
   elements = [],
   onChange,
   type = 'select',
@@ -39,12 +41,15 @@ const DyvixSelect : React.FC<DyvixSelectProps> =({
   const dropdownSelectRef = React.useRef<HTMLDivElement>(null);
 
   function onChangeInternalCallback(data: string | number) {
-    if(typeof onChange !== 'function') return;
+    if (typeof onChange !== 'function') return;
 
     onChange(data);
   }
 
-  function TranslateEngineType(handler: 'focus' | 'blur', controller: Dispatch<SetStateAction<DyvixSelectState>>) {
+  function TranslateEngineType(
+    handler: 'focus' | 'blur',
+    controller: Dispatch<SetStateAction<DyvixSelectState>>
+  ) {
     if (parsedType === 'select') {
       if (handler !== 'focus' && handler !== 'blur') return;
 
@@ -56,7 +61,11 @@ const DyvixSelect : React.FC<DyvixSelectProps> =({
     }
   }
 
-  const PopulateSelect = (value: string | number, controller: Dispatch<SetStateAction<DyvixSelectState>>, elementArray: (string | number)[]) => {
+  const PopulateSelect = (
+    value: string | number,
+    controller: Dispatch<SetStateAction<DyvixSelectState>>,
+    elementArray: (string | number)[]
+  ) => {
     value = String(value).toLowerCase();
 
     if (!value) {
@@ -117,9 +126,12 @@ const DyvixSelect : React.FC<DyvixSelectProps> =({
       const ele = document.getElementById(key);
       if (ele) ele.remove();
     };
-  }, [animation, theme,elements, parsedType]);
+  }, [animation, theme, elements, parsedType]);
 
-  function HandleKey(e: React.KeyboardEvent<HTMLInputElement>, controller: Dispatch<SetStateAction<DyvixSelectState>>) {
+  function HandleKey(
+    e: React.KeyboardEvent<HTMLInputElement>,
+    controller: Dispatch<SetStateAction<DyvixSelectState>>
+  ) {
     if (Select.is_open == false) return;
 
     const { key } = e;
@@ -160,12 +172,12 @@ const DyvixSelect : React.FC<DyvixSelectProps> =({
       onChangeInternalCallback(selectedVal);
     }
 
-    if(key === 'Escape') {
+    if (key === 'Escape') {
       controller((prevData) => ({
         ...prevData,
         is_open: false,
         activeIndex: -1
-      }))
+      }));
     }
   }
 
@@ -179,13 +191,18 @@ const DyvixSelect : React.FC<DyvixSelectProps> =({
     });
   }, [currentAnimation]);
   const props = {
-    className: ConstructClasses('dyvix-select-wrapper', currentTheme?.class, className),
+    className: ConstructClasses(
+      'dyvix-select-wrapper',
+      currentTheme?.class,
+      className
+    ),
     style: {
       ...style
     }
   };
 
-  const activeOptionId = `dyvix-select-active-${Select.activeIndex}-${instanceId}` || undefined;
+  const activeOptionId =
+    `dyvix-select-active-${Select.activeIndex}-${instanceId}` || undefined;
   const inputProps: React.ComponentPropsWithRef<'input'> = {
     autoComplete: 'off',
     role: 'combobox',
@@ -227,7 +244,8 @@ const DyvixSelect : React.FC<DyvixSelectProps> =({
     ...(dropdownBackground && { background: dropdownBackground }),
     ...(dropdownThemeClass && { className: dropdownThemeClass }),
     controller: SetSelect,
-    OnChangeCallback: (value: string | number) => onChangeInternalCallback(value),
+    OnChangeCallback: (value: string | number) =>
+      onChangeInternalCallback(value),
     placeholder: placeholder || undefined,
     activeOptionId: activeOptionId
   };
@@ -240,6 +258,6 @@ const DyvixSelect : React.FC<DyvixSelectProps> =({
       <SelectEngine {...engineProps} />
     </div>
   );
-}
+};
 
 export default DyvixSelect;

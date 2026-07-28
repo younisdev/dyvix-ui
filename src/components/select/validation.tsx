@@ -3,7 +3,10 @@ import {
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidatAndLoadJSON, type StateSetter } from '../../utils/Smart Json Caching/SJCManager';
+import {
+  ValidatAndLoadJSON,
+  type StateSetter
+} from '../../utils/Smart Json Caching/SJCManager';
 
 const component = 'Select';
 const CacheMapping = {
@@ -19,7 +22,7 @@ const CacheMapping = {
 const supportedTypes = ['select', 'autocomplete'];
 
 export async function ValidateSelect(
-  elements: (string | number) [],
+  elements: (string | number)[],
   type: string | undefined,
   animation: string | null,
   theme: string | null | undefined,
