@@ -19,7 +19,7 @@ export type DyvixNavAnimation =
   | 'spiral'
   | 'bounce';
 
-export type DyvixNavThemes = 'Singularity' | 'Industrial' | 'Ember';
+export type DyvixNavThemes = 'Singularity' | 'Industrial' | 'Ember' | 'Frost';
 
 /*--!/--*/
 

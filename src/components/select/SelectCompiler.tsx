@@ -1,62 +1,56 @@
 import './dependencies/style/styles.css';
-import React from 'react';
+import React, { type Dispatch, type SetStateAction } from 'react';
 import SelectEngine from './SelectEngine';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard';
 import { ValidateSelect } from './validation';
 import Version from '../../../package.json';
+import type {
+  DyvixSelectProps,
+  DyvixSelectState
+} from './dependencies/select.types';
+import { ConstructClasses } from '../../utils/utils';
 
-/**
- * DyvixSelect component for creating customizable select inputs.
- *
- * @param {Object} props
- * @param {Array<Object>} props.elements - Array of selectable elements
- * @param {Function} [props.onChange] - Callback triggered when selection changes
- * @param {('select'|'autocomplete')} [props.type='select'] - Select behavior type
- * @param {string} [props.animation='fade'] - Animation name for the select
- * @param {('Singularity'|'Industrial'|'Blade'|'Ember'|'Neon')} [props.theme] - Select theme configuration
- * @param {string} [props.background] - Background color of the input field
- * @param {string} [props.dropdownBackground] - Background color of the dropdown
- * @param {string} [props.className] - Custom CSS class for the select wrapper
- * @param {string} [props.placeholder] - Placeholder text displayed in the input
- * @param {Object} [props.style] - Inline styles applied to the wrapper
- * @param {Object} [props.rest] - Additional input properties passed to the select input
- */
-function DyvixSelect({
+const DyvixSelect: React.FC<DyvixSelectProps> = ({
   elements = [],
   onChange,
   type = 'select',
   animation = 'fade',
-  theme = '!/',
+  theme,
   background,
   dropdownBackground,
   className,
   placeholder = '',
   style,
   ...rest
-}) {
-  type = type.includes('-') ? type.split('-')[1] : type;
+}) => {
+  const parsedType = type.includes('-') ? type.split('-')[1] : type;
 
-  const [Select, SetSelect] = React.useState({
+  const [Select, SetSelect] = React.useState<DyvixSelectState>({
     is_rendered: true,
     is_open: false,
     elements: [],
     selected: '',
     activeIndex: -1
   });
-  const selectWrapperRef = React.useRef(null);
-  const selectRef = React.useRef(null);
-  const [configs, SetConfig] = React.useState({});
+  const selectWrapperRef = React.useRef<HTMLDivElement>(null);
+  const selectRef = React.useRef<HTMLInputElement>(null);
+  const [configs, SetConfig] = React.useState<Record<string, any>>({});
   const instanceId = React.useId();
-  const dropdownSelectRef = React.useRef(null);
+  const dropdownSelectRef = React.useRef<HTMLDivElement>(null);
 
-  function onChangeInternalCallback(data) {
+  function onChangeInternalCallback(data: string | number) {
+    if (typeof onChange !== 'function') return;
+
     onChange(data);
   }
 
-  function TranslateEngineType(value, handler, controller) {
-    if (type === 'select') {
+  function TranslateEngineType(
+    handler: 'focus' | 'blur',
+    controller: Dispatch<SetStateAction<DyvixSelectState>>
+  ) {
+    if (parsedType === 'select') {
       if (handler !== 'focus' && handler !== 'blur') return;
 
       controller((prevData) => ({
@@ -67,8 +61,12 @@ function DyvixSelect({
     }
   }
 
-  const PopulateSelect = (value, controller, elementArray) => {
-    value = value.toLowerCase();
+  const PopulateSelect = (
+    value: string | number,
+    controller: Dispatch<SetStateAction<DyvixSelectState>>,
+    elementArray: (string | number)[]
+  ) => {
+    value = String(value).toLowerCase();
 
     if (!value) {
       controller((prevData) => ({
@@ -101,10 +99,8 @@ function DyvixSelect({
       is_open: true
     }));
   };
-  const currentAnimation = animation ? configs['animation'] : null;
-  const currentTheme = theme !== '!/' ? configs['theme'] : null;
-  className =
-    `dyvix-select-wrapper ${currentTheme?.class ?? ''} ${className !== '' ? ` ${className}` : ''}`.trim();
+  const currentTheme = (configs as any)['theme'];
+  const currentAnimation = animation ? (configs as any)['animation'] : null;
   const dropdownThemeClass = currentTheme?.['dropdown-class'];
   const inputThemeClass = currentTheme?.['input-class'];
 
@@ -112,7 +108,7 @@ function DyvixSelect({
     async function validate() {
       const validator = await ValidateSelect(
         elements,
-        type,
+        parsedType,
         animation,
         theme,
         SetConfig,
@@ -130,9 +126,12 @@ function DyvixSelect({
       const ele = document.getElementById(key);
       if (ele) ele.remove();
     };
-  }, [animation, theme]);
+  }, [animation, theme, elements, parsedType]);
 
-  function HandleKey(e, controller) {
+  function HandleKey(
+    e: React.KeyboardEvent<HTMLInputElement>,
+    controller: Dispatch<SetStateAction<DyvixSelectState>>
+  ) {
     if (Select.is_open == false) return;
 
     const { key } = e;
@@ -159,16 +158,26 @@ function DyvixSelect({
     }
 
     if (key === 'Enter') {
-      if (index < 0 || index > max) return;
+      if (index < 0 || index > max || !selectRef.current) return;
+      const selectedVal = Select.elements[index] || '';
 
-      selectRef.current.value = Select.elements[index];
+      selectRef.current.value = String(selectedVal);
       controller((prevData) => ({
         ...prevData,
-        selected: Select.elements[index],
+        selected: selectedVal,
         is_open: false,
         activeIndex: -1
       }));
       e.preventDefault();
+      onChangeInternalCallback(selectedVal);
+    }
+
+    if (key === 'Escape') {
+      controller((prevData) => ({
+        ...prevData,
+        is_open: false,
+        activeIndex: -1
+      }));
     }
   }
 
@@ -182,36 +191,44 @@ function DyvixSelect({
     });
   }, [currentAnimation]);
   const props = {
-    className: className,
+    className: ConstructClasses(
+      'dyvix-select-wrapper',
+      currentTheme?.class,
+      className
+    ),
     style: {
       ...style
     }
   };
-  const inputProps = {
+
+  const activeOptionId =
+    `dyvix-select-active-${Select.activeIndex}-${instanceId}` || undefined;
+  const inputProps: React.ComponentPropsWithRef<'input'> = {
     autoComplete: 'off',
     role: 'combobox',
-    'aria-autocomplete': 'list',
+    'aria-autocomplete': 'list' as const,
     'aria-expanded': Select.is_open,
-    'aria-haspopup': 'listbox',
-    className: `dyvix-select-input ${inputThemeClass}`.trim(),
+    'aria-haspopup': 'listbox' as const,
+    'aria-activedescendant': activeOptionId,
+    className: ConstructClasses('dyvix-select-input', inputThemeClass),
     type: 'text',
     ...(background && { style: { background: background } }),
     ...rest,
     ref: selectRef,
     placeholder: placeholder || undefined,
-    onChange: (e) => {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       PopulateSelect(e.target.value, SetSelect, elements);
       onChangeInternalCallback(e.target.value);
     },
-    onFocus: (e) => {
-      TranslateEngineType(e.target.value, 'focus', SetSelect);
+    onFocus: (e: React.FocusEvent<HTMLInputElement>) => {
+      TranslateEngineType('focus', SetSelect);
       if (rest.onFocus) rest.onFocus(e);
     },
-    onBlur: (e) => {
-      TranslateEngineType(e.target.value, 'blur', SetSelect);
+    onBlur: (e: React.FocusEvent<HTMLInputElement>) => {
+      TranslateEngineType('blur', SetSelect);
       if (rest.onBlur) rest.onBlur(e);
     },
-    onKeyDown: (e) => {
+    onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
       HandleKey(e, SetSelect);
       if (rest.onKeyDown) rest.onKeyDown(e);
     }
@@ -227,8 +244,10 @@ function DyvixSelect({
     ...(dropdownBackground && { background: dropdownBackground }),
     ...(dropdownThemeClass && { className: dropdownThemeClass }),
     controller: SetSelect,
-    OnChangeCallback: (value) => onChangeInternalCallback(value),
-    placeholder: placeholder || undefined
+    OnChangeCallback: (value: string | number) =>
+      onChangeInternalCallback(value),
+    placeholder: placeholder || undefined,
+    activeOptionId: activeOptionId
   };
 
   return (
@@ -239,6 +258,6 @@ function DyvixSelect({
       <SelectEngine {...engineProps} />
     </div>
   );
-}
+};
 
 export default DyvixSelect;

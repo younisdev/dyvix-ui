@@ -10,15 +10,18 @@ import gsap from 'gsap';
 import { ValidateTable } from './validation';
 import { GuardStatus, EvaluateFailure } from '../../utils/DyvixGuard';
 import Version from '../../../package.json';
-import type { DyvixTableProps, DyvixConfigDataProps } from './dependencies/table.types';
+import type {
+  DyvixTableProps,
+  DyvixConfigDataProps
+} from './dependencies/table.types';
 
 interface SortConfigItem {
-  key: string,
-  direction: 'asc' | 'desc' | 'none',
-  index: number
+  key: string;
+  direction: 'asc' | 'desc' | 'none';
+  index: number;
 }
 
-const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps> ({
+const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
   children,
   className,
   animation = 'fade',
@@ -91,8 +94,8 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps> ({
             return { ...config, direction: 'asc' };
           })
         );
+        ``;
       } else {
-        
         const index = columns!.findIndex((col) => col['key'] === key);
         setSortConfig((prev) => [
           ...(prev || []),
@@ -207,9 +210,9 @@ type DyvixTableComponents = typeof Table & {
   Row: typeof DyvixTableRow;
   Body: typeof DyvixTableBody;
   Cell: typeof DyvixTableCell;
-}
+};
 
-const DyvixTable = Table as DyvixTableComponents
+const DyvixTable = Table as DyvixTableComponents;
 
 DyvixTable.Body = DyvixTableBody;
 DyvixTable.Cell = DyvixTableCell;
