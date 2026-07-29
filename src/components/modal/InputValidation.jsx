@@ -5,7 +5,7 @@ import {
   allowsNull
 } from '../../utils/DyvixGuard';
 import { isValidRegex } from './dependencies/validator/validators';
-import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
 import { DYVIX_MODAL_PRESET, DYVIX_MODAL_TYPE } from '../../constants';
 
 const CacheMapping = {
@@ -100,7 +100,7 @@ export async function ValidateInput(
   callback,
   instance
 ) {
-  const isTheme = await ValidatAndLoadJSON(
+  const isTheme = await ValidateAndLoadJSON(
     CacheMapping,
     theme,
     callback,
@@ -117,14 +117,14 @@ export async function ValidateInput(
     animation = isTheme.config.theme['default-animation'];
   }
   const [isAnimation, isPreset] = await Promise.all([
-    ValidatAndLoadJSON(
+    ValidateAndLoadJSON(
       CacheMapping,
       animation,
       callback,
       'animation',
       component
     ),
-    ValidatAndLoadJSON(CacheMapping, preset, callback, 'preset', component)
+    ValidateAndLoadJSON(CacheMapping, preset, callback, 'preset', component)
   ]);
 
   if (preset !== '!/') {
