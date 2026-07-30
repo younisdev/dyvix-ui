@@ -52,7 +52,6 @@ export default function ModalPlayground() {
       utility: 'preset',
       type: 'select',
       options: DYVIX_MODAL_PRESET,
-      current: '!/',
       format: 'string',
       allowNull: true
     },
