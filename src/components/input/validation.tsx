@@ -3,8 +3,15 @@ import {
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidateAndLoadJSON, type StateSetter } from '../../utils/Smart Json Caching/SJCManager';
-import type { DyvixInputAnimation, DyvixInputThemes, DyvixInputType } from './dependencies/input.types';
+import {
+  ValidateAndLoadJSON,
+  type StateSetter
+} from '../../utils/Smart Json Caching/SJCManager';
+import type {
+  DyvixInputAnimation,
+  DyvixInputThemes,
+  DyvixInputType
+} from './dependencies/input.types';
 
 const component = 'Input';
 const CacheMapping = {

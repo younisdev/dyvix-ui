@@ -19,7 +19,6 @@ export type DyvixInputAnimation =
   | 'spiral'
   | 'bounce';
 
-
 export type DyvixInputThemes =
   | 'Singularity'
   | 'Industrial'
@@ -37,7 +36,6 @@ export type DyvixInputThemes =
   | 'Coffee'
   | 'Sakura';
 
-
 export type DyvixInputType =
   | 'text'
   | 'password'
@@ -53,8 +51,10 @@ export type DyvixInputType =
 
 // Edit here safely
 
-export interface DyvixInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface DyvixInputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type'
+> {
   type?: DyvixInputType;
   background?: string;
   color?: string;

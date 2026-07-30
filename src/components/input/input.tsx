@@ -59,8 +59,12 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
   const currentType = type ? (configs as any)['type'] : null;
   const currentTheme = theme ? (configs as any)['theme'] : null;
 
-  const inputClasses =
-    ConstructClasses('dyvix-input', currentType?.class, currentTheme?.class, className);
+  const inputClasses = ConstructClasses(
+    'dyvix-input',
+    currentType?.class,
+    currentTheme?.class,
+    className
+  );
   const props = {
     className: inputClasses,
     type: currentType?.type,
@@ -125,6 +129,6 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
       ></input>
     </div>
   );
-}
+};
 
 export default DyvixInput;
