@@ -73,6 +73,55 @@ GenerateTypes(
   '',
   'select'
 );
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixModalAnimation',
+  './src/components/modal/dependencies/modal.types.tsx',
+  'animation',
+  'modal'
+);
+GenerateTypes(
+  null,
+  './src/components/modal/dependencies/style/themes.css',
+  'DyvixModalThemes',
+  './src/components/modal/dependencies/modal.types.tsx',
+  '',
+  'modal'
+);
+GenerateTypes(
+  './src/components/modal/dependencies/types.json',
+  null,
+  'DyvixModalTypes',
+  './src/components/modal/dependencies/modal.types.tsx',
+  'type',
+  'modal'
+);
+GenerateTypes(
+  './src/components/modal/dependencies/presets.json',
+  null,
+  'DyvixModalPresets',
+  './src/components/modal/dependencies/modal.types.tsx',
+  'preset',
+  'modal'
+);
+GenerateTypes(
+  './src/components/modal/dependencies/validator/validators.json',
+  null,
+  'DyvixModalValidators',
+  './src/components/modal/dependencies/modal.types.tsx',
+  'preset',
+  'modal'
+);
+GenerateTypes(
+  './src/components/modal/dependencies/elements.json',
+  null,
+  'DyvixModalElementTypes',
+  './src/components/modal/dependencies/modal.types.tsx',
+  'element',
+  'modal',
+  'inherited-element'
+);
 
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
@@ -89,7 +138,8 @@ function GenerateTypes(
   varname,
   outputPath,
   jsonTargetKey = '',
-  targetComponent
+  targetComponent,
+  inheritanceKey = ''
 ) {
   const targetSourcepath = jsonpath || csspath;
   if (!targetSourcepath || !outputPath) return;
@@ -110,7 +160,19 @@ function GenerateTypes(
   let data = [];
 
   if (type === 'json') {
-    data = sourceFile.map((e) => e[jsonTargetKey]).filter(Boolean);
+    data = Array.isArray(sourceFile)
+      ? sourceFile
+          .flatMap((e) => {
+            const primary = e[jsonTargetKey];
+            const inherited =
+              inheritanceKey && e[inheritanceKey]
+                ? [].concat(e[inheritanceKey])
+                : [];
+            return [primary, ...inherited];
+          })
+          .flat()
+          .filter(Boolean)
+      : [];
   } else {
     let globalThemes = getFile(REGISTERY_PATH, 'json').map((reg) => reg.theme);
     globalThemes.forEach((theme) => {
