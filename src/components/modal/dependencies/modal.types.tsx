@@ -70,8 +70,7 @@ export type DyvixModalValidators =
 
 // Edit here safely
 
-type DyvixModalValidatorsWithRegex = DyvixModalValidators | `$R${string}`
-
+type DyvixModalValidatorsWithRegex = DyvixModalValidators | `$R${string}`;
 
 export interface DyvixElements {
   type: DyvixModalElementTypes;
@@ -86,7 +85,7 @@ export interface DyvixElements {
 
 export interface NormalizedDyvixElements extends Omit<
   DyvixElements,
-  'placeholder' | 'id' | 'name'  | 'match' | 'options' | 'validation'
+  'placeholder' | 'id' | 'name' | 'match' | 'options' | 'validation'
 > {
   placeholder: string[];
   id?: string[];
