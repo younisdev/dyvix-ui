@@ -8,77 +8,57 @@ import {
   ExecuteValidator,
   ExecuteRegex
 } from './dependencies/validator/validators';
-import {
-  SJCManager,
-  CACHETYPE
-} from '../../utils/Smart Json Caching/SJCManager';
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import {
-  SerializeData,
-  normalizeElements,
-  validateElements
-} from './InputValidation';
-import { GuardStatus } from '../../utils/DyvixGuard';
+import { SerializeData } from './InputValidation';
 import Version from '../../../package.json';
 import DyvixButton from '../button/button';
 import DyvixFile from '../file/file';
 import DyvixInput from '../input/input';
-import { values } from 'idb-keyval';
 import DyvixLabel from '../label/label';
+import type {
+  DyvixModalProps,
+  NormalizedDyvixElements
+} from './dependencies/modal.types';
+import type { DyvixButtonThemes } from '../button/dependencies/button.types';
+import { ConstructClasses } from '../../utils/utils';
 
 export const validType = typesData.map((e) => e.type);
 export const validRules = validationData.map((e) => e.preset);
 
 export const eleData = elementsData;
-const componentsMap = {
+const componentsMap: Record<string, React.ElementType> = {
   DyvixSelect: DyvixSelect,
   DyvixFile: DyvixFile,
   DyvixInput: DyvixInput
 };
 
-/**
- * @param {Object} props
- * @param {string} [props.title] - Modal title
- * @param {('auth'|'form')} [props.type] - Modal type
- * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Crimson'|'Midnight')} [props.theme] - Modal theme
- * @param {string} [props.preset] - Modal preset name
- * @param {string} [props.background] - Modal background color
- * @param {string} [props.animation] - Animation name, defaults to theme default
- * @param {string} [props.Id] - Modal id
- * @param {string} [props.className] - Modal className
- * @param {Function} [props.onClose] - Close callback
- * @param {Function} [props.onChange] - Change callback
- * @param {Function} [props.onSubmit] - Submit callback
- * @param {Array<Object>} [props.elements] - Array of element configs
- * @param {Object} [props.style] - Inline style overrides
- */
-function Modal({
-  title = '!/',
-  type = `form`,
+const Modal: React.FC<DyvixModalProps> = ({
+  title,
+  type = 'form',
   elements,
-  preset = '!/',
-  theme = '!/',
+  preset,
+  theme,
   background,
-  animation = '!/',
+  animation,
   Id,
   className,
   onSubmit,
   onChange,
   onClose,
   style
-}) {
-  const [data, SetData] = React.useState({});
-  const [errors, SetErrors] = React.useState({});
-  const [visibility, SetVisibility] = React.useState(true);
-  const [status, SetStatus] = React.useState('entering');
+}) => {
+  const [data, SetData] = React.useState<Record<string, string | number>>({});
+  const [errors, SetErrors] = React.useState<Record<string, string | null>>({});
+  const [visibility, SetVisibility] = React.useState<boolean>(true);
+  const [status, SetStatus] = React.useState<string>('entering');
   const [configs, SetConfig] = React.useState({});
-  const [fields, SetFields] = React.useState([]);
+  const [fields, SetFields] = React.useState<NormalizedDyvixElements[]>([]);
   const instanceId = React.useId();
-  const modalRef = React.useRef(null);
-  function handleInputChange(name, value) {
-    const nextData = { ...data, [name]: value };
+  const modalRef = React.useRef<HTMLDivElement>(null);
+  function handleInputChange(name: string, value: string | File) {
+    const nextData = { ...data, [name]: String(value) };
     SetData(nextData);
     const validation = handleValidation(nextData);
 
@@ -92,33 +72,42 @@ function Modal({
       onClose();
     }
   }
-  function handleValidation(data) {
-    const newErrors = {};
+  function handleValidation(data: Record<string, string | number>) {
+    const newErrors: Record<string, string | null> = {};
     for (const field of fields) {
-      if (Array.isArray(field.match) && field.match !== undefined) {
+      if (field && Array.isArray(field.match) && field.match !== undefined) {
         for (const [i, matchTo] of field.match.entries()) {
           if (matchTo) {
-            const matchToFields = fields.find((f) => f.id.includes(matchTo));
+            const matchToFields = fields.find((f) => f.id?.includes(matchTo));
             if (matchToFields) {
-              const matchToIndex = matchToFields.id.findIndex(
+              const matchToIndex = matchToFields.id?.findIndex(
                 (f) => f === matchTo
               );
-              const matchToName = matchToFields.name[matchToIndex];
-              const matchToPlaceholder =
-                matchToFields.placeholder[matchToIndex];
-              const sourceValue = data[field.name[i]];
-              const targetValue = data[matchToName];
-              const serializeLabel = (str) => {
-                if (!str) return 'Field';
-                return str
-                  .replace(/^(Enter|Type|Provide|Input|Your|Confirm)\s+/gi, '')
-                  .trim();
-              };
-              const sourceLabel = serializeLabel(field.placeholder[i]);
-              const targetLabel = serializeLabel(matchToPlaceholder);
-              if (sourceValue && targetValue && sourceValue !== targetValue) {
-                newErrors[field.name[i]] =
-                  `${sourceLabel} must match ${targetLabel}`;
+
+              if (matchToIndex !== undefined && matchToIndex !== -1) {
+                const matchToName = matchToFields.name[matchToIndex];
+                const matchToPlaceholder =
+                  matchToFields.placeholder[matchToIndex];
+                const fieldName = field.name[i];
+
+                if (!fieldName || !matchToName) continue;
+                const sourceValue = data[fieldName];
+                const targetValue = data[matchToName];
+                const serializeLabel = (str: string) => {
+                  if (!str) return 'Field';
+                  return str
+                    .replace(
+                      /^(Enter|Type|Provide|Input|Your|Confirm)\s+/gi,
+                      ''
+                    )
+                    .trim();
+                };
+                const sourceLabel = serializeLabel(field.placeholder[i] || '');
+                const targetLabel = serializeLabel(matchToPlaceholder || '');
+                if (sourceValue && targetValue && sourceValue !== targetValue) {
+                  newErrors[fieldName] =
+                    `${sourceLabel} must match ${targetLabel}`;
+                }
               }
             }
           }
@@ -166,9 +155,9 @@ function Modal({
   const currentType = typesData.find(
     (e) => e.type.trim().toLowerCase() === type.trim().toLowerCase()
   );
-  const currentTheme = configs['theme'];
-  const currentAnimation = configs['animation'];
-  const currentPreset = configs['preset'];
+  const currentTheme = (configs as any)['theme'];
+  const currentAnimation = (configs as any)['animation'];
+  const currentPreset = (configs as any)['preset'];
   const themeTextStyle = {
     color: currentTheme?.['text-color']
   };
@@ -185,26 +174,30 @@ function Modal({
     })
   };
 
-  const serilaizedclassName =
-    className +
-    `${currentTheme?.class ? ` ${currentTheme?.class}` : ''}` +
-    `${currentType?.class ? ` ${currentType.class}` : ''}`;
+  const serilaizedclassName = ConstructClasses(
+    className,
+    currentTheme?.class || '',
+    currentType?.class || ''
+  );
   // Dynamicily calculate modal sizing and position
   // text row height seem to be suitable for other elements
   // Add more mapping keys if other elements started spacing weird
-  const ROW_HEIGHT = {
+  const ROW_HEIGHT: Record<string, number> = {
     text: 56,
     radio: 65
   };
   const ROW_GAP = 25;
   const BASEHEIGHT = 200; // Ceiling space + Floor space combined
+  const safeField = fields || [];
 
   let TOTAL_HEIGHT =
     BASEHEIGHT +
-    fields?.reduce((acc, field, index) => {
-      const type = field.type;
-      const gap = index < fields.length - 1 ? ROW_GAP : 0;
-      return acc + (ROW_HEIGHT[type] || ROW_HEIGHT.text) + gap;
+    safeField.reduce((acc, field, index) => {
+      const type = field?.type;
+      const gap = index < safeField.length - 1 ? ROW_GAP : 0;
+      const height = ROW_HEIGHT[type] ?? ROW_HEIGHT.text;
+
+      return acc + height! + gap;
     }, 0);
 
   const geometryBuffer =
@@ -238,15 +231,9 @@ function Modal({
     ...activeStyle
   };
   if (currentPreset) {
-    title = title !== '!/' ? title : currentPreset['default-title'];
-    animation =
-      animation !== '!/'
-        ? animation
-        : currentPreset['default-animation'] || 'fade';
-    theme =
-      theme !== '!/' ? theme : currentPreset['default-theme'] || 'Singularity';
-  } else {
-    theme = theme !== '!/' ? theme : '!/';
+    title = title || currentPreset['default-title'];
+    animation = animation || currentPreset['default-animation'] || 'fade';
+    theme = theme || currentPreset['default-theme'] || 'Singularity';
   }
 
   React.useEffect(() => {
@@ -279,7 +266,10 @@ function Modal({
   React.useEffect(() => {
     fields?.forEach((field) => {
       field.name.forEach((name) => {
-        SetData((prev) => ({ ...prev, [name]: null }));
+        SetData((prev: Record<string, string | number>) => ({
+          ...prev,
+          [name]: ''
+        }));
       });
     });
   }, [fields]);
@@ -287,8 +277,8 @@ function Modal({
   // Auto-focus for the first input when modal opens
   React.useEffect(() => {
     if (visibility && modalRef.current) {
-      // Search the first input, select o textarea inside the modal
-      const firstInput = modalRef.current.querySelector(
+      // Search the first input, select or textarea inside the modal
+      const firstInput = modalRef.current.querySelector<HTMLElement>(
         'input, select, textarea'
       );
 
@@ -334,7 +324,7 @@ function Modal({
             id={Id}
             style={modalStyles}
           >
-            {currentType.closable && (
+            {currentType?.closable && (
               <button
                 className="modal-close-btn"
                 onClick={() => handleModalClose()}
@@ -356,31 +346,40 @@ function Modal({
                 elementsData.find((e) =>
                   e['inherited-element']?.includes(field.type)
                 );
-              const Tag = elementDef.is_custom
-                ? componentsMap[elementDef.tag]
-                : elementDef.tag;
+              const Tag: React.ElementType = elementDef?.is_custom
+                ? (componentsMap[elementDef.tag] as React.ElementType)
+                : (elementDef?.tag as React.ElementType);
 
               return (
-                <div className="grouped-elements" key={field.name || i}>
+                <div
+                  className="grouped-elements"
+                  key={
+                    Array.isArray(field.name) && field.name.length > 0
+                      ? field.name.join('-')
+                      : i
+                  }
+                >
                   {Array.from({ length: field.amount }, (_, j) => {
-                    const name = field.name[j];
-                    const id = field.id[j];
+                    const name = field.name[j] || '';
+                    const id = field.id?.[j];
                     const fontSize = field.amount === 3 ? '0.6rem' : 'normal';
                     const fontWeight = field.amount === 3 ? '520' : '200';
                     // Spread aria props safely to avoid runtime errors if elementDef.aria is missing or null
-                    let ariaProps = elementDef.aria
+                    let ariaProps: Record<string, any> = elementDef?.aria
                       ? { ...elementDef.aria }
                       : {};
                     // Allow field-specific aria overrides for inherited elements (e.g., search gets role="searchbox")
-                    const overrideConfig =
-                      elementDef['inherit-overrides']?.[field.type];
+                    const inheritOverrides = elementDef?.[
+                      'inherit-overrides'
+                    ] as Record<string, any> | undefined;
+                    const overrideConfig = inheritOverrides?.[field.type];
 
                     if (overrideConfig && overrideConfig.aria) {
                       ariaProps = { ...ariaProps, ...overrideConfig.aria };
                     }
 
                     // Build aria attributes object with defensive checks for undefined/null values
-                    const ariaAttributes = {};
+                    const ariaAttributes: Record<string, any> = {};
 
                     if (
                       ariaProps.role !== undefined &&
@@ -401,8 +400,8 @@ function Modal({
                       ariaAttributes['aria-required'] =
                         ariaProps['aria-required'];
                     }
-                    const options = elementDef['requires-options']
-                      ? Array.isArray(field.options[0])
+                    const options = elementDef?.['requires-options']
+                      ? field.options && Array.isArray(field.options[0])
                         ? field.options[j]
                         : field.options
                       : [];
@@ -412,32 +411,35 @@ function Modal({
                         .toLowerCase()
                         .replace(/[^a-z0-9-]/g, '-');
                     const Tagprobs = {
-                      className: `modal-element ` + elementDef['default-class'],
+                      className:
+                        `modal-element ` + elementDef?.['default-class'],
                       name: name,
                       theme: theme,
                       style: {
                         fontSize: fontSize,
                         fontWeight: fontWeight,
-                        ...(elementDef['tag'] !== 'DyvixInput' && {
+                        ...(elementDef?.['tag'] !== 'DyvixInput' && {
                           ...themeInputStyle
                         })
                       },
                       ...ariaAttributes,
                       ...(id && id !== '!/' && { id: id }),
-                      ...(elementDef['is_custom'] && { animation: null }),
-                      ...(elementDef['supports-placeholder'] && {
+                      ...(elementDef?.['is_custom'] && { animation: null }),
+                      ...(elementDef?.['supports-placeholder'] && {
                         placeholder: field.placeholder[j],
                         'aria-label': field.placeholder[j]
                       }),
-                      ...(elementDef['supports-label'] && {
+                      ...(elementDef?.['supports-label'] && {
                         label: field.placeholder[j]
                       }),
-                      ...(elementDef['supports_type'] && { type: field.type }),
-                      ...(elementDef['supports_autocomplete'] && {
+                      ...(elementDef?.['supports_type'] && {
+                        type: field.type
+                      }),
+                      ...(elementDef?.['supports_autocomplete'] && {
                         autoComplete:
                           field.type === 'password' ? 'current-password' : 'on'
                       }),
-                      ...(elementDef.tag === 'DyvixSelect' && {
+                      ...(elementDef?.tag === 'DyvixSelect' && {
                         elements: options,
                         animation: '!/',
                         className: 'modal-element'
@@ -445,24 +447,30 @@ function Modal({
                       ...(ErrorId && {
                         'aria-describedby': ErrorId
                       }),
-                      ...(elementDef.tag !== 'DyvixFile' && {
-                        onChange: (e) => {
+                      ...(elementDef?.tag !== 'DyvixFile' && {
+                        onChange: (e: any) => {
                           const value =
-                            elementDef.tag === 'DyvixInput'
+                            elementDef?.tag === 'DyvixInput'
                               ? e.target.value
-                              : elementDef['is_custom']
+                              : elementDef?.['is_custom']
                                 ? e
                                 : field.type === 'checkbox'
                                   ? e.target.checked
                                   : e.target.value;
-                          handleInputChange(name, value);
+                          handleInputChange(name || '', value);
                         }
                       }),
-                      ...(elementDef.tag === 'DyvixFile' && {
-                        onUpload: (e) => {
-                          handleInputChange(name, e);
+                      ...(elementDef?.tag === 'DyvixFile' && {
+                        onUpload: (
+                          e: React.ChangeEvent<HTMLInputElement> | File | string
+                        ) => {
+                          const value =
+                            typeof e === 'object' && 'target' in e
+                              ? e.target.value
+                              : e;
+                          handleInputChange(name || '', value);
                         },
-                        ...((theme === '!/' || !theme) && {
+                        ...(!theme && {
                           background: 'transparent'
                         })
                       })
@@ -470,12 +478,12 @@ function Modal({
 
                     return (
                       <div className="dyvix-field-wrapper" key={name}>
-                        {elementDef['requires-options'] && Tag === 'select' ? (
+                        {elementDef!['requires-options'] && Tag === 'select' ? (
                           <Tag defaultValue="" key={j} {...Tagprobs}>
                             <option disabled value="">
                               {field.placeholder[j]}
                             </option>
-                            {options.map((opt, index) => (
+                            {options?.map((opt, index) => (
                               <option
                                 role="option"
                                 key={index}
@@ -504,7 +512,7 @@ function Modal({
                                   {field.placeholder[j]}
                                 </DyvixLabel>
                               )}
-                            {options.map((opt, index) => (
+                            {options?.map((opt, index) => (
                               <DyvixLabel
                                 key={index}
                                 className="modal-radio-label"
@@ -517,7 +525,9 @@ function Modal({
                                   name={name}
                                   value={opt}
                                   checked={data[name] === opt}
-                                  onChange={() => handleInputChange(name, opt)}
+                                  onChange={() =>
+                                    handleInputChange(name, String(opt))
+                                  }
                                   {...(id &&
                                     id !== '!/' && { id: `${id}-${index}` })}
                                 />
@@ -546,11 +556,11 @@ function Modal({
                 </div>
               );
             })}
-            {currentType.submit && (
+            {currentType?.submit && (
               <DyvixButton
                 className="modal-btn"
                 onClick={handleSubmit}
-                theme={theme.toLowerCase()}
+                theme={(theme?.toLowerCase() as DyvixButtonThemes) || null}
                 animation={null}
               >
                 {currentType.submitLabel}
@@ -561,6 +571,6 @@ function Modal({
       )}
     </>
   );
-}
+};
 
 export default Modal;

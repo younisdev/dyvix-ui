@@ -1,12 +1,23 @@
-import { validType, eleData, validRules } from './modal';
+import { validType, eleData, validRules } from './modal.js';
 import {
   EvaluateFailure,
   GuardStatus,
   allowsNull
-} from '../../utils/DyvixGuard';
-import { isValidRegex } from './dependencies/validator/validators';
-import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
-import { DYVIX_MODAL_PRESET, DYVIX_MODAL_TYPE } from '../../constants';
+} from '../../utils/DyvixGuard.js';
+import { isValidRegex } from './dependencies/validator/validators.js';
+import {
+  ValidatAndLoadJSON,
+  type StateSetter
+} from '../../utils/Smart Json Caching/SJCManager.js';
+import { DYVIX_MODAL_PRESET, DYVIX_MODAL_TYPE } from '../../constants.js';
+import type {
+  DyvixElements,
+  DyvixModalElementTypes,
+  DyvixModalPresets,
+  DyvixModalThemes,
+  DyvixModalTypes,
+  NormalizedDyvixElements
+} from './dependencies/modal.types.js';
 
 const CacheMapping = {
   theme: {
@@ -28,34 +39,34 @@ const CacheMapping = {
 };
 const component = 'Modal';
 const defaultElement = {
-  type: '!/',
-  placeholder: ['!/'],
-  id: '!/',
-  match: '!/',
-  className: '!/',
-  validation: '!/',
+  type: '',
+  placeholder: [],
+  id: '',
+  match: '',
+  className: '',
+  validation: '',
   amount: 1
 };
 
-let supportedTypes = null;
-let config = null;
+let supportedTypes: DyvixModalElementTypes[] = [];
+let config: any = null;
 
-async function getSupportedElements() {
+async function getSupportedElements(): Promise<DyvixModalElementTypes[]> {
   const { DYVIX_MODAL_ELEMENT } = await import('../../constants.js');
-  return Object.values(DYVIX_MODAL_ELEMENT);
+  return Object.values(DYVIX_MODAL_ELEMENT) as DyvixModalElementTypes[];
 }
 export async function SerializeData(
-  title,
-  type,
-  elements,
-  preset,
-  theme,
-  animation,
-  Id,
-  Class,
-  onSubmit,
-  callback,
-  instance
+  title: string,
+  type: DyvixModalTypes,
+  elements: DyvixElements[],
+  preset: DyvixModalPresets,
+  theme: DyvixModalThemes | null | undefined,
+  animation: DyvixModalThemes | null,
+  Id: string,
+  Class: string,
+  onSubmit: Function,
+  callback: StateSetter,
+  instance: string | number
 ) {
   const validator = await ValidateInput(
     title,
@@ -75,10 +86,13 @@ export async function SerializeData(
   if (validator.status === GuardStatus.Error) {
     return EvaluateFailure(validator.error, validator.status);
   }
-  const presetData = config.find((item) => item.preset);
-  const finalElements = preset !== '!/' ? presetData?.preset?.fields : elements;
+  const presetData = config.find((item: any) => item.preset);
+  const finalElements = preset ? presetData?.preset?.fields : elements;
   const normalizedElements = normalizeElements(
-    finalElements?.map((ele) => ({ ...defaultElement, ...ele }))
+    finalElements?.map((ele: Partial<DyvixElements>) => ({
+      ...defaultElement,
+      ...ele
+    }))
   );
   const eleValidator = validateElements(normalizedElements);
 
@@ -88,38 +102,39 @@ export async function SerializeData(
   return normalizedElements;
 }
 export async function ValidateInput(
-  title,
-  type,
-  elements,
-  preset,
-  theme,
-  animation,
-  Id,
-  Class,
-  onSubmit,
-  callback,
-  instance
+  title: string,
+  type: DyvixModalTypes,
+  elements: DyvixElements[],
+  preset: DyvixModalPresets,
+  theme: DyvixModalThemes | null | undefined,
+  animation: DyvixModalThemes | null,
+  Id: string,
+  Class: string,
+  onSubmit: Function,
+  callback: StateSetter,
+  instance: string | number
 ) {
+  let normalizedAnimation = animation?.trim().toLowerCase() || '';
+  const trimedTheme = theme?.trim();
+  const normalizedTheme = trimedTheme
+    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
+    : '';
+
   const isTheme = await ValidatAndLoadJSON(
     CacheMapping,
-    theme,
+    normalizedTheme,
     callback,
     'theme',
     component,
     instance
   );
-  if (
-    theme !== '!/' &&
-    isTheme.status &&
-    animation === '!/' &&
-    preset === '!/'
-  ) {
-    animation = isTheme.config.theme['default-animation'];
+  if (normalizedTheme && isTheme.status && animation && preset) {
+    normalizedAnimation = isTheme.config.theme['default-animation'];
   }
   const [isAnimation, isPreset] = await Promise.all([
     ValidatAndLoadJSON(
       CacheMapping,
-      animation,
+      normalizedAnimation,
       callback,
       'animation',
       component
@@ -127,7 +142,7 @@ export async function ValidateInput(
     ValidatAndLoadJSON(CacheMapping, preset, callback, 'preset', component)
   ]);
 
-  if (preset !== '!/') {
+  if (preset) {
     if (!isPreset.status) {
       return {
         status: GuardStatus.Error,
@@ -136,13 +151,13 @@ export async function ValidateInput(
     }
   }
 
-  if (animation !== '!/' && !isAnimation.status && allowsNull(animation)) {
+  if (animation && !isAnimation.status && allowsNull(animation)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'
     };
   }
-  if (!isTheme.status && preset === '!/' && theme !== '!/') {
+  if (!isTheme.status && preset && normalizedTheme) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid theme.'
@@ -157,8 +172,7 @@ export async function ValidateInput(
       error: 'onSubmit should be provided as a function.'
     };
   }
-  if (preset !== '!/') return { status: GuardStatus.Success };
-  if (title === '!/') {
+  if (!title) {
     return { status: GuardStatus.Error, error: 'Please provide a title' };
   }
   if (!validType.includes(type)) {
@@ -176,7 +190,7 @@ export async function ValidateInput(
 
   return { status: GuardStatus.Success };
 }
-export function validateElements(elements) {
+export function validateElements(elements: NormalizedDyvixElements[]) {
   const MAX_ROWS = 9;
 
   if (!elements) {
@@ -198,13 +212,13 @@ export function validateElements(elements) {
       eleData.find((e) => e.element === element.type) ||
       eleData.find((e) => e['inherited-element']?.includes(element.type));
 
-    if (!supportedTypes.includes(element.type)) {
+    if (!supportedTypes?.includes(element.type)) {
       return {
         status: GuardStatus.Error,
         error: 'Elements should include a valid type.'
       };
     }
-    if (currentType['requires-options']) {
+    if (currentType?.['requires-options']) {
       if (!element.options || element.options.length === 0) {
         return {
           status: GuardStatus.Error,
@@ -298,7 +312,6 @@ export function validateElements(elements) {
     }
 
     for (const rule of rules) {
-      if (rule === '!/') break;
       if (!rule || typeof rule !== 'string') continue;
 
       if (rule.startsWith('$R')) {
@@ -317,12 +330,12 @@ export function validateElements(elements) {
         };
       }
     }
-    if (element.match && element.match !== '!/') {
+    if (element.match) {
       const matchTargets =
         typeof element.match === 'string' ? [element.match] : element.match;
       for (const matchId of matchTargets) {
-        if (matchId === '!/') continue;
-        const exist = elements.find((e) =>
+        if (!matchId) continue;
+        const exist = elements.find((e: DyvixElements) =>
           Array.isArray(e.id) ? e.id.includes(matchId) : e.id === matchId
         );
         if (!exist) {
@@ -347,7 +360,9 @@ export function validateElements(elements) {
 
   return { status: GuardStatus.Success };
 }
-export function normalizeElements(elements) {
+export function normalizeElements(
+  elements: DyvixElements[]
+): NormalizedDyvixElements[] {
   return elements?.map((ele) => ({
     ...ele,
     placeholder:
@@ -356,22 +371,25 @@ export function normalizeElements(elements) {
     id: typeof ele.id === 'string' ? [ele.id] : ele.id,
     validation:
       typeof ele.validation === 'string' ? [ele.validation] : ele.validation,
-    match:
-      ele.match === '!/' || !ele.match
-        ? null
-        : typeof ele.match === 'string'
-          ? [ele.match]
-          : ele.match
-  }));
+    match: !ele.match
+      ? null
+      : typeof ele.match === 'string'
+        ? [ele.match]
+        : ele.match
+  })) as NormalizedDyvixElements[];
 }
-function checkDuplicates(elements, field) {
+function checkDuplicates(
+  elements: DyvixElements[],
+  field: keyof DyvixElements
+) {
   let found = new Set();
 
   for (const element of elements) {
-    const currentFields = element[field];
+    const value = element[field];
+    const currentFields = Array.isArray(value) ? value : [value];
 
     for (const val of currentFields) {
-      if (val === '!/') continue;
+      if (!val) continue;
       if (found.has(val)) {
         return {
           status: GuardStatus.Error,
