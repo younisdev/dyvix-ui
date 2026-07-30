@@ -3,7 +3,15 @@ import {
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import {
+  ValidateAndLoadJSON,
+  type StateSetter
+} from '../../utils/Smart Json Caching/SJCManager';
+import type {
+  DyvixInputAnimation,
+  DyvixInputThemes,
+  DyvixInputType
+} from './dependencies/input.types';
 
 const component = 'Input';
 const CacheMapping = {
@@ -22,17 +30,18 @@ const CacheMapping = {
 };
 
 export async function Validateinput(
-  animation,
-  theme,
-  type,
-  callback,
-  instance
+  animation: DyvixInputAnimation | null | undefined,
+  theme: DyvixInputThemes | null | undefined,
+  type: DyvixInputType,
+  callback: StateSetter,
+  instance: any
 ) {
-  let normalizedAnimation = animation?.trim().toLowerCase();
+  let normalizedAnimation = animation?.trim().toLowerCase() || '';
   let normalizedType = type?.trim().toLowerCase();
-  const normalizedTheme =
-    theme?.trim().charAt(0).toUpperCase() + theme.trim().slice(1);
-
+  const trimedTheme = theme?.trim();
+  const normalizedTheme = trimedTheme
+    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
+    : '';
   const isTheme = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedTheme,
@@ -42,8 +51,8 @@ export async function Validateinput(
     instance
   );
 
-  if (normalizedAnimation === '!/' && isTheme?.config?.theme) {
-    normalizedAnimation = isTheme?.config?.theme['default-animation'];
+  if (normalizedTheme && isTheme.status && !normalizedAnimation) {
+    normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
   const [isAnimation, isType] = await Promise.all([
     ValidateAndLoadJSON(
@@ -68,13 +77,18 @@ export async function Validateinput(
       error: 'Please provide a valid animation.'
     };
   }
+
   if (!isType.status && !allowsNull(normalizedType)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid type.'
     };
   }
-  if (normalizedTheme !== '!/' && !isTheme.status) {
+  if (
+    normalizedTheme &&
+    !(isTheme as any).status &&
+    !allowsNull(normalizedTheme)
+  ) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid theme.'

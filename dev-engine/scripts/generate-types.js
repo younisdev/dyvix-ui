@@ -138,7 +138,30 @@ GenerateTypes(
   '',
   'label'
 );
-
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixInputAnimation',
+  './src/components/input/dependencies/input.types.tsx',
+  'animation',
+  'input'
+);
+GenerateTypes(
+  null,
+  './src/components/input/dependencies/style/themes.css',
+  'DyvixInputThemes',
+  './src/components/input/dependencies/input.types.tsx',
+  '',
+  'input'
+);
+GenerateTypes(
+  './src/components/input/dependencies/types.json',
+  null,
+  'DyvixInputType',
+  './src/components/input/dependencies/input.types.tsx',
+  'type',
+  'input'
+);
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
  *
