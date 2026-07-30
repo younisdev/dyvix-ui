@@ -3,21 +3,10 @@ import {
   EvaluateFailure,
   GuardStatus,
   allowsNull
-} from '../../utils/DyvixGuard.js';
-import { isValidRegex } from './dependencies/validator/validators.js';
-import {
-  ValidatAndLoadJSON,
-  type StateSetter
-} from '../../utils/Smart Json Caching/SJCManager.js';
-import { DYVIX_MODAL_PRESET, DYVIX_MODAL_TYPE } from '../../constants.js';
-import type {
-  DyvixElements,
-  DyvixModalElementTypes,
-  DyvixModalPresets,
-  DyvixModalThemes,
-  DyvixModalTypes,
-  NormalizedDyvixElements
-} from './dependencies/modal.types.js';
+} from '../../utils/DyvixGuard';
+import { isValidRegex } from './dependencies/validator/validators';
+import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import { DYVIX_MODAL_PRESET, DYVIX_MODAL_TYPE } from '../../constants';
 
 const CacheMapping = {
   theme: {
@@ -114,13 +103,7 @@ export async function ValidateInput(
   callback: StateSetter,
   instance: string | number
 ) {
-  let normalizedAnimation = animation?.trim().toLowerCase() || '';
-  const trimedTheme = theme?.trim();
-  const normalizedTheme = trimedTheme
-    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
-    : '';
-
-  const isTheme = await ValidatAndLoadJSON(
+  const isTheme = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedTheme,
     callback,
@@ -132,14 +115,14 @@ export async function ValidateInput(
     normalizedAnimation = isTheme.config.theme['default-animation'];
   }
   const [isAnimation, isPreset] = await Promise.all([
-    ValidatAndLoadJSON(
+    ValidateAndLoadJSON(
       CacheMapping,
       normalizedAnimation,
       callback,
       'animation',
       component
     ),
-    ValidatAndLoadJSON(CacheMapping, preset, callback, 'preset', component)
+    ValidateAndLoadJSON(CacheMapping, preset, callback, 'preset', component)
   ]);
 
   if (preset) {

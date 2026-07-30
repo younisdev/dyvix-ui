@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { GuardStatus, allowsNull } from '../../utils/DyvixGuard';
-import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
 import type { StateSetter } from '../../utils/Smart Json Caching/SJCManager';
 
 const component = 'Nav';
@@ -34,7 +34,7 @@ export async function ValidateNavigation(
     ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
     : '';
 
-  const isTheme = await ValidatAndLoadJSON(
+  const isTheme = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedTheme,
     callback,
@@ -46,7 +46,7 @@ export async function ValidateNavigation(
   if (normalizedAnimation === '' && (isTheme as any)?.config?.theme) {
     normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
-  const isAnimation = await ValidatAndLoadJSON(
+  const isAnimation = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedAnimation,
     callback,
@@ -56,7 +56,7 @@ export async function ValidateNavigation(
 
   if (microanimation) {
     let normalizedMicroAnimation = microanimation?.trim().toLowerCase();
-    const isMicroAnimation = await ValidatAndLoadJSON(
+    const isMicroAnimation = await ValidateAndLoadJSON(
       CacheMapping,
       normalizedMicroAnimation,
       callback,

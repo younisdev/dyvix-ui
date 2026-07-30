@@ -3,7 +3,7 @@ import {
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidatAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
+import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
 
 const component = 'Input';
 const CacheMapping = {
@@ -33,7 +33,7 @@ export async function Validateinput(
   const normalizedTheme =
     theme?.trim().charAt(0).toUpperCase() + theme.trim().slice(1);
 
-  const isTheme = await ValidatAndLoadJSON(
+  const isTheme = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedTheme,
     callback,
@@ -46,14 +46,14 @@ export async function Validateinput(
     normalizedAnimation = isTheme?.config?.theme['default-animation'];
   }
   const [isAnimation, isType] = await Promise.all([
-    ValidatAndLoadJSON(
+    ValidateAndLoadJSON(
       CacheMapping,
       normalizedAnimation,
       callback,
       'animation',
       component
     ),
-    ValidatAndLoadJSON(
+    ValidateAndLoadJSON(
       CacheMapping,
       normalizedType,
       callback,
