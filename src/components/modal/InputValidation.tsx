@@ -9,9 +9,9 @@ import {
   ValidateAndLoadJSON,
   type StateSetter
 } from '../../utils/Smart Json Caching/SJCManager.js';
-import { DYVIX_MODAL_PRESET, DYVIX_MODAL_TYPE } from '../../constants.js';
 import type {
   DyvixElements,
+  DyvixModalAnimation,
   DyvixModalElementTypes,
   DyvixModalPresets,
   DyvixModalThemes,
@@ -59,12 +59,12 @@ export async function SerializeData(
   title: string,
   type: DyvixModalTypes,
   elements: DyvixElements[],
-  preset: DyvixModalPresets,
+  preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
-  animation: DyvixModalThemes | null,
-  Id: string,
-  Class: string,
-  onSubmit: Function,
+  animation: DyvixModalAnimation | null | undefined,
+  Id: string | undefined,
+  Class: string | undefined,
+  onSubmit: Function| undefined,
   callback: StateSetter,
   instance: string | number
 ) {
@@ -86,7 +86,7 @@ export async function SerializeData(
   if (validator.status === GuardStatus.Error) {
     return EvaluateFailure(validator.error, validator.status);
   }
-  const presetData = config.find((item: any) => item.preset);
+  const presetData = config?.find((item: any) => item?.preset);
   const finalElements = preset ? presetData?.preset?.fields : elements;
   const normalizedElements = normalizeElements(
     finalElements?.map((ele: Partial<DyvixElements>) => ({
@@ -105,9 +105,9 @@ export async function ValidateInput(
   title: string,
   type: DyvixModalTypes,
   elements: DyvixElements[],
-  preset: DyvixModalPresets,
+  preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
-  animation: DyvixModalThemes | null,
+  animation: DyvixModalAnimation | null | undefined,
   Id: string,
   Class: string,
   onSubmit: Function,
@@ -128,7 +128,7 @@ export async function ValidateInput(
     component,
     instance
   );
-  if (theme && isTheme.status && animation && preset) {
+  if (normalizedTheme && isTheme.status && normalizedAnimation && preset) {
     normalizedAnimation = isTheme.config.theme['default-animation'];
   }
   const [isAnimation, isPreset] = await Promise.all([
@@ -139,7 +139,7 @@ export async function ValidateInput(
       'animation',
       component
     ),
-    ValidateAndLoadJSON(CacheMapping, preset, callback, 'preset', component)
+    ValidateAndLoadJSON(CacheMapping, preset || '', callback, 'preset', component)
   ]);
 
   if (preset) {
@@ -151,7 +151,7 @@ export async function ValidateInput(
     }
   }
 
-  if (animation && !isAnimation.status && allowsNull(animation)) {
+  if (normalizedAnimation && !isAnimation.status && allowsNull(normalizedAnimation)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'
