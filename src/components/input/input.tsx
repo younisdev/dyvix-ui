@@ -4,37 +4,19 @@ import './dependencies/style/style.css';
 import React from 'react';
 import { Validateinput } from './validation';
 import Version from '../../../package.json';
+import type { DyvixInputProps } from './dependencies/input.types';
+import { ConstructClasses } from '../../utils/utils';
+import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard';
 
-/**
- * @param {Object} props
- * @param {string} [props.type] - Input type, defaults to 'text'
- * @param {string} [props.placeholder] - Input placeholder text
- * @param {string} [props.autoComplete] - Input autoComplete attribute
- * @param {string} [props.background] - Input background color
- * @param {string} [props.color] - Input color
- * @param {string} [props.animation] - Animation name, defaults to fade
- * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Crimson'|'Midnight')} props.theme - Input theme
- * @param {string} [props.className] - Input className
- * @param {string} [props.name] - Input name
- * @param {string} [props.id] - Input id
- * @param {boolean} [props.disabled] - Disables the input when true
- * @param {string} [props['aria-label']] - Accessible label for the input
- * @param {Function} [props.onFocus] - Focus event callback
- * @param {Function} [props.onBlur] - Blur event callback
- * @param {Function} [props.onChange] - Change event callback, receives the event object
- * @param {Function} [props.onKeyDown] - KeyDown event callback, receives the event object
- * @param {Function} [props.onKeyUp] - KeyUp event callback, receives the event object
- * @param {Object} [props.style] - Inline style overrides
- */
-function DyvixInput({
+const DyvixInput: React.FC<DyvixInputProps> = ({
   type = 'text',
   placeholder,
   autoComplete,
   background,
   color,
   animation = 'fade',
-  theme = '!/',
-  className = '',
+  theme,
+  className,
   name,
   id,
   disabled,
@@ -46,20 +28,23 @@ function DyvixInput({
   onKeyUp,
   style,
   ...rest
-}) {
+}) => {
   const inputRef = React.useRef(null);
   const [configs, SetConfig] = React.useState({});
   const instanceId = React.useId();
 
   React.useEffect(() => {
     async function GetFields() {
-      const data = await Validateinput(
+      const validator = await Validateinput(
         animation,
         theme,
         type,
         SetConfig,
         instanceId
       );
+      if (validator.status === GuardStatus.Error) {
+        return EvaluateFailure(validator.error, validator.status);
+      }
     }
 
     GetFields();
@@ -70,12 +55,12 @@ function DyvixInput({
     };
   }, [type, animation, theme]);
 
-  const currentAnimation = animation ? configs['animation'] : null;
-  const currentType = type ? configs['type'] : null;
-  const currentTheme = theme !== '!/' ? configs['theme'] : null;
+  const currentAnimation = animation ? (configs as any)['animation'] : null;
+  const currentType = type ? (configs as any)['type'] : null;
+  const currentTheme = theme ? (configs as any)['theme'] : null;
 
   const inputClasses =
-    `dyvix-input ${currentType?.class ?? ''} ${currentTheme?.class ?? ''} ${className}`.trim();
+    ConstructClasses('dyvix-input', currentType?.class, currentTheme?.class, className);
   const props = {
     className: inputClasses,
     type: currentType?.type,
@@ -92,27 +77,27 @@ function DyvixInput({
     }
   };
 
-  function handleBlur(e) {
+  function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
     if (typeof onBlur === 'function') {
       onBlur(e);
     }
   }
-  function handleFocus(e) {
+  function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
     if (typeof onFocus === 'function') {
       onFocus(e);
     }
   }
-  function handleChange(e) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (typeof onChange === 'function') {
       onChange(e);
     }
   }
-  function handleKeyDown(e) {
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (typeof onKeyDown === 'function') {
       onKeyDown(e);
     }
   }
-  function handleKeyUp(e) {
+  function handleKeyUp(e: React.KeyboardEvent<HTMLInputElement>) {
     if (typeof onKeyUp === 'function') {
       onKeyUp(e);
     }
