@@ -122,6 +122,22 @@ GenerateTypes(
   'modal',
   'inherited-element'
 );
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixLabelAnimation',
+  './src/components/label/dependencies/label.types.tsx',
+  'animation',
+  'label'
+);
+GenerateTypes(
+  null,
+  './src/components/label/dependencies/style/themes.css',
+  'DyvixLabelThemes',
+  './src/components/label/dependencies/label.types.tsx',
+  '',
+  'label'
+);
 
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)

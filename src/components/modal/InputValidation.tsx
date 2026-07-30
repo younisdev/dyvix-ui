@@ -64,7 +64,7 @@ export async function SerializeData(
   animation: DyvixModalAnimation | null | undefined,
   Id: string | undefined,
   Class: string | undefined,
-  onSubmit: Function| undefined,
+  onSubmit: Function | undefined,
   callback: StateSetter,
   instance: string | number
 ) {
@@ -108,9 +108,9 @@ export async function ValidateInput(
   preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
   animation: DyvixModalAnimation | null | undefined,
-  Id: string,
-  Class: string,
-  onSubmit: Function,
+  Id: string | undefined,
+  Class: string | undefined,
+  onSubmit: Function | undefined,
   callback: StateSetter,
   instance: string | number
 ) {
@@ -128,7 +128,7 @@ export async function ValidateInput(
     component,
     instance
   );
-  if (normalizedTheme && isTheme.status && normalizedAnimation && preset) {
+  if (normalizedTheme && isTheme.status && !normalizedAnimation && preset) {
     normalizedAnimation = isTheme.config.theme['default-animation'];
   }
   const [isAnimation, isPreset] = await Promise.all([
@@ -139,7 +139,13 @@ export async function ValidateInput(
       'animation',
       component
     ),
-    ValidateAndLoadJSON(CacheMapping, preset || '', callback, 'preset', component)
+    ValidateAndLoadJSON(
+      CacheMapping,
+      preset || '',
+      callback,
+      'preset',
+      component
+    )
   ]);
 
   if (preset) {
@@ -151,7 +157,11 @@ export async function ValidateInput(
     }
   }
 
-  if (normalizedAnimation && !isAnimation.status && allowsNull(normalizedAnimation)) {
+  if (
+    normalizedAnimation &&
+    !isAnimation.status &&
+    allowsNull(normalizedAnimation)
+  ) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'

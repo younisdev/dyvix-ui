@@ -5,35 +5,25 @@ import { Validatelbl } from './validation';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Version from '../../../package.json';
+import type { DyvixLabelProps } from './dependencies/label.types';
+import { ConstructClasses } from '../../utils/utils';
 
-/**
- * @param {Object} props
- * @param {string} [props.className] - Label className
- * @param {string} [props.htmlFor] - Links the label to a form associated element
- * @param {string} [props.animation] - Animation name
- * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Crimson'|'Midnight'|'Forest')} [props.theme] - Label theme
- * @param {string} [props.background] - Label background color
- * @param {string} [props.color] - Label color
- * @param {Object} [props.style] - Inline styles overrides
- */
-function DyvixLabel({
+const DyvixLabel: React.FC<DyvixLabelProps> = ({
   children,
-  className = '',
+  className,
   htmlFor,
   animation = 'fade',
-  theme = '!/',
+  theme,
   background,
   color,
   style,
   ...rest
-}) {
+}) => {
   const lblRef = React.useRef(null);
   const [configs, SetConfig] = React.useState({});
   const instanceId = React.useId();
-  const currentAnimation = animation ? configs['animation'] : null;
-  const currentTheme = theme !== '!/' ? configs['theme'] : null;
-
-  className = `dyvix-label ${currentTheme?.class ?? ''} ${className}`.trim();
+  const currentAnimation = animation ? (configs as any)['animation'] : null;
+  const currentTheme = theme ? (configs as any)['theme'] : null;
 
   React.useEffect(() => {
     async function validate() {
@@ -68,7 +58,7 @@ function DyvixLabel({
   }, [currentAnimation]);
 
   const props = {
-    className: className,
+    className: ConstructClasses('dyvix-label', currentTheme?.class, className),
     ...(htmlFor && { htmlFor: htmlFor }),
     style: {
       ...(background && { background: background }),
@@ -78,10 +68,12 @@ function DyvixLabel({
   };
 
   return (
-    <div className="dyvix-label-wrapper" ref={lblRef} {...rest}>
-      <label {...props}>{children}</label>
+    <div className="dyvix-label-wrapper" ref={lblRef}>
+      <label {...props} {...rest}>
+        {children}
+      </label>
     </div>
   );
-}
+};
 
 export default DyvixLabel;

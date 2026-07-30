@@ -23,6 +23,7 @@ import type {
 } from './dependencies/modal.types';
 import type { DyvixButtonThemes } from '../button/dependencies/button.types';
 import { ConstructClasses } from '../../utils/utils';
+import type { DyvixLabelThemes } from '../label/dependencies/label.types';
 
 export const validType = typesData.map((e) => e.type);
 export const validRules = validationData.map((e) => e.preset);
@@ -507,7 +508,7 @@ const Modal: React.FC<DyvixModalProps> = ({
                                 <DyvixLabel
                                   className="modal-radio-legend"
                                   animation={null}
-                                  theme={theme}
+                                  theme={theme as DyvixLabelThemes}
                                 >
                                   {field.placeholder[j]}
                                 </DyvixLabel>
@@ -517,7 +518,7 @@ const Modal: React.FC<DyvixModalProps> = ({
                                 key={index}
                                 className="modal-radio-label"
                                 animation={null}
-                                theme={theme}
+                                theme={theme as DyvixLabelThemes}
                               >
                                 <input
                                   type="radio"
