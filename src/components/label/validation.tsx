@@ -1,16 +1,18 @@
 import {
-  EvaluateFailure,
   GuardStatus,
   allowsNull
 } from '../../utils/DyvixGuard';
-import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
-import type { StateSetter } from '../../utils/Smart Json Caching/SJCManager';
-import type { DyvixButtonAnimation, DyvixButtonThemes } from './dependencies/button.types';
-const component = 'Button';
+import {
+  ValidateAndLoadJSON,
+  type StateSetter
+} from '../../utils/Smart Json Caching/SJCManager';
+import type { DyvixLabelAnimation, DyvixLabelThemes } from './dependencies/label.types';
+
+const component = 'Label';
 const CacheMapping = {
   theme: {
-    jsonpath: '../../components/button/dependencies/themes.json',
-    csspath: '../../components/button/dependencies/style/themes.css'
+    jsonpath: '../../components/label/dependencies/themes.json',
+    csspath: '../../components/label/dependencies/style/themes.css'
   },
   animation: {
     jsonpath: '../../components/animations.json',
@@ -18,9 +20,9 @@ const CacheMapping = {
   }
 };
 
-export async function Validatebtn(
-  animation: DyvixButtonAnimation | null | undefined,
-  theme: DyvixButtonThemes | null | undefined,
+export async function Validatelbl(
+  animation: DyvixLabelAnimation | null | undefined,
+  theme: DyvixLabelThemes | null | undefined,
   callback: StateSetter,
   instance: any
 ) {
@@ -38,7 +40,7 @@ export async function Validatebtn(
     component,
     instance
   );
-  if (normalizedAnimation === '!/' && (isTheme as any)?.config?.theme) {
+  if (normalizedTheme && isTheme.status && !normalizedAnimation) {
     normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
   const isAnimation = await ValidateAndLoadJSON(
@@ -49,15 +51,14 @@ export async function Validatebtn(
     component
   );
 
-  if (!(isAnimation as any).status && !allowsNull(normalizedAnimation)) {
+  if (!isAnimation.status && !allowsNull(normalizedAnimation)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'
     };
   }
-
   if (
-    normalizedTheme !== undefined &&
+    normalizedTheme &&
     !(isTheme as any).status &&
     !allowsNull(normalizedTheme)
   ) {
