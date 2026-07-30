@@ -3,10 +3,21 @@ import {
   EvaluateFailure,
   GuardStatus,
   allowsNull
-} from '../../utils/DyvixGuard';
-import { isValidRegex } from './dependencies/validator/validators';
-import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
-import { DYVIX_MODAL_PRESET, DYVIX_MODAL_TYPE } from '../../constants';
+} from '../../utils/DyvixGuard.js';
+import { isValidRegex } from './dependencies/validator/validators.js';
+import {
+  ValidateAndLoadJSON,
+  type StateSetter
+} from '../../utils/Smart Json Caching/SJCManager.js';
+import type {
+  DyvixElements,
+  DyvixModalAnimation,
+  DyvixModalElementTypes,
+  DyvixModalPresets,
+  DyvixModalThemes,
+  DyvixModalTypes,
+  NormalizedDyvixElements
+} from './dependencies/modal.types.js';
 
 const CacheMapping = {
   theme: {
@@ -48,12 +59,12 @@ export async function SerializeData(
   title: string,
   type: DyvixModalTypes,
   elements: DyvixElements[],
-  preset: DyvixModalPresets,
+  preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
-  animation: DyvixModalThemes | null,
-  Id: string,
-  Class: string,
-  onSubmit: Function,
+  animation: DyvixModalAnimation | null | undefined,
+  Id: string | undefined,
+  Class: string | undefined,
+  onSubmit: Function| undefined,
   callback: StateSetter,
   instance: string | number
 ) {
@@ -75,7 +86,7 @@ export async function SerializeData(
   if (validator.status === GuardStatus.Error) {
     return EvaluateFailure(validator.error, validator.status);
   }
-  const presetData = config.find((item: any) => item.preset);
+  const presetData = config?.find((item: any) => item?.preset);
   const finalElements = preset ? presetData?.preset?.fields : elements;
   const normalizedElements = normalizeElements(
     finalElements?.map((ele: Partial<DyvixElements>) => ({
@@ -94,15 +105,21 @@ export async function ValidateInput(
   title: string,
   type: DyvixModalTypes,
   elements: DyvixElements[],
-  preset: DyvixModalPresets,
+  preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
-  animation: DyvixModalThemes | null,
+  animation: DyvixModalAnimation | null | undefined,
   Id: string,
   Class: string,
   onSubmit: Function,
   callback: StateSetter,
   instance: string | number
 ) {
+  let normalizedAnimation = animation?.trim().toLowerCase() || '';
+  const trimedTheme = theme?.trim();
+  const normalizedTheme = trimedTheme
+    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
+    : '';
+
   const isTheme = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedTheme,
@@ -111,7 +128,7 @@ export async function ValidateInput(
     component,
     instance
   );
-  if (normalizedTheme && isTheme.status && animation && preset) {
+  if (normalizedTheme && isTheme.status && normalizedAnimation && preset) {
     normalizedAnimation = isTheme.config.theme['default-animation'];
   }
   const [isAnimation, isPreset] = await Promise.all([
@@ -122,7 +139,7 @@ export async function ValidateInput(
       'animation',
       component
     ),
-    ValidateAndLoadJSON(CacheMapping, preset, callback, 'preset', component)
+    ValidateAndLoadJSON(CacheMapping, preset || '', callback, 'preset', component)
   ]);
 
   if (preset) {
@@ -134,13 +151,13 @@ export async function ValidateInput(
     }
   }
 
-  if (animation && !isAnimation.status && allowsNull(animation)) {
+  if (normalizedAnimation && !isAnimation.status && allowsNull(normalizedAnimation)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'
     };
   }
-  if (!isTheme.status && preset && normalizedTheme) {
+  if (!isTheme.status && preset && theme) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid theme.'
@@ -207,9 +224,8 @@ export function validateElements(elements: NormalizedDyvixElements[]) {
           status: GuardStatus.Error,
           error: `Field '${element.name}' requires an options array.`
         };
-      }
+      } // special case
 
-      // special case
       if (element.type === 'radio') {
         if (element.amount !== 1) {
           return {
@@ -279,10 +295,9 @@ export function validateElements(elements: NormalizedDyvixElements[]) {
           error: 'Element name should be a string or an array of length 1.'
         };
       }
-    }
-
-    // Handels Validator engine validator
+    } // Handels Validator engine validator
     // Supports regex
+
     const rules = Array.isArray(element.validation)
       ? element.validation
       : [element.validation];

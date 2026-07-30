@@ -252,7 +252,7 @@ const Modal: React.FC<DyvixModalProps> = ({
         instanceId
       );
 
-      SetFields(data);
+      SetFields(data || []);
     }
 
     GetFields();
