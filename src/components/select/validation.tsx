@@ -4,7 +4,7 @@ import {
   allowsNull
 } from '../../utils/DyvixGuard';
 import {
-  ValidatAndLoadJSON,
+  ValidateAndLoadJSON,
   type StateSetter
 } from '../../utils/Smart Json Caching/SJCManager';
 
@@ -35,7 +35,7 @@ export async function ValidateSelect(
     ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
     : '';
 
-  const isTheme = await ValidatAndLoadJSON(
+  const isTheme = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedTheme,
     callback,
@@ -48,7 +48,7 @@ export async function ValidateSelect(
     normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
 
-  const isAnimation = await ValidatAndLoadJSON(
+  const isAnimation = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedAnimation,
     callback,

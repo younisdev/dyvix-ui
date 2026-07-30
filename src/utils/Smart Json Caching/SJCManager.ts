@@ -317,7 +317,7 @@ export type StateSetter = (
   updater: (prev: Record<string, any>) => Record<string, any>
 ) => void;
 
-export async function ValidatAndLoadJSON(
+export async function ValidateAndLoadJSON(
   cacheMap: CacheMapType,
   key: string,
   callback: StateSetter,
