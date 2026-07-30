@@ -5,7 +5,10 @@ import {
 } from '../../utils/DyvixGuard';
 import { ValidateAndLoadJSON } from '../../utils/Smart Json Caching/SJCManager';
 import type { StateSetter } from '../../utils/Smart Json Caching/SJCManager';
-import type { DyvixButtonAnimation, DyvixButtonThemes } from './dependencies/button.types';
+import type {
+  DyvixButtonAnimation,
+  DyvixButtonThemes
+} from './dependencies/button.types';
 const component = 'Button';
 const CacheMapping = {
   theme: {

@@ -1,12 +1,12 @@
-import {
-  GuardStatus,
-  allowsNull
-} from '../../utils/DyvixGuard';
+import { GuardStatus, allowsNull } from '../../utils/DyvixGuard';
 import {
   ValidateAndLoadJSON,
   type StateSetter
 } from '../../utils/Smart Json Caching/SJCManager';
-import type { DyvixLabelAnimation, DyvixLabelThemes } from './dependencies/label.types';
+import type {
+  DyvixLabelAnimation,
+  DyvixLabelThemes
+} from './dependencies/label.types';
 
 const component = 'Label';
 const CacheMapping = {
