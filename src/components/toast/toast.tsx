@@ -1,25 +1,31 @@
 import React from 'react';
-import animationsData from '../animations.json';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-export function DyvixToastItem({
+import type { DyvixToast } from './dependencies/toast.types';
+import { GuardStatus, EvaluateFailure } from '../../utils/DyvixGuard';
+import { ValidateToast } from './validation';
+import { ConstructClasses } from '../../utils/utils';
+
+const DyvixToastItem: React.FC<DyvixToast> = ({
   className,
   message,
   animation,
   type,
   onClose,
   duration = 5000
-}) {
+}) => {
   const toastRef = React.useRef(null);
+  const [configs, SetConfig] = React.useState({});
+  const instanceId = React.useId();
   const [status, SetStatus] = React.useState('entering');
-  const icons = { success: '✓', error: '✕', warning: '⚠', info: 'i' };
-  const currentAnimation = animation
-    ? animationsData.find(
-        (e) =>
-          e.animation.trim().toLowerCase() === animation.trim().toLowerCase()
-      )
-    : null;
-
+  const icons: Record<string, any> = {
+    success: '✓',
+    error: '✕',
+    warning: '⚠',
+    info: 'i'
+  };
+  const currentAnimation = animation || null;
+  const currentType = type ? (configs as any)['type'] : null;
   useGSAP(() => {
     if (!toastRef.current || !currentAnimation) return;
     const tl = gsap.timeline();
@@ -43,7 +49,7 @@ export function DyvixToastItem({
   }, [status]);
 
   React.useEffect(() => {
-    let timer;
+    let timer: number;
 
     if (status === 'active') {
       timer = setTimeout(() => {
@@ -53,9 +59,23 @@ export function DyvixToastItem({
 
     return () => clearTimeout(timer);
   }, [status]);
+  React.useEffect(() => {
+    async function validate() {
+      const validator = await ValidateToast(type, SetConfig, instanceId);
+
+      if (validator.status === GuardStatus.Error) {
+        return EvaluateFailure(validator.error, validator.status);
+      }
+    }
+
+    validate();
+  }, [type]);
 
   return (
-    <div className={className} ref={toastRef}>
+    <div
+      className={ConstructClasses(className, currentType?.class)}
+      ref={toastRef}
+    >
       <span className={`dyvix-toast-title toast-${type.toLowerCase()}`}>
         <span className="dyvix-toast-icon">{icons[type.toLowerCase()]}</span>{' '}
         {type}
@@ -63,4 +83,6 @@ export function DyvixToastItem({
       <span className="dyvix-toast-content">{message}</span>
     </div>
   );
-}
+};
+
+export default DyvixToastItem;

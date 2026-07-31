@@ -160,7 +160,7 @@ export async function ValidateInput(
   if (
     normalizedAnimation &&
     !isAnimation.status &&
-    allowsNull(normalizedAnimation)
+    !allowsNull(normalizedAnimation)
   ) {
     return {
       status: GuardStatus.Error,
