@@ -78,7 +78,7 @@ jobs:
       - name: Format
         if: steps.files.outputs.has_files == 'true'
         run: |
-          xargs -0 -r npx prettier@3.8.1 --config .prettierrc.json --write < files.txt
+          xargs -d '\n' -r npx prettier@3.8.1 --config .prettierrc.json --write < files.txt
 
       - name: Check for formatting changes
         id: diff
