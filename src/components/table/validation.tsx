@@ -144,7 +144,7 @@ function checkDuplicates(elements: Record<string, any>[], field: string) {
   for (const element of elements) {
     const val = element[field];
 
-    if (val === '!/') continue;
+    if (!val) continue;
     if (found.has(val)) {
       return {
         status: GuardStatus.Error,

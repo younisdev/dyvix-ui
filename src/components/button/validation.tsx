@@ -41,7 +41,7 @@ export async function Validatebtn(
     component,
     instance
   );
-  if (normalizedAnimation === '!/' && (isTheme as any)?.config?.theme) {
+  if (normalizedTheme && isTheme.status && !normalizedAnimation) {
     normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
   }
   const isAnimation = await ValidateAndLoadJSON(
@@ -52,15 +52,14 @@ export async function Validatebtn(
     component
   );
 
-  if (!(isAnimation as any).status && !allowsNull(normalizedAnimation)) {
+  if (!isAnimation.status && !allowsNull(normalizedAnimation)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'
     };
   }
-
   if (
-    normalizedTheme !== undefined &&
+    normalizedTheme &&
     !(isTheme as any).status &&
     !allowsNull(normalizedTheme)
   ) {
