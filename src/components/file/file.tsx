@@ -5,25 +5,14 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Version from '../../../package.json';
 import { Validatefile } from './validation';
+import type { DyvixFileProps } from './dependencies/file.types';
+import { ConstructClasses } from '../../utils/utils';
 
-/**
- * @param {Object} props
- * @param {string} [props.label] - Label text displayed on the file picker, defaults to 'Upload File'
- * @param {string} [props.animation] - Animation name
- * @param {string} [props.className] - Label className
- * @param {('Singularity'|'Industrial'|'Ember'|'Frost'|'Blade'|'Neon'|'Aurora'|'Sunset'|'Crimson'|'Midnight')} [props.theme] - File theme
- * @param {string} [props.background] - Label background color
- * @param {string} [props.color] - Label text color
- * @param {boolean} [props.multiple] - Allow multiple file selection, defaults to false
- * @param {string} [props.accept] - Accepted file types, defaults to '*\/*'
- * @param {function} [props.onUpload] - Callback fired with the uploaded File or FileList
- * @param {Object} [props.style] - Inline styles overrides
- */
-function DyvixFile({
+const DyvixFile: React.FC<DyvixFileProps> = ({
   label = 'Upload File',
-  animation = '!/',
-  className = '',
-  theme = '!/',
+  animation,
+  className,
+  theme,
   background,
   color,
   multiple = false,
@@ -31,27 +20,37 @@ function DyvixFile({
   onUpload,
   style,
   ...rest
-}) {
-  const [file, Setfile] = React.useState(null);
-  const fileRef = React.useRef(null);
-  const fileInputRef = React.useRef(null);
+}) => {
+  const [file, Setfile] = React.useState<string | null>(null);
+  const fileRef = React.useRef<HTMLDivElement>(null);
   const [configs, SetConfig] = React.useState({});
   const instanceId = React.useId();
 
-  function handleFileChange(e) {
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const files = e.target.files;
-    if (files && files[0]) {
-      let displayName;
-      if (files.length === 1) {
-        const [name, extension] = files[0].name.split('.');
+    let displayName: string = '';
+    const maxLength = 16;
 
-        const maxLength = 16;
-        const wordLimit = maxLength - (extension.length + 1);
-        if (name.length > wordLimit) {
+    if (files && files[0]) {
+      if (files.length === 1) {
+        const fullName = files[0].name;
+        const lastDotIndex = fullName.lastIndexOf('.');
+        if (lastDotIndex <= 0) {
           displayName =
-            name.substring(0, wordLimit - 3) + '...' + '.' + extension;
+            fullName.length > maxLength
+              ? `${fullName.substring(0, maxLength - 3)}...`
+              : fullName;
         } else {
-          displayName = name + '.' + extension;
+          const name = fullName.substring(0, lastDotIndex);
+          const extension = fullName.substring(lastDotIndex + 1);
+
+          const wordLimit = maxLength - (extension.length + 1);
+          if (name.length > wordLimit) {
+            displayName =
+              name.substring(0, wordLimit - 3) + '...' + '.' + extension;
+          } else {
+            displayName = name + '.' + extension;
+          }
         }
       } else {
         displayName = files.length + ' files selected.';
@@ -60,20 +59,13 @@ function DyvixFile({
       Setfile(displayName);
 
       if (typeof onUpload === 'function') {
-        onUpload(files.length == 1 ? files[0] : files);
+        onUpload(files.length === 1 ? files[0] : files);
       }
     }
   }
 
-  function handleUiClick(e) {
-    e.stopPropagation();
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  }
-
-  const currentTheme = configs['theme'];
-  const currentAnimation = animation ? configs['animation'] : null;
+  const currentTheme = (configs as any)['theme'];
+  const currentAnimation = animation ? (configs as any)['animation'] : null;
   React.useEffect(() => {
     async function validate() {
       const validator = await Validatefile(
@@ -105,9 +97,8 @@ function DyvixFile({
       ease: currentAnimation.ease
     });
   }, [currentAnimation]);
-  className = `dyvix-file${currentTheme ? ` ${currentTheme.class}` : ''}${className !== '' ? ` ${className}` : ''}`;
   const props = {
-    className: className,
+    className: ConstructClasses('dyvix-file', currentTheme?.class, className),
     style: {
       ...(background && { background: background }),
       ...style
@@ -115,13 +106,12 @@ function DyvixFile({
   };
   return (
     <div className="dyvix-file-wrapper" ref={fileRef} {...rest}>
-      <label {...props} htmlFor="file-upload">
-        <div className="dyvix-file-ui" onClick={handleUiClick}>
+      <label {...props} htmlFor={`file-upload-${instanceId}`}>
+        <div className="dyvix-file-ui">
           <span className="dyvix-file-icon">📁</span>
           <p style={{ color: color }}>{file !== null ? file : label}</p>
         </div>
         <input
-          ref={fileInputRef}
           type="file"
           className="dyvix-file-hidden"
           id={`file-upload-${instanceId}`}
@@ -132,6 +122,6 @@ function DyvixFile({
       </label>
     </div>
   );
-}
+};
 
 export default DyvixFile;

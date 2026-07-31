@@ -186,6 +186,22 @@ GenerateTypes(
   'type',
   'toast'
 );
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixFileAnimation',
+  './src/components/file/dependencies/file.types.tsx',
+  'animation',
+  'file'
+);
+GenerateTypes(
+  null,
+  './src/components/file/dependencies/style/themes.css',
+  'DyvixFileThemes',
+  './src/components/file/dependencies/file.types.tsx',
+  '',
+  'file'
+);
 
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
