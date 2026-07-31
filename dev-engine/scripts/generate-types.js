@@ -162,6 +162,31 @@ GenerateTypes(
   'type',
   'input'
 );
+GenerateTypes(
+  './src/components/animations.json',
+  null,
+  'DyvixToastAnimation',
+  './src/components/toast/dependencies/toast.types.tsx',
+  'animation',
+  'toast'
+);
+GenerateTypes(
+  './src/components/toast/dependencies/positions.json',
+  null,
+  'DyvixToastPosition',
+  './src/components/toast/dependencies/toast.types.tsx',
+  'position',
+  'toast'
+);
+GenerateTypes(
+  './src/components/toast/dependencies/types.json',
+  null,
+  'DyvixToastType',
+  './src/components/toast/dependencies/toast.types.tsx',
+  'type',
+  'toast'
+);
+
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
  *

@@ -18,6 +18,8 @@ import selectThemesJSON from '../../components/select/dependencies/themes.json?r
 import selectThemesCSS from '../../components/select/dependencies/style/themes.css?raw';
 import navThemesJSON from '../../components/nav/dependencies/themes.json?raw';
 import navThemesCSS from '../../components/nav/dependencies/style/themes.css?raw';
+import toastTypesJSON from '../../components/toast/dependencies/types.json?raw';
+import toastPostionsJSON from '../../components/toast/dependencies/positions.json?raw';
 
 export const JSON_LIBRARY: Record<string, string> = {
   '../../themeRegistry/themes.json': globalThemesJSON,
@@ -31,7 +33,9 @@ export const JSON_LIBRARY: Record<string, string> = {
   '../../components/label/dependencies/themes.json': labelThemesJSON,
   '../../components/table/dependencies/themes.json': tableThemesJSON,
   '../../components/select/dependencies/themes.json': selectThemesJSON,
-  '../../components/nav/dependencies/themes.json': navThemesJSON
+  '../../components/nav/dependencies/themes.json': navThemesJSON,
+  '../../components/toast/dependencies/types.json': toastTypesJSON,
+  '../../components/toast/dependencies/positions.json': toastPostionsJSON
 };
 
 export const CSS_LIBRARY: Record<string, string> = {
