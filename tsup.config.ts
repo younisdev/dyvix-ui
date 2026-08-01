@@ -24,16 +24,16 @@ const rawLoaderPlugin: Plugin = {
 };
 export default defineConfig({
   entry: {
-    index: 'src/index.jsx',
-    modal: 'src/components/modal/modal.jsx',
-    select: 'src/components/select/SelectCompiler.jsx',
-    button: 'src/components/button/button.jsx',
-    file: 'src/components/file/file.jsx',
-    input: 'src/components/input/input.jsx',
-    label: 'src/components/label/label.jsx',
-    table: 'src/components/table/table.jsx',
+    index: 'src/index.tsx',
+    modal: 'src/components/modal/modal.tsx',
+    select: 'src/components/select/SelectCompiler.tsx',
+    button: 'src/components/button/button.tsx',
+    file: 'src/components/file/file.tsx',
+    input: 'src/components/input/input.tsx',
+    label: 'src/components/label/label.tsx',
+    table: 'src/components/table/table.tsx',
     navigation: 'src/components/nav/navigation.tsx',
-    toast: 'src/components/toast/toastContainer.jsx'
+    toast: 'src/components/toast/toastContainer.tsx'
   },
   format: ['esm'],
   injectStyle: true,
