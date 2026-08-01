@@ -1,6 +1,6 @@
 {
   "name": "dyvix-ui",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Dyvix is an open source, modern, config-driven, animated component UI library. Beautiful by default, customizable by design.",
   "type": "module",
   "sideEffects": [
@@ -127,8 +127,8 @@
     "url": "https://github.com/younisdev/dyvix-ui/issues"
   },
   "scripts": {
-    "build": "tsup",
-    "prepublishOnly": "npm run build",
+    "rel:build": "tsup",
+    "prepublishOnly": "npm run rel:build",
     "dev": "npm run dev -w devbench",
     "bench:install": "npm install -w devbench",
     "format": "prettier --write . --ignore-path .gitignore",

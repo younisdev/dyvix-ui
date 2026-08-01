@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'dyvix-ui': path.resolve(__dirname, '../src/index.jsx')
+      'dyvix-ui': path.resolve(__dirname, '../src/index.tsx')
     }
   },
   optimizeDeps: {
