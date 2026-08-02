@@ -50,7 +50,7 @@ const Modal: React.FC<DyvixModalProps> = ({
   onClose,
   style
 }) => {
-  const [data, SetData] = React.useState<Record<string, string | number>>({});
+  const [data, SetData] = React.useState<Record<string, any>>({});
   const [errors, SetErrors] = React.useState<Record<string, string | null>>({});
   const [visibility, SetVisibility] = React.useState<boolean>(true);
   const [status, SetStatus] = React.useState<string>('entering');
@@ -58,8 +58,8 @@ const Modal: React.FC<DyvixModalProps> = ({
   const [fields, SetFields] = React.useState<NormalizedDyvixElements[]>([]);
   const instanceId = React.useId();
   const modalRef = React.useRef<HTMLDivElement>(null);
-  function handleInputChange(name: string, value: string | File) {
-    const nextData = { ...data, [name]: String(value) };
+  function handleInputChange(name: string, value: any) {
+    const nextData = { ...data, [name]: value };
     SetData(nextData);
     const validation = handleValidation(nextData);
 
