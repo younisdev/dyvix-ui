@@ -45,9 +45,9 @@ Themes are defined in `src/components/modal/dependencies/themes.json` and styled
 
 ### Add an Animation
 
-Animations are defined in `src/components/animations.json`.
+Animations are defined in `src/registry/animations.json`.
 
-1. Create an entry into [animations.json](https://github.com/younisdev/dyvix-ui/blob/main/src/components/animations.json).
+1. Create an entry into [animations.json](https://github.com/younisdev/dyvix-ui/blob/main/src/registry/animations.json).
 2. Run the Dyvix automated engine:
 
    ```bash

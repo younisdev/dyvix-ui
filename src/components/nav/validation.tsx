@@ -10,11 +10,11 @@ const CacheMapping = {
     csspath: '../../components/nav/dependencies/style/themes.css'
   },
   animation: {
-    jsonpath: '../../components/animations.json',
+    jsonpath: '../../registry/animations.json',
     csspath: null
   },
   microanimation: {
-    jsonpath: '../../components/animations.json',
+    jsonpath: '../../registry/animations.json',
     csspath: null,
     jsonfield: 'animation'
   }

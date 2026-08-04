@@ -25,7 +25,7 @@ const CacheMapping = {
     csspath: '../../components/modal/dependencies/style/themes.css'
   },
   animation: {
-    jsonpath: '../../components/animations.json',
+    jsonpath: '../../registry/animations.json',
     csspath: null
   },
   preset: {

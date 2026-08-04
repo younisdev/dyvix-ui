@@ -1,10 +1,10 @@
-import globalThemesJSON from '../../themeRegistry/themes.json?raw';
+import globalThemesJSON from '../../registry/themes.json?raw';
 import buttonThemesJSON from '../../components/button/dependencies/themes.json?raw';
 import buttonThemesCSS from '../../components/button/dependencies/style/themes.css?raw';
 import modalThemesJSON from '../../components/modal/dependencies/themes.json?raw';
 import modalThemesCSS from '../../components/modal/dependencies/style/themes.css?raw';
 import modalPresetsJSON from '../../components/modal/dependencies/presets.json?raw';
-import animationsJSON from '../../components/animations.json?raw';
+import animationsJSON from '../../registry/animations.json?raw';
 import fileThemesJSON from '../../components/file/dependencies/themes.json?raw';
 import fileThemesCSS from '../../components/file/dependencies/style/themes.css?raw';
 import inputTypesJSON from '../../components/input/dependencies/types.json?raw';
@@ -22,11 +22,11 @@ import toastTypesJSON from '../../components/toast/dependencies/types.json?raw';
 import toastPostionsJSON from '../../components/toast/dependencies/positions.json?raw';
 
 export const JSON_LIBRARY: Record<string, string> = {
-  '../../themeRegistry/themes.json': globalThemesJSON,
+  '../../registry/themes.json': globalThemesJSON,
   '../../components/button/dependencies/themes.json': buttonThemesJSON,
   '../../components/modal/dependencies/themes.json': modalThemesJSON,
   '../../components/modal/dependencies/presets.json': modalPresetsJSON,
-  '../../components/animations.json': animationsJSON,
+  '../../registry/animations.json': animationsJSON,
   '../../components/file/dependencies/themes.json': fileThemesJSON,
   '../../components/input/dependencies/types.json': inputTypesJSON,
   '../../components/input/dependencies/themes.json': inputThemesJSON,
