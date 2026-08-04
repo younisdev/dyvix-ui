@@ -11,7 +11,7 @@ import {
 const component = 'Select';
 const CacheMapping = {
   animation: {
-    jsonpath: '../../components/animations.json',
+    jsonpath: '../../registry/animations.json',
     csspath: null
   },
   theme: {

@@ -24,7 +24,7 @@ const CacheMapping = {
     csspath: null
   },
   animation: {
-    jsonpath: '../../components/animations.json',
+    jsonpath: '../../registry/animations.json',
     csspath: null
   }
 };

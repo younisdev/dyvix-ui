@@ -6,11 +6,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const REGISTERY_PATH = path.resolve(
   __dirname,
-  '../../src/themeRegistry/themes.json'
+  '../../src/registry/themes.json'
 );
 
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixButtonAnimation',
   './src/components/button/dependencies/button.types.tsx',
@@ -26,7 +26,7 @@ GenerateTypes(
   'button'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixNavAnimation',
   './src/components/nav/dependencies/navigation.types.tsx',
@@ -42,7 +42,7 @@ GenerateTypes(
   'nav'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixTableAnimation',
   './src/components/table/dependencies/table.types.tsx',
@@ -58,7 +58,7 @@ GenerateTypes(
   'table'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixSelectAnimation',
   './src/components/select/dependencies/select.types.tsx',
@@ -74,7 +74,7 @@ GenerateTypes(
   'select'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixModalAnimation',
   './src/components/modal/dependencies/modal.types.tsx',
@@ -123,7 +123,7 @@ GenerateTypes(
   'inherited-element'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixLabelAnimation',
   './src/components/label/dependencies/label.types.tsx',
@@ -139,7 +139,7 @@ GenerateTypes(
   'label'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixInputAnimation',
   './src/components/input/dependencies/input.types.tsx',
@@ -163,7 +163,7 @@ GenerateTypes(
   'input'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixToastAnimation',
   './src/components/toast/dependencies/toast.types.tsx',
@@ -187,7 +187,7 @@ GenerateTypes(
   'toast'
 );
 GenerateTypes(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   null,
   'DyvixFileAnimation',
   './src/components/file/dependencies/file.types.tsx',

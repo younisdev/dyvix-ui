@@ -18,7 +18,7 @@ GenerateConstants(
   'post'
 );
 GenerateConstants(
-  './src/components/animations.json',
+  './src/registry/animations.json',
   'animation',
   'global',
   'post'

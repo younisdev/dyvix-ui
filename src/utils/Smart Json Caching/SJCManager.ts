@@ -229,7 +229,7 @@ async function resolveTheme(
 ) {
   if (localTheme) return localTheme;
 
-  const rawGlobalThemes = await extractFile('../../themeRegistry/themes.json');
+  const rawGlobalThemes = await extractFile('../../registry/themes.json');
 
   const globalThemes: ThemeConfig[] =
     typeof rawGlobalThemes === 'string'

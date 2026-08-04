@@ -16,7 +16,7 @@ import type {
 const component = 'Toast';
 const CacheMapping = {
   animation: {
-    jsonpath: '../../components/animations.json',
+    jsonpath: '../../registry/animations.json',
     csspath: null
   },
   position: {
