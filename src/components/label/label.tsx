@@ -75,9 +75,7 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
 
   return (
     <div className="dyvix-label-wrapper" ref={lblRef} {...wrapperProps}>
-      <label {...props}>
-        {children}
-      </label>
+      <label {...props}>{children}</label>
     </div>
   );
 };
