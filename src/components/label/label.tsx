@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Version from '../../../package.json';
 import type { DyvixLabelProps } from './dependencies/label.types';
-import { ConstructClasses } from '../../utils/utils';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixLabel: React.FC<DyvixLabelProps> = ({
   children,
@@ -21,6 +21,10 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
 }) => {
   const lblRef = React.useRef(null);
   const [configs, SetConfig] = React.useState({});
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style,
+    ...rest
+  });
   const instanceId = React.useId();
   const currentAnimation = animation ? (configs as any)['animation'] : null;
   const currentTheme = theme ? (configs as any)['theme'] : null;
@@ -57,19 +61,21 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
     });
   }, [currentAnimation]);
 
+  const { style: splitElementStyles, ...restElementProps } = elementProps;
   const props = {
+    ...restElementProps,
     className: ConstructClasses('dyvix-label', currentTheme?.class, className),
     ...(htmlFor && { htmlFor: htmlFor }),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
-      ...style
+      ...splitElementStyles
     }
   };
 
   return (
-    <div className="dyvix-label-wrapper" ref={lblRef}>
-      <label {...props} {...rest}>
+    <div className="dyvix-label-wrapper" ref={lblRef} {...wrapperProps}>
+      <label {...props}>
         {children}
       </label>
     </div>
