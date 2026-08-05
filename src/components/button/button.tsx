@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { Validatebtn } from './validation';
 import Version from '../../../package.json';
 import type { DyvixButtonProps } from './dependencies/button.types';
-import { ConstructClasses } from '../../utils/utils';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixButton: React.FC<DyvixButtonProps> = ({
   children,
@@ -22,6 +22,10 @@ const DyvixButton: React.FC<DyvixButtonProps> = ({
   const btnRef = React.useRef<HTMLDivElement>(null);
   const [configs, SetConfig] = React.useState({});
   const instanceId = React.useId();
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style,
+    ...rest
+  });
 
   const currentTheme = (configs as any)['theme'];
   const currentAnimation = animation ? (configs as any)['animation'] : null;
@@ -62,18 +66,20 @@ const DyvixButton: React.FC<DyvixButtonProps> = ({
     });
   }, [currentAnimation]);
 
+  const { style: splitElementStyles, ...restElementProps } = elementProps;
   const props = {
+    ...restElementProps,
     className: ConstructClasses('dyvix-button', currentTheme?.class, className),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
-      ...style
+      ...splitElementStyles
     }
   };
 
   return (
-    <div className="dyvix-btn-wrapper" ref={btnRef}>
-      <button {...props} {...rest} onClick={handleClick}>
+    <div className="dyvix-btn-wrapper" ref={btnRef} {...wrapperProps}>
+      <button {...props} onClick={handleClick}>
         {children}
       </button>
     </div>
