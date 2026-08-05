@@ -5,7 +5,7 @@ import React from 'react';
 import { Validateinput } from './validation';
 import Version from '../../../package.json';
 import type { DyvixInputProps } from './dependencies/input.types';
-import { ConstructClasses } from '../../utils/utils';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard';
 
 const DyvixInput: React.FC<DyvixInputProps> = ({
@@ -29,8 +29,12 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
   style,
   ...rest
 }) => {
-  const inputRef = React.useRef(null);
+  const inputRef = React.useRef<HTMLDivElement>(null);
   const [configs, SetConfig] = React.useState({});
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style,
+    ...rest
+  });
   const instanceId = React.useId();
 
   React.useEffect(() => {
@@ -65,7 +69,10 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
     currentTheme?.class,
     className
   );
+  const { style: splitElementStyles, ...restElementProps } = elementProps;
+
   const props = {
+    ...restElementProps,
     className: inputClasses,
     type: currentType?.type,
     ...(placeholder && { placeholder: placeholder }),
@@ -77,7 +84,7 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
-      ...style
+      ...splitElementStyles
     }
   };
 
@@ -118,7 +125,7 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
   }, [currentAnimation]);
 
   return (
-    <div className="dyvix-input-wrapper" ref={inputRef} {...rest}>
+    <div className="dyvix-input-wrapper" ref={inputRef} {...wrapperProps}>
       <input
         {...props}
         onFocus={(e) => handleFocus(e)}
