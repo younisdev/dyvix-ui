@@ -136,7 +136,7 @@ const DyvixNav: DyvixNavComponents = ({
     () => children ?? ConstructNav(),
     [brand, items, children]
   );
-  
+
   const { style: splitElementStyles, ...restElementProps } = elementProps;
   const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
 

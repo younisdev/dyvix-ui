@@ -45,7 +45,7 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
   const [isValid, SetIsvalid] = React.useState(false);
   const currentAnimation = animation ? (configs as any)['animation'] : null;
   const currentTheme = theme ? (configs as any)['theme'] : null;
-  
+
   const { style: splitElementStyles, ...restElementProps } = elementProps;
   const props = {
     className: ConstructClasses('dyvix-table', currentTheme?.class, className),
