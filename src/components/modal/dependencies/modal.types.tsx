@@ -104,6 +104,7 @@ export interface DyvixModalProps {
   background?: string;
   animation?: DyvixModalAnimation | null;
   Id?: string;
+  dynamicPositioning?: boolean;
   className?: string;
   onSubmit?: Function;
   onChange?: Function;

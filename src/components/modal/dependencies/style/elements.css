@@ -1,8 +1,10 @@
 .dyvix-modal-wrapper {
   margin-top: auto;
   width: fit-content;
+  height: fit-content;
   display: flex;
-  justify-self: center;
+  background: transparent;
+  opacity: 0;
 }
 .modal {
   display: flex;
