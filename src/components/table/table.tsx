@@ -14,6 +14,7 @@ import type {
   DyvixTableProps,
   DyvixConfigDataProps
 } from './dependencies/table.types';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 interface SortConfigItem {
   key: string;
@@ -35,21 +36,25 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
 }: DyvixTableProps<T>) => {
   const instanceId = React.useId();
   const [configs, SetConfig] = React.useState({});
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style,
+    ...rest
+  });
   const [sortConfig, setSortConfig] = React.useState<SortConfigItem[]>([]);
   const tableRef = React.useRef(null);
   const [isValid, SetIsvalid] = React.useState(false);
   const currentAnimation = animation ? (configs as any)['animation'] : null;
   const currentTheme = theme ? (configs as any)['theme'] : null;
-  const tableClasses =
-    `dyvix-table  ${currentTheme?.class ?? ''} ${className}`.trim();
 
+  const { style: splitElementStyles, ...restElementProps } = elementProps;
   const props = {
-    className: tableClasses,
+    className: ConstructClasses('dyvix-table', currentTheme?.class, className),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
-      ...style
-    }
+      ...splitElementStyles
+    },
+    ...restElementProps
   };
   const processedData = React.useMemo(() => {
     if (!data || !columns) return [];
@@ -94,7 +99,6 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
             return { ...config, direction: 'asc' };
           })
         );
-        ``;
       } else {
         const index = columns!.findIndex((col) => col['key'] === key);
         setSortConfig((prev) => [
@@ -198,7 +202,7 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
   );
   children = children ? children : resultJSX;
   return (
-    <div className="dyvix-table-wrapper" ref={tableRef}>
+    <div className="dyvix-table-wrapper" ref={tableRef} {...wrapperProps}>
       <table {...props}>{children}</table>
     </div>
   );

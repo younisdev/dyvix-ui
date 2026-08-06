@@ -10,7 +10,7 @@ import type {
   DyvixSelectProps,
   DyvixSelectState
 } from './dependencies/select.types';
-import { ConstructClasses } from '../../utils/utils';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixSelect: React.FC<DyvixSelectProps> = ({
   elements = [],
@@ -37,6 +37,10 @@ const DyvixSelect: React.FC<DyvixSelectProps> = ({
   const selectWrapperRef = React.useRef<HTMLDivElement>(null);
   const selectRef = React.useRef<HTMLInputElement>(null);
   const [configs, SetConfig] = React.useState<Record<string, any>>({});
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style,
+    ...rest
+  });
   const instanceId = React.useId();
   const dropdownSelectRef = React.useRef<HTMLDivElement>(null);
 
@@ -190,6 +194,9 @@ const DyvixSelect: React.FC<DyvixSelectProps> = ({
       ease: currentAnimation.ease
     });
   }, [currentAnimation]);
+
+  const { style: splitElementStyles, ...restElementProps } = elementProps;
+  const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
   const props = {
     className: ConstructClasses(
       'dyvix-select-wrapper',
@@ -197,13 +204,21 @@ const DyvixSelect: React.FC<DyvixSelectProps> = ({
       className
     ),
     style: {
-      ...style
-    }
+      ...splitWrapperStyles
+    },
+    ...restWrapperProps
   };
 
   const activeOptionId =
-    `dyvix-select-active-${Select.activeIndex}-${instanceId}` || undefined;
+    Select.activeIndex >= 0
+      ? `dyvix-select-active-${Select.activeIndex}-${instanceId}`
+      : undefined;
   const inputProps: React.ComponentPropsWithRef<'input'> = {
+    style: {
+      ...splitElementStyles,
+      ...(background && { background: background })
+    },
+    ...restElementProps,
     autoComplete: 'off',
     role: 'combobox',
     'aria-autocomplete': 'list' as const,
@@ -212,7 +227,6 @@ const DyvixSelect: React.FC<DyvixSelectProps> = ({
     'aria-activedescendant': activeOptionId,
     className: ConstructClasses('dyvix-select-input', inputThemeClass),
     type: 'text',
-    ...(background && { style: { background: background } }),
     ...rest,
     ref: selectRef,
     placeholder: placeholder || undefined,
@@ -235,13 +249,17 @@ const DyvixSelect: React.FC<DyvixSelectProps> = ({
   };
 
   const engineProps = {
+    style: {
+      ...splitElementStyles,
+      ...(dropdownBackground && { background: dropdownBackground })
+    },
+    ...restElementProps,
     elements: Select.elements,
     is_open: Select.is_open,
     is_rendered: Select.is_rendered,
     inputRef: selectRef,
     activeIndex: Select.activeIndex,
     ref: dropdownSelectRef,
-    ...(dropdownBackground && { background: dropdownBackground }),
     ...(dropdownThemeClass && { className: dropdownThemeClass }),
     controller: SetSelect,
     OnChangeCallback: (value: string | number) =>

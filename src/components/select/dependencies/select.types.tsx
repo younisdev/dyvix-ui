@@ -64,6 +64,7 @@ export interface DyvixSelectEngineProps {
   is_rendered: boolean;
   selectedElement: string;
   placeholder?: string;
+  style?: React.CSSProperties;
   controller: Dispatch<SetStateAction<DyvixSelectState>>;
   activeIndex: number;
   inputRef: React.RefObject<HTMLInputElement | null>;

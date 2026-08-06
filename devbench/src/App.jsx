@@ -160,7 +160,8 @@ const ReleaseBenchmark = ({ children }) => {
           color: '#888',
           position: 'absolute',
           right: '2rem',
-          top: '1rem'
+          top: '1rem',
+          zIndex: 9999999
         }}
       >
         Estimated Render Time:{' '}
