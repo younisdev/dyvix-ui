@@ -1,6 +1,6 @@
 import React, { type FC, type ReactNode } from 'react';
 import './dependencies/style/style.css';
-import { ConstructClasses } from '../../utils/utils';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 import DyvixNavBrand from './DyvixNavBrand';
 import DyvixNavLink from './DyvixNavLink';
 import DyvixNavMenu from './DyvixNavMenu';
@@ -32,6 +32,10 @@ const DyvixNav: DyvixNavComponents = ({
 }) => {
   const instanceId = React.useId();
   const [configs, SetConfig] = React.useState({});
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style,
+    ...rest
+  });
   const navigationRef = React.useRef(null);
   // only used when config-driven mode is active for microanimations
   const subRef = React.useRef<(HTMLDivElement | null)[]>([]);
@@ -132,8 +136,11 @@ const DyvixNav: DyvixNavComponents = ({
     () => children ?? ConstructNav(),
     [brand, items, children]
   );
+  
+  const { style: splitElementStyles, ...restElementProps } = elementProps;
+  const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
 
-  const wrapperProps = {
+  const finalizedWrapperProps = {
     className: 'dyvix-nav-wrapper',
     style: {
       visibility:
@@ -141,27 +148,27 @@ const DyvixNav: DyvixNavComponents = ({
         (microanimation && !currentMicroAnimation)
           ? 'hidden'
           : 'visible',
-      ...style,
+      ...splitWrapperStyles
+    } as React.CSSProperties,
+    ...restWrapperProps
+  };
+
+  const props = {
+    style: {
       ...(background && { '--dyvix-nav-bg': background }),
       ...(color && {
         '--dyvix-nav-color': color,
         '--dyvix-nav-link-color': color
-      })
-    } as React.CSSProperties
+      }),
+      ...splitElementStyles
+    },
+    className: ConstructClasses('dyvix-nav', className, currentTheme?.class),
+    ...restElementProps
   };
 
   return (
-    <div ref={navigationRef} {...wrapperProps}>
-      <nav
-        className={ConstructClasses(
-          'dyvix-nav',
-          className,
-          currentTheme?.class
-        )}
-        {...rest}
-      >
-        {resultJSX}
-      </nav>
+    <div ref={navigationRef} {...finalizedWrapperProps}>
+      <nav {...props}>{resultJSX}</nav>
     </div>
   );
 };
