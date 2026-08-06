@@ -22,7 +22,7 @@ import type {
   NormalizedDyvixElements
 } from './dependencies/modal.types';
 import type { DyvixButtonThemes } from '../button/dependencies/button.types';
-import { ConstructClasses } from '../../utils/utils';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 import type { DyvixLabelThemes } from '../label/dependencies/label.types';
 
 export const validType = typesData.map((e) => e.type);
@@ -44,6 +44,7 @@ const Modal: React.FC<DyvixModalProps> = ({
   background,
   animation,
   Id,
+  dynamicPositioning = true,
   className,
   onSubmit,
   onChange,
@@ -55,6 +56,7 @@ const Modal: React.FC<DyvixModalProps> = ({
   const [visibility, SetVisibility] = React.useState<boolean>(true);
   const [status, SetStatus] = React.useState<string>('entering');
   const [configs, SetConfig] = React.useState({});
+
   const [fields, SetFields] = React.useState<NormalizedDyvixElements[]>([]);
   const instanceId = React.useId();
   const modalRef = React.useRef<HTMLDivElement>(null);
@@ -175,7 +177,7 @@ const Modal: React.FC<DyvixModalProps> = ({
     })
   };
 
-  const serilaizedclassName = ConstructClasses(
+  const serializedClassName = ConstructClasses(
     className,
     currentTheme?.class || '',
     currentType?.class || ''
@@ -211,7 +213,14 @@ const Modal: React.FC<DyvixModalProps> = ({
   const dynamicWidth = `min(${TOTAL_HEIGHT}px, 95vw, 95vh)`;
   const isCentered = fields?.length <= 4;
   const dynamicMargin = isCentered ? '12vh auto' : '1.5rem auto';
-
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style: {
+      ...(dynamicPositioning
+        ? { margin: dynamicMargin, justifySelf: 'center' }
+        : {}),
+      ...style
+    }
+  });
   const defaultStyle = !currentTheme
     ? {
         ...(!currentTheme && { background: background || 'white' }),
@@ -219,17 +228,17 @@ const Modal: React.FC<DyvixModalProps> = ({
         borderRadius: '2rem'
       }
     : {};
-  let activeStyle = style || defaultStyle;
-  activeStyle = {
-    ...activeStyle,
-    ...(fields?.length > 7 && currentTheme?.radiused && { borderRadius: '47%' })
-  };
+
+  const { style: splitElementStyles } = elementProps;
+
   const modalStyles = {
+    ...defaultStyle,
     height: dynamicHeight,
     width: dynamicWidth,
-    margin: dynamicMargin,
     transition: 'all 0.3s ease-out',
-    ...activeStyle
+    ...(fields?.length > 7 &&
+      currentTheme?.radiused && { borderRadius: '47%' }),
+    ...splitElementStyles
   };
   if (currentPreset) {
     title = title || currentPreset['default-title'];
@@ -291,17 +300,26 @@ const Modal: React.FC<DyvixModalProps> = ({
   }, [visibility]); // It only runs when the modal opens/closes
 
   useGSAP(() => {
-    if (!modalRef.current || !currentAnimation) return;
-    gsap.set(modalRef.current, { margin: dynamicMargin });
+    if (!modalRef.current) return;
+
+    if (!currentAnimation) {
+      if (status === 'leaving') {
+        SetVisibility(false);
+      }
+
+      return;
+    }
 
     if (status === 'entering') {
-      gsap.fromTo(modalRef.current, currentAnimation.from, {
+      gsap.set(modalRef.current, { autoAlpha: 0, ...currentAnimation.from });
+      gsap.to(modalRef.current, {
+        autoAlpha: 1,
         ...currentAnimation.to,
-        duration: currentAnimation['default-duration'],
-        ease: currentAnimation.ease
+        duration: currentAnimation['default-duration'] ?? 0.3,
+        ease: currentAnimation.ease ?? 'power2.out'
       });
     } else {
-      gsap.fromTo(modalRef.current, currentAnimation.to, {
+      gsap.to(modalRef.current, {
         ...currentAnimation.from,
         duration: currentAnimation['default-duration'],
         ease: currentAnimation.ease,
@@ -310,6 +328,17 @@ const Modal: React.FC<DyvixModalProps> = ({
     }
   }, [currentAnimation, status]);
 
+  useGSAP(() => {
+    if (!modalRef.current || !dynamicHeight || !dynamicWidth) return;
+
+    gsap.to(modalRef.current, {
+      height: dynamicHeight,
+      width: dynamicWidth,
+      duration: 0.35,
+      ease: 'power3.out',
+      overwrite: 'auto'
+    });
+  }, [dynamicHeight, dynamicWidth]);
   return (
     <>
       {visibility && (
@@ -319,9 +348,10 @@ const Modal: React.FC<DyvixModalProps> = ({
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-header"
+          {...wrapperProps}
         >
           <div
-            className={`modal ${serilaizedclassName}`}
+            className={`modal ${serializedClassName}`}
             id={Id}
             style={modalStyles}
           >
@@ -411,7 +441,7 @@ const Modal: React.FC<DyvixModalProps> = ({
                       `${id && id !== '!/' ? id : field.placeholder[j]}-error`
                         .toLowerCase()
                         .replace(/[^a-z0-9-]/g, '-');
-                    const Tagprobs = {
+                    const tagProps = {
                       className:
                         `modal-element ` + elementDef?.['default-class'],
                       name: name,
@@ -480,7 +510,7 @@ const Modal: React.FC<DyvixModalProps> = ({
                     return (
                       <div className="dyvix-field-wrapper" key={name}>
                         {elementDef!['requires-options'] && Tag === 'select' ? (
-                          <Tag defaultValue="" key={j} {...Tagprobs}>
+                          <Tag defaultValue="" key={j} {...tagProps}>
                             <option disabled value="">
                               {field.placeholder[j]}
                             </option>
@@ -542,11 +572,11 @@ const Modal: React.FC<DyvixModalProps> = ({
                             className="modal-checkbox-label"
                             style={themeTextStyle}
                           >
-                            <Tag {...Tagprobs} />
+                            <Tag {...tagProps} />
                             {field.placeholder?.[j]}
                           </label>
                         ) : (
-                          <Tag key={j} {...Tagprobs} />
+                          <Tag key={j} {...tagProps} />
                         )}
                         <span className="dyvix-error-text" id={ErrorId}>
                           {fieldError}

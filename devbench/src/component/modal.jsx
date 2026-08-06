@@ -47,8 +47,15 @@ export function ModalTest() {
       //background="red"
       // background={'Red'}
       //  preset={'ResetPassword'}
-      theme="Ocean"
-      type="auth"
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 5,
+        width: '500px'
+      }}
+      dynamicPositioning={false}
+      type="form"
+      animation={'fade'}
       elements={[
         {
           type: 'text',

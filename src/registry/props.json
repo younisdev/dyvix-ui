@@ -37,6 +37,7 @@
     "scale",
     "placeSelf",
     "display",
-    "inset"
+    "inset",
+    "justifySelf"
   ]
 }
