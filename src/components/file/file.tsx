@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import Version from '../../../package.json';
 import { Validatefile } from './validation';
 import type { DyvixFileProps } from './dependencies/file.types';
-import { ConstructClasses } from '../../utils/utils';
+import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixFile: React.FC<DyvixFileProps> = ({
   label = 'Upload File',
@@ -24,6 +24,10 @@ const DyvixFile: React.FC<DyvixFileProps> = ({
   const [file, Setfile] = React.useState<string | null>(null);
   const fileRef = React.useRef<HTMLDivElement>(null);
   const [configs, SetConfig] = React.useState({});
+  const { wrapperProps, elementProps } = SmartPropsSplitting({
+    style,
+    ...rest
+  });
   const instanceId = React.useId();
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -45,11 +49,12 @@ const DyvixFile: React.FC<DyvixFileProps> = ({
           const extension = fullName.substring(lastDotIndex + 1);
 
           const wordLimit = maxLength - (extension.length + 1);
-          if (name.length > wordLimit) {
-            displayName =
-              name.substring(0, wordLimit - 3) + '...' + '.' + extension;
+          if (wordLimit > 3 && name.length > wordLimit) {
+            displayName = `${name.substring(0, wordLimit - 3)}...${extension}`;
+          } else if (name.length > wordLimit) {
+            displayName = `${fullName.substring(0, maxLength - 3)}...`;
           } else {
-            displayName = name + '.' + extension;
+            displayName = `${name}.${extension}`;
           }
         }
       } else {
@@ -97,15 +102,18 @@ const DyvixFile: React.FC<DyvixFileProps> = ({
       ease: currentAnimation.ease
     });
   }, [currentAnimation]);
+  const { style: splitElementStyles, ...restElementProps } = elementProps;
+
   const props = {
     className: ConstructClasses('dyvix-file', currentTheme?.class, className),
     style: {
       ...(background && { background: background }),
-      ...style
-    }
+      ...splitElementStyles
+    },
+    ...restElementProps
   };
   return (
-    <div className="dyvix-file-wrapper" ref={fileRef} {...rest}>
+    <div className="dyvix-file-wrapper" ref={fileRef} {...wrapperProps}>
       <label {...props} htmlFor={`file-upload-${instanceId}`}>
         <div className="dyvix-file-ui">
           <span className="dyvix-file-icon">📁</span>
