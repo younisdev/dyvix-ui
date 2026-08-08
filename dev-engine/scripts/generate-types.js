@@ -288,7 +288,7 @@ function GenerateTypes(
   );
 }
 
-function getFile(path, type) {
+export default function getFile(path, type) {
   try {
     const data =
       type === 'json'
