@@ -81,10 +81,15 @@ const DyvixButton: React.FC<DyvixButtonProps> = ({
   const combinedWrapperStyle = {
     ...wrapperProps.style,
     ...overrides
-  }
+  };
 
   return (
-    <div className="dyvix-btn-wrapper" ref={btnRef} {...wrapperProps} style={combinedWrapperStyle}>
+    <div
+      className="dyvix-btn-wrapper"
+      ref={btnRef}
+      {...wrapperProps}
+      style={combinedWrapperStyle}
+    >
       <button {...props} onClick={handleClick}>
         {children}
       </button>

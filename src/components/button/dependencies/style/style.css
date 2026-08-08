@@ -34,17 +34,24 @@
 }
 .dyvix-button:hover {
   background: var(--dyvix-button-hover-bg, #161618);
+  border-width: var(--dyvix-button-hover-border-width);
+  border-style: var(--dyvix-button-hover-border-style);
   border-color: var(
     --dyvix-button-hover-border-color,
     rgba(255, 255, 255, 0.2)
   );
+  border-radius: var(--dyvix-button-hover-radius);
   color: var(--dyvix-button-hover-color, #fff);
   transform: var(--dyvix-button-hover-transform, translateY(-1px));
   box-shadow: var(--dyvix-button-hover-shadow, 0 4px 12px rgba(0, 0, 0, 0.5));
+
 }
 .dyvix-button:active {
   background: var(--dyvix-button-active-bg, #161618);
   border-color: var(--dyvix-button-active-border-color, rgb(255, 255, 255));
+  border-radius: var(--dyvix-button-active-radius);
+  border-width: var(--dyvix-button-active-border-width);
+  border-style: var(--dyvix-button-active-border-style);
   color: var(--dyvix-button-active-color, #fff);
   transform: var(--dyvix-button-active-transform, translateY(2px));
   box-shadow: var(
