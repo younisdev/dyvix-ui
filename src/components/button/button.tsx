@@ -11,6 +11,7 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 const DyvixButton: React.FC<DyvixButtonProps> = ({
   children,
   animation,
+  overrides,
   className,
   theme,
   background,
@@ -77,8 +78,13 @@ const DyvixButton: React.FC<DyvixButtonProps> = ({
     }
   };
 
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  }
+
   return (
-    <div className="dyvix-btn-wrapper" ref={btnRef} {...wrapperProps}>
+    <div className="dyvix-btn-wrapper" ref={btnRef} {...wrapperProps} style={combinedWrapperStyle}>
       <button {...props} onClick={handleClick}>
         {children}
       </button>
