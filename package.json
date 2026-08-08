@@ -137,7 +137,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "dyvix:build": "node dev-engine/scripts/generate-constants.js && npm run format",
-    "dyvix:types": "node dev-engine/scripts/generate-types.js && npm run format",
+    "dyvix:types": "node dev-engine/scripts/generate-types.js && node dev-engine/scripts/generate-override-types.js && npm run format",
     "dyvix:chktheme": "node dev-engine/scripts/check-themes.js"
   },
   "overrides": {
