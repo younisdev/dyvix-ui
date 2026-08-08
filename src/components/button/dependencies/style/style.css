@@ -44,7 +44,6 @@
   color: var(--dyvix-button-hover-color, #fff);
   transform: var(--dyvix-button-hover-transform, translateY(-1px));
   box-shadow: var(--dyvix-button-hover-shadow, 0 4px 12px rgba(0, 0, 0, 0.5));
-
 }
 .dyvix-button:active {
   background: var(--dyvix-button-active-bg, #161618);
