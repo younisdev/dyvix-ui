@@ -157,15 +157,15 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
             rawProp === 'background'
               ? 'bg'
               : rawProp.replace(/^-(webkit|moz|ms|o)-/, '');
-
+          const cleanVal = stripDyvixVar(rawVal);
           const ref = tokenPort.multi_value_splitting[rawProp];
           if (ref) {
-            const expandedProps = ParseCSSMultiVal(rawProp, rawVal);
+            const expandedProps = ParseCSSMultiVal(rawProp, cleanVal);
 
-            if (!expandedProps) return `${rawProp}: ${rawVal};`;
-            //output like   'transform: scale(0.95)'
+            if (!expandedProps) return `${rawProp}: ${cleanVal};`;
             return Object.entries(expandedProps)
               .map(([subProp, val]) => {
+                const cleanSubVal = stripDyvixVar(val);
                 const overrideLookupVal = [
                   constantOverrideNamePart,
                   action,
@@ -174,9 +174,9 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
                   .filter(Boolean)
                   .join('-');
                 if (!validOverrideKeys.has(overrideLookupVal))
-                  return `${subProp}: ${val};`;
+                  return `${subProp}: ${cleanSubVal};`;
                 const constructedLine =
-                  [subProp, `var(${overrideLookupVal}, ` + val]
+                  [subProp, `var(${overrideLookupVal}, ` + cleanSubVal]
                     .filter(Boolean)
                     .join(': ') + ');';
 
@@ -192,9 +192,9 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
               .filter(Boolean)
               .join('-');
             if (!validOverrideKeys.has(overrideLookupVal))
-              return `${rawProp}: ${rawVal};`;
+              return `${rawProp}: ${cleanVal};`;
             const constructedLine =
-              [rawProp, `var(${overrideLookupVal}, ` + rawVal]
+              [rawProp, `var(${overrideLookupVal}, ` + cleanVal]
                 .filter(Boolean)
                 .join(': ') + ');';
             return constructedLine || null;
@@ -220,7 +220,7 @@ function ParseCSSMultiVal(property, val) {
   const splitVal = val.trim().split(/\s+(?![^(]*\))/);
   splitVal.map((val) => {
     for (const [subProp, rule] of Object.entries(ref)) {
-      if (!result[subProp] && checkIntegrety(val, rule)) {
+      if (!result[subProp] && checkIntegrity(val, rule)) {
         result[subProp] = val;
         break;
       }
@@ -230,7 +230,7 @@ function ParseCSSMultiVal(property, val) {
   return result;
 }
 
-function checkIntegrety(val, rules) {
+function checkIntegrity(val, rules) {
   const splitRules = new Set(
     rules
       .split('||')
@@ -269,4 +269,67 @@ function checkIntegrety(val, rules) {
   });
 
   return isValid;
+}
+
+function stripDyvixVar(val) {
+  if (!val) {
+    return null;
+  }
+
+  let trimmedVal = val
+    .replace(/\s+/g, ' ')
+    .replace(/var\(\s+--/g, 'var(--')
+    .trim();
+
+  while (trimmedVal.includes('var(--')) {
+    const varStart = trimmedVal.indexOf('var(--');
+    const commaIdx = trimmedVal.indexOf(',', varStart);
+
+    if (commaIdx === -1) {
+      trimmedVal = trimmedVal.replace(/var\(--[^)]+\)/g, '').trim();
+      break;
+    }
+
+    const afterComma = trimmedVal.slice(commaIdx + 1);
+
+    let depth = 1;
+    let matchEnd = -1;
+
+    for (let i = 0; i < afterComma.length; i++) {
+      if (afterComma[i] === '(') depth++;
+      else if (afterComma[i] === ')') depth--;
+
+      if (depth === 0) {
+        matchEnd = i;
+        break;
+      }
+    }
+    if (matchEnd !== -1) {
+      const newVal = afterComma.slice(0, matchEnd).trim();
+      const fullVarString = trimmedVal.slice(
+        varStart,
+        commaIdx + 1 + matchEnd + 1
+      );
+
+      trimmedVal = trimmedVal.replace(fullVarString, newVal);
+    } else {
+      break;
+    }
+  }
+
+  return trimmedVal.trim();
+}
+
+function countChar(str, char) {
+  if (typeof str !== 'string') return 0;
+
+  let count = 0;
+  const target = char.toLowerCase();
+  for (const c of str) {
+    if (target.toLowerCase() === c.toLowerCase()) {
+      count++;
+    }
+  }
+
+  return count;
 }
