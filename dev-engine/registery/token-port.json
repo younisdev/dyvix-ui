@@ -1,0 +1,64 @@
+{
+  "supported_pseudo_classes": ["hover", "active", "focus", "disabled"],
+  "multi_value_splitting": {
+    "border": {
+      "border-width": "number || sizes",
+      "border-style": "none || hidden || dotted || dashed || solid || double || groove || ridge || inset || outset",
+      "border-color": "color"
+    }
+  },
+  "types": {
+    "sizes": [
+      "px",
+      "rem",
+      "em",
+      "%",
+      "vw",
+      "vh",
+      "vmin",
+      "vmax",
+      "svw",
+      "svh",
+      "lvw",
+      "lvh",
+      "dvw",
+      "dvh",
+      "cqw",
+      "cqh",
+      "cqi",
+      "cqb",
+      "cqmin",
+      "cqmax",
+      "ch",
+      "ex",
+      "cap",
+      "ic",
+      "lh",
+      "rlh",
+      "pt",
+      "pc",
+      "cm",
+      "mm",
+      "in"
+    ],
+    "color": [
+      "#",
+      "hex",
+      "rgb",
+      "rgba",
+      "hsl",
+      "hsla",
+      "hwb",
+      "lab",
+      "lch",
+      "oklab",
+      "oklch",
+      "color",
+      "color-mix",
+      "light-dark",
+      "var",
+      "transparent",
+      "currentcolor"
+    ]
+  }
+}
