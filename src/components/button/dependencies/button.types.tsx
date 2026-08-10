@@ -45,7 +45,7 @@ export interface DyvixButtonBaseOverride {
     400 | 500 | 600 | 700 | 'normal' | 'bold' | (string & {});
   '--dyvix-button-font-family'?:
     'Geist' | 'system-ui' | 'monospace' | (string & {});
-  '--dyvix-button-radius'?:
+  '--dyvix-button-border-radius'?:
     '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
   '--dyvix-button-border-width'?: '0px' | '1px' | '2px' | (string & {});
   '--dyvix-button-border-style'?:
@@ -54,12 +54,15 @@ export interface DyvixButtonBaseOverride {
   '--dyvix-button-padding'?:
     '8px 16px' | '10px 22px' | '12px 24px' | (string & {});
   '--dyvix-button-bg'?: (string & {}) | 'transparent';
-  '--dyvix-button-shadow'?:
+  '--dyvix-button-box-shadow'?:
     'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
   '--dyvix-button-letter-spacing'?:
     '-0.02em' | '-0.01em' | '0em' | (string & {});
   '--dyvix-button-hover-bg'?: (string & {}) | 'transparent';
   '--dyvix-button-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-button-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-button-hover-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
   '--dyvix-button-hover-color'?: string & {};
   '--dyvix-button-hover-transform'?:
     | 'none'
@@ -67,10 +70,15 @@ export interface DyvixButtonBaseOverride {
     | 'translateY(-2px)'
     | 'scale(1.02)'
     | (string & {});
-  '--dyvix-button-hover-shadow'?:
+  '--dyvix-button-hover-box-shadow'?:
     'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+  '--dyvix-button-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
   '--dyvix-button-active-bg'?: (string & {}) | 'transparent';
   '--dyvix-button-active-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-button-active-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-button-active-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
   '--dyvix-button-active-color'?: string & {};
   '--dyvix-button-active-transform'?:
     | 'none'
@@ -78,8 +86,10 @@ export interface DyvixButtonBaseOverride {
     | 'translateY(2px)'
     | 'scale(0.98)'
     | (string & {});
-  '--dyvix-button-active-shadow'?:
+  '--dyvix-button-active-box-shadow'?:
     'none' | '0 0 10px rgba(255, 255, 255, 0.3)' | (string & {});
+  '--dyvix-button-active-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
   '--dyvix-button-transition'?: (string & {}) | 'none';
 }
 
