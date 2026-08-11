@@ -62,3 +62,4 @@ Thanks for everyone who has contributed to Dyvix UI!
 - [@smacica](https://github.com/smacica)
 - [@shreyabyte](https://github.com/shreyabyte)
 - [@YoinkingFishy](https://github.com/YoinkingFishy)
+- [@floze-the-genius](https://github.com/floze-the-genius)
