@@ -27,6 +27,8 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
   - : `string`. Controls the design and the feel of the modal. See the [Themes list](/guide/themes) for a full list.
 - `background`
   - : `string`. Controls the modal background color.
+- `dynamicPositioning`
+  - : `boolean`. Controls whether the modal applies its calculated centering margins. Defaults to `true`; set it to `false` to position the modal with your own styles.
 - `animation`
   - : `string`. Controls the entrance animation of the modal. See the [Animation List](/guide/animations) for a full list.
 - `preset`
