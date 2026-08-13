@@ -1,8 +1,3 @@
-import { useEffect, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
-import heroImg from './assets/hero.png';
-import './App.css';
 import React from 'react';
 import { ModalTest } from './component/modal';
 import { SelectTest } from './component/select';
@@ -18,7 +13,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { clear } from 'idb-keyval';
 
-const Links = {
+const Links: Record<string, React.ElementType> = {
   Modal: ModalTest,
   Toast: ToastTest,
   Select: SelectTest,
@@ -32,13 +27,13 @@ const Links = {
 
 function App() {
   const [mode, SetMode] = React.useState('Selection');
-  const [current, SetCurrent] = React.useState(null);
+  const [current, SetCurrent] = React.useState<string | null>(null);
   const SelectionRef = React.useRef(null);
   const logoRef = React.useRef(null);
   const headerRef = React.useRef(null);
-  const btnRef = React.useRef([]);
+  const btnRef = React.useRef<(HTMLButtonElement | null)[]>([]);
 
-  function envClick(sender) {
+  function envClick(sender: string) {
     SetCurrent(sender);
   }
 
@@ -114,7 +109,11 @@ function App() {
             {Object.keys(Links).map((link, index) => (
               <button
                 key={index}
-                ref={(ele) => (btnRef.current[index] = ele)}
+                ref={(ele) => {
+                  if (btnRef.current) {
+                    btnRef.current[index] = ele;
+                  }
+                }}
                 className="dyvix-test-btn"
                 onClick={() => envClick(link)}
               >
@@ -126,6 +125,7 @@ function App() {
       )}
       {mode === 'Selected' &&
         (() => {
+          if (!current) return;
           const Component = Links[current];
           return (
             <ReleaseBenchmark>
@@ -137,8 +137,8 @@ function App() {
   );
 }
 
-const ReleaseBenchmark = ({ children }) => {
-  const [report, setReport] = React.useState(null);
+const ReleaseBenchmark = ({ children }: { children: React.ReactNode }) => {
+  const [report, setReport] = React.useState<string | null>(null);
   const startTime = React.useRef(performance.now());
 
   React.useLayoutEffect(() => {

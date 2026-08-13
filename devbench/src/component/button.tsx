@@ -1,5 +1,6 @@
 import React from 'react';
 import { DyvixButton, DYVIX_GLOBAL_THEME } from '../../../src';
+import type { DyvixButtonThemes } from '../../../src/components/button/dependencies/button.types';
 
 export function ButtonTest() {
   const [theme, setTheme] = React.useState(DYVIX_GLOBAL_THEME.SINGULARITY);
@@ -27,7 +28,10 @@ export function ButtonTest() {
       </div>
 
       <div style={{ marginTop: 16 }}>
-        <DyvixButton theme={theme} onClick={() => console.log('clicked')}>
+        <DyvixButton
+          theme={theme as DyvixButtonThemes}
+          onClick={() => console.log('clicked')}
+        >
           Submit
         </DyvixButton>
       </div>

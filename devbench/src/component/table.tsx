@@ -1,18 +1,16 @@
 import {
   DyvixTable,
-  DyvixTableHeader,
   DyvixTableBody,
   DyvixTableRow,
   DyvixTableHead,
   DyvixTableCell
 } from '../../../src';
-import { DYVIX_GLOBAL_ANIMATION, DYVIX_GLOBAL_THEME } from '../../../src';
 export function TableTest() {
   return (
     <>
       <DyvixTable
-        animation={DYVIX_GLOBAL_ANIMATION.PULSE}
-        theme={DYVIX_GLOBAL_THEME.VOLCANIC}
+        animation={'aurora'}
+        theme={'Volcanic'}
         columns={[
           { key: 'id', label: 'ID', sortable: true },
           { key: 'name', label: 'Name', sortable: true },
@@ -28,10 +26,7 @@ export function TableTest() {
           { id: 5, name: 'Bear', type: 'Wild', hp: 90, region: 'Amr' }
         ]}
       />
-      <DyvixTable
-        theme={DYVIX_GLOBAL_THEME.COSMOS}
-        animation={DYVIX_GLOBAL_ANIMATION.PULSE}
-      >
+      <DyvixTable theme={'Cosmos'} animation={'bounce'}>
         <DyvixTable.Header>
           <DyvixTable.Row>
             <DyvixTableHead>Vehicle</DyvixTableHead>
