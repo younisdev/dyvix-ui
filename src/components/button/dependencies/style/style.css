@@ -5,34 +5,43 @@
 }
 .dyvix-button {
   position: relative;
-  background: var(--dyvix-button-bg, #0d0d0f);
   border-width: var(--dyvix-button-border-width, 1px);
-  border-style: var(--dyvix-button-border-style, solid);
-  border-color: var(--dyvix-button-border-color, rgba(255, 255, 255, 0.08));
   border-radius: var(--dyvix-button-border-radius, 6px);
+  border-style: var(--dyvix-button-border-style, solid);
   padding: var(--dyvix-button-padding, 10px 22px);
   color: var(--dyvix-button-color, #d3e9ff);
   cursor: pointer;
   overflow: hidden;
-  font-size: var(--dyvix-button-font-size, 0.9rem);
-  font-weight: var(--dyvix-button-font-weight, 500);
-  font-family: var(--dyvix-button-font-family, 'Geist', sans-serif);
-  letter-spacing: var(--dyvix-button-letter-spacing, -0.02em);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  box-shadow: var(
-    --dyvix-button-box-shadow,
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.05)
-  );
+  user-select: none;
   transition: var(
     --dyvix-button-transition,
     all 0.2s cubic-bezier(0.4, 0, 0.2, 1)
   );
 }
 .dyvix-button:hover {
+  transform: var(--dyvix-button-hover-transform, translateY(-1px));
+}
+.dyvix-button:active {
+  transform: var(--dyvix-button-active-transform, translateY(2px));
+}
+
+.dyvix-button-default {
+  background: var(--dyvix-button-bg, #0d0d0f);
+  border-color: var(--dyvix-button-border-color, rgba(255, 255, 255, 0.08));
+  font-size: var(--dyvix-button-font-size, 0.9rem);
+  font-weight: var(--dyvix-button-font-weight, 500);
+  font-family: var(--dyvix-button-font-family, 'Geist', sans-serif);
+  letter-spacing: var(--dyvix-button-letter-spacing, -0.02em);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: var(
+    --dyvix-button-box-shadow,
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05)
+  );
+}
+.dyvix-button-default:hover {
   background: var(--dyvix-button-hover-bg, #161618);
   border-width: var(
     --dyvix-button-hover-border-width,
@@ -51,13 +60,12 @@
     var(--dyvix-button-border-radius, 6px)
   );
   color: var(--dyvix-button-hover-color, #fff);
-  transform: var(--dyvix-button-hover-transform, translateY(-1px));
   box-shadow: var(
     --dyvix-button-hover-box-shadow,
     0 4px 12px rgba(0, 0, 0, 0.5)
   );
 }
-.dyvix-button:active {
+.dyvix-button-default:active {
   background: var(--dyvix-button-active-bg, #161618);
   border-width: var(
     --dyvix-button-active-border-width,
@@ -73,7 +81,6 @@
     var(--dyvix-button-border-radius, 6px)
   );
   color: var(--dyvix-button-active-color, #fff);
-  transform: var(--dyvix-button-active-transform, translateY(2px));
   box-shadow: var(
     --dyvix-button-active-box-shadow,
     0 0 10px rgba(255, 255, 255, 0.3)
