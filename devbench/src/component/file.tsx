@@ -8,7 +8,7 @@ export function FileTest() {
         multiple={true}
         //accept={'.jpg, .jpeg, .png'}
         theme={'Forest'}
-        animation={"bounce"}
+        animation={'bounce'}
       />
     </>
   );

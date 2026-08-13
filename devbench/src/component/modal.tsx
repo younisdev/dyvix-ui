@@ -1,7 +1,4 @@
-import {
-  Modal,
-  DYVIX_MODAL_ELEMENT
-} from '../../../src';
+import { Modal, DYVIX_MODAL_ELEMENT } from '../../../src';
 
 export function ModalTest() {
   const types = Object.values(DYVIX_MODAL_ELEMENT);

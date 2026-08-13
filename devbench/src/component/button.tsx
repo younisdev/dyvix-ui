@@ -28,7 +28,10 @@ export function ButtonTest() {
       </div>
 
       <div style={{ marginTop: 16 }}>
-        <DyvixButton theme={theme as DyvixButtonThemes} onClick={() => console.log('clicked')}>
+        <DyvixButton
+          theme={theme as DyvixButtonThemes}
+          onClick={() => console.log('clicked')}
+        >
           Submit
         </DyvixButton>
       </div>

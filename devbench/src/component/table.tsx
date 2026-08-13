@@ -26,10 +26,7 @@ export function TableTest() {
           { id: 5, name: 'Bear', type: 'Wild', hp: 90, region: 'Amr' }
         ]}
       />
-      <DyvixTable
-        theme={'Cosmos'}
-        animation={'bounce'}
-      >
+      <DyvixTable theme={'Cosmos'} animation={'bounce'}>
         <DyvixTable.Header>
           <DyvixTable.Row>
             <DyvixTableHead>Vehicle</DyvixTableHead>
