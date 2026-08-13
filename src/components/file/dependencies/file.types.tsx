@@ -41,13 +41,13 @@ export type DyvixFileThemes =
 
 export interface DyvixFileProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  theme?: DyvixFileThemes | null | undefined;
+  theme?: DyvixFileThemes | null;
   className?: string;
-  animation?: DyvixFileAnimation | null | undefined;
+  animation?: DyvixFileAnimation | null;
   background?: string;
   color?: string;
   multiple?: boolean;
-  accept: string;
-  onUpload: (files: File | FileList) => void;
-  style: React.CSSProperties;
+  accept?: string;
+  onUpload?: (files: File | FileList) => void;
+  style?: React.CSSProperties;
 }
