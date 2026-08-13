@@ -106,8 +106,8 @@ export interface DyvixModalProps {
   Id?: string;
   dynamicPositioning?: boolean;
   className?: string;
-  onSubmit?: Function;
-  onChange?: Function;
-  onClose?: Function;
+  onSubmit?: (data: Record<string, any>) => void;
+  onChange?: (data: Record<string, any>) => void;
+  onClose?: () => void;
   style?: React.CSSProperties;
 }
