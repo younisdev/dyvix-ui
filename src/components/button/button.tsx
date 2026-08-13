@@ -70,7 +70,12 @@ const DyvixButton: React.FC<DyvixButtonProps> = ({
   const { style: splitElementStyles, ...restElementProps } = elementProps;
   const props = {
     ...restElementProps,
-    className: ConstructClasses('dyvix-button', currentTheme?.class, className),
+    className: ConstructClasses(
+      'dyvix-button',
+      !currentTheme?.class ? 'dyvix-button-default' : '',
+      currentTheme?.class,
+      className
+    ),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
