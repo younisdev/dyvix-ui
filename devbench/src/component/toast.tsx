@@ -9,7 +9,7 @@ export function ToastTest() {
       <DyvixToastContainer
         position="top-right"
         duration={5000}
-        animation="fade"
+        animation="bubble"
         segments={8}
       />
       <button onClick={notify}>Notify</button>
