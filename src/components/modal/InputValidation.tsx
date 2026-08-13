@@ -58,7 +58,7 @@ async function getSupportedElements(): Promise<DyvixModalElementTypes[]> {
 export async function SerializeData(
   title: string,
   type: DyvixModalTypes,
-  elements: DyvixElements[],
+  elements: DyvixElements[] | undefined,
   preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
   animation: DyvixModalAnimation | null | undefined,
@@ -94,17 +94,19 @@ export async function SerializeData(
       ...ele
     }))
   );
-  const eleValidator = validateElements(normalizedElements);
+  if (!presetData) {
+    const eleValidator = validateElements(normalizedElements);
 
-  if (eleValidator.status === GuardStatus.Error) {
-    return EvaluateFailure(eleValidator.error, eleValidator.status);
+    if (eleValidator.status === GuardStatus.Error) {
+      return EvaluateFailure(eleValidator.error, eleValidator.status);
+    }
   }
   return normalizedElements;
 }
 export async function ValidateInput(
   title: string,
   type: DyvixModalTypes,
-  elements: DyvixElements[],
+  elements: DyvixElements[] | undefined,
   preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
   animation: DyvixModalAnimation | null | undefined,
@@ -189,8 +191,9 @@ export async function ValidateInput(
     return { status: GuardStatus.Error, error: 'Please provide a valid type.' };
   }
   if (
-    !Array.isArray(elements) ||
-    !elements.every((ele) => typeof ele === 'object')
+    !isPreset.config &&
+    (!Array.isArray(elements) ||
+      !elements.every((ele) => typeof ele === 'object'))
   ) {
     return {
       status: GuardStatus.Error,
