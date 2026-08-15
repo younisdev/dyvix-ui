@@ -15,7 +15,7 @@ DyvixTable is an animated, headless table engine that supports both themed and u
 ## Attributes
 
 - `columns`
-  - : `Array<{key: string, label: string}>`. Defines the table's column structure for config-driven mode. Each object requires a unique `key` matching the corresponding data property, and a `label` for display.
+  - : `Array<{key: string, label: string, sortable?: boolean}>`. Defines the table's column structure for config-driven mode. Each object requires a unique `key` matching the corresponding data property, and a `label` for display.
 - `data`
   - : `Array<Object>`. Row data for config-driven mode. Each object's keys must match the `key` values defined in `columns`.
 - `children`
@@ -47,6 +47,33 @@ Used exclusively in composable mode:
   - : Represents a header cell. Renders as `<th>`.
 - `DyvixTableCell`
   - : Represents a body cell. Renders as `<td>`.
+
+## Table Sorting
+
+Dyvix Table supports multi-column sorting by setting `sortable: true` within your table column configuration.
+
+```jsx
+import { DyvixTable } from 'dyvix-ui';
+
+function TableSortingExample() {
+  return (
+    <DyvixTable
+      columns={[
+        { key: 'id', label: 'ID', sortable: true },
+        { key: 'name', label: 'Name' },
+        { key: 'age', label: 'Age', sortable: true }
+      ]}
+      data={[
+        { id: 2, name: 'David', age: 30 },
+        { id: 1, name: 'John', age: 50 }
+      ]}
+    />
+  );
+}
+```
+
+> [!Note]
+> Sorting is only supported in Config-driven mode.
 
 ## Example
 
