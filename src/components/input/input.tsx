@@ -65,6 +65,7 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
 
   const inputClasses = ConstructClasses(
     'dyvix-input',
+    !currentTheme?.class ? 'dyvix-input-default' : '',
     currentType?.class,
     currentTheme?.class,
     className
