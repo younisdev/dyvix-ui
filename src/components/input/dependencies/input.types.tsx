@@ -47,6 +47,93 @@ export type DyvixInputType =
   | 'date'
   | 'datetime-local';
 
+export interface DyvixInputBaseOverride {
+  '--dyvix-input-color'?: string & {};
+  '--dyvix-input-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-input-font-weight'?:
+    400 | 500 | 600 | 700 | 'normal' | 'bold' | (string & {});
+  '--dyvix-input-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-input-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-input-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-input-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
+  '--dyvix-input-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-input-padding'?:
+    '8px 16px' | '10px 22px' | '12px 24px' | (string & {});
+  '--dyvix-input-bg'?: (string & {}) | 'transparent';
+  '--dyvix-input-box-shadow'?:
+    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
+  '--dyvix-input-letter-spacing'?:
+    '-0.02em' | '-0.01em' | '0em' | (string & {});
+  '--dyvix-input-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-input-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-input-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-input-hover-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
+  '--dyvix-input-hover-color'?: string & {};
+  '--dyvix-input-hover-transform'?:
+    | 'none'
+    | 'translateY(-1px)'
+    | 'translateY(-2px)'
+    | 'scale(1.02)'
+    | (string & {});
+  '--dyvix-input-hover-box-shadow'?:
+    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+  '--dyvix-input-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-input-focus-bg'?: (string & {}) | 'transparent';
+  '--dyvix-input-focus-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-input-focus-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-input-focus-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
+  '--dyvix-input-focus-color'?: string & {};
+  '--dyvix-input-focus-transform'?:
+    | 'none'
+    | 'translateY(1px)'
+    | 'translateY(2px)'
+    | 'scale(0.98)'
+    | (string & {});
+  '--dyvix-input-focus-box-shadow'?:
+    'none' | '0 0 10px rgba(255, 255, 255, 0.3)' | (string & {});
+  '--dyvix-input-focus-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-input-disabled-bg'?: (string & {}) | 'transparent';
+  '--dyvix-input-disabled-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-input-disabled-color'?: string & {};
+  '--dyvix-input-disabled-box-shadow'?: 'none' | (string & {});
+  '--dyvix-input-placeholder-color'?: string & {};
+  '--dyvix-input-placeholder-font-size'?: string & {};
+  '--dyvix-input-disabled-placeholder-color'?: string & {};
+  '--dyvix-input-transition'?: (string & {}) | 'none';
+}
+
+export interface DyvixInputWrapperOverride {
+  '--dyvix-input-width'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-input-height'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-input-display'?:
+    | 'inline-block'
+    | 'block'
+    | 'inline-flex'
+    | 'flex'
+    | 'inline'
+    | 'grid'
+    | 'inline-grid'
+    | 'contents'
+    | 'flow-root'
+    | 'list-item'
+    | 'table'
+    | 'inline-table'
+    | 'table-row'
+    | 'table-cell'
+    | 'none'
+    | (string & {});
+  '--dyvix-input-position'?:
+    'relative' | 'absolute' | 'fixed' | 'sticky' | 'static' | (string & {});
+}
+
 /*--!/--*/
 
 // Edit here safely
@@ -59,5 +146,6 @@ export interface DyvixInputProps extends Omit<
   background?: string;
   color?: string;
   theme?: DyvixInputThemes | null;
+  overrides?: DyvixInputBaseOverride & DyvixInputWrapperOverride;
   animation?: DyvixInputAnimation | null;
 }

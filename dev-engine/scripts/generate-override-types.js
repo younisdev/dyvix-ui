@@ -21,6 +21,11 @@ UseCSSVar(
   'button',
   './src/components/button/dependencies/button.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/input/dependencies/input.overrides.json',
+  './src/components/input/dependencies/input.types.tsx',
+  'input'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

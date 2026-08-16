@@ -1,5 +1,12 @@
 {
-  "supported_pseudo_classes": ["hover", "active", "focus", "disabled"],
+  "supported_pseudo_classes": [
+    "hover",
+    "active",
+    "focus",
+    "disabled",
+    "placeholder",
+    "disabled-placeholder"
+  ],
   "multi_value_splitting": {
     "border": {
       "border-width": "number || sizes",

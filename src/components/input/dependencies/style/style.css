@@ -1,67 +1,110 @@
 .dyvix-input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  position: relative;
-  max-width: 250px;
-  width: 100%;
+  display: var(--dyvix-input-display, flex);
+  position: var(--dyvix-input-position, relative);
+  width: var(--dyvix-input-width, 250px);
+  height: var(--dyvix-input-height, 40px);
   box-sizing: border-box;
 }
 .dyvix-input {
-  border-style: solid ;
-  border-width: 2px;
-  border-radius: 8px;
+  border-style: var(--dyvix-input-border-style, solid);
+  border-width: var(--dyvix-input-border-width, 2px);
+  border-radius: var(--dyvix-input-border-radius, 8px);
   box-sizing: border-box;
   width: 100%;
-  height: 40px;
   min-width: 50px;
-  padding: 0 12px;
+  padding: var(--dyvix-input-padding, 0 12px);
   outline: none;
-  transition: 
+  transition: var(
+    --dyvix-input-transition,
     background-color 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3),
     border-color 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3),
-    box-shadow 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3);
+    box-shadow 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3),
+    transform 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3)
+  );
 }
 .dyvix-input:hover {
+  border-style: var(
+    --dyvix-input-hover-border-style,
+    var(--dyvix-input-border-style, solid)
+  );
+  border-width: var(
+    --dyvix-input-hover-border-width,
+    var(--dyvix-input-border-width, 2px)
+  );
+  border-radius: var(
+    --dyvix-input-hover-border-radius,
+    var(--dyvix-input-border-radius, 8px)
+  );
+  transform: var(--dyvix-input-hover-transform, none);
   cursor: text;
+}
+.dyvix-input:focus {
+  border-style: var(
+    --dyvix-input-focus-border-style,
+    var(--dyvix-input-border-style, solid)
+  );
+  border-width: var(
+    --dyvix-input-focus-border-width,
+    var(--dyvix-input-border-width, 2px)
+  );
+  border-radius: var(
+    --dyvix-input-focus-border-radius,
+    var(--dyvix-input-border-radius, 8px)
+  );
+  transform: var(--dyvix-input-focus-transform, none);
 }
 .dyvix-input:disabled {
   cursor: not-allowed;
 }
-
 .dyvix-input-default {
-  background-color: rgba(255, 255, 255, 0.02);
-  color: #b9f7ff;
-  font-size: 0.9rem;
-  font-weight: 400;
-  font-family: 'Geist', sans-serif;
-  letter-spacing: -0.01em;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-  border-color: rgb(26, 27, 27);
+  background-color: var(--dyvix-input-bg, rgba(255, 255, 255, 0.02));
+  color: var(--dyvix-input-color, #b9f7ff);
+  font-size: var(--dyvix-input-font-size, 0.9rem);
+  font-weight: var(--dyvix-input-font-weight, 400);
+  font-family: var(--dyvix-input-font-family, 'Geist', sans-serif);
+  letter-spacing: var(--dyvix-input-letter-spacing, -0.01em);
+  box-shadow: var(--dyvix-input-box-shadow, 0 2px 4px rgba(0, 0, 0, 0.3));
+  border-color: var(--dyvix-input-border-color, rgb(26, 27, 27));
 }
 .dyvix-input-default:hover {
-  border-color: rgb(194, 239, 255);
-  box-shadow:
+  border-color: var(--dyvix-input-hover-border-color, rgb(194, 239, 255));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 2px 4px rgba(0, 0, 0, 0.3),
-    0 0 10px rgba(185, 247, 255, 0.15);
+    0 0 10px rgba(185, 247, 255, 0.15)
+  );
+  background-color: var(
+    --dyvix-input-hover-bg,
+    var(--dyvix-input-bg, rgba(255, 255, 255, 0.02))
+  );
+  color: var(--dyvix-input-hover-color, var(--dyvix-input-color, #b9f7ff));
 }
+
 .dyvix-input-default:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: #b9f7ff;
-  box-shadow:
+  background-color: var(--dyvix-input-focus-bg, rgba(255, 255, 255, 0.1));
+  border-color: var(--dyvix-input-focus-border-color, #b9f7ff);
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     inset 0 2px 4px rgba(0, 0, 0, 0.3),
-    0 0 12px rgba(185, 247, 255, 0.2);
+    0 0 12px rgba(185, 247, 255, 0.2)
+  );
+  color: var(--dyvix-input-focus-color, var(--dyvix-input-color, #b9f7ff));
 }
 .dyvix-input-default::placeholder {
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 0.9rem;
+  color: var(--dyvix-input-placeholder-color, rgba(255, 255, 255, 0.2));
+  font-size: var(--dyvix-input-placeholder-font-size, 0.9rem);
 }
-.dyvix-input-default:disabled::placeholder {
-  color: rgba(255, 255, 255, 0.1);
-}
+
 .dyvix-input-default:disabled {
-  background-color: rgba(255, 255, 255, 0.01);
-  border-color: rgb(40, 42, 43);
-  color: rgba(255, 255, 255, 0.25);
-  box-shadow: none;
+  background-color: var(--dyvix-input-disabled-bg, rgba(255, 255, 255, 0.01));
+  border-color: var(--dyvix-input-disabled-border-color, rgb(40, 42, 43));
+  color: var(--dyvix-input-disabled-color, rgba(255, 255, 255, 0.25));
+  box-shadow: var(--dyvix-input-disabled-box-shadow, none);
+}
+
+.dyvix-input-default:disabled::placeholder {
+  color: var(
+    --dyvix-input-disabled-placeholder-color,
+    rgba(255, 255, 255, 0.1)
+  );
 }
