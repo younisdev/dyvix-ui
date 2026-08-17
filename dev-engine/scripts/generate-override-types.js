@@ -11,6 +11,7 @@ const tokenPort = getFile(
   path.resolve(__dirname, '../registery/token-port.json'),
   'json'
 );
+
 GenerateOverridesTypes(
   './src/components/button/dependencies/button.overrides.json',
   './src/components/button/dependencies/button.types.tsx',
@@ -25,6 +26,11 @@ GenerateOverridesTypes(
   './src/components/input/dependencies/input.overrides.json',
   './src/components/input/dependencies/input.types.tsx',
   'input'
+);
+UseCSSVar(
+  './src/components/input/dependencies/style/themes.css',
+  'input',
+  './src/components/input/dependencies/input.overrides.json'
 );
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
@@ -143,14 +149,19 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
 
   const finalizedCSS = parsedCSS
     .map(([selector, attributes]) => {
-      const splitSelector = selector.split(':');
-      const action = splitSelector[1] || null;
+      const splitSelector = selector.split(':').filter(Boolean);
+      const action =
+        splitSelector.length > 2
+          ? splitSelector.slice(1).join('-')
+          : splitSelector[1] || null;
+
       const isValidAction =
         tokenPort.supported_pseudo_classes.includes(action) || action === null;
 
       if (!isValidAction) {
         return null;
       }
+
       const SmartAttributes = attributes
         .flatMap((attribute) => {
           const colonIndx = attribute.indexOf(':');
