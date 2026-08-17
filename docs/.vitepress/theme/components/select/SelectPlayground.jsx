@@ -21,14 +21,15 @@ export default function SelectPlayground() {
       options: DYVIX_GLOBAL_THEME,
       current: DYVIX_GLOBAL_THEME.SINGULARITY,
       format: 'string',
-      allowNull: false
+      allowNull: true
     },
     {
       utility: 'animation',
       type: 'select',
       options: DYVIX_GLOBAL_ANIMATION,
       current: DYVIX_GLOBAL_ANIMATION.FADE,
-      format: 'string'
+      format: 'string',
+      allowNull: true
     },
     {
       utility: 'background',

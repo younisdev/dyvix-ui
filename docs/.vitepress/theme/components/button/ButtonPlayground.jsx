@@ -10,14 +10,16 @@ export default function ButtonPlayground() {
       type: 'select',
       options: DYVIX_GLOBAL_THEME,
       current: DYVIX_GLOBAL_THEME.OCEAN,
-      format: 'string'
+      format: 'string',
+      allowNull: true
     },
     {
       utility: 'animation',
       type: 'select',
       options: DYVIX_GLOBAL_ANIMATION,
       current: DYVIX_GLOBAL_ANIMATION.BUBBLE,
-      format: 'string'
+      format: 'string',
+      allowNull: true
     },
     {
       utility: 'background',

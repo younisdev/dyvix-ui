@@ -18,7 +18,7 @@ export default function ModalPlayground() {
       options: DYVIX_GLOBAL_THEME,
       current: DYVIX_GLOBAL_THEME.OCEAN,
       format: 'string',
-      allowNull: false
+      allowNull: true
     },
     {
       utility: 'animation',
@@ -26,7 +26,7 @@ export default function ModalPlayground() {
       options: DYVIX_GLOBAL_ANIMATION,
       current: DYVIX_GLOBAL_ANIMATION.BUBBLE,
       format: 'string',
-      allowNull: false
+      allowNull: true
     },
     {
       utility: 'background',

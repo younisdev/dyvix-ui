@@ -16,14 +16,16 @@ export default function FilePlayground() {
       type: 'select',
       options: DYVIX_GLOBAL_ANIMATION,
       current: DYVIX_GLOBAL_ANIMATION.AURORA,
-      format: 'string'
+      format: 'string',
+      allowNull: true
     },
     {
       utility: 'theme',
       type: 'select',
       options: DYVIX_GLOBAL_THEME,
       current: DYVIX_GLOBAL_THEME.MIDNIGHT,
-      format: 'string'
+      format: 'string',
+      allowNull: true
     },
     {
       utility: 'background',

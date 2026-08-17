@@ -26,14 +26,15 @@ export default function InputPlayground() {
       options: DYVIX_GLOBAL_THEME,
       current: DYVIX_GLOBAL_THEME.OCEAN,
       format: 'string',
-      allowNull: false
+      allowNull: true
     },
     {
       utility: 'animation',
       type: 'select',
       options: DYVIX_GLOBAL_ANIMATION,
       current: DYVIX_GLOBAL_ANIMATION.AURORA,
-      format: 'string'
+      format: 'string',
+      allowNull: true
     },
     {
       utility: 'placeholder',
