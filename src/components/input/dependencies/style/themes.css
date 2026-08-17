@@ -1,479 +1,739 @@
 .dyvix-input-singularity {
-  background: radial-gradient(circle, #000000 0%, #1a1a1a 100%);
-  color: #b903e2;
-  box-shadow: 0 0 30px #b903e2;
-  -webkit-box-shadow: 0 0 30px #b903e2;
-  -moz-box-shadow: 0 0 30px #b903e2;
-  border: #450343 3px double;
-  border-radius: 10rem;
-  transition: all 0.3s ease-in-out;
+  background: var(
+    --dyvix-input-bg,
+    radial-gradient(circle, #000000 0%, #1a1a1a 100%)
+  );
+  color: var(--dyvix-input-color, #b903e2);
+  box-shadow: var(--dyvix-input-box-shadow, 0 0 30px #b903e2);
+  -webkit-box-shadow: var(--dyvix-input-box-shadow, 0 0 30px #b903e2);
+  -moz-box-shadow: var(--dyvix-input-box-shadow, 0 0 30px #b903e2);
+  border-color: var(--dyvix-input-border-color, #450343);
+  border-width: var(--dyvix-input-border-width, 3px);
+  border-style: var(--dyvix-input-border-style, double);
+  border-radius: var(--dyvix-input-border-radius, 10rem);
+  transition: var(--dyvix-input-transition, all 0.3s ease-in-out);
 }
+
 .dyvix-input-singularity:hover {
-  border-color: #6a0368;
-  box-shadow: 0 0 50px #b903e2;
-  transform: scale(1.02);
+  border-color: var(--dyvix-input-hover-border-color, #6a0368);
+  box-shadow: var(--dyvix-input-hover-box-shadow, 0 0 50px #b903e2);
+  transform: var(--dyvix-input-hover-transform, scale(1.02));
 }
+
 .dyvix-input-singularity::placeholder {
-  color: whitesmoke;
+  color: var(--dyvix-input-placeholder-color, whitesmoke);
 }
+
 .dyvix-input-singularity:focus {
-  border-color: #b903e2;
-  box-shadow:
+  border-color: var(--dyvix-input-focus-border-color, #b903e2);
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0 0 50px #b903e2,
-    0 0 0 2px rgba(185, 3, 226, 0.3);
+    0 0 0 2px rgba(185, 3, 226, 0.3)
+  );
 }
+
 .dyvix-input-industrial {
-  font-family: 'Geist';
-  border: 4px solid #374151;
-  border-radius: 10px;
-  background-color: #0a1429;
-  padding: 0.6rem;
-  transition:
+  font-family: var(--dyvix-input-font-family, 'Geist');
+  border-width: var(--dyvix-input-border-width, 4px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, #374151);
+  border-radius: var(--dyvix-input-border-radius, 10px);
+  background: var(--dyvix-input-bg, #0a1429);
+  padding: var(--dyvix-input-padding, 0.6rem);
+  transition: var(
+    --dyvix-input-transition,
     box-shadow ease-in-out 0.6s,
     border-color ease-in-out 0.3s,
-    background-color ease-in-out 0.2s,
+    background ease-in-out 0.2s,
     transform ease-in-out 0.1s,
-    border-radius ease-in-out 0.4s;
+    border-radius ease-in-out 0.4s
+  );
 }
+
 .dyvix-input-industrial:hover {
-  border-color: #6a6a6a;
-  box-shadow:
+  border-color: var(--dyvix-input-hover-border-color, #6a6a6a);
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 30px rgba(106, 106, 106, 0.1),
-    0 0 20px rgba(106, 106, 106, 0.15);
-  background-color: #101f39;
-  transform: scale(1.01);
-  border-radius: 13px;
+    0 0 20px rgba(106, 106, 106, 0.15)
+  );
+  background: var(--dyvix-input-hover-bg, #101f39);
+  transform: var(--dyvix-input-hover-transform, scale(1.01));
+  border-radius: var(--dyvix-input-hover-border-radius, 13px);
 }
+
 .dyvix-input-industrial:focus {
-  border-color: #9ca3af;
-  color: ghostwhite;
+  border-color: var(--dyvix-input-focus-border-color, #9ca3af);
+  color: var(--dyvix-input-focus-color, ghostwhite);
   outline: none;
-  background-color: #101f39;
-  box-shadow:
+  background: var(--dyvix-input-focus-bg, #101f39);
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     inset 0 0 30px rgba(156, 163, 175, 0.15),
-    0 0 25px rgba(156, 163, 175, 0.25);
+    0 0 25px rgba(156, 163, 175, 0.25)
+  );
 }
+
 .dyvix-input-industrial:disabled {
-  border-color: #1f2937;
-  background-color: #050b14;
-  color: #4b5563;
-  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.5);
+  border-color: var(--dyvix-input-disabled-border-color, #1f2937);
+  background: var(--dyvix-input-disabled-bg, #050b14);
+  color: var(--dyvix-input-disabled-color, #4b5563);
+  box-shadow: var(
+    --dyvix-input-disabled-box-shadow,
+    inset 0 4px 6px rgba(0, 0, 0, 0.5)
+  );
 }
+
 .dyvix-input-industrial:disabled::placeholder {
-  color: #374151;
+  color: var(--dyvix-input-disabled-placeholder-color, #374151);
 }
+
 .dyvix-input-ember {
-  border-radius: 10px;
-  background-color: #0f0a08;
-  border: none;
+  border-radius: var(--dyvix-input-border-radius, 10px);
+  background: var(--dyvix-input-bg, #0f0a08);
+  border-style: var(--dyvix-input-border-style, none);
   border-bottom: #ff4500 3px solid;
-  box-shadow:
+  box-shadow: var(
+    --dyvix-input-box-shadow,
     0px 17px 12px -12px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -webkit-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
     0px 17px 12px -12px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -moz-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
     0px 17px 12px -12px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  transition:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.5s ease-in-out,
-    background-color 0.45 ease-in-out,
+    background 0.45 ease-in-out,
     border-color 0.4s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
-    -moz-box-shadow 0.3s ease-in-out;
+    -moz-box-shadow 0.3s ease-in-out
+  );
 }
+
 .dyvix-input-ember:hover {
-  border: none;
+  border-style: var(--dyvix-input-hover-border-style, none);
   border-bottom: #ff6b00 3.1px solid;
-  transform: scale(1.009);
-  box-shadow:
+  transform: var(--dyvix-input-hover-transform, scale(1.009));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     0px 17px 20px -12px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -webkit-box-shadow:
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     0px 17px 20px -12px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -moz-box-shadow:
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     0px 17px 20px -12px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
 }
+
 .dyvix-input-ember:focus {
-  border: none;
+  border-style: var(--dyvix-input-focus-border-style, none);
   border-bottom-color: #ff8c00;
-  box-shadow:
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0px 17px 25px -10px rgba(255, 140, 0, 0.95),
-    0px 0px 45px -2px rgba(255, 69, 0, 0.6);
+    0px 0px 45px -2px rgba(255, 69, 0, 0.6)
+  );
 }
+
 .dyvix-input-frost {
-  background-color: #ffffff1a;
-  border: 5px groove #ffffff40;
-  border-radius: 20px;
+  background: var(--dyvix-input-bg, #ffffff1a);
+  border-width: var(--dyvix-input-border-width, 5px);
+  border-style: var(--dyvix-input-border-style, groove);
+  border-color: var(--dyvix-input-border-color, #ffffff40);
+  border-radius: var(--dyvix-input-border-radius, 20px);
   backdrop-filter: blur(50px);
-  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  transition:
+  box-shadow: var(
+    --dyvix-input-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.5s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
-    border 0.2s ease-in-out;
+    border 0.2s ease-in-out
+  );
 }
+
 .dyvix-input-frost:hover {
-  border: 6px groove #f8f8f840;
-  transform: scale(1.02);
-  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  border-width: var(--dyvix-input-hover-border-width, 6px);
+  border-style: var(--dyvix-input-hover-border-style, groove);
+  border-color: var(--dyvix-input-hover-border-color, #f8f8f840);
+  transform: var(--dyvix-input-hover-transform, scale(1.02));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
 }
+
 .dyvix-input-blade {
-  font-family: 'Geist';
-  background-color: #0a0a0a;
-  border-radius: 0px;
-  color: #ffffff;
+  font-family: var(--dyvix-input-font-family, 'Geist');
+  background: var(--dyvix-input-bg, #0a0a0a);
+  border-radius: var(--dyvix-input-border-radius, 0px);
+  color: var(--dyvix-input-color, #ffffff);
   border-left: 3px solid #e2e8f0;
   border-top: 3px solid #e2e8f0;
   border-right: 1px solid rgba(255, 255, 255, 0.12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -webkit-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -moz-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  transition:
+  box-shadow: var(
+    --dyvix-input-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-input-transition,
     border-left 0.15s ease-in-out,
     border-top 0.15s ease-in-out,
     box-shadow 0.2s ease-in-out,
     -webkit-box-shadow 0.2s ease-in-out,
-    -moz-box-shadow 0.2s ease-in-out;
+    -moz-box-shadow 0.2s ease-in-out
+  );
 }
+
 .dyvix-input-blade:hover {
-  border: none;
+  border-style: var(--dyvix-input-hover-border-style, none);
   border-left: 4px solid #ffffff;
   border-top: 4px solid #ffffff;
-  box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -webkit-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -moz-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
 }
+
 .dyvix-input-blade:focus {
-  border: none;
+  border-style: var(--dyvix-input-focus-border-style, none);
   border-left: 2px solid #ffffff;
   border-top: 2px solid #ffffff;
-  box-shadow: -3px -3px 15px rgba(255, 255, 255, 0.15);
-}
-.dyvix-input-blade::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-.dyvix-input-neon {
-  background: #4deeea;
-  background: radial-gradient(
-    circle,
-    rgba(77, 238, 234, 1) 0%,
-    rgba(112, 186, 239, 1) 43%,
-    rgba(240, 0, 255, 1) 100%
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
+    -3px -3px 15px rgba(255, 255, 255, 0.15)
   );
+}
 
-  box-shadow: 0px 0px 20px 2px rgba(252, 46, 255, 0.4);
-  border: 0 solid transparent;
-  color: white;
-  font-weight: bold;
-  border-radius: 4rem;
-  transition:
+.dyvix-input-blade::placeholder {
+  color: var(--dyvix-input-placeholder-color, rgba(255, 255, 255, 0.4));
+}
+
+.dyvix-input-neon {
+  background: var(--dyvix-input-bg, #4deeea);
+  background: var(
+    --dyvix-input-bg,
+    radial-gradient(
+      circle,
+      rgba(77, 238, 234, 1) 0%,
+      rgba(112, 186, 239, 1) 43%,
+      rgba(240, 0, 255, 1) 100%
+    )
+  );
+  box-shadow: var(
+    --dyvix-input-box-shadow,
+    0px 0px 20px 2px rgba(252, 46, 255, 0.4)
+  );
+  border-width: var(--dyvix-input-border-width, 0);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, transparent);
+  color: var(--dyvix-input-color, white);
+  font-weight: var(--dyvix-input-font-weight, bold);
+  border-radius: var(--dyvix-input-border-radius, 4rem);
+  transition: var(
+    --dyvix-input-transition,
     transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
     border-radius 0.2s ease,
     box-shadow 0.3s ease,
     background-position 0.4s ease,
-    color 0.2s ease;
+    color 0.2s ease
+  );
 }
+
 .dyvix-input-neon:hover {
-  border: none;
-  border-radius: 2rem;
-  transform: scale(1.01);
-  background: #1c4241;
-  background: radial-gradient(
-    circle,
-    rgba(112, 186, 239, 1) 0%,
-    rgba(77, 238, 234, 1) 43%,
-    rgba(240, 0, 255, 1) 90%
+  border-style: var(--dyvix-input-hover-border-style, none);
+  border-radius: var(--dyvix-input-hover-border-radius, 2rem);
+  transform: var(--dyvix-input-hover-transform, scale(1.01));
+  background: var(--dyvix-input-hover-bg, #1c4241);
+  background: var(
+    --dyvix-input-hover-bg,
+    radial-gradient(
+      circle,
+      rgba(112, 186, 239, 1) 0%,
+      rgba(77, 238, 234, 1) 43%,
+      rgba(240, 0, 255, 1) 90%
+    )
   );
-  box-shadow: 0px 0px 56px 4px rgba(252, 61, 255, 1);
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0px 0px 56px 4px rgba(252, 61, 255, 1)
+  );
 }
+
 .dyvix-input-neon::placeholder {
-  color: whitesmoke;
+  color: var(--dyvix-input-placeholder-color, whitesmoke);
 }
+
 .dyvix-input-neon:focus {
-  border: none;
-  transform: scale(1.015);
-  border-radius: 2rem;
-  color: #050e14;
-  box-shadow:
+  border-style: var(--dyvix-input-focus-border-style, none);
+  transform: var(--dyvix-input-focus-transform, scale(1.015));
+  border-radius: var(--dyvix-input-focus-border-radius, 2rem);
+  color: var(--dyvix-input-focus-color, #050e14);
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0px 0px 50px 6px rgba(252, 61, 255, 1),
-    inset 0px 0px 10px rgba(255, 255, 255, 0.8);
-}
-.dyvix-input-aurora {
-  background: #14e81e;
-  background: linear-gradient(
-    99deg,
-    rgba(20, 232, 30, 1) 0%,
-    rgba(0, 234, 141, 1) 21%,
-    rgba(1, 177, 179, 1) 46%,
-    rgba(1, 126, 213, 1) 67%,
-    rgba(181, 61, 255, 1) 100%
+    inset 0px 0px 10px rgba(255, 255, 255, 0.8)
   );
-  border-radius: 3rem;
-  border: 1px solid rgba(165, 164, 164, 0.1);
-  box-shadow: 0px 0px 75px 0px rgba(1, 176, 179, 0.9);
-  transition:
+}
+
+.dyvix-input-aurora {
+  background: var(--dyvix-input-bg, #14e81e);
+  background: var(
+    --dyvix-input-bg,
+    linear-gradient(
+      99deg,
+      rgba(20, 232, 30, 1) 0%,
+      rgba(0, 234, 141, 1) 21%,
+      rgba(1, 177, 179, 1) 46%,
+      rgba(1, 126, 213, 1) 67%,
+      rgba(181, 61, 255, 1) 100%
+    )
+  );
+  border-radius: var(--dyvix-input-border-radius, 3rem);
+  border-width: var(--dyvix-input-border-width, 1px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, rgba(165, 164, 164, 0.1));
+  box-shadow: var(
+    --dyvix-input-box-shadow,
+    0px 0px 75px 0px rgba(1, 176, 179, 0.9)
+  );
+  transition: var(
+    --dyvix-input-transition,
     box-shadow 0.3s ease-in-out,
     transform 0.3s ease-in-out,
     border-radius 0.2s ease-in-out,
     border-color 0.2s ease-in-out,
-    background 0.3s ease-in-out;
-}
-.dyvix-input-aurora:hover {
-  border: 1px solid transparent;
-  border-radius: 5rem;
-  background: #14e81e;
-  background: linear-gradient(
-    99deg,
-    rgb(93, 189, 98) 0%,
-    rgba(0, 234, 141, 1) 21%,
-    rgba(1, 177, 179, 1) 46%,
-    rgb(100, 187, 250) 67%,
-    rgba(181, 61, 255, 1) 100%
+    background 0.3s ease-in-out
   );
-  transform: scale(1.01);
-  box-shadow: 0px 0px 50px 10px rgba(1, 176, 179, 0.8);
 }
+
+.dyvix-input-aurora:hover {
+  border-width: var(--dyvix-input-hover-border-width, 1px);
+  border-style: var(--dyvix-input-hover-border-style, solid);
+  border-color: var(--dyvix-input-hover-border-color, transparent);
+  border-radius: var(--dyvix-input-hover-border-radius, 5rem);
+  background: var(--dyvix-input-hover-bg, #14e81e);
+  background: var(
+    --dyvix-input-hover-bg,
+    linear-gradient(
+      99deg,
+      rgb(93, 189, 98) 0%,
+      rgba(0, 234, 141, 1) 21%,
+      rgba(1, 177, 179, 1) 46%,
+      rgb(100, 187, 250) 67%,
+      rgba(181, 61, 255, 1) 100%
+    )
+  );
+  transform: var(--dyvix-input-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0px 0px 50px 10px rgba(1, 176, 179, 0.8)
+  );
+}
+
 .dyvix-input-aurora::placeholder {
-  color: white;
+  color: var(--dyvix-input-placeholder-color, white);
 }
+
 .dyvix-input-aurora:focus {
-  transform: scale(1.015);
-  border-radius: 5rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0px 0px 60px 12px rgba(1, 176, 179, 0.95);
+  transform: var(--dyvix-input-focus-transform, scale(1.015));
+  border-radius: var(--dyvix-input-focus-border-radius, 5rem);
+  border-width: var(--dyvix-input-focus-border-width, 1px);
+  border-style: var(--dyvix-input-focus-border-style, solid);
+  border-color: var(--dyvix-input-focus-border-color, rgba(255, 255, 255, 0.4));
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
+    0px 0px 60px 12px rgba(1, 176, 179, 0.95)
+  );
 }
+
 .dyvix-input-sunset {
-  background: #1a0a00;
-  background: linear-gradient(
-    140deg,
-    #1a0a00 0%,
-    #3d1a00 40%,
-    #6b2d00 70%,
-    #8b3a00 100%
+  background: var(--dyvix-input-bg, #1a0a00);
+  background: var(
+    --dyvix-input-bg,
+    linear-gradient(140deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%)
   );
   border-bottom: 5px solid #a84600;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 198, 15, 0.1);
-  box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  -webkit-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  -moz-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  transition:
+  border-radius: var(--dyvix-input-border-radius, 20px);
+  border-width: var(--dyvix-input-border-width, 1px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, rgba(255, 198, 15, 0.1));
+  box-shadow: var(
+    --dyvix-input-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
-    border-radius 0.2s ease-in-out;
-}
-.dyvix-input-sunset:hover {
-  border: none;
-  background: #1a0a00;
-  background: linear-gradient(
-    140deg,
-    #1a0a00 0%,
-    #3d1a00 40%,
-    #6b2d00 70%,
-    #af4901 100%
+    border-radius 0.2s ease-in-out
   );
-  transform: translateY(1.5px);
-  box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -webkit-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -moz-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  border-radius: 20px;
 }
+
+.dyvix-input-sunset:hover {
+  border-style: var(--dyvix-input-hover-border-style, none);
+  background: var(--dyvix-input-hover-bg, #1a0a00);
+  background: var(
+    --dyvix-input-hover-bg,
+    linear-gradient(140deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #af4901 100%)
+  );
+  transform: var(--dyvix-input-hover-transform, translateY(1.5px));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  border-radius: var(--dyvix-input-hover-border-radius, 20px);
+}
+
 .dyvix-input-sunset:focus {
-  transform: translateY(1px);
+  transform: var(--dyvix-input-focus-transform, translateY(1px));
   border-left: 1px solid rgba(255, 198, 15, 0.4);
   border-top: 1px solid rgba(255, 198, 15, 0.4);
   border-right: 1px solid rgba(255, 198, 15, 0.4);
   border-bottom: 2px solid #ffbc0f;
-  box-shadow:
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0px 8px 30px -5px rgba(255, 198, 15, 0.7),
-    inset 0px 0px 12px rgba(255, 115, 0, 0.3);
-  -webkit-box-shadow:
-    0px 8px 30px -5px rgba(255, 198, 15, 0.7),
-    inset 0px 0px 12px rgba(255, 115, 0, 0.3);
-  -moz-box-shadow:
-    0px 8px 30px -5px rgba(255, 198, 15, 0.7),
-    inset 0px 0px 12px rgba(255, 115, 0, 0.3);
-}
-.dyvix-input-sunset::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-.dyvix-input-ocean {
-  background: #031b2f;
-  background: linear-gradient(
-    135deg,
-    #02131f 0%,
-    #05314b 35%,
-    #0b6c91 70%,
-    #38bdf8 100%
+    inset 0px 0px 12px rgba(255, 115, 0, 0.3)
   );
-  color: #e0f7ff;
-  border: 2px solid rgba(125, 211, 252, 0.55);
-  border-radius: 2rem;
-  box-shadow:
+  -webkit-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
+    0px 8px 30px -5px rgba(255, 198, 15, 0.7),
+    inset 0px 0px 12px rgba(255, 115, 0, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
+    0px 8px 30px -5px rgba(255, 198, 15, 0.7),
+    inset 0px 0px 12px rgba(255, 115, 0, 0.3)
+  );
+}
+
+.dyvix-input-sunset::placeholder {
+  color: var(--dyvix-input-placeholder-color, rgba(255, 255, 255, 0.5));
+}
+
+.dyvix-input-ocean {
+  background: var(--dyvix-input-bg, #031b2f);
+  background: var(
+    --dyvix-input-bg,
+    linear-gradient(135deg, #02131f 0%, #05314b 35%, #0b6c91 70%, #38bdf8 100%)
+  );
+  color: var(--dyvix-input-color, #e0f7ff);
+  border-width: var(--dyvix-input-border-width, 2px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, rgba(125, 211, 252, 0.55));
+  border-radius: var(--dyvix-input-border-radius, 2rem);
+  box-shadow: var(
+    --dyvix-input-box-shadow,
     0px 0px 18px rgba(56, 189, 248, 0.45),
     0px 0px 42px rgba(14, 165, 233, 0.35),
-    inset 0px 0px 18px rgba(186, 230, 253, 0.14);
-  -webkit-box-shadow:
+    inset 0px 0px 18px rgba(186, 230, 253, 0.14)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
     0px 0px 18px rgba(56, 189, 248, 0.45),
     0px 0px 42px rgba(14, 165, 233, 0.35),
-    inset 0px 0px 18px rgba(186, 230, 253, 0.14);
-  -moz-box-shadow:
+    inset 0px 0px 18px rgba(186, 230, 253, 0.14)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
     0px 0px 18px rgba(56, 189, 248, 0.45),
     0px 0px 42px rgba(14, 165, 233, 0.35),
-    inset 0px 0px 18px rgba(186, 230, 253, 0.14);
-  transition:
+    inset 0px 0px 18px rgba(186, 230, 253, 0.14)
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.35s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
     border-color 0.25s ease-in-out,
-    background 0.35s ease-in-out;
-}
-.dyvix-input-ocean:hover {
-  background: linear-gradient(
-    135deg,
-    #04243a 0%,
-    #065f86 40%,
-    #0ea5e9 75%,
-    #67e8f9 100%
+    background 0.35s ease-in-out
   );
-  border-color: rgba(186, 230, 253, 0.85);
-  transform: translateY(-1px) scale(1.01);
-  box-shadow:
-    0px 0px 24px rgba(56, 189, 248, 0.65),
-    0px 0px 60px rgba(14, 165, 233, 0.5),
-    inset 0px 0px 24px rgba(186, 230, 253, 0.2);
-  -webkit-box-shadow:
-    0px 0px 24px rgba(56, 189, 248, 0.65),
-    0px 0px 60px rgba(14, 165, 233, 0.5),
-    inset 0px 0px 24px rgba(186, 230, 253, 0.2);
-  -moz-box-shadow:
-    0px 0px 24px rgba(56, 189, 248, 0.65),
-    0px 0px 60px rgba(14, 165, 233, 0.5),
-    inset 0px 0px 24px rgba(186, 230, 253, 0.2);
 }
+
+.dyvix-input-ocean:hover {
+  background: var(
+    --dyvix-input-hover-bg,
+    linear-gradient(135deg, #04243a 0%, #065f86 40%, #0ea5e9 75%, #67e8f9 100%)
+  );
+  border-color: var(
+    --dyvix-input-hover-border-color,
+    rgba(186, 230, 253, 0.85)
+  );
+  transform: var(--dyvix-input-hover-transform, translateY(-1px) scale(1.01));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0px 0px 24px rgba(56, 189, 248, 0.65),
+    0px 0px 60px rgba(14, 165, 233, 0.5),
+    inset 0px 0px 24px rgba(186, 230, 253, 0.2)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0px 0px 24px rgba(56, 189, 248, 0.65),
+    0px 0px 60px rgba(14, 165, 233, 0.5),
+    inset 0px 0px 24px rgba(186, 230, 253, 0.2)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0px 0px 24px rgba(56, 189, 248, 0.65),
+    0px 0px 60px rgba(14, 165, 233, 0.5),
+    inset 0px 0px 24px rgba(186, 230, 253, 0.2)
+  );
+}
+
 .dyvix-input-ocean:focus {
   outline: none;
-  border-color: #bae6fd;
-  transform: scale(1.015);
-  box-shadow:
+  border-color: var(--dyvix-input-focus-border-color, #bae6fd);
+  transform: var(--dyvix-input-focus-transform, scale(1.015));
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0px 0px 0px 2px rgba(125, 211, 252, 0.28),
     0px 0px 30px rgba(56, 189, 248, 0.75),
     0px 0px 70px rgba(14, 165, 233, 0.6),
-    inset 0px 0px 28px rgba(224, 247, 255, 0.24);
-  -webkit-box-shadow:
-    0px 0px 0px 2px rgba(125, 211, 252, 0.28),
-    0px 0px 30px rgba(56, 189, 248, 0.75),
-    0px 0px 70px rgba(14, 165, 233, 0.6),
-    inset 0px 0px 28px rgba(224, 247, 255, 0.24);
-  -moz-box-shadow:
-    0px 0px 0px 2px rgba(125, 211, 252, 0.28),
-    0px 0px 30px rgba(56, 189, 248, 0.75),
-    0px 0px 70px rgba(14, 165, 233, 0.6),
-    inset 0px 0px 28px rgba(224, 247, 255, 0.24);
-}
-.dyvix-input-ocean::placeholder {
-  color: rgba(224, 247, 255, 0.72);
-}
-.dyvix-input-forest {
-  background: #1f3b2c;
-  background: radial-gradient(
-    circle,
-    rgba(31, 59, 44, 1) 14%,
-    rgba(31, 59, 44, 1) 24%,
-    rgba(75, 58, 42, 1) 71%
+    inset 0px 0px 28px rgba(224, 247, 255, 0.24)
   );
-  border: 3px double #86a86b;
-  border-radius: 5rem;
-  box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  -webkit-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  -moz-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  transition:
+  -webkit-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
+    0px 0px 0px 2px rgba(125, 211, 252, 0.28),
+    0px 0px 30px rgba(56, 189, 248, 0.75),
+    0px 0px 70px rgba(14, 165, 233, 0.6),
+    inset 0px 0px 28px rgba(224, 247, 255, 0.24)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
+    0px 0px 0px 2px rgba(125, 211, 252, 0.28),
+    0px 0px 30px rgba(56, 189, 248, 0.75),
+    0px 0px 70px rgba(14, 165, 233, 0.6),
+    inset 0px 0px 28px rgba(224, 247, 255, 0.24)
+  );
+}
+
+.dyvix-input-ocean::placeholder {
+  color: var(--dyvix-input-placeholder-color, rgba(224, 247, 255, 0.72));
+}
+
+.dyvix-input-forest {
+  background: var(--dyvix-input-bg, #1f3b2c);
+  background: var(
+    --dyvix-input-bg,
+    radial-gradient(
+      circle,
+      rgba(31, 59, 44, 1) 14%,
+      rgba(31, 59, 44, 1) 24%,
+      rgba(75, 58, 42, 1) 71%
+    )
+  );
+  border-width: var(--dyvix-input-border-width, 3px);
+  border-style: var(--dyvix-input-border-style, double);
+  border-color: var(--dyvix-input-border-color, #86a86b);
+  border-radius: var(--dyvix-input-border-radius, 5rem);
+  box-shadow: var(
+    --dyvix-input-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease
+  );
 }
+
 .dyvix-input-forest:hover {
-  transform: skewX(-5deg) scale(1.02);
-  box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
-  -webkit-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
-  -moz-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
+  transform: var(--dyvix-input-hover-transform, skewX(-5deg) scale(1.02));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
 }
+
 .dyvix-input-midnight {
-  background: radial-gradient(circle at center, #00024d 0%, #000000 100%);
-  border: 1px solid rgba(112, 168, 247, 0.3);
-  border-radius: 3.67rem;
-  box-shadow:
+  background: var(
+    --dyvix-input-bg,
+    radial-gradient(circle at center, #00024d 0%, #000000 100%)
+  );
+  border-width: var(--dyvix-input-border-width, 1px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, rgba(112, 168, 247, 0.3));
+  border-radius: var(--dyvix-input-border-radius, 3.67rem);
+  box-shadow: var(
+    --dyvix-input-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -webkit-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -moz-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  transition: all 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67);
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  transition: var(
+    --dyvix-input-transition,
+    all 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67)
+  );
   backdrop-filter: blur(10px);
 }
+
 .dyvix-input-midnight:hover {
-  background: radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%);
-  border-color: rgba(112, 168, 247, 0.6);
-  box-shadow:
+  background: var(
+    --dyvix-input-hover-bg,
+    radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%)
+  );
+  border-color: var(--dyvix-input-hover-border-color, rgba(112, 168, 247, 0.6));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -webkit-box-shadow:
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -moz-box-shadow:
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  transform: translateY(-2px) scale(1.01);
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  transform: var(--dyvix-input-hover-transform, translateY(-2px) scale(1.01));
 }
+
 .dyvix-input-crimson {
-  background: #1a0000;
-  color: #ffd6d6;
-  border: 1px solid #ff4d4d;
-  border-radius: 10px;
-  box-shadow: 0 0 18px rgba(255, 77, 77, 0.25);
-  transition:
+  background: var(--dyvix-input-bg, #1a0000);
+  color: var(--dyvix-input-color, #ffd6d6);
+  border-width: var(--dyvix-input-border-width, 1px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, #ff4d4d);
+  border-radius: var(--dyvix-input-border-radius, 10px);
+  box-shadow: var(--dyvix-input-box-shadow, 0 0 18px rgba(255, 77, 77, 0.25));
+  transition: var(
+    --dyvix-input-transition,
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     transform 0.2s ease,
-    background-color 0.25s ease;
+    background 0.25s ease
+  );
 }
+
 .dyvix-input-crimson:hover {
-  background: #2a0000;
-  border-color: #ff6666;
-  box-shadow: 0 0 24px rgba(255, 77, 77, 0.4);
-  transform: scale(1.01);
+  background: var(--dyvix-input-hover-bg, #2a0000);
+  border-color: var(--dyvix-input-hover-border-color, #ff6666);
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
+    0 0 24px rgba(255, 77, 77, 0.4)
+  );
+  transform: var(--dyvix-input-hover-transform, scale(1.01));
 }
+
 .dyvix-input-crimson:focus {
   outline: none;
-  background: #2a0000;
-  border-color: #ff8080;
-  box-shadow:
+  background: var(--dyvix-input-focus-bg, #2a0000);
+  border-color: var(--dyvix-input-focus-border-color, #ff8080);
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0 0 28px rgba(255, 77, 77, 0.55),
-    0 0 0 2px rgba(255, 77, 77, 0.18);
+    0 0 0 2px rgba(255, 77, 77, 0.18)
+  );
 }
 
 .dyvix-input-crimson::placeholder {
-  color: rgba(255, 214, 214, 0.7);
+  color: var(--dyvix-input-placeholder-color, rgba(255, 214, 214, 0.7));
 }
 
 .dyvix-input-sakura {
-  background:
+  background: var(
+    --dyvix-input-bg,
     radial-gradient(
       circle at top left,
       rgba(255, 183, 197, 0.25),
@@ -484,188 +744,271 @@
       rgba(255, 105, 140, 0.15),
       transparent 50%
     ),
-    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%);
-  color: #fce4ec;
-  border: 2px solid rgba(255, 150, 170, 0.5);
-  border-radius: 2rem;
-  box-shadow:
+    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%)
+  );
+  color: var(--dyvix-input-color, #fce4ec);
+  border-width: var(--dyvix-input-border-width, 2px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, rgba(255, 150, 170, 0.5));
+  border-radius: var(--dyvix-input-border-radius, 2rem);
+  box-shadow: var(
+    --dyvix-input-box-shadow,
     inset 0 0 40px rgba(255, 183, 197, 0.08),
-    0 0 50px rgba(255, 105, 140, 0.25);
-  transition:
+    0 0 50px rgba(255, 105, 140, 0.25)
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease
+  );
 }
 
 .dyvix-input-sakura:hover {
-  transform: translateY(-2px) scale(1.01);
-  border-color: rgba(255, 180, 200, 0.8);
-  box-shadow:
+  transform: var(--dyvix-input-hover-transform, translateY(-2px) scale(1.01));
+  border-color: var(--dyvix-input-hover-border-color, rgba(255, 180, 200, 0.8));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 35px rgba(255, 183, 197, 0.12),
-    0 0 75px rgba(255, 105, 140, 0.4);
+    0 0 75px rgba(255, 105, 140, 0.4)
+  );
 }
 
 .dyvix-input-sakura:focus {
   outline: none;
-  border-color: rgba(255, 200, 210, 0.9);
-  box-shadow:
+  border-color: var(--dyvix-input-focus-border-color, rgba(255, 200, 210, 0.9));
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0 0 0 2px rgba(255, 150, 170, 0.25),
-    0 0 80px rgba(255, 105, 140, 0.35);
-  transform: scale(1.015);
+    0 0 80px rgba(255, 105, 140, 0.35)
+  );
+  transform: var(--dyvix-input-focus-transform, scale(1.015));
 }
 
 .dyvix-input-sakura::placeholder {
-  color: rgba(252, 228, 236, 0.45);
+  color: var(--dyvix-input-placeholder-color, rgba(252, 228, 236, 0.45));
 }
 
 .dyvix-input-sakura:disabled {
-  background: linear-gradient(135deg, #0f060a, #1f0d16);
-  border-color: rgba(255, 150, 170, 0.2);
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
-  color: #6b4a56;
+  background: var(
+    --dyvix-input-disabled-bg,
+    linear-gradient(135deg, #0f060a, #1f0d16)
+  );
+  border-color: var(
+    --dyvix-input-disabled-border-color,
+    rgba(255, 150, 170, 0.2)
+  );
+  box-shadow: var(
+    --dyvix-input-disabled-box-shadow,
+    inset 0 4px 8px rgba(0, 0, 0, 0.5)
+  );
+  color: var(--dyvix-input-disabled-color, #6b4a56);
 }
 
 .dyvix-input-sakura:disabled::placeholder {
-  color: rgba(107, 74, 86, 0.5);
+  color: var(--dyvix-input-disabled-placeholder-color, rgba(107, 74, 86, 0.5));
 }
+
 .dyvix-input-obsidian {
-  background: radial-gradient(
-    circle at top,
-    #2a2a2a 0%,
-    #151515 45%,
-    #050505 100%
+  background: var(
+    --dyvix-input-bg,
+    radial-gradient(circle at top, #2a2a2a 0%, #151515 45%, #050505 100%)
   );
-  color: #f3f4f6;
-  border: 2px solid rgba(160, 130, 255, 0.4);
-  border-radius: 1.75rem;
-  box-shadow:
+  color: var(--dyvix-input-color, #f3f4f6);
+  border-width: var(--dyvix-input-border-width, 2px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, rgba(160, 130, 255, 0.4));
+  border-radius: var(--dyvix-input-border-radius, 1.75rem);
+  box-shadow: var(
+    --dyvix-input-box-shadow,
     inset 0 0 40px rgba(255, 255, 255, 0.04),
-    0 0 50px rgba(120, 90, 255, 0.18);
-  -webkit-box-shadow:
+    0 0 50px rgba(120, 90, 255, 0.18)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
     inset 0 0 40px rgba(255, 255, 255, 0.04),
-    0 0 50px rgba(120, 90, 255, 0.18);
-  -moz-box-shadow:
+    0 0 50px rgba(120, 90, 255, 0.18)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
     inset 0 0 40px rgba(255, 255, 255, 0.04),
-    0 0 50px rgba(120, 90, 255, 0.18);
-  transition:
+    0 0 50px rgba(120, 90, 255, 0.18)
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.3s ease,
     box-shadow 0.3s ease,
     border-color 0.3s ease,
-    background 0.35s ease;
+    background 0.35s ease
+  );
 }
 
 .dyvix-input-obsidian:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow:
+  transform: var(--dyvix-input-hover-transform, translateY(-2px) scale(1.01));
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 30px rgba(255, 255, 255, 0.05),
-    0 0 75px rgba(130, 100, 255, 0.25);
-  -webkit-box-shadow:
+    0 0 75px rgba(130, 100, 255, 0.25)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 30px rgba(255, 255, 255, 0.05),
-    0 0 75px rgba(130, 100, 255, 0.25);
-  -moz-box-shadow:
+    0 0 75px rgba(130, 100, 255, 0.25)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 30px rgba(255, 255, 255, 0.05),
-    0 0 75px rgba(130, 100, 255, 0.25);
-  border-color: rgba(180, 150, 255, 0.7);
+    0 0 75px rgba(130, 100, 255, 0.25)
+  );
+  border-color: var(--dyvix-input-hover-border-color, rgba(180, 150, 255, 0.7));
 }
 
 .dyvix-input-obsidian:focus {
   outline: none;
-  border-color: rgba(200, 170, 255, 0.9);
-  box-shadow:
+  border-color: var(--dyvix-input-focus-border-color, rgba(200, 170, 255, 0.9));
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     inset 0 0 25px rgba(255, 255, 255, 0.06),
     0 0 0 2px rgba(160, 130, 255, 0.25),
-    0 0 80px rgba(140, 110, 255, 0.35);
-  -webkit-box-shadow:
+    0 0 80px rgba(140, 110, 255, 0.35)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     inset 0 0 25px rgba(255, 255, 255, 0.06),
     0 0 0 2px rgba(160, 130, 255, 0.25),
-    0 0 80px rgba(140, 110, 255, 0.35);
-  -moz-box-shadow:
+    0 0 80px rgba(140, 110, 255, 0.35)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     inset 0 0 25px rgba(255, 255, 255, 0.06),
     0 0 0 2px rgba(160, 130, 255, 0.25),
-    0 0 80px rgba(140, 110, 255, 0.35);
-  transform: scale(1.015);
+    0 0 80px rgba(140, 110, 255, 0.35)
+  );
+  transform: var(--dyvix-input-focus-transform, scale(1.015));
 }
 
 .dyvix-input-obsidian::placeholder {
-  color: rgba(243, 244, 246, 0.45);
+  color: var(--dyvix-input-placeholder-color, rgba(243, 244, 246, 0.45));
 }
 
 .dyvix-input-obsidian:disabled {
-  background: radial-gradient(circle at top, #1a1a1a 0%, #0a0a0a 100%);
-  border-color: rgba(80, 60, 140, 0.2);
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
-  color: #4b5563;
+  background: var(
+    --dyvix-input-disabled-bg,
+    radial-gradient(circle at top, #1a1a1a 0%, #0a0a0a 100%)
+  );
+  border-color: var(
+    --dyvix-input-disabled-border-color,
+    rgba(80, 60, 140, 0.2)
+  );
+  box-shadow: var(
+    --dyvix-input-disabled-box-shadow,
+    inset 0 4px 8px rgba(0, 0, 0, 0.5)
+  );
+  color: var(--dyvix-input-disabled-color, #4b5563);
 }
 
 .dyvix-input-obsidian:disabled::placeholder {
-  color: rgba(75, 85, 99, 0.5);
+  color: var(--dyvix-input-disabled-placeholder-color, rgba(75, 85, 99, 0.5));
 }
 
 .dyvix-input-coffee {
-  background:
+  background: var(
+    --dyvix-input-bg,
     radial-gradient(circle at top, rgba(255, 245, 225, 0.18), transparent 45%),
-    linear-gradient(135deg, #2d1b14, #5b3928 45%, #8d6243 100%);
-  color: #fef3e2;
-  border: 2px solid #d2a679;
-  border-radius: 2rem;
-  box-shadow:
+    linear-gradient(135deg, #2d1b14, #5b3928 45%, #8d6243 100%)
+  );
+  color: var(--dyvix-input-color, #fef3e2);
+  border-width: var(--dyvix-input-border-width, 2px);
+  border-style: var(--dyvix-input-border-style, solid);
+  border-color: var(--dyvix-input-border-color, #d2a679);
+  border-radius: var(--dyvix-input-border-radius, 2rem);
+  box-shadow: var(
+    --dyvix-input-box-shadow,
     inset 0 0 30px rgba(255, 244, 230, 0.08),
-    0 0 45px rgba(155, 100, 55, 0.45);
-  -webkit-box-shadow:
+    0 0 45px rgba(155, 100, 55, 0.45)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-box-shadow,
     inset 0 0 30px rgba(255, 244, 230, 0.08),
-    0 0 45px rgba(155, 100, 55, 0.45);
-  -moz-box-shadow:
+    0 0 45px rgba(155, 100, 55, 0.45)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-box-shadow,
     inset 0 0 30px rgba(255, 244, 230, 0.08),
-    0 0 45px rgba(155, 100, 55, 0.45);
-  transition:
+    0 0 45px rgba(155, 100, 55, 0.45)
+  );
+  transition: var(
+    --dyvix-input-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    border-color 0.35s ease
+  );
 }
 
 .dyvix-input-coffee:hover {
-  transform: translateY(-2px) scale(1.01);
-  border-color: #f3c88c;
-  box-shadow:
+  transform: var(--dyvix-input-hover-transform, translateY(-2px) scale(1.01));
+  border-color: var(--dyvix-input-hover-border-color, #f3c88c);
+  box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 35px rgba(255, 245, 235, 0.12),
-    0 0 70px rgba(205, 140, 75, 0.6);
-  -webkit-box-shadow:
+    0 0 70px rgba(205, 140, 75, 0.6)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 35px rgba(255, 245, 235, 0.12),
-    0 0 70px rgba(205, 140, 75, 0.6);
-  -moz-box-shadow:
+    0 0 70px rgba(205, 140, 75, 0.6)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-hover-box-shadow,
     inset 0 0 35px rgba(255, 245, 235, 0.12),
-    0 0 70px rgba(205, 140, 75, 0.6);
+    0 0 70px rgba(205, 140, 75, 0.6)
+  );
 }
 
 .dyvix-input-coffee:focus {
   outline: none;
-  border-color: #f3c88c;
-  transform: scale(1.015);
-  box-shadow:
+  border-color: var(--dyvix-input-focus-border-color, #f3c88c);
+  transform: var(--dyvix-input-focus-transform, scale(1.015));
+  box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0 0 0 2px rgba(210, 166, 121, 0.3),
     inset 0 0 40px rgba(255, 245, 235, 0.15),
-    0 0 80px rgba(205, 140, 75, 0.7);
-  -webkit-box-shadow:
+    0 0 80px rgba(205, 140, 75, 0.7)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0 0 0 2px rgba(210, 166, 121, 0.3),
     inset 0 0 40px rgba(255, 245, 235, 0.15),
-    0 0 80px rgba(205, 140, 75, 0.7);
-  -moz-box-shadow:
+    0 0 80px rgba(205, 140, 75, 0.7)
+  );
+  -moz-box-shadow: var(
+    --dyvix-input-focus-box-shadow,
     0 0 0 2px rgba(210, 166, 121, 0.3),
     inset 0 0 40px rgba(255, 245, 235, 0.15),
-    0 0 80px rgba(205, 140, 75, 0.7);
+    0 0 80px rgba(205, 140, 75, 0.7)
+  );
 }
 
 .dyvix-input-coffee::placeholder {
-  color: rgba(254, 243, 226, 0.55);
+  color: var(--dyvix-input-placeholder-color, rgba(254, 243, 226, 0.55));
 }
 
 .dyvix-input-coffee:disabled {
-  background: linear-gradient(135deg, #1a0f0a, #3a2218);
-  border-color: rgba(210, 166, 121, 0.2);
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
-  color: #6b5a4a;
+  background: var(
+    --dyvix-input-disabled-bg,
+    linear-gradient(135deg, #1a0f0a, #3a2218)
+  );
+  border-color: var(
+    --dyvix-input-disabled-border-color,
+    rgba(210, 166, 121, 0.2)
+  );
+  box-shadow: var(
+    --dyvix-input-disabled-box-shadow,
+    inset 0 4px 8px rgba(0, 0, 0, 0.5)
+  );
+  color: var(--dyvix-input-disabled-color, #6b5a4a);
 }
 
 .dyvix-input-coffee:disabled::placeholder {
-  color: rgba(107, 90, 74, 0.5);
+  color: var(--dyvix-input-disabled-placeholder-color, rgba(107, 90, 74, 0.5));
 }

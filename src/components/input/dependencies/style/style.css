@@ -6,9 +6,6 @@
   box-sizing: border-box;
 }
 .dyvix-input {
-  border-style: var(--dyvix-input-border-style, solid);
-  border-width: var(--dyvix-input-border-width, 2px);
-  border-radius: var(--dyvix-input-border-radius, 8px);
   box-sizing: border-box;
   width: 100%;
   min-width: 50px;
@@ -23,34 +20,10 @@
   );
 }
 .dyvix-input:hover {
-  border-style: var(
-    --dyvix-input-hover-border-style,
-    var(--dyvix-input-border-style, solid)
-  );
-  border-width: var(
-    --dyvix-input-hover-border-width,
-    var(--dyvix-input-border-width, 2px)
-  );
-  border-radius: var(
-    --dyvix-input-hover-border-radius,
-    var(--dyvix-input-border-radius, 8px)
-  );
   transform: var(--dyvix-input-hover-transform, none);
   cursor: text;
 }
 .dyvix-input:focus {
-  border-style: var(
-    --dyvix-input-focus-border-style,
-    var(--dyvix-input-border-style, solid)
-  );
-  border-width: var(
-    --dyvix-input-focus-border-width,
-    var(--dyvix-input-border-width, 2px)
-  );
-  border-radius: var(
-    --dyvix-input-focus-border-radius,
-    var(--dyvix-input-border-radius, 8px)
-  );
   transform: var(--dyvix-input-focus-transform, none);
 }
 .dyvix-input:disabled {
@@ -64,9 +37,24 @@
   font-family: var(--dyvix-input-font-family, 'Geist', sans-serif);
   letter-spacing: var(--dyvix-input-letter-spacing, -0.01em);
   box-shadow: var(--dyvix-input-box-shadow, 0 2px 4px rgba(0, 0, 0, 0.3));
+  border-style: var(--dyvix-input-border-style, solid);
+  border-width: var(--dyvix-input-border-width, 2px);
+  border-radius: var(--dyvix-input-border-radius, 8px);
   border-color: var(--dyvix-input-border-color, rgb(26, 27, 27));
 }
 .dyvix-input-default:hover {
+  border-style: var(
+    --dyvix-input-hover-border-style,
+    var(--dyvix-input-border-style, solid)
+  );
+  border-width: var(
+    --dyvix-input-hover-border-width,
+    var(--dyvix-input-border-width, 2px)
+  );
+  border-radius: var(
+    --dyvix-input-hover-border-radius,
+    var(--dyvix-input-border-radius, 8px)
+  );
   border-color: var(--dyvix-input-hover-border-color, rgb(194, 239, 255));
   box-shadow: var(
     --dyvix-input-hover-box-shadow,
@@ -82,6 +70,18 @@
 
 .dyvix-input-default:focus {
   background-color: var(--dyvix-input-focus-bg, rgba(255, 255, 255, 0.1));
+  border-style: var(
+    --dyvix-input-focus-border-style,
+    var(--dyvix-input-border-style, solid)
+  );
+  border-width: var(
+    --dyvix-input-focus-border-width,
+    var(--dyvix-input-border-width, 2px)
+  );
+  border-radius: var(
+    --dyvix-input-focus-border-radius,
+    var(--dyvix-input-border-radius, 8px)
+  );
   border-color: var(--dyvix-input-focus-border-color, #b9f7ff);
   box-shadow: var(
     --dyvix-input-focus-box-shadow,
