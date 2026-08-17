@@ -1,14 +1,14 @@
 .dyvix-input-wrapper {
   display: var(--dyvix-input-display, flex);
   position: var(--dyvix-input-position, relative);
-  width: var(--dyvix-input-width, 250px);
+  width: var(--dyvix-input-width, 100%);
   height: var(--dyvix-input-height, 40px);
   box-sizing: border-box;
+  min-width: 50px;
 }
 .dyvix-input {
   box-sizing: border-box;
   width: 100%;
-  min-width: 50px;
   padding: var(--dyvix-input-padding, 0 12px);
   outline: none;
   transition: var(
