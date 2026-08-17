@@ -15,6 +15,7 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
   background,
   color,
   animation = 'fade',
+  overrides,
   theme,
   className,
   name,
@@ -35,6 +36,10 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
     style,
     ...rest
   });
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  };
   const instanceId = React.useId();
 
   React.useEffect(() => {
@@ -126,7 +131,12 @@ const DyvixInput: React.FC<DyvixInputProps> = ({
   }, [currentAnimation]);
 
   return (
-    <div className="dyvix-input-wrapper" ref={inputRef} {...wrapperProps}>
+    <div
+      className="dyvix-input-wrapper"
+      ref={inputRef}
+      {...wrapperProps}
+      style={combinedWrapperStyle}
+    >
       <input
         {...props}
         onFocus={(e) => handleFocus(e)}

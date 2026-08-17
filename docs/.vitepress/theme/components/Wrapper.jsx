@@ -130,7 +130,7 @@ export default function Wrapper({
                     )
                   }
                 >
-                  {ele.allowNull && <option value={'!/'}>None</option>}
+                  {ele.allowNull && <option value={''}>None</option>}
                   {Object.entries(ele.options).map(([key, value]) => (
                     <option key={key} value={value}>
                       {key}
