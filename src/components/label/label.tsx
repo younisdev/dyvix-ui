@@ -64,7 +64,12 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
   const { style: splitElementStyles, ...restElementProps } = elementProps;
   const props = {
     ...restElementProps,
-    className: ConstructClasses('dyvix-label', currentTheme?.class, className),
+    className: ConstructClasses(
+      'dyvix-label',
+      !currentTheme?.class ? 'dyvix-label-default' : '',
+      currentTheme?.class,
+      className
+    ),
     ...(htmlFor && { htmlFor: htmlFor }),
     style: {
       ...(background && { background: background }),
