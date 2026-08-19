@@ -32,6 +32,11 @@ UseCSSVar(
   'input',
   './src/components/input/dependencies/input.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/label/dependencies/label.overrides.json',
+  './src/components/label/dependencies/label.types.tsx',
+  'label'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;
