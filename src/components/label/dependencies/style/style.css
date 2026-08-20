@@ -1,25 +1,51 @@
 .dyvix-label-wrapper {
-  display: inline-block;
-  width: fit-content;
-  height: fit-content;
+  display: var(--dyvix-label-display, inline-block);
+  width: var(--dyvix-label-width, fit-content);
+  height: var(--dyvix-label-height, fit-content);
   margin-bottom: 0.1rem;
 }
 .dyvix-label {
   user-select: none;
   cursor: pointer;
-  transition:
-    color 0.15s ease-in-out,
-    opacity 0.15s ease-in-out;
+  padding: var(--dyvix-label-padding);
+  transition: var(--dyvix-label-transition, all 0.15s ease-in-out);
 }
 .dyvix-label-default {
-  font-family: 'Geist', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: var(--dyvix-label-font-family, 'Geist', sans-serif);
+  font-size: var(--dyvix-label-font-size, 0.9rem);
+  font-weight: var(--dyvix-label-font-weight, 500);
+  background: var(--dyvix-label-bg, transparent);
   line-height: 1.25rem;
-  letter-spacing: 0.025em;
+  letter-spacing: var(--dyvix-label-letter-spacing, 0.025em);
+  color: var(--dyvix-label-color, white);
+  border-radius: var(--dyvix-label-border-radius, 0px);
+  border-width: var(--dyvix-label-border-width, 0px);
+  border-color: var(--dyvix-label-border-color, transparent);
+  border-style: var(--dyvix-label-border-style, none);
+  box-shadow: var(--dyvix-label-box-shadow, none);
 }
-.dyvix-label[data-disabled],
-.dyvix-label-disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+.dyvix-label-default:hover {
+  background: var(--dyvix-label-hover-bg, var(--dyvix-label-bg));
+  color: var(--dyvix-label-hover-color, var(--dyvix-label-color, rgb(171, 227, 237)));
+  border-radius: var(
+    --dyvix-label-hover-border-radius,
+    var(--dyvix-label-border-radius)
+  );
+  border-color: var(
+    --dyvix-label-hover-border-color,
+    var(--dyvix-label-border-color)
+  );
+  border-width: var(
+    --dyvix-label-hover-border-width,
+    var(--dyvix-label-border-width)
+  );
+  border-style: var(
+    --dyvix-label-hover-border-style,
+    var(--dyvix-label-border-style)
+  );
+  transform: var(--dyvix-label-hover-transform);
+  box-shadow: var(
+    --dyvix-label-hover-box-shadow,
+    var(--dyvix-label-box-shadow)
+  );
 }

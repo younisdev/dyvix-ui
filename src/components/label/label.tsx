@@ -13,6 +13,7 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
   className,
   htmlFor,
   animation = 'fade',
+  overrides,
   theme,
   background,
   color,
@@ -78,8 +79,18 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
     }
   };
 
+  const combinedWrapperStyle = {
+    ...wrapperProps?.style,
+    ...overrides
+  };
+
   return (
-    <div className="dyvix-label-wrapper" ref={lblRef} {...wrapperProps}>
+    <div
+      className="dyvix-label-wrapper"
+      ref={lblRef}
+      {...wrapperProps}
+      style={combinedWrapperStyle}
+    >
       <label {...props}>{children}</label>
     </div>
   );
