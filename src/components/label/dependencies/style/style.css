@@ -26,7 +26,10 @@
 }
 .dyvix-label-default:hover {
   background: var(--dyvix-label-hover-bg, var(--dyvix-label-bg));
-  color: var(--dyvix-label-hover-color, var(--dyvix-label-color, rgb(171, 227, 237)));
+  color: var(
+    --dyvix-label-hover-color,
+    var(--dyvix-label-color, rgb(171, 227, 237))
+  );
   border-radius: var(
     --dyvix-label-hover-border-radius,
     var(--dyvix-label-border-radius)

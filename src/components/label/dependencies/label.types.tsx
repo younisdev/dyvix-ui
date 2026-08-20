@@ -35,42 +35,8 @@ export type DyvixLabelThemes =
   | 'Obsidian';
 
 export interface DyvixLabelBaseOverride {
-  '--dyvix-label-color'?: string & {};
-  '--dyvix-label-font-size'?:
-    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
-  '--dyvix-label-font-weight'?:
-    400 | 500 | 600 | 700 | 'normal' | 'bold' | (string & {});
-  '--dyvix-label-font-family'?:
-    'Geist' | 'system-ui' | 'monospace' | (string & {});
-  '--dyvix-label-border-radius'?:
-    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
-  '--dyvix-label-border-width'?: '0px' | '1px' | '2px' | (string & {});
-  '--dyvix-label-border-style'?:
-    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
-  '--dyvix-label-border-color'?: (string & {}) | 'transparent';
   '--dyvix-label-padding'?:
     '8px 16px' | '10px 22px' | '12px 24px' | (string & {});
-  '--dyvix-label-bg'?: (string & {}) | 'transparent';
-  '--dyvix-label-box-shadow'?:
-    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
-  '--dyvix-label-letter-spacing'?:
-    '-0.02em' | '-0.01em' | '0em' | (string & {});
-  '--dyvix-label-hover-bg'?: (string & {}) | 'transparent';
-  '--dyvix-label-hover-border-color'?: (string & {}) | 'transparent';
-  '--dyvix-label-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
-  '--dyvix-label-hover-border-style'?:
-    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
-  '--dyvix-label-hover-border-radius'?:
-    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
-  '--dyvix-label-hover-color'?: string & {};
-  '--dyvix-label-hover-transform'?:
-    | 'none'
-    | 'translateY(-1px)'
-    | 'translateY(-2px)'
-    | 'scale(1.02)'
-    | (string & {});
-  '--dyvix-label-hover-box-shadow'?:
-    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
   '--dyvix-label-transition'?: (string & {}) | 'none';
 }
 
@@ -96,6 +62,43 @@ export interface DyvixLabelWrapperOverride {
     | (string & {});
 }
 
+export interface DyvixLabelDefaultOverride {
+  '--dyvix-label-color'?: string & {};
+  '--dyvix-label-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-label-font-weight'?:
+    400 | 500 | 600 | 700 | 'normal' | 'bold' | (string & {});
+  '--dyvix-label-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-label-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-label-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-label-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
+  '--dyvix-label-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-label-bg'?: (string & {}) | 'transparent';
+  '--dyvix-label-box-shadow'?:
+    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
+  '--dyvix-label-letter-spacing'?:
+    '-0.02em' | '-0.01em' | '0em' | (string & {});
+  '--dyvix-label-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-label-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-label-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-label-hover-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
+  '--dyvix-label-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-label-hover-color'?: string & {};
+  '--dyvix-label-hover-transform'?:
+    | 'none'
+    | 'translateY(-1px)'
+    | 'translateY(-2px)'
+    | 'scale(1.02)'
+    | (string & {});
+  '--dyvix-label-hover-box-shadow'?:
+    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+}
+
 /*--!/--*/
 
 // Edit here safely
@@ -106,7 +109,7 @@ export interface DyvixLabelProps extends React.LabelHTMLAttributes<HTMLLabelElem
   htmlFor?: string;
   theme?: DyvixLabelThemes | null | undefined;
   animation?: DyvixLabelAnimation | null | undefined;
-  overrides?: DyvixLabelWrapperOverride & DyvixLabelBaseOverride;
+  overrides?: DyvixLabelWrapperOverride & DyvixLabelBaseOverride & DyvixLabelDefaultOverride;
   background?: string;
   color?: string;
   style?: React.CSSProperties;
