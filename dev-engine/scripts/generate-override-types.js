@@ -2,8 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import getFile from './generate-types.js';
-import { exit } from 'process';
-import { act } from 'react';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,6 +34,11 @@ GenerateOverridesTypes(
   './src/components/label/dependencies/label.overrides.json',
   './src/components/label/dependencies/label.types.tsx',
   'label'
+);
+UseCSSVar(
+  './src/components/label/dependencies/style/themes.css',
+  'label',
+  './src/components/label/dependencies/label.overrides.json'
 );
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
@@ -151,10 +154,17 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
   }).filter(Boolean);
 
   const constantOverrideNamePart = `--dyvix-${component}`;
-
+  const validOverrideBaseKeys = new Set(
+    Object.entries(overrideFile).flatMap(([sectionKey, sectionObj]) => {
+      if (sectionKey === 'wrapper' || sectionKey === 'base') return [];
+      return Object.keys(sectionObj);
+    })
+  );
   const finalizedCSS = parsedCSS
     .map(([selector, attributes]) => {
       const splitSelector = selector.split(':').filter(Boolean);
+
+      // Parses multiple action layers
       const action =
         splitSelector.length > 2
           ? splitSelector.slice(1).join('-')
@@ -167,6 +177,9 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
         return null;
       }
 
+      // stores processed Attributes to autocomplete missing override vals stored in json.
+      let processedVars = new Set([]);
+
       const SmartAttributes = attributes
         .flatMap((attribute) => {
           const colonIndx = attribute.indexOf(':');
@@ -174,6 +187,7 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
 
           const rawProp = attribute.slice(0, colonIndx).trim();
           const rawVal = attribute.slice(colonIndx + 1).trim();
+
           const cleanProp =
             rawProp === 'background'
               ? 'bg'
@@ -200,7 +214,7 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
                   [subProp, `var(${overrideLookupVal}, ` + cleanSubVal]
                     .filter(Boolean)
                     .join(': ') + ');';
-
+                processedVars.add(overrideLookupVal);
                 return constructedLine || null;
               })
               .filter(Boolean);
@@ -218,15 +232,24 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
               [rawProp, `var(${overrideLookupVal}, ` + cleanVal]
                 .filter(Boolean)
                 .join(': ') + ');';
+            processedVars.add(overrideLookupVal);
             return constructedLine || null;
           }
         })
         .filter(Boolean);
+
+      const newAttributes = autoCompleteMissingOverrideAttributes(
+        component,
+        validOverrideBaseKeys,
+        processedVars,
+        action
+      );
+
       if (SmartAttributes.length === 0) return null;
-      return `${selector} {\n  ${SmartAttributes.join('\n  ')}\n}`;
+      return `${selector} {\n  ${[...SmartAttributes, ...newAttributes].join('\n  ')}\n}`;
     })
     .filter(Boolean);
-  const cssString = finalizedCSS.join('\n\n');
+  const cssString = finalizedCSS.join('\n');
 
   fs.writeFileSync(absoluteSourcePath, cssString, 'utf-8');
 }
@@ -341,16 +364,59 @@ function stripDyvixVar(val) {
   return trimmedVal.trim();
 }
 
-function countChar(str, char) {
-  if (typeof str !== 'string') return 0;
+function autoCompleteMissingOverrideAttributes(
+  component,
+  validOverrideKeys,
+  processedVars,
+  action
+) {
+  const sortedActions = [...tokenPort.supported_pseudo_classes].sort(
+    (a, b) => -(a.length - b.length)
+  );
+  const prefex = `--dyvix-${component}-`;
+  const ExtractOverrideData = (key) => {
+    const prefexStrippedKey = key.replace(prefex, '');
+    const splitTargetAction = prefexStrippedKey.split('-');
 
-  let count = 0;
-  const target = char.toLowerCase();
-  for (const c of str) {
-    if (target.toLowerCase() === c.toLowerCase()) {
-      count++;
+    let currentAction = null;
+
+    for (const act of sortedActions) {
+      const actSegments = act.split('-');
+
+      const isMatch =
+        splitTargetAction.length >= actSegments.length &&
+        actSegments.every((seg, idx) => seg === splitTargetAction[idx]);
+
+      if (isMatch) {
+        currentAction = act;
+        break;
+      }
     }
-  }
+    const splitAttribute = currentAction
+      ? prefexStrippedKey.slice(currentAction.length + 1)
+      : prefexStrippedKey;
 
-  return count;
+    return {
+      action: currentAction,
+      attribute: splitAttribute === 'bg' ? 'background' : splitAttribute
+    };
+  };
+
+  const missingattributes = Array.from(validOverrideKeys).filter((key) => {
+    if (processedVars.has(key)) return false;
+    const currentAction = ExtractOverrideData(key).action;
+    return (action || null) === currentAction;
+  });
+
+  let newOverrides = new Set([]);
+
+  missingattributes.forEach((key) => {
+    const { action, attribute } = ExtractOverrideData(key);
+
+    const defaultVal = 'inherit';
+    const overrideResult = `${attribute}: var(${key}, ${defaultVal});`;
+    newOverrides.add(overrideResult);
+  });
+
+  return Array.from(newOverrides);
 }
