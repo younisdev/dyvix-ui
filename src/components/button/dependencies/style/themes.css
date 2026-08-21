@@ -11,22 +11,27 @@
   border-style: var(--dyvix-button-border-style, double);
   border-radius: var(--dyvix-button-border-radius, 10rem);
   transition: var(--dyvix-button-transition, all 0.3s ease-in-out);
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-singularity:hover {
   border-color: var(--dyvix-button-hover-border-color, #000000);
   border-width: var(--dyvix-button-hover-border-width, 3px);
   border-style: var(--dyvix-button-hover-border-style, double);
   transform: var(--dyvix-button-hover-transform, scale(1.09));
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-singularity:active {
   border-color: var(--dyvix-button-active-border-color, #000000);
   border-width: var(--dyvix-button-active-border-width, 5px);
   border-style: var(--dyvix-button-active-border-style, double);
   transform: var(--dyvix-button-active-transform, scale(1.09));
+  background: var(--dyvix-button-active-bg, inherit);
+  box-shadow: var(--dyvix-button-active-box-shadow, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 10rem);
 }
-
 .dyvix-button-industrial {
   font-family: var(--dyvix-button-font-family, 'Geist');
   border-width: var(--dyvix-button-border-width, 4px);
@@ -42,8 +47,11 @@
     transform ease-in-out 0.1s,
     border-radius ease-in-out 0.4s
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  box-shadow: var(--dyvix-button-box-shadow, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-industrial:hover {
   border-color: var(--dyvix-button-hover-border-color, #6a6a6a);
   box-shadow: var(
@@ -55,7 +63,6 @@
   transform: var(--dyvix-button-hover-transform, scale(1.05));
   border-radius: var(--dyvix-button-hover-border-radius, 13px);
 }
-
 .dyvix-button-industrial:active {
   border-color: var(--dyvix-button-active-border-color, #080808);
   box-shadow: var(
@@ -66,12 +73,11 @@
   background: var(--dyvix-button-active-bg, #101f39);
   transform: var(--dyvix-button-active-transform, scale(0.9));
   border-radius: var(--dyvix-button-active-border-radius, 5px);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
 }
-
 .dyvix-button-ember {
-  border-radius: var(--dyvix-button-border-radius, 10px);
   background: var(--dyvix-button-bg, #0f0a08);
-  border-bottom: #ff4500 3px solid;
   box-shadow: var(
     --dyvix-button-box-shadow,
     0px 17px 12px -12px rgba(255, 69, 0, 0.73),
@@ -95,8 +101,15 @@
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
+  border-color: var(--dyvix-button-border-color, none);
+  border-style: none;
+  border-radius: var(--dyvix-button-border-radius, 10px);
+  border-bottom: #ff4500 3px solid;
 }
-
 .dyvix-button-ember:hover {
   border-bottom: #ff6b00 3.1px solid;
   transform: var(--dyvix-button-hover-transform, scale(1.002));
@@ -115,10 +128,9 @@
     0px 17px 20px -12px rgba(255, 69, 0, 0.9),
     0px 0px 40px -5px rgba(255, 69, 0, 0.5)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-ember:active {
-  border-bottom: #3c200d 2px solid;
   transform: var(--dyvix-button-active-transform, scale(0.9));
   box-shadow: var(
     --dyvix-button-active-box-shadow,
@@ -135,8 +147,13 @@
     0px 17px 20px -12px rgba(255, 69, 0, 0.9),
     0px 0px 40px -5px rgba(255, 69, 0, 0.5)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-color: var(--dyvix-button-active-border-color, none);
+  border-width: var(--dyvix-button-active-border-width, none);
+  border-style: var(--dyvix-button-active-border-style, none);
+  border-radius: var(--dyvix-button-active-border-radius, 8px);
+  border-bottom: #3c200d 2px solid;
 }
-
 .dyvix-button-frost {
   background: var(--dyvix-button-bg, #ffffff1a);
   border-width: var(--dyvix-button-border-width, 5px);
@@ -164,8 +181,11 @@
     -moz-box-shadow 0.3s ease-in-out,
     border 0.2s ease-in-out
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-frost:hover {
   border-width: var(--dyvix-button-hover-border-width, 6px);
   border-style: var(--dyvix-button-hover-border-style, groove);
@@ -183,8 +203,8 @@
     --dyvix-button-hover-box-shadow,
     -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-frost:active {
   border-width: var(--dyvix-button-active-border-width, 2px);
   border-style: var(--dyvix-button-active-border-style, groove);
@@ -202,8 +222,9 @@
     --dyvix-button-active-box-shadow,
     -6px 2px 51px -13px rgb(172, 242, 230) inset
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 20px);
 }
-
 .dyvix-button-blade {
   background: var(--dyvix-button-bg, #0a0a0a);
   border-radius: var(--dyvix-button-border-radius, 0px);
@@ -231,8 +252,12 @@
     -webkit-box-shadow 0.2s ease-in-out,
     -moz-box-shadow 0.2s ease-in-out
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  border-color: var(--dyvix-button-border-color, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-blade:hover {
   border-left: 4px solid #ffffff;
   border-top: 4px solid #ffffff;
@@ -248,8 +273,8 @@
     --dyvix-button-hover-box-shadow,
     -6px -6px 30px rgba(255, 255, 255, 0.1)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-blade:active {
   border-style: var(--dyvix-button-active-border-style, none);
   transform: var(--dyvix-button-active-transform, scale(0.9));
@@ -265,8 +290,11 @@
     --dyvix-button-active-box-shadow,
     -6px -6px 30px rgba(255, 255, 255, 0.1)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-color: var(--dyvix-button-active-border-color, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-neon {
   background: var(--dyvix-button-bg, #4deeea);
   background: var(
@@ -293,8 +321,11 @@
     box-shadow 0.3s ease,
     background 0.3s ease
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  border-color: var(--dyvix-button-border-color, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-neon:hover {
   border-radius: var(--dyvix-button-hover-border-radius, 2rem);
   transform: var(--dyvix-button-hover-transform, scale(1.02));
@@ -313,7 +344,6 @@
     0px 0px 56px 4px rgba(252, 61, 255, 1)
   );
 }
-
 .dyvix-button-neon:active {
   background: var(--dyvix-button-active-bg, #5eeeec);
   background: var(
@@ -326,10 +356,13 @@
     )
   );
   transform: var(--dyvix-button-active-transform, scale(0.97));
+  border-color: var(--dyvix-button-active-border-color, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  box-shadow: var(--dyvix-button-active-box-shadow, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-aurora {
-  background: var(--dyvix-button-bg, #14e81e);
   background: var(
     --dyvix-button-bg,
     linear-gradient(
@@ -356,8 +389,11 @@
     border-radius 0.2s ease-in-out,
     background 0.1s ease-in-out
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-aurora:hover {
   border-radius: var(--dyvix-button-hover-border-radius, 5rem);
   background: var(--dyvix-button-hover-bg, #14e81e);
@@ -378,7 +414,6 @@
     0px 0px 50px 10px rgba(1, 176, 179, 0.8)
   );
 }
-
 .dyvix-button-aurora:active {
   border-radius: var(--dyvix-button-active-border-radius, 5rem);
   background: var(
@@ -398,10 +433,11 @@
     --dyvix-button-active-box-shadow,
     0px 0px 5px 8px rgba(1, 176, 179, 1)
   );
+  border-color: var(--dyvix-button-active-border-color, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
 }
-
 .dyvix-button-sunset {
-  background: var(--dyvix-button-bg, #1a0a00);
   background: var(
     --dyvix-button-bg,
     linear-gradient(140deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%)
@@ -431,8 +467,11 @@
     -moz-box-shadow 0.3s ease-in-out,
     border-radius 0.2s ease-in-out
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-sunset:hover {
   background: var(--dyvix-button-hover-bg, #1a0a00);
   background: var(
@@ -454,12 +493,15 @@
   );
   border-radius: var(--dyvix-button-hover-border-radius, 20px);
 }
-
 .dyvix-button-sunset:active {
   background: var(--dyvix-button-active-bg, #1a0a00);
   transform: var(--dyvix-button-active-transform, translateY(1px) scale(0.9));
+  border-color: var(--dyvix-button-active-border-color, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  box-shadow: var(--dyvix-button-active-box-shadow, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-ocean {
   background: var(--dyvix-button-bg, linear-gradient(200deg, #001220, #023862));
   border-width: var(--dyvix-button-border-width, 2px);
@@ -489,8 +531,11 @@
   );
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-ocean:hover {
   border-width: var(--dyvix-button-hover-border-width, 3px);
   border-style: var(--dyvix-button-hover-border-style, solid);
@@ -504,8 +549,8 @@
     0 0 70px rgba(0, 100, 255, 0.25),
     inset 0 0 40px rgba(0, 150, 255, 0.08)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-ocean:active {
   border-width: var(--dyvix-button-active-border-width, 3px);
   border-style: var(--dyvix-button-active-border-style, solid);
@@ -516,8 +561,9 @@
     0 0 70px rgba(190, 216, 255, 0.25),
     inset 0 0 40px rgba(0, 99, 170, 0.08)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-forest {
   background: var(--dyvix-button-bg, #1f3b2c);
   background: var(
@@ -550,8 +596,11 @@
     transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     box-shadow 0.3s ease
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-forest:hover {
   transform: var(--dyvix-button-hover-transform, skewX(-5deg) scale(1.05));
   box-shadow: var(
@@ -566,8 +615,8 @@
     --dyvix-button-hover-box-shadow,
     inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-forest:active {
   transform: var(--dyvix-button-active-transform, skewX(5deg) scale(0.9));
   box-shadow: var(
@@ -582,8 +631,12 @@
     --dyvix-button-active-box-shadow,
     inset 0px 0px 50px 15px rgba(194, 250, 145, 0.5)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-color: var(--dyvix-button-active-border-color, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-midnight {
   background: var(
     --dyvix-button-bg,
@@ -613,8 +666,11 @@
     all 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67)
   );
   backdrop-filter: blur(10px);
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-midnight:hover {
   background: var(
     --dyvix-button-hover-bg,
@@ -641,7 +697,6 @@
   );
   transform: var(--dyvix-button-hover-transform, translateY(-3px) scale(1.01));
 }
-
 .dyvix-button-midnight:active {
   background: var(
     --dyvix-button-active-bg,
@@ -663,8 +718,11 @@
     inset 0 0 20px rgba(112, 168, 247, 0.2)
   );
   transform: var(--dyvix-button-active-transform, translateY(3px) scale(0.9));
+  border-color: var(--dyvix-button-active-border-color, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-crimson {
   background: var(--dyvix-button-bg, #1a0000);
   color: var(--dyvix-button-color, #ffd6d6);
@@ -680,8 +738,11 @@
     transform 0.2s ease,
     box-shadow 0.25s ease
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-crimson:hover {
   background: var(--dyvix-button-hover-bg, #2a0000);
   border-color: var(--dyvix-button-hover-border-color, #ff6666);
@@ -691,7 +752,6 @@
     0 0 28px rgba(255, 77, 77, 0.45)
   );
 }
-
 .dyvix-button-crimson:active {
   transform: var(--dyvix-button-active-transform, scale(0.98));
   background: var(--dyvix-button-active-bg, #140000);
@@ -700,8 +760,10 @@
     --dyvix-button-active-box-shadow,
     0 0 14px rgba(255, 77, 77, 0.3)
   );
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-coffee {
   background: var(
     --dyvix-button-bg,
@@ -723,8 +785,11 @@
     box-shadow 0.35s ease,
     border-color 0.35s ease
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-coffee:hover {
   transform: var(--dyvix-button-hover-transform, translateY(-3px));
   border-color: var(--dyvix-button-hover-border-color, #f3c88c);
@@ -733,8 +798,8 @@
     inset 0 0 35px rgba(255, 245, 235, 0.12),
     0 0 70px rgba(205, 140, 75, 0.6)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-coffee:active {
   transform: var(--dyvix-button-active-transform, scale(0.95));
   border-color: var(--dyvix-button-active-border-color, #b8926a);
@@ -743,8 +808,11 @@
     inset 0 0 45px rgba(255, 245, 235, 0.15),
     0 0 30px rgba(155, 100, 55, 0.3)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-sakura {
   background: var(
     --dyvix-button-bg,
@@ -776,8 +844,11 @@
     box-shadow 0.35s ease,
     border-color 0.3s ease
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-sakura:hover {
   transform: var(--dyvix-button-hover-transform, translateY(-3px));
   border-color: var(
@@ -789,8 +860,8 @@
     inset 0 0 35px rgba(255, 183, 197, 0.12),
     0 0 75px rgba(255, 105, 140, 0.4)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-sakura:active {
   transform: var(--dyvix-button-active-transform, scale(0.95));
   border-color: var(
@@ -802,8 +873,11 @@
     inset 0 0 45px rgba(255, 183, 197, 0.15),
     0 0 30px rgba(255, 105, 140, 0.2)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-volcanic {
   background: var(
     --dyvix-button-bg,
@@ -829,8 +903,11 @@
     box-shadow 0.25s ease,
     border-color 0.25s ease
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-volcanic:hover {
   transform: var(--dyvix-button-hover-transform, scale(1.04) translateY(-2px));
   border-color: var(--dyvix-button-hover-border-color, rgba(255, 140, 0, 0.7));
@@ -846,8 +923,8 @@
     --dyvix-button-hover-box-shadow,
     0 0 45px rgba(255, 80, 0, 0.35)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-volcanic:active {
   transform: var(--dyvix-button-active-transform, scale(0.97));
   border-color: var(--dyvix-button-active-border-color, rgba(255, 160, 0, 0.8));
@@ -863,8 +940,11 @@
     --dyvix-button-active-box-shadow,
     0 0 20px rgba(255, 80, 0, 0.15)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
-
 .dyvix-button-cosmos {
   background: var(
     --dyvix-button-bg,
@@ -892,8 +972,12 @@
     border-color 0.3s ease,
     filter 0.3s ease
   );
+  font-size: var(--dyvix-button-font-size, inherit);
+  font-weight: var(--dyvix-button-font-weight, inherit);
+  font-family: var(--dyvix-button-font-family, inherit);
+  border-color: var(--dyvix-button-border-color, inherit);
+  letter-spacing: var(--dyvix-button-letter-spacing, inherit);
 }
-
 .dyvix-button-cosmos:hover {
   transform: var(--dyvix-button-hover-transform, translateY(-3px) scale(1.03));
   border-color: var(
@@ -916,8 +1000,8 @@
     inset 0 0 40px rgba(129, 92, 246, 0.25),
     0 0 60px rgba(139, 92, 246, 0.55)
   );
+  background: var(--dyvix-button-hover-bg, inherit);
 }
-
 .dyvix-button-cosmos:active {
   transform: var(--dyvix-button-active-transform, scale(0.95));
   border-color: var(
@@ -940,4 +1024,8 @@
     inset 0 0 45px rgba(76, 29, 149, 0.35),
     0 0 25px rgba(124, 58, 237, 0.3)
   );
+  background: var(--dyvix-button-active-bg, inherit);
+  border-width: var(--dyvix-button-active-border-width, inherit);
+  border-style: var(--dyvix-button-active-border-style, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }

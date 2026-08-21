@@ -13,7 +13,7 @@
   outline: none;
   transition: var(
     --dyvix-input-transition,
-    background-color 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3),
+    background 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3),
     border-color 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3),
     box-shadow 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3),
     transform 0.15s cubic-bezier(0.2, 0.2, 0.65, 0.3)
@@ -30,7 +30,7 @@
   cursor: not-allowed;
 }
 .dyvix-input-default {
-  background-color: var(--dyvix-input-bg, rgba(255, 255, 255, 0.02));
+  background: var(--dyvix-input-bg, rgba(255, 255, 255, 0.02));
   color: var(--dyvix-input-color, #b9f7ff);
   font-size: var(--dyvix-input-font-size, 0.9rem);
   font-weight: var(--dyvix-input-font-weight, 400);
@@ -61,7 +61,7 @@
     inset 0 2px 4px rgba(0, 0, 0, 0.3),
     0 0 10px rgba(185, 247, 255, 0.15)
   );
-  background-color: var(
+  background: var(
     --dyvix-input-hover-bg,
     var(--dyvix-input-bg, rgba(255, 255, 255, 0.02))
   );
@@ -69,7 +69,7 @@
 }
 
 .dyvix-input-default:focus {
-  background-color: var(--dyvix-input-focus-bg, rgba(255, 255, 255, 0.1));
+  background: var(--dyvix-input-focus-bg, rgba(255, 255, 255, 0.1));
   border-style: var(
     --dyvix-input-focus-border-style,
     var(--dyvix-input-border-style, solid)
@@ -96,7 +96,7 @@
 }
 
 .dyvix-input-default:disabled {
-  background-color: var(--dyvix-input-disabled-bg, rgba(255, 255, 255, 0.01));
+  background: var(--dyvix-input-disabled-bg, rgba(255, 255, 255, 0.01));
   border-color: var(--dyvix-input-disabled-border-color, rgb(40, 42, 43));
   color: var(--dyvix-input-disabled-color, rgba(255, 255, 255, 0.25));
   box-shadow: var(--dyvix-input-disabled-box-shadow, none);
