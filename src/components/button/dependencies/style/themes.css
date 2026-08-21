@@ -30,7 +30,7 @@
   transform: var(--dyvix-button-active-transform, scale(1.09));
   background: var(--dyvix-button-active-bg, inherit);
   box-shadow: var(--dyvix-button-active-box-shadow, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 10rem);
 }
 .dyvix-button-industrial {
   font-family: var(--dyvix-button-font-family, 'Geist');
@@ -77,9 +77,7 @@
   border-style: var(--dyvix-button-active-border-style, inherit);
 }
 .dyvix-button-ember {
-  border-radius: var(--dyvix-button-border-radius, 10px);
   background: var(--dyvix-button-bg, #0f0a08);
-  border-bottom: #ff4500 3px solid;
   box-shadow: var(
     --dyvix-button-box-shadow,
     0px 17px 12px -12px rgba(255, 69, 0, 0.73),
@@ -106,8 +104,11 @@
   font-size: var(--dyvix-button-font-size, inherit);
   font-weight: var(--dyvix-button-font-weight, inherit);
   font-family: var(--dyvix-button-font-family, inherit);
-  border-color: var(--dyvix-button-border-color, inherit);
   letter-spacing: var(--dyvix-button-letter-spacing, inherit);
+  border-color: var(--dyvix-button-border-color, none);
+  border-style: none;
+  border-radius: var(--dyvix-button-border-radius, 10px);
+  border-bottom: #ff4500 3px solid;
 }
 .dyvix-button-ember:hover {
   border-bottom: #ff6b00 3.1px solid;
@@ -130,7 +131,6 @@
   background: var(--dyvix-button-hover-bg, inherit);
 }
 .dyvix-button-ember:active {
-  border-bottom: #3c200d 2px solid;
   transform: var(--dyvix-button-active-transform, scale(0.9));
   box-shadow: var(
     --dyvix-button-active-box-shadow,
@@ -148,10 +148,11 @@
     0px 0px 40px -5px rgba(255, 69, 0, 0.5)
   );
   background: var(--dyvix-button-active-bg, inherit);
-  border-color: var(--dyvix-button-active-border-color, inherit);
-  border-width: var(--dyvix-button-active-border-width, inherit);
-  border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-color: var(--dyvix-button-active-border-color, none);
+  border-width: var(--dyvix-button-active-border-width, none);
+  border-style: var(--dyvix-button-active-border-style, none);
+  border-radius: var(--dyvix-button-active-border-radius, 8px);
+  border-bottom: #3c200d 2px solid;
 }
 .dyvix-button-frost {
   background: var(--dyvix-button-bg, #ffffff1a);
@@ -222,7 +223,7 @@
     -6px 2px 51px -13px rgb(172, 242, 230) inset
   );
   background: var(--dyvix-button-active-bg, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 20px);
 }
 .dyvix-button-blade {
   background: var(--dyvix-button-bg, #0a0a0a);
@@ -292,7 +293,7 @@
   background: var(--dyvix-button-active-bg, inherit);
   border-color: var(--dyvix-button-active-border-color, inherit);
   border-width: var(--dyvix-button-active-border-width, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-neon {
   background: var(--dyvix-button-bg, #4deeea);
@@ -359,10 +360,9 @@
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
   box-shadow: var(--dyvix-button-active-box-shadow, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-aurora {
-  background: var(--dyvix-button-bg, #14e81e);
   background: var(
     --dyvix-button-bg,
     linear-gradient(
@@ -438,7 +438,6 @@
   border-style: var(--dyvix-button-active-border-style, inherit);
 }
 .dyvix-button-sunset {
-  background: var(--dyvix-button-bg, #1a0a00);
   background: var(
     --dyvix-button-bg,
     linear-gradient(140deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%)
@@ -501,7 +500,7 @@
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
   box-shadow: var(--dyvix-button-active-box-shadow, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-ocean {
   background: var(--dyvix-button-bg, linear-gradient(200deg, #001220, #023862));
@@ -563,7 +562,7 @@
     inset 0 0 40px rgba(0, 99, 170, 0.08)
   );
   background: var(--dyvix-button-active-bg, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-forest {
   background: var(--dyvix-button-bg, #1f3b2c);
@@ -636,7 +635,7 @@
   border-color: var(--dyvix-button-active-border-color, inherit);
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-midnight {
   background: var(
@@ -722,7 +721,7 @@
   border-color: var(--dyvix-button-active-border-color, inherit);
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-crimson {
   background: var(--dyvix-button-bg, #1a0000);
@@ -763,7 +762,7 @@
   );
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-coffee {
   background: var(
@@ -812,7 +811,7 @@
   background: var(--dyvix-button-active-bg, inherit);
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-sakura {
   background: var(
@@ -877,7 +876,7 @@
   background: var(--dyvix-button-active-bg, inherit);
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-volcanic {
   background: var(
@@ -944,7 +943,7 @@
   background: var(--dyvix-button-active-bg, inherit);
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }
 .dyvix-button-cosmos {
   background: var(
@@ -1028,5 +1027,5 @@
   background: var(--dyvix-button-active-bg, inherit);
   border-width: var(--dyvix-button-active-border-width, inherit);
   border-style: var(--dyvix-button-active-border-style, inherit);
-  border-radius: var(--dyvix-button-active-border-radius, inherit);
+  border-radius: var(--dyvix-button-active-border-radius, 6px);
 }

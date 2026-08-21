@@ -149,6 +149,8 @@ export interface DyvixInputProps extends Omit<
   background?: string;
   color?: string;
   theme?: DyvixInputThemes | null;
-  overrides?: DyvixInputBaseOverride & DyvixInputWrapperOverride & DyvixInputDefaultOverride;
+  overrides?: DyvixInputBaseOverride &
+    DyvixInputWrapperOverride &
+    DyvixInputDefaultOverride;
   animation?: DyvixInputAnimation | null;
 }

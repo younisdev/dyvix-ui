@@ -128,7 +128,9 @@ export interface DyvixButtonProps extends React.ButtonHTMLAttributes<HTMLButtonE
   color?: string;
   theme?: DyvixButtonThemes | null | undefined;
   animation?: DyvixButtonAnimation | null | undefined;
-  overrides?: DyvixButtonBaseOverride & DyvixButtonWrapperOverride & DyvixButtonDefaultOverride;
+  overrides?: DyvixButtonBaseOverride &
+    DyvixButtonWrapperOverride &
+    DyvixButtonDefaultOverride;
   children: ReactNode;
   style?: React.CSSProperties;
 }

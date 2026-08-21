@@ -109,7 +109,9 @@ export interface DyvixLabelProps extends React.LabelHTMLAttributes<HTMLLabelElem
   htmlFor?: string;
   theme?: DyvixLabelThemes | null | undefined;
   animation?: DyvixLabelAnimation | null | undefined;
-  overrides?: DyvixLabelWrapperOverride & DyvixLabelBaseOverride & DyvixLabelDefaultOverride;
+  overrides?: DyvixLabelWrapperOverride &
+    DyvixLabelBaseOverride &
+    DyvixLabelDefaultOverride;
   background?: string;
   color?: string;
   style?: React.CSSProperties;

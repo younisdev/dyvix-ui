@@ -25,7 +25,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10rem);
 }
 .dyvix-input-singularity::placeholder {
   color: var(--dyvix-input-placeholder-color, whitesmoke);
@@ -42,7 +42,7 @@
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10rem);
 }
 .dyvix-input-industrial {
   font-family: var(--dyvix-input-font-family, 'Geist');
@@ -92,7 +92,7 @@
   );
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-industrial:disabled {
   border-color: var(--dyvix-input-disabled-border-color, #1f2937);
@@ -109,8 +109,6 @@
 .dyvix-input-ember {
   border-radius: var(--dyvix-input-border-radius, 10px);
   background: var(--dyvix-input-bg, #0f0a08);
-  border-style: var(--dyvix-input-border-style, none);
-  border-bottom: #ff4500 3px solid;
   box-shadow: var(
     --dyvix-input-box-shadow,
     0px 17px 12px -12px rgba(255, 69, 0, 0.73),
@@ -140,12 +138,12 @@
   font-weight: var(--dyvix-input-font-weight, inherit);
   font-family: var(--dyvix-input-font-family, inherit);
   border-width: var(--dyvix-input-border-width, inherit);
-  border-color: var(--dyvix-input-border-color, inherit);
+  border-color: var(--dyvix-input-border-color, none);
+  border-style: var(--dyvix-input-border-style, none);
+  border-bottom: #ff4500 3px solid;
   letter-spacing: var(--dyvix-input-letter-spacing, inherit);
 }
 .dyvix-input-ember:hover {
-  border-style: var(--dyvix-input-hover-border-style, none);
-  border-bottom: #ff6b00 3.1px solid;
   transform: var(--dyvix-input-hover-transform, scale(1.009));
   box-shadow: var(
     --dyvix-input-hover-box-shadow,
@@ -163,10 +161,12 @@
     0px 0px 40px -5px rgba(255, 69, 0, 0.5)
   );
   background: var(--dyvix-input-hover-bg, inherit);
-  border-color: var(--dyvix-input-hover-border-color, inherit);
+  border-color: var(--dyvix-input-hover-border-color, none);
   border-width: var(--dyvix-input-hover-border-width, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
+  border-style: var(--dyvix-input-hover-border-style, none);
+  border-bottom: #ff6b00 3.1px solid;
 }
 .dyvix-input-ember:focus {
   border-style: var(--dyvix-input-focus-border-style, none);
@@ -180,7 +180,7 @@
   border-color: var(--dyvix-input-focus-border-color, inherit);
   border-width: var(--dyvix-input-focus-border-width, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-frost {
   background: var(--dyvix-input-bg, #ffffff1a);
@@ -234,7 +234,7 @@
   );
   background: var(--dyvix-input-hover-bg, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-blade {
   font-family: var(--dyvix-input-font-family, 'Geist');
@@ -292,7 +292,7 @@
   border-color: var(--dyvix-input-hover-border-color, inherit);
   border-width: var(--dyvix-input-hover-border-width, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-blade:focus {
   border-style: var(--dyvix-input-focus-border-style, none);
@@ -306,7 +306,7 @@
   border-color: var(--dyvix-input-focus-border-color, inherit);
   border-width: var(--dyvix-input-focus-border-width, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-blade::placeholder {
   color: var(--dyvix-input-placeholder-color, rgba(255, 255, 255, 0.4));
@@ -549,7 +549,7 @@
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-sunset::placeholder {
   color: var(--dyvix-input-placeholder-color, rgba(255, 255, 255, 0.5));
@@ -629,7 +629,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-ocean:focus {
   outline: none;
@@ -660,7 +660,7 @@
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-ocean::placeholder {
   color: var(--dyvix-input-placeholder-color, rgba(224, 247, 255, 0.72));
@@ -723,7 +723,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-midnight {
   background: var(
@@ -785,7 +785,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-crimson {
   background: var(--dyvix-input-bg, #1a0000);
@@ -818,7 +818,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-crimson:focus {
   outline: none;
@@ -832,7 +832,7 @@
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-crimson::placeholder {
   color: var(--dyvix-input-placeholder-color, rgba(255, 214, 214, 0.7));
@@ -886,7 +886,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-sakura:focus {
   outline: none;
@@ -901,7 +901,7 @@
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-sakura::placeholder {
   color: var(--dyvix-input-placeholder-color, rgba(252, 228, 236, 0.45));
@@ -984,7 +984,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-obsidian:focus {
   outline: none;
@@ -1012,7 +1012,7 @@
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-obsidian::placeholder {
   color: var(--dyvix-input-placeholder-color, rgba(243, 244, 246, 0.45));
@@ -1095,7 +1095,7 @@
   border-width: var(--dyvix-input-hover-border-width, inherit);
   border-style: var(--dyvix-input-hover-border-style, inherit);
   color: var(--dyvix-input-hover-color, inherit);
-  border-radius: var(--dyvix-input-hover-border-radius, inherit);
+  border-radius: var(--dyvix-input-hover-border-radius, 10px);
 }
 .dyvix-input-coffee:focus {
   outline: none;
@@ -1123,7 +1123,7 @@
   border-width: var(--dyvix-input-focus-border-width, inherit);
   border-style: var(--dyvix-input-focus-border-style, inherit);
   color: var(--dyvix-input-focus-color, inherit);
-  border-radius: var(--dyvix-input-focus-border-radius, inherit);
+  border-radius: var(--dyvix-input-focus-border-radius, 10px);
 }
 .dyvix-input-coffee::placeholder {
   color: var(--dyvix-input-placeholder-color, rgba(254, 243, 226, 0.55));
