@@ -15,22 +15,29 @@
   width: 100%;
   padding: 1rem 2rem;
   box-sizing: border-box;
-  background-color: var(--dyvix-nav-bg, #0b0f19);
-  border: 1px solid var(--dyvix-nav-border, rgba(255, 255, 255, 0.08));
+  border-width: 1px;
+  border-style: solid;
   border-radius: var(--dyvix-nav-radius, 2rem);
   color: var(--dyvix-nav-color, #f3f4f6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.24);
   transition:
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     background-color 0.2s ease,
     border-color 0.2s ease;
 }
+
 .dyvix-nav:hover {
   border-color: rgba(255, 255, 255, 0.14);
   transform: scale(1.009);
 }
+
+.dyvix-nav-default {
+  background: var(--dyvix-nav-bg, #0b0f19);
+  border-color: rgb(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.24);
+}
+
 .dyvix-nav-menu {
   display: flex;
   flex-direction: var(--dyvix-menu-direction, row);
