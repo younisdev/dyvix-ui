@@ -21,6 +21,103 @@ export type DyvixNavAnimation =
 
 export type DyvixNavThemes = 'Singularity' | 'Industrial' | 'Ember' | 'Frost';
 
+export interface DyvixNavBaseOverride {
+  '--dyvix-nav-display'?:
+    | 'inline-block'
+    | 'block'
+    | 'inline-flex'
+    | 'flex'
+    | 'inline'
+    | 'grid'
+    | 'inline-grid'
+    | 'contents'
+    | 'flow-root'
+    | 'list-item'
+    | 'table'
+    | 'inline-table'
+    | 'table-row'
+    | 'table-cell'
+    | 'none'
+    | (string & {});
+  '--dyvix-nav-gap'?: '100px' | '1rem' | (string & {});
+  '--dyvix-nav-padding'?:
+    '1rem 2rem' | '8px 16px' | '10px 22px' | '12px 24px' | (string & {});
+  '--dyvix-nav-color'?: (string & {}) | 'transparent';
+  '--dyvix-nav-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-nav-font-size'?:
+    '0.9rem' | '0.875rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-nav-font-weight'?: 500 | 400 | 600 | 700 | (string & {});
+  '--dyvix-nav-border-width'?: '1px' | '0px' | '2px' | (string & {});
+  '--dyvix-nav-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
+  '--dyvix-nav-border-radius'?:
+    '2rem' | '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-nav-hover-color'?: (string & {}) | 'transparent';
+  '--dyvix-nav-hover-border-width'?: '1px' | '0px' | '2px' | (string & {});
+  '--dyvix-nav-hover-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | (string & {}) | 'none';
+  '--dyvix-nav-hover-border-radius'?:
+    '2rem' | '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-nav-hover-transform'?:
+    'scale(1.009)' | 'none' | 'translateY(1px)' | 'scale(0.98)' | (string & {});
+  '--dyvix-nav-transition'?: (string & {}) | 'none';
+  '--dyvix-nav-focus'?: (string & {}) | 'transparent';
+}
+
+export interface DyvixNavDefaultOverride {
+  '--dyvix-nav-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-nav-bg'?: (string & {}) | 'transparent';
+  '--dyvix-nav-box-shadow'?:
+    | '0 4px 24px rgba(0, 0, 0, 0.24)'
+    | 'none'
+    | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)'
+    | (string & {});
+  '--dyvix-nav-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-nav-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-nav-hover-box-shadow'?:
+    | '0 4px 24px rgba(0, 0, 0, 0.24)'
+    | 'none'
+    | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)'
+    | (string & {});
+}
+
+export interface DyvixNavWrapperOverride {
+  '--dyvix-nav-width'?:
+    '95vw' | 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-nav-max-width'?: '1200px' | 'none' | (string & {});
+  '--dyvix-nav-height'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-nav-position'?:
+    'sticky' | 'relative' | 'absolute' | 'fixed' | 'static' | (string & {});
+  '--dyvix-nav-top'?: '1rem' | 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-nav-z-index'?: 1000 | 'none' | number;
+  '--dyvix-nav-margin'?: '2rem auto' | '0' | 'auto' | (string & {});
+}
+
+export interface DyvixNavMenuOverride {
+  '--dyvix-nav-menu-flex-direction'?:
+    'row' | 'column' | 'row-reverse' | 'column-reverse' | (string & {});
+  '--dyvix-nav-menu-align-items'?:
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'stretch'
+    | 'baseline'
+    | (string & {});
+  '--dyvix-nav-menu-gap'?: '50px' | '1rem' | '2rem' | (string & {});
+  '--dyvix-nav-menu-padding'?: '0' | '1rem' | (string & {});
+}
+
+export interface DyvixNavBrandOverride {
+  '--dyvix-nav-brand-color'?: (string & {}) | 'transparent';
+  '--dyvix-nav-brand-hover-color'?: (string & {}) | 'transparent';
+}
+
+export interface DyvixNavLinkOverride {
+  '--dyvix-nav-link-color'?: (string & {}) | 'transparent';
+  '--dyvix-nav-link-color-hover'?: (string & {}) | 'transparent';
+}
+
 /*--!/--*/
 
 // Edit here safely
@@ -36,11 +133,42 @@ interface DyvixConfigItemsProps {
   onClick?: Function;
 }
 
+export interface DyvixNavMenuProps {
+  children: ReactNode;
+  className?: string;
+  overrides?: DyvixNavMenuOverride &
+    DyvixNavLinkOverride &
+    DyvixNavBrandOverride;
+}
+export interface DyvixNavBrandProps {
+  children: ReactNode;
+  className?: string;
+  href?: string;
+  onClick?: Function;
+  style?: React.CSSProperties;
+  overrides?: DyvixNavBrandOverride;
+}
+
+export interface DyvixNavLinkProps {
+  children: ReactNode;
+  className?: string;
+  href?: string;
+  onClick?: Function;
+  style?: React.CSSProperties;
+  overrides?: DyvixNavLinkOverride;
+}
+
 export interface DyvixNavProps extends React.HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   className?: string;
   animation?: DyvixNavAnimation | null;
   microanimation?: DyvixNavAnimation | null;
+  overrides?: DyvixNavBaseOverride &
+    DyvixNavWrapperOverride &
+    DyvixNavDefaultOverride &
+    DyvixNavMenuOverride &
+    DyvixNavLinkOverride &
+    DyvixNavBrandOverride;
   theme?: DyvixNavThemes | null;
   brand?: DyvixConfigBrandProps;
   items?: DyvixConfigItemsProps[];

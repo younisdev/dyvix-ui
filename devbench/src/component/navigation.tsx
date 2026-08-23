@@ -5,7 +5,6 @@ export function NavTest() {
     <>
       <DyvixNav animation="bubble" theme="Industrial">
         <DyvixNav.Brand href="/">GOO</DyvixNav.Brand>
-
         <DyvixNav.Menu>
           <DyvixNav.Link href="/docs">Docs</DyvixNav.Link>
           <DyvixNav.Link href="/components">Components</DyvixNav.Link>

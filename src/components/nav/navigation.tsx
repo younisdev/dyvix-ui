@@ -22,6 +22,7 @@ const DyvixNav: DyvixNavComponents = ({
   className,
   animation = 'fade',
   microanimation,
+  overrides,
   brand,
   items,
   theme,
@@ -162,12 +163,25 @@ const DyvixNav: DyvixNavComponents = ({
       }),
       ...splitElementStyles
     },
-    className: ConstructClasses('dyvix-nav', className, currentTheme?.class),
+    className: ConstructClasses(
+      'dyvix-nav',
+      !currentTheme?.class ? 'dyvix-nav-default' : '',
+      className,
+      currentTheme?.class
+    ),
     ...restElementProps
   };
 
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  };
   return (
-    <div ref={navigationRef} {...finalizedWrapperProps}>
+    <div
+      ref={navigationRef}
+      {...finalizedWrapperProps}
+      style={combinedWrapperStyle}
+    >
       <nav {...props}>{resultJSX}</nav>
     </div>
   );

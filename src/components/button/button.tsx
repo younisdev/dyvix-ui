@@ -90,7 +90,7 @@ const DyvixButton: React.FC<DyvixButtonProps> = ({
 
   return (
     <div
-      className="dyvix-btn-wrapper"
+      className="dyvix-button-wrapper"
       ref={btnRef}
       {...wrapperProps}
       style={combinedWrapperStyle}
