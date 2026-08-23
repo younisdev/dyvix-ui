@@ -40,6 +40,11 @@ UseCSSVar(
   'label',
   './src/components/label/dependencies/label.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/nav/dependencies/nav.overrides.json',
+  './src/components/nav/dependencies/navigation.types.tsx',
+  'nav'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;
@@ -93,8 +98,12 @@ function SerializeChoices(choices) {
       return '(string & {})';
     }
 
-    if (!isNaN(val) && val !== '') {
+    if (val === 'number') {
       return val;
+    }
+
+    if (!isNaN(Number(val)) && val !== '') {
+      return val === '0' ? `'0'` : val;
     }
 
     if (
@@ -156,7 +165,7 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
   const constantOverrideNamePart = `--dyvix-${component}`;
   const validOverrideBaseKeys = new Set(
     Object.entries(overrideFile).flatMap(([sectionKey, sectionObj]) => {
-      if (sectionKey === 'wrapper' || sectionKey === 'base') return [];
+      if (sectionKey !== 'default') return [];
       return Object.keys(sectionObj);
     })
   );

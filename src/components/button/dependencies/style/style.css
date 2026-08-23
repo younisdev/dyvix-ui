@@ -1,10 +1,13 @@
-.dyvix-btn-wrapper {
+.dyvix-button-wrapper {
   display: var(--dyvix-button-display, inline-block);
   width: var(--dyvix-button-width, fit-content);
   height: var(--dyvix-button-height, fit-content);
 }
 .dyvix-button {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-width: var(--dyvix-button-border-width, 1px);
   border-radius: var(--dyvix-button-border-radius, 6px);
   border-style: var(--dyvix-button-border-style, solid);

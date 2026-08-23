@@ -22,6 +22,7 @@
   border-style: var(--dyvix-button-hover-border-style, double);
   transform: var(--dyvix-button-hover-transform, scale(1.09));
   background: var(--dyvix-button-hover-bg, inherit);
+  box-shadow: var(--dyvix-button-hover-box-shadow, inherit);
 }
 .dyvix-button-singularity:active {
   border-color: var(--dyvix-button-active-border-color, #000000);
@@ -106,7 +107,7 @@
   font-family: var(--dyvix-button-font-family, inherit);
   letter-spacing: var(--dyvix-button-letter-spacing, inherit);
   border-color: var(--dyvix-button-border-color, none);
-  border-style: none;
+  border-style: var(--dyvix-button-border-style, none);
   border-radius: var(--dyvix-button-border-radius, 10px);
   border-bottom: #ff4500 3px solid;
 }
@@ -129,6 +130,7 @@
     0px 0px 40px -5px rgba(255, 69, 0, 0.5)
   );
   background: var(--dyvix-button-hover-bg, inherit);
+  border-color: var(--dyvix-button-hover-border-color, inherit);
 }
 .dyvix-button-ember:active {
   transform: var(--dyvix-button-active-transform, scale(0.9));
@@ -274,6 +276,7 @@
     -6px -6px 30px rgba(255, 255, 255, 0.1)
   );
   background: var(--dyvix-button-hover-bg, inherit);
+  border-color: var(--dyvix-button-hover-border-color, inherit);
 }
 .dyvix-button-blade:active {
   border-style: var(--dyvix-button-active-border-style, none);
@@ -343,6 +346,7 @@
     --dyvix-button-hover-box-shadow,
     0px 0px 56px 4px rgba(252, 61, 255, 1)
   );
+  border-color: var(--dyvix-button-hover-border-color, inherit);
 }
 .dyvix-button-neon:active {
   background: var(--dyvix-button-active-bg, #5eeeec);
@@ -413,6 +417,7 @@
     --dyvix-button-hover-box-shadow,
     0px 0px 50px 10px rgba(1, 176, 179, 0.8)
   );
+  border-color: var(--dyvix-button-hover-border-color, inherit);
 }
 .dyvix-button-aurora:active {
   border-radius: var(--dyvix-button-active-border-radius, 5rem);
@@ -492,6 +497,7 @@
     0 20px 50px -10px rgba(255, 198, 15, 0.6)
   );
   border-radius: var(--dyvix-button-hover-border-radius, 20px);
+  border-color: var(--dyvix-button-hover-border-color, inherit);
 }
 .dyvix-button-sunset:active {
   background: var(--dyvix-button-active-bg, #1a0a00);
@@ -616,6 +622,7 @@
     inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
   );
   background: var(--dyvix-button-hover-bg, inherit);
+  border-color: var(--dyvix-button-hover-border-color, inherit);
 }
 .dyvix-button-forest:active {
   transform: var(--dyvix-button-active-transform, skewX(5deg) scale(0.9));

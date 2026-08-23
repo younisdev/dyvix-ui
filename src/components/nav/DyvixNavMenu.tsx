@@ -1,13 +1,13 @@
 import React, { type FC, type ReactNode } from 'react';
 import './dependencies/style/style.css';
 import { ConstructClasses } from '../../utils/utils';
+import type { DyvixNavMenuProps } from './dependencies/navigation.types';
 
-interface DyvixNavMenuProps {
-  children: ReactNode;
-  className?: string;
-}
-
-const DyvixNavMenu: FC<DyvixNavMenuProps> = ({ children, className }) => {
+const DyvixNavMenu: FC<DyvixNavMenuProps> = ({
+  children,
+  className,
+  overrides
+}) => {
   return (
     <ul className={ConstructClasses('dyvix-nav-menu', className)}>
       {children}
