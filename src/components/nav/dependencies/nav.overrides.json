@@ -47,6 +47,6 @@
   },
   "link": {
     "--dyvix-nav-link-color": "color || transparent",
-    "--dyvix-nav-link-color-hover": "color || transparent"
+    "--dyvix-nav-link-hover-color": "color || transparent"
   }
 }

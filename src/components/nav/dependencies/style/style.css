@@ -85,7 +85,7 @@
   transition: color 0.15s ease-in-out;
 }
 .dyvix-nav-link:hover {
-  color: var(--dyvix-nav-link-color-hover, #bed0ff);
+  color: var(--dyvix-nav-link-hover-color, #bed0ff);
 }
 .dyvix-nav-link:focus-visible,
 .dyvix-nav-brand:focus-visible {

@@ -45,6 +45,11 @@ GenerateOverridesTypes(
   './src/components/nav/dependencies/navigation.types.tsx',
   'nav'
 );
+UseCSSVar(
+  './src/components/nav/dependencies/style/themes.css',
+  'nav',
+  './src/components/nav/dependencies/nav.overrides.json'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;
@@ -163,29 +168,53 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
   }).filter(Boolean);
 
   const constantOverrideNamePart = `--dyvix-${component}`;
+  let overrideGroupKeys = new Set();
+  const reservedKeys = new Set(['default', 'base', 'wrapper']);
+
   const validOverrideBaseKeys = new Set(
     Object.entries(overrideFile).flatMap(([sectionKey, sectionObj]) => {
-      if (sectionKey !== 'default') return [];
-      return Object.keys(sectionObj);
+      if (sectionKey === 'default') return Object.keys(sectionObj);
+      if (!reservedKeys.has(sectionKey)) {
+        overrideGroupKeys.add(sectionKey);
+        return Object.keys(sectionObj);
+      }
     })
   );
+
   const finalizedCSS = parsedCSS
     .map(([selector, attributes]) => {
       const splitSelector = selector.split(':').filter(Boolean);
+      let matchUnReserve = null;
+      let isLayered = false;
+
+      if (overrideGroupKeys.size > 0) {
+        const raw = splitSelector[0];
+        isLayered = raw.includes(' .');
+
+        const lastQueryKey = (isLayered ? raw.split(' .') : raw.split('.'))
+          .filter(Boolean)
+          .map((item) => item.replaceAll('.', '').trim());
+
+        if (isLayered) {
+          matchUnReserve = lastQueryKey[lastQueryKey.length - 1];
+        }
+      }
+
+      const parsedConstantOverrideNamePart = matchUnReserve
+        ? `--${matchUnReserve}`
+        : constantOverrideNamePart;
 
       // Parses multiple action layers
       const action =
         splitSelector.length > 2
           ? splitSelector.slice(1).join('-')
           : splitSelector[1] || null;
-
       const isValidAction =
         tokenPort.supported_pseudo_classes.includes(action) || action === null;
 
       if (!isValidAction) {
-        return null;
+        return `${selector} {\n  ${attributes.join('\n  ')}\n}`;
       }
-
       // stores processed Attributes to autocomplete missing override vals stored in json.
       let processedVars = new Set([]);
 
@@ -211,7 +240,7 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
               .map(([subProp, val]) => {
                 const cleanSubVal = stripDyvixVar(val);
                 const overrideLookupVal = [
-                  constantOverrideNamePart,
+                  parsedConstantOverrideNamePart,
                   action,
                   subProp
                 ]
@@ -229,7 +258,7 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
               .filter(Boolean);
           } else {
             const overrideLookupVal = [
-              constantOverrideNamePart,
+              parsedConstantOverrideNamePart,
               action,
               cleanProp
             ]
@@ -248,10 +277,11 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
         .filter(Boolean);
 
       const newAttributes = autoCompleteMissingOverrideAttributes(
-        component,
+        parsedConstantOverrideNamePart,
         validOverrideBaseKeys,
         processedVars,
-        action
+        action,
+        overrideGroupKeys
       );
 
       if (SmartAttributes.length === 0) return null;
@@ -259,7 +289,6 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
     })
     .filter(Boolean);
   const cssString = finalizedCSS.join('\n');
-
   fs.writeFileSync(absoluteSourcePath, cssString, 'utf-8');
 }
 
@@ -374,17 +403,23 @@ function stripDyvixVar(val) {
 }
 
 function autoCompleteMissingOverrideAttributes(
-  component,
+  prefex,
   validOverrideKeys,
   processedVars,
-  action
+  action,
+  overrideGroupKeys = new Set()
 ) {
   const sortedActions = [...tokenPort.supported_pseudo_classes].sort(
     (a, b) => -(a.length - b.length)
   );
-  const prefex = `--dyvix-${component}-`;
+  prefex = `${prefex}-`;
+
   const ExtractOverrideData = (key) => {
-    const prefexStrippedKey = key.replace(prefex, '');
+    if (!key) return { action: null, attribute: '' };
+    const prefexStrippedKey = key.startsWith(prefex)
+      ? key.slice(prefex.length)
+      : key;
+
     const splitTargetAction = prefexStrippedKey.split('-');
 
     let currentAction = null;
@@ -413,6 +448,14 @@ function autoCompleteMissingOverrideAttributes(
 
   const missingattributes = Array.from(validOverrideKeys).filter((key) => {
     if (processedVars.has(key)) return false;
+    if (!String(key).includes(prefex)) return false;
+    const keyAfterPrefix = key.slice(prefex.length);
+
+    for (const groupkey of overrideGroupKeys) {
+      if (keyAfterPrefix.startsWith(`${groupkey}-`)) {
+        return false;
+      }
+    }
     const currentAction = ExtractOverrideData(key).action;
     return (action || null) === currentAction;
   });
@@ -420,12 +463,11 @@ function autoCompleteMissingOverrideAttributes(
   let newOverrides = new Set([]);
 
   missingattributes.forEach((key) => {
-    const { action, attribute } = ExtractOverrideData(key);
-
+    const { attribute } = ExtractOverrideData(key);
+    if (!attribute) return;
     const defaultVal = 'inherit';
     const overrideResult = `${attribute}: var(${key}, ${defaultVal});`;
     newOverrides.add(overrideResult);
   });
-
   return Array.from(newOverrides);
 }

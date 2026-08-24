@@ -115,7 +115,7 @@ export interface DyvixNavBrandOverride {
 
 export interface DyvixNavLinkOverride {
   '--dyvix-nav-link-color'?: (string & {}) | 'transparent';
-  '--dyvix-nav-link-color-hover'?: (string & {}) | 'transparent';
+  '--dyvix-nav-link-hover-color'?: (string & {}) | 'transparent';
 }
 
 /*--!/--*/
