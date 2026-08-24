@@ -5,7 +5,8 @@
     "focus",
     "disabled",
     "placeholder",
-    "disabled-placeholder"
+    "disabled-placeholder",
+    "after"
   ],
   "multi_value_splitting": {
     "border": {
