@@ -79,7 +79,9 @@ export async function ValidateNavigation(
     };
   }
 
-  if (normalizedTheme !== undefined && !(isTheme as any).status) {
+if ( normalizedTheme &&
+    !(isTheme as any).status &&
+    !allowsNull(normalizedTheme)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid theme.'

@@ -3,7 +3,7 @@ import { DyvixNav } from '../../../src';
 export function NavTest() {
   return (
     <>
-      <DyvixNav animation="bubble" theme="Industrial">
+      <DyvixNav animation="bubble">
         <DyvixNav.Brand href="/">GOO</DyvixNav.Brand>
         <DyvixNav.Menu>
           <DyvixNav.Link href="/docs">Docs</DyvixNav.Link>
