@@ -62,10 +62,14 @@ export default defineConfig({
           },
           { text: 'Select', link: 'components/select/select' },
           { text: 'Toast', link: 'components/toast/toast' },
-          { text: 'Button', collapsed: false, items: [
-            { text: 'Overview', link: 'components/button/button' },
-            { text: 'Overrides', link: 'components/button/overrides' }
-          ] },
+          {
+            text: 'Button',
+            collapsed: false,
+            items: [
+              { text: 'Overview', link: 'components/button/button' },
+              { text: 'Overrides', link: 'components/button/overrides' }
+            ]
+          },
           { text: 'File', link: 'components/file/file' },
           { text: 'Input', link: 'components/input/input' },
           { text: 'Label', link: 'components/label/label' },

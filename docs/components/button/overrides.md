@@ -10,8 +10,8 @@ Button style overrides represent a set of typed CSS Variables that allow easier 
 
 ```tsx
 <DyvixButton
-    onClick={() => console.log('clicked')}
-    overrides={{
+  onClick={() => console.log('clicked')}
+  overrides={{
     '--dyvix-button-bg': '#0a0a0f',
     '--dyvix-button-color': '#e2e8f0',
     '--dyvix-button-font-family': 'Geist',
@@ -20,16 +20,16 @@ Button style overrides represent a set of typed CSS Variables that allow easier 
     '--dyvix-button-border-width': '1px',
     '--dyvix-button-border-color': '#c084fc',
     '--dyvix-button-padding': '10px 22px',
-    
+
     // Hover State
     '--dyvix-button-hover-bg': '#c084fc',
     '--dyvix-button-hover-color': '#0f172a',
-    
+
     // Active / Press State
-    '--dyvix-button-active-transform': 'scale(0.98)',
-    }}
+    '--dyvix-button-active-transform': 'scale(0.98)'
+  }}
 >
-Submit
+  Submit
 </DyvixButton>
 ```
 

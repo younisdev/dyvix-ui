@@ -79,9 +79,11 @@ export async function ValidateNavigation(
     };
   }
 
-if ( normalizedTheme &&
+  if (
+    normalizedTheme &&
     !(isTheme as any).status &&
-    !allowsNull(normalizedTheme)) {
+    !allowsNull(normalizedTheme)
+  ) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid theme.'
