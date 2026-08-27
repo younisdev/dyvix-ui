@@ -116,4 +116,5 @@ export interface DyvixButtonProps extends React.ButtonHTMLAttributes<HTMLButtonE
     DyvixButtonDefaultOverride;
   children: ReactNode;
   style?: React.CSSProperties;
+  timeline?: gsap.core.Timeline | null;
 }

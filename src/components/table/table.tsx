@@ -22,18 +22,23 @@ interface SortConfigItem {
   index: number;
 }
 
-const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
-  children,
-  className,
-  animation = 'fade',
-  theme,
-  background,
-  color,
-  columns,
-  data,
-  style,
-  ...rest
-}: DyvixTableProps<T>) => {
+const Table = React.forwardRef(function Table<
+  T extends DyvixConfigDataProps = DyvixConfigDataProps
+>(
+  {
+    children,
+    className,
+    animation = 'fade',
+    theme,
+    background,
+    color,
+    columns,
+    data,
+    style,
+    ...rest
+  }: DyvixTableProps<T>,
+  ref: React.ForwardedRef<HTMLDivElement>
+) {
   const instanceId = React.useId();
   const [configs, SetConfig] = React.useState({});
   const { wrapperProps, elementProps } = SmartPropsSplitting({
@@ -41,7 +46,9 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
     ...rest
   });
   const [sortConfig, setSortConfig] = React.useState<SortConfigItem[]>([]);
-  const tableRef = React.useRef(null);
+  const internalRef = React.useRef<HTMLDivElement | null>(null);
+  React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
+
   const [isValid, SetIsvalid] = React.useState(false);
   const currentAnimation = animation ? (configs as any)['animation'] : null;
   const currentTheme = theme ? (configs as any)['theme'] : null;
@@ -188,9 +195,9 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
     };
   }, [animation, theme, columns, data]);
   useGSAP(() => {
-    if (!tableRef.current || !currentAnimation) return;
+    if (!internalRef.current || !currentAnimation) return;
 
-    gsap.fromTo(tableRef.current, currentAnimation.from, {
+    gsap.fromTo(internalRef.current, currentAnimation.from, {
       ...currentAnimation.to,
       duration: currentAnimation['default-duration'],
       ease: currentAnimation.ease
@@ -202,11 +209,11 @@ const Table = <T extends DyvixConfigDataProps = DyvixConfigDataProps>({
   );
   children = children ? children : resultJSX;
   return (
-    <div className="dyvix-table-wrapper" ref={tableRef} {...wrapperProps}>
+    <div className="dyvix-table-wrapper" ref={internalRef} {...wrapperProps}>
       <table {...props}>{children}</table>
     </div>
   );
-};
+});
 
 type DyvixTableComponents = typeof Table & {
   Header: typeof DyvixTableHeader;

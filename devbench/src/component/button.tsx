@@ -30,6 +30,7 @@ export function ButtonTest() {
       <div style={{ marginTop: 16 }}>
         <DyvixButton
           theme={theme as DyvixButtonThemes}
+          animation={'bubble'}
           onClick={() => console.log('clicked')}
         >
           Submit
