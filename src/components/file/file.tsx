@@ -8,7 +8,7 @@ import { Validatefile } from './validation';
 import type { DyvixFileProps } from './dependencies/file.types';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
-const DyvixFile: React.FC<DyvixFileProps> = ({
+const DyvixFile = React.forwardRef<HTMLDivElement, DyvixFileProps>(({
   label = 'Upload File',
   animation,
   className,
@@ -20,9 +20,11 @@ const DyvixFile: React.FC<DyvixFileProps> = ({
   onUpload,
   style,
   ...rest
-}) => {
+}, ref) => {
   const [file, Setfile] = React.useState<string | null>(null);
-  const fileRef = React.useRef<HTMLDivElement>(null);
+  const internalRef = React.useRef<HTMLDivElement>(null);
+  React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
+  
   const [configs, SetConfig] = React.useState({});
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
@@ -94,9 +96,9 @@ const DyvixFile: React.FC<DyvixFileProps> = ({
   }, [animation, theme]);
 
   useGSAP(() => {
-    if (!fileRef.current || !currentAnimation) return;
+    if (!internalRef.current || !currentAnimation) return;
 
-    gsap.fromTo(fileRef.current, currentAnimation.from, {
+    gsap.fromTo(internalRef.current, currentAnimation.from, {
       ...currentAnimation.to,
       duration: currentAnimation['default-duration'],
       ease: currentAnimation.ease
@@ -113,7 +115,7 @@ const DyvixFile: React.FC<DyvixFileProps> = ({
     ...restElementProps
   };
   return (
-    <div className="dyvix-file-wrapper" ref={fileRef} {...wrapperProps}>
+    <div className="dyvix-file-wrapper" ref={internalRef} {...wrapperProps}>
       <label {...props} htmlFor={`file-upload-${instanceId}`}>
         <div className="dyvix-file-ui">
           <span className="dyvix-file-icon">📁</span>
@@ -130,6 +132,6 @@ const DyvixFile: React.FC<DyvixFileProps> = ({
       </label>
     </div>
   );
-};
+});
 
 export default DyvixFile;
