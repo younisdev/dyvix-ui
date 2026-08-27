@@ -11,12 +11,6 @@ import { ValidateNavigation } from './validation';
 import Version from '../../../package.json';
 import type { DyvixNavProps } from './dependencies/navigation.types';
 
-interface DyvixNavComponents extends React.ForwardRefExoticComponent<DyvixNavProps> {
-  Menu: typeof DyvixNavMenu;
-  Brand: typeof DyvixNavBrand;
-  Link: typeof DyvixNavLink;
-}
-
 const DyvixNav = Object.assign(
   React.forwardRef<HTMLDivElement, DyvixNavProps>(
     (
