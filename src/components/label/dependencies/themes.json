@@ -22,7 +22,7 @@
   {
     "theme": "Blade",
     "class": "dyvix-label-blade",
-    "default-animation": "Zoom"
+    "default-animation": "zoom"
   },
   {
     "theme": "Ocean",

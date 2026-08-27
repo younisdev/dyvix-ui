@@ -40,9 +40,11 @@ export async function Validatelbl(
     component,
     instance
   );
-  if (normalizedTheme && isTheme.status && !normalizedAnimation) {
-    normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
+  if (normalizedAnimation === '' && (isTheme as any)?.config?.theme) {
+    normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'].toLowerCase();
   }
+
+  console.log(normalizedAnimation)
   const isAnimation = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedAnimation,
@@ -51,7 +53,8 @@ export async function Validatelbl(
     component
   );
 
-  if (!isAnimation.status && !allowsNull(normalizedAnimation)) {
+  if (!(isAnimation as any).status && !allowsNull(normalizedAnimation)) {
+
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid animation.'

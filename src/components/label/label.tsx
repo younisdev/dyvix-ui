@@ -8,7 +8,7 @@ import Version from '../../../package.json';
 import type { DyvixLabelProps } from './dependencies/label.types';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
-const DyvixLabel: React.FC<DyvixLabelProps> = ({
+const DyvixLabel = React.forwardRef<HTMLDivElement, DyvixLabelProps> (({
   children,
   className,
   htmlFor,
@@ -19,8 +19,10 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
   color,
   style,
   ...rest
-}) => {
-  const lblRef = React.useRef(null);
+}, ref) => {
+  const internalRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
   const [configs, SetConfig] = React.useState({});
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
@@ -53,9 +55,9 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
   }, [animation, theme]);
 
   useGSAP(() => {
-    if (!lblRef.current || !currentAnimation) return;
+    if (!internalRef.current || !currentAnimation) return;
 
-    gsap.fromTo(lblRef.current, currentAnimation.from, {
+    gsap.fromTo(internalRef.current, currentAnimation.from, {
       ...currentAnimation.to,
       duration: currentAnimation['default-duration'],
       ease: currentAnimation.ease
@@ -87,13 +89,13 @@ const DyvixLabel: React.FC<DyvixLabelProps> = ({
   return (
     <div
       className="dyvix-label-wrapper"
-      ref={lblRef}
+      ref={internalRef}
       {...wrapperProps}
       style={combinedWrapperStyle}
     >
       <label {...props}>{children}</label>
     </div>
   );
-};
+});
 
 export default DyvixLabel;
