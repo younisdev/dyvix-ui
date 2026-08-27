@@ -20,11 +20,16 @@ const DyvixButton = React.forwardRef<HTMLDivElement, DyvixButtonProps>(
       color,
       onClick,
       style,
+      timeline,
       ...rest
     },
     ref
   ) => {
     const internalRef = React.useRef<HTMLDivElement | null>(null);
+    const addedToTimeLineRef = React.useRef<{
+      theme: string | null;
+      animation: string | null;
+    } | null>(null);
 
     React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
@@ -64,15 +69,34 @@ const DyvixButton = React.forwardRef<HTMLDivElement, DyvixButtonProps>(
         if (ele) ele.remove();
       };
     }, [theme, animation]);
-    useGSAP(() => {
-      if (!internalRef.current || !currentAnimation) return;
+    useGSAP(
+      () => {
+        if (!internalRef.current || !currentAnimation) return;
 
-      gsap.fromTo(internalRef.current, currentAnimation.from, {
-        ...currentAnimation.to,
-        duration: currentAnimation['default-duration'],
-        ease: currentAnimation.ease
-      });
-    }, [currentAnimation]);
+        const toVars: GSAPTweenVars = {
+          ...currentAnimation.to,
+          duration: currentAnimation['default-duration'],
+          ease: currentAnimation.ease
+        };
+
+        if (timeline) {
+          if (
+            addedToTimeLineRef.current?.theme === theme &&
+            addedToTimeLineRef.current?.animation === animation
+          )
+            return;
+
+          timeline.fromTo(internalRef.current, currentAnimation.from, toVars);
+          addedToTimeLineRef.current = {
+            theme: theme || null,
+            animation: animation || null
+          };
+        } else {
+          gsap.fromTo(internalRef.current, currentAnimation.from, toVars);
+        }
+      },
+      { scope: internalRef, dependencies: [currentAnimation, currentTheme] }
+    );
 
     const { style: splitElementStyles, ...restElementProps } = elementProps;
     const props = {

@@ -1,8 +1,6 @@
 import React from 'react';
 import { DyvixButton, DYVIX_GLOBAL_THEME } from '../../../src';
 import type { DyvixButtonThemes } from '../../../src/components/button/dependencies/button.types';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 export function ButtonTest() {
   const [theme, setTheme] = React.useState(DYVIX_GLOBAL_THEME.SINGULARITY);
@@ -11,16 +9,6 @@ export function ButtonTest() {
     () => Object.values(DYVIX_GLOBAL_THEME),
     []
   );
-  const refx = React.useRef(null);
-
-  useGSAP(() => {
-  //  if(!refx.current) return;
-   return
-    gsap.to(refx.current, {opacity: 0, scale: 1.5, delay: 1});
-
-    console.log(refx.current)
-  }, [])
-
 
   return (
     <>
@@ -42,8 +30,7 @@ export function ButtonTest() {
       <div style={{ marginTop: 16 }}>
         <DyvixButton
           theme={theme as DyvixButtonThemes}
-          animation={"bubble"}
-          ref={refx}
+          animation={'bubble'}
           onClick={() => console.log('clicked')}
         >
           Submit
