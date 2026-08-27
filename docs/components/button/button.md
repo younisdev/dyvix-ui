@@ -13,6 +13,8 @@ A config-driven animated button component with support for themed and default co
 
 - `animation`
   - : `string`. Controls the entrance animation of the button. See the [Animation Presets](/guide/animations) for a full list.
+- `overrides`
+  - : `DyvixButtonOverrides || Record<string, string | number>`. An object of typed CSS Variables allowing deep easy-customization of the component. See [button overrides](/components/button/overrides.md) for more information.
 - `className`
   - : `string`. Contains a custom class for your button, allowing more control for the developer.
 - `theme`
