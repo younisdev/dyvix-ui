@@ -175,4 +175,5 @@ export interface DyvixNavProps extends React.HTMLAttributes<HTMLElement> {
   style?: React.CSSProperties;
   background?: string;
   color?: string;
+  timeline?: gsap.core.Timeline | null;
 }

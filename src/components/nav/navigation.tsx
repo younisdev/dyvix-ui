@@ -26,6 +26,7 @@ const DyvixNav = Object.assign(
         background,
         color,
         style,
+        timeline,
         ...rest
       },
       ref
@@ -41,7 +42,11 @@ const DyvixNav = Object.assign(
         ref,
         () => internalRef.current as HTMLDivElement
       );
-
+      const addedToTimeLineRef = React.useRef<{
+        theme: string | null;
+        animation: string | null;
+        subanim: string | null;
+      } | null>(null);
       // only used when config-driven mode is active for microanimations
       const subRef = React.useRef<(HTMLDivElement | null)[]>([]);
       const currentAnimation = animation ? (configs as any)['animation'] : null;
@@ -110,33 +115,90 @@ const DyvixNav = Object.assign(
         };
       }, [animation, microanimation, theme]);
 
-      useGSAP(() => {
-        if (!internalRef.current || !currentAnimation) return;
+      useGSAP(
+        () => {
+          if (!internalRef.current || !currentAnimation) return;
+          const activeTheme = theme ?? currentTheme ?? null;
+          const activeAnim = animation ?? null;
+          const activeSubAnim = microanimation ?? currentMicroAnimation ?? null;
+          if (currentAnimation) {
+            const toVar = {
+              ...currentAnimation.to,
+              autoAlpha: 1,
+              duration: currentAnimation['default-duration'],
+              ease: currentAnimation.ease
+            };
 
-        if (currentAnimation) {
-          gsap.set(internalRef.current, currentAnimation.from);
-          gsap.to(internalRef.current, {
-            ...currentAnimation.to,
-            duration: currentAnimation['default-duration'],
-            ease: currentAnimation.ease
-          });
-        }
+            if (timeline) {
+              const isMainAminCompleted =
+                addedToTimeLineRef.current?.theme === activeTheme &&
+                addedToTimeLineRef.current?.animation === activeAnim;
+              if (!isMainAminCompleted) {
+                gsap.set(internalRef.current, {
+                  autoAlpha: 0,
+                  ...currentAnimation.from
+                });
+                timeline.to(internalRef.current, toVar);
+                addedToTimeLineRef.current = {
+                  theme: activeTheme || null,
+                  animation: activeAnim || null,
+                  subanim: null
+                };
+              }
+            } else {
+              gsap.set(internalRef.current, {
+                autoAlpha: 0,
+                ...currentAnimation.from
+              });
+              gsap.to(internalRef.current, toVar);
+            }
+          }
+          if (subRef.current.length > 0 && currentMicroAnimation) {
+            const delay = currentAnimation['default-duration']
+              ? currentAnimation['default-duration'] -
+                currentAnimation['default-duration'] / 3.5
+              : 0;
+            gsap.set(subRef.current, currentMicroAnimation.from);
 
-        if (subRef.current.length > 0 && currentMicroAnimation) {
-          const delay = currentAnimation['default-duration']
-            ? currentAnimation['default-duration'] -
-              currentAnimation['default-duration'] / 3.5
-            : 0;
-          gsap.set(subRef.current, currentMicroAnimation.from);
-          gsap.to(subRef.current, {
-            ...currentMicroAnimation.to,
-            duration: 0.1,
-            ease: currentMicroAnimation.ease,
-            stagger: 0.15,
-            delay: delay
-          });
+            if (timeline) {
+              const isSecondaryAminCompleted =
+                addedToTimeLineRef.current?.subanim === activeSubAnim;
+              if (!isSecondaryAminCompleted) {
+                timeline.to(subRef.current, {
+                  ...currentMicroAnimation.to,
+                  duration: 0.1,
+                  ease: currentMicroAnimation.ease,
+                  stagger: 0.15,
+                  delay: delay
+                });
+
+                addedToTimeLineRef.current = {
+                  theme: addedToTimeLineRef.current?.theme || null,
+                  animation: addedToTimeLineRef.current?.animation || null,
+                  subanim: activeSubAnim
+                };
+              }
+            } else {
+              gsap.to(subRef.current, {
+                ...currentMicroAnimation.to,
+                duration: 0.1,
+                ease: currentMicroAnimation.ease,
+                stagger: 0.15,
+                delay: delay
+              });
+            }
+          }
+        },
+        {
+          scope: internalRef,
+          dependencies: [
+            currentAnimation,
+            currentMicroAnimation,
+            currentTheme,
+            timeline
+          ]
         }
-      }, [currentAnimation, currentMicroAnimation]);
+      );
       const resultJSX = React.useMemo(
         () => children ?? ConstructNav(),
         [brand, items, children]
