@@ -60,4 +60,5 @@ export interface DyvixTableProps<
   style?: React.CSSProperties;
   background?: string;
   color?: string;
+  timeline?: gsap.core.Timeline | null;
 }

@@ -56,6 +56,7 @@ export interface DyvixSelectProps extends Omit<
   dropdownBackground?: string;
   color?: string;
   placeholder?: string;
+  timeline?: gsap.core.Timeline | null;
 }
 
 export interface DyvixSelectEngineProps {

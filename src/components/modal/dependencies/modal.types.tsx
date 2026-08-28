@@ -110,4 +110,5 @@ export interface DyvixModalProps {
   onChange?: (data: Record<string, any>) => void;
   onClose?: () => void;
   style?: React.CSSProperties;
+  timeline?: gsap.core.Timeline | null;
 }

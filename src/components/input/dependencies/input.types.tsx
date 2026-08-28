@@ -153,4 +153,5 @@ export interface DyvixInputProps extends Omit<
     DyvixInputWrapperOverride &
     DyvixInputDefaultOverride;
   animation?: DyvixInputAnimation | null;
+  timeline?: gsap.core.Timeline | null;
 }

@@ -30,11 +30,16 @@ const DyvixInput = React.forwardRef<HTMLDivElement, DyvixInputProps>(
       onKeyDown,
       onKeyUp,
       style,
+      timeline,
       ...rest
     },
     ref
   ) => {
     const internalRef = React.useRef<HTMLDivElement>(null);
+    const addedToTimeLineRef = React.useRef<{
+      theme: string | null;
+      animation: string | null;
+    } | null>(null);
 
     React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
@@ -127,15 +132,34 @@ const DyvixInput = React.forwardRef<HTMLDivElement, DyvixInputProps>(
       }
     }
 
-    useGSAP(() => {
-      if (!internalRef.current || !currentAnimation) return;
+    useGSAP(
+      () => {
+        if (!internalRef.current || !currentAnimation) return;
 
-      gsap.fromTo(internalRef.current, currentAnimation.from, {
-        ...currentAnimation.to,
-        duration: currentAnimation['default-duration'],
-        ease: currentAnimation.ease
-      });
-    }, [currentAnimation]);
+        const toVars: GSAPTweenVars = {
+          ...currentAnimation.to,
+          duration: currentAnimation['default-duration'],
+          ease: currentAnimation.ease
+        };
+
+        if (timeline) {
+          if (
+            addedToTimeLineRef.current?.theme === theme &&
+            addedToTimeLineRef.current?.animation === animation
+          )
+            return;
+
+          timeline.fromTo(internalRef.current, currentAnimation.from, toVars);
+          addedToTimeLineRef.current = {
+            theme: theme || null,
+            animation: animation || null
+          };
+        } else {
+          gsap.fromTo(internalRef.current, currentAnimation.from, toVars);
+        }
+      },
+      { scope: internalRef, dependencies: [currentAnimation, currentTheme] }
+    );
 
     return (
       <div

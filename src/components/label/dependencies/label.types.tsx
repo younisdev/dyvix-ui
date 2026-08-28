@@ -115,4 +115,5 @@ export interface DyvixLabelProps extends React.LabelHTMLAttributes<HTMLLabelElem
   background?: string;
   color?: string;
   style?: React.CSSProperties;
+  timeline?: gsap.core.Timeline | null;
 }

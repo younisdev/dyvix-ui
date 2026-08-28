@@ -35,6 +35,7 @@ const Table = React.forwardRef(function Table<
     columns,
     data,
     style,
+    timeline,
     ...rest
   }: DyvixTableProps<T>,
   ref: React.ForwardedRef<HTMLDivElement>
@@ -48,6 +49,11 @@ const Table = React.forwardRef(function Table<
   const [sortConfig, setSortConfig] = React.useState<SortConfigItem[]>([]);
   const internalRef = React.useRef<HTMLDivElement | null>(null);
   React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
+
+  const addedToTimeLineRef = React.useRef<{
+    theme: string | null;
+    animation: string | null;
+  } | null>(null);
 
   const [isValid, SetIsvalid] = React.useState(false);
   const currentAnimation = animation ? (configs as any)['animation'] : null;
@@ -196,12 +202,27 @@ const Table = React.forwardRef(function Table<
   }, [animation, theme, columns, data]);
   useGSAP(() => {
     if (!internalRef.current || !currentAnimation) return;
-
-    gsap.fromTo(internalRef.current, currentAnimation.from, {
+    const toVars: GSAPTweenVars = {
       ...currentAnimation.to,
       duration: currentAnimation['default-duration'],
       ease: currentAnimation.ease
-    });
+    };
+    if (timeline) {
+      if (
+        addedToTimeLineRef.current?.theme === theme &&
+        addedToTimeLineRef.current?.animation === animation
+      )
+        return;
+
+      timeline.fromTo(internalRef.current, currentAnimation.from, toVars);
+
+      addedToTimeLineRef.current = {
+        theme: theme || null,
+        animation: animation || null
+      };
+    } else {
+      gsap.fromTo(internalRef.current, currentAnimation.from, toVars);
+    }
   }, [currentAnimation]);
   const resultJSX = React.useMemo(
     () => (columns && isValid ? ConstructTable() : null),

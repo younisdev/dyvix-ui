@@ -50,4 +50,5 @@ export interface DyvixFileProps extends React.InputHTMLAttributes<HTMLInputEleme
   accept?: string;
   onUpload?: (files: File | FileList) => void;
   style?: React.CSSProperties;
+  timeline?: gsap.core.Timeline | null;
 }
