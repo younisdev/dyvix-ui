@@ -49,7 +49,8 @@ const Modal: React.FC<DyvixModalProps> = ({
   onSubmit,
   onChange,
   onClose,
-  style
+  style,
+  timeline
 }) => {
   const [data, SetData] = React.useState<Record<string, any>>({});
   const [errors, SetErrors] = React.useState<Record<string, string | null>>({});
@@ -60,6 +61,10 @@ const Modal: React.FC<DyvixModalProps> = ({
   const [fields, SetFields] = React.useState<NormalizedDyvixElements[]>([]);
   const instanceId = React.useId();
   const modalRef = React.useRef<HTMLDivElement>(null);
+  const addedToTimeLineRef = React.useRef<{
+    theme: string | null;
+    animation: string | null;
+  } | null>(null);
   function handleInputChange(name: string, value: any) {
     const nextData = { ...data, [name]: value };
     SetData(nextData);
@@ -299,34 +304,86 @@ const Modal: React.FC<DyvixModalProps> = ({
     }
   }, [visibility]); // It only runs when the modal opens/closes
 
-  useGSAP(() => {
-    if (!modalRef.current) return;
+  useGSAP(
+    () => {
+      if (!modalRef.current) return;
 
-    if (!currentAnimation) {
-      if (status === 'leaving') {
-        SetVisibility(false);
+      if (!currentAnimation) {
+        if (status === 'leaving') {
+          SetVisibility(false);
+        }
+
+        return;
+      }
+      const toVars: GSAPTweenVars = {
+        ...currentAnimation.to,
+        duration: currentAnimation['default-duration'],
+        ease: currentAnimation.ease
+      };
+
+      if (timeline) {
+        const activeTheme = theme ?? currentTheme ?? null;
+        const activeAnim = animation ?? null;
+        const isCompleted =
+          addedToTimeLineRef.current?.theme === activeTheme &&
+          addedToTimeLineRef.current?.animation === activeAnim;
+
+        if (status === 'entering') {
+          if (!isCompleted) {
+            addedToTimeLineRef.current = {
+              theme: activeTheme || null,
+              animation: activeAnim || null
+            };
+
+            const childTween = gsap
+              .timeline()
+              .set(modalRef.current, {
+                autoAlpha: 0,
+                ...currentAnimation.from
+              })
+              .to(modalRef.current, {
+                autoAlpha: 1,
+                ...toVars
+              });
+
+            timeline.add(childTween, '+=0');
+          }
+        } else if (status === 'leaving') {
+          const leavingTween = gsap.timeline().to(modalRef.current, {
+            ...currentAnimation.from,
+            duration: currentAnimation['default-duration'],
+            ease: currentAnimation.ease,
+            onComplete: () => SetVisibility(false)
+          });
+          timeline.add(leavingTween, '+=0');
+          addedToTimeLineRef.current = null;
+        }
+        return;
       }
 
-      return;
-    }
+      if (status === 'entering') {
+        gsap.set(modalRef.current, {
+          autoAlpha: 0,
+          ...currentAnimation.from
+        });
 
-    if (status === 'entering') {
-      gsap.set(modalRef.current, { autoAlpha: 0, ...currentAnimation.from });
-      gsap.to(modalRef.current, {
-        autoAlpha: 1,
-        ...currentAnimation.to,
-        duration: currentAnimation['default-duration'] ?? 0.3,
-        ease: currentAnimation.ease ?? 'power2.out'
-      });
-    } else {
-      gsap.to(modalRef.current, {
-        ...currentAnimation.from,
-        duration: currentAnimation['default-duration'],
-        ease: currentAnimation.ease,
-        onComplete: () => SetVisibility(false)
-      });
-    }
-  }, [currentAnimation, status]);
+        gsap.to(modalRef.current, {
+          autoAlpha: 1,
+          ...currentAnimation.to,
+          duration: currentAnimation['default-duration'] ?? 0.3,
+          ease: currentAnimation.ease ?? 'power2.out'
+        });
+      } else {
+        gsap.to(modalRef.current, {
+          ...currentAnimation.from,
+          duration: currentAnimation['default-duration'],
+          ease: currentAnimation.ease,
+          onComplete: () => SetVisibility(false)
+        });
+      }
+    },
+    { scope: modalRef, dependencies: [currentAnimation, status, currentTheme] }
+  );
 
   useGSAP(() => {
     if (!modalRef.current || !dynamicHeight || !dynamicWidth) return;
