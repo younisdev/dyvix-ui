@@ -8,6 +8,7 @@ import { InputTest } from './component/input';
 import { LabelTest } from './component/label';
 import { TableTest } from './component/table';
 import { NavTest } from './component/navigation';
+import { MarqueeTest } from './component/marquee';
 import dyvixLogo from './assets/logo.png';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -22,7 +23,8 @@ const Links: Record<string, React.ElementType> = {
   Input: InputTest,
   Label: LabelTest,
   Table: TableTest,
-  Navigation: NavTest
+  Navigation: NavTest,
+  Marquee: MarqueeTest
 };
 
 function App() {
