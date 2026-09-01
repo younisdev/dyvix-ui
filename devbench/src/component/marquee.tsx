@@ -2,7 +2,7 @@ import { DyvixMarquee, DyvixMarqueeItem } from '../../../src';
 
 export function MarqueeTest() {
   return (
-    <DyvixMarquee>
+    <DyvixMarquee repeat={1}>
       <DyvixMarqueeItem>hi</DyvixMarqueeItem>
       <DyvixMarqueeItem>hei</DyvixMarqueeItem>
       <DyvixMarqueeItem>hi2</DyvixMarqueeItem>

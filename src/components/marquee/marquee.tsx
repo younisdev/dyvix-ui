@@ -10,7 +10,7 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixMarquee = Object.assign(
   React.forwardRef<HTMLDivElement, DyvixMarqueeProps>(
-    ({ children, className }, ref) => {
+    ({ children, className, repeat = -1 }, ref) => {
       const internalRef = React.useRef<HTMLDivElement | null>(null);
       const trackRef = React.useRef<HTMLDivElement | null>(null);
       const ogContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -126,7 +126,7 @@ const DyvixMarquee = Object.assign(
             xPercent: -50,
             duration: 20,
             ease: 'none',
-            repeat: -1
+            repeat: repeat
           });
 
           return () => {

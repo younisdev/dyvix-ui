@@ -15,4 +15,5 @@ export interface DyvixMarqueeItemProps {
 export interface DyvixMarqueeProps {
   children?: React.ReactNode;
   className?: string;
+  repeat?: number
 }
