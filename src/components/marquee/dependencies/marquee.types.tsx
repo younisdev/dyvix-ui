@@ -17,4 +17,5 @@ export interface DyvixMarqueeProps {
   className?: string;
   repeat?: number;
   speed?: number;
+  pauseOnHover?: boolean;
 }

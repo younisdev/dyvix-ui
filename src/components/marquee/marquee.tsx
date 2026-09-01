@@ -10,7 +10,7 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixMarquee = Object.assign(
   React.forwardRef<HTMLDivElement, DyvixMarqueeProps>(
-    ({ children, className, repeat = -1, speed = 1 }, ref) => {
+    ({ children, className, repeat = -1, speed = 1, pauseOnHover }, ref) => {
       const internalRef = React.useRef<HTMLDivElement | null>(null);
       const trackRef = React.useRef<HTMLDivElement | null>(null);
       const ogContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -131,11 +131,26 @@ const DyvixMarquee = Object.assign(
 
           activeTween.timeScale(speed);
 
+          const handleTrackOnMouseEnter = () => {
+            if (pauseOnHover) {
+              activeTween.pause();
+            }
+          };
+          const handleTrackOnMouseLeave = () => {
+            if (pauseOnHover) {
+              activeTween.resume();
+            }
+          };
+          track.addEventListener('mouseenter', handleTrackOnMouseEnter);
+          track.addEventListener('mouseleave', handleTrackOnMouseLeave);
+
           return () => {
             if (activeTween) activeTween.kill();
+            track.removeEventListener('mouseenter', handleTrackOnMouseEnter);
+            track.removeEventListener('mouseleave', handleTrackOnMouseLeave);
           };
         },
-        { scope: trackRef, dependencies: [displayItems, speed, repeat] }
+        { scope: trackRef, dependencies: [displayItems, speed, repeat, pauseOnHover] }
       );
       return (
         <div ref={internalRef} {...finalizedWrapperProps}>
