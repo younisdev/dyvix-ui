@@ -10,7 +10,7 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixMarquee = Object.assign(
   React.forwardRef<HTMLDivElement, DyvixMarqueeProps>(
-    ({ children, className, repeat = -1 }, ref) => {
+    ({ children, className, repeat = -1, speed = 1 }, ref) => {
       const internalRef = React.useRef<HTMLDivElement | null>(null);
       const trackRef = React.useRef<HTMLDivElement | null>(null);
       const ogContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -129,11 +129,13 @@ const DyvixMarquee = Object.assign(
             repeat: repeat
           });
 
+          activeTween.timeScale(speed);
+
           return () => {
             if (activeTween) activeTween.kill();
           };
         },
-        { scope: trackRef, dependencies: [displayItems] }
+        { scope: trackRef, dependencies: [displayItems, speed, repeat] }
       );
       return (
         <div ref={internalRef} {...finalizedWrapperProps}>
