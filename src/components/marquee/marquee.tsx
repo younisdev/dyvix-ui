@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import './dependencies/style/style.css';
 import type { DyvixMarqueeProps } from './dependencies/marquee.types';
 import DyvixMarqueeItem from './DyvixMarqueeItem';
@@ -10,7 +10,10 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 
 const DyvixMarquee = Object.assign(
   React.forwardRef<HTMLDivElement, DyvixMarqueeProps>(
-    ({ children, className, repeat = -1, speed = 1, pauseOnHover }, ref) => {
+    (
+      { children, items, className, repeat = -1, speed = 1, pauseOnHover },
+      ref
+    ) => {
       const internalRef = React.useRef<HTMLDivElement | null>(null);
       const trackRef = React.useRef<HTMLDivElement | null>(null);
       const ogContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -23,7 +26,22 @@ const DyvixMarquee = Object.assign(
         originalItems: React.ReactNode[];
         duplicateItems: React.ReactNode[];
       } | null>({ originalItems: [], duplicateItems: [] });
-      const initialChildrenCount = React.Children.count(children);
+
+      const compiledChildren = React.useMemo(() => {
+        if (children) return children;
+
+        return items?.map((item, indx) => {
+          return (
+            <DyvixMarqueeItem
+              key={`item-${indx}`}
+              {...(item.href && { href: item.href })}
+            >
+              {item.label}
+            </DyvixMarqueeItem>
+          );
+        });
+      }, [children, items]);
+      const initialChildrenCount = React.Children.count(compiledChildren);
 
       const finalizedWrapperProps = {
         className: 'dyvix-marquee-wrapper'
@@ -87,7 +105,7 @@ const DyvixMarquee = Object.assign(
         if (currentWidth === 0) return;
         const fullSetMultiplier = Math.ceil(maxSize / currentWidth);
 
-        const childrenArray = React.Children.toArray(children);
+        const childrenArray = React.Children.toArray(compiledChildren);
         let appendedWidth = -gapValue;
         let singleSetItems: React.ReactNode[] = [];
         outer: for (let i = 0; i < fullSetMultiplier; i++) {
@@ -113,7 +131,7 @@ const DyvixMarquee = Object.assign(
         };
 
         setDisplayItems(finalizedItems);
-      }, [children, maxSize]);
+      }, [compiledChildren, maxSize]);
 
       useGSAP(
         () => {
@@ -150,7 +168,10 @@ const DyvixMarquee = Object.assign(
             track.removeEventListener('mouseleave', handleTrackOnMouseLeave);
           };
         },
-        { scope: trackRef, dependencies: [displayItems, speed, repeat, pauseOnHover] }
+        {
+          scope: trackRef,
+          dependencies: [displayItems, speed, repeat, pauseOnHover]
+        }
       );
       return (
         <div ref={internalRef} {...finalizedWrapperProps}>
@@ -159,12 +180,16 @@ const DyvixMarquee = Object.assign(
               <div className="dyvix-marquee-content" ref={ogContentRef}>
                 {displayItems?.originalItems.length
                   ? displayItems.originalItems
-                  : children}
+                  : compiledChildren}
               </div>
-              <div className="dyvix-marquee-content" aria-hidden="true">
+              <div
+                className="dyvix-marquee-content"
+                aria-hidden="true"
+                inert
+              >
                 {displayItems?.duplicateItems.length
                   ? displayItems.duplicateItems
-                  : children}
+                  : compiledChildren}
               </div>
             </div>
           </div>

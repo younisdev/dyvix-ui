@@ -4,6 +4,11 @@ import type React from 'react';
 /*--!/--*/
 // Edit here safely
 
+interface DyvixConfigItemsProps {
+  label: string | React.ReactNode;
+  href?: string;
+}
+
 export interface DyvixMarqueeItemProps {
   children: React.ReactNode;
   className?: string;
@@ -18,4 +23,5 @@ export interface DyvixMarqueeProps {
   repeat?: number;
   speed?: number;
   pauseOnHover?: boolean;
+  items?: DyvixConfigItemsProps[];
 }
