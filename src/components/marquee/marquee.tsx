@@ -11,9 +11,13 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 const DyvixMarquee = Object.assign(
   React.forwardRef<HTMLDivElement, DyvixMarqueeProps>(
     (
-      { children, items, className, repeat = -1, speed = 1, pauseOnHover },
+      { children, items, className, repeat = -1, speed = 1, pauseOnHover, style, ...rest },
       ref
     ) => {
+      const { wrapperProps, elementProps } = SmartPropsSplitting({
+        style,
+        ...rest
+      });
       const internalRef = React.useRef<HTMLDivElement | null>(null);
       const trackRef = React.useRef<HTMLDivElement | null>(null);
       const ogContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -42,9 +46,14 @@ const DyvixMarquee = Object.assign(
         });
       }, [children, items]);
       const initialChildrenCount = React.Children.count(compiledChildren);
-
+      const { style: splitElementStyles, ...restElementProps } = elementProps;
+      const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
       const finalizedWrapperProps = {
-        className: 'dyvix-marquee-wrapper'
+        className: 'dyvix-marquee-wrapper',
+        style: {
+          ...splitWrapperStyles
+        },
+        ...restWrapperProps
       };
 
       const props = {
@@ -52,7 +61,11 @@ const DyvixMarquee = Object.assign(
           'dyvix-marquee',
           'dyvix-marquee-default',
           className
-        )
+        ),
+        style: {
+          ...splitElementStyles
+        },
+        ...restElementProps
       };
 
       React.useLayoutEffect(() => {

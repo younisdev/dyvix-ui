@@ -24,4 +24,5 @@ export interface DyvixMarqueeProps {
   speed?: number;
   pauseOnHover?: boolean;
   items?: DyvixConfigItemsProps[];
+  style?: React.CSSProperties;
 }
