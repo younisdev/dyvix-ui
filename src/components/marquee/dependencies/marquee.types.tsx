@@ -20,6 +20,60 @@ export type DyvixMarqueeAnimation =
   | 'spiral'
   | 'bounce';
 
+export interface DyvixMarqueeBaseOverride {
+  '--dyvix-marquee-padding'?:
+    '8px 16px' | '10px 22px' | '12px 24px' | (string & {});
+  '--dyvix-marquee-gap'?: '100px' | '1rem' | (string & {});
+  '--dyvix-marquee-color'?: string & {};
+  '--dyvix-marquee-letter-spacing'?:
+    '-0.02em' | '-0.01em' | '0em' | (string & {});
+  '--dyvix-marquee-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-marquee-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | 'none' | (string & {});
+  '--dyvix-marquee-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-marquee-transition'?: (string & {}) | 'none';
+  '--dyvix-marquee-hover-color'?: string & {};
+  '--dyvix-marquee-hover-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+  '--dyvix-marquee-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-marquee-hover-border-style'?:
+    'solid' | 'dashed' | (string & {}) | 'none';
+  '--dyvix-marquee-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+}
+
+export interface DyvixMarqueeDefaultOverride {
+  '--dyvix-marquee-bg'?: (string & {}) | 'transparent';
+  '--dyvix-marquee-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-marquee-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-marquee-font-weight'?: 400 | 500 | 600 | 700 | (string & {});
+  '--dyvix-marquee-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-marquee-box-shadow'?:
+    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
+  '--dyvix-marquee-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-marquee-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-marquee-hover-box-shadow'?:
+    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+}
+
+export interface DyvixMarqueeWrapperOverride {
+  '--dyvix-marquee-width'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-marquee-height'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-marquee-mask-image'?: (string & {}) | 'none';
+  '--dyvix-marquee-display'?:
+    | 'inline-block'
+    | 'block'
+    | 'inline-flex'
+    | 'flex'
+    | 'inline'
+    | 'grid'
+    | 'none'
+    | (string & {});
+}
+
 /*--!/--*/
 // Edit here safely
 
@@ -40,7 +94,11 @@ export interface DyvixMarqueeProps {
   children?: React.ReactNode;
   className?: string;
   repeat?: number;
+  theme?: string | null;
   animation?: DyvixMarqueeAnimation | null;
+  overrides?: DyvixMarqueeWrapperOverride &
+    DyvixMarqueeBaseOverride &
+    DyvixMarqueeDefaultOverride;
   speed?: number;
   pauseOnHover?: boolean;
   items?: DyvixConfigItemsProps[];
