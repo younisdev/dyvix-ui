@@ -33,7 +33,8 @@ export default defineConfig({
     label: 'src/components/label/label.tsx',
     table: 'src/components/table/table.tsx',
     navigation: 'src/components/nav/navigation.tsx',
-    toast: 'src/components/toast/toastContainer.tsx'
+    toast: 'src/components/toast/toastContainer.tsx',
+    marquee: 'src/components/marquee/marquee.tsx'
   },
   format: ['esm'],
   injectStyle: true,

@@ -64,6 +64,11 @@
       "types": "./dist/toast.d.ts",
       "import": "./dist/toast.js",
       "default": "./dist/toast.js"
+    },
+    "./marquee": {
+      "types": "./dist/marquee.d.ts",
+      "import": "./dist/marquee.js",
+      "default": "./dist/marquee.js"
     }
   },
   "files": [
