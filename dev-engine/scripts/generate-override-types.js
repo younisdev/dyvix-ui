@@ -50,6 +50,11 @@ UseCSSVar(
   'nav',
   './src/components/nav/dependencies/nav.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/marquee/dependencies/marquee.overrides.json',
+  './src/components/marquee/dependencies/marquee.types.tsx',
+  'marquee'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

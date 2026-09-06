@@ -7,17 +7,37 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Version from '../../../package.json';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
+import { ValidateMarquee } from './validation';
 
 const DyvixMarquee = Object.assign(
   React.forwardRef<HTMLDivElement, DyvixMarqueeProps>(
     (
-      { children, items, className, repeat = -1, speed = 1, pauseOnHover, style, ...rest },
+      {
+        children,
+        items,
+        className,
+        animation = 'fade',
+        overrides,
+        theme,
+        repeat = -1,
+        speed = 1,
+        pauseOnHover,
+        timeline,
+        style,
+        ...rest
+      },
       ref
     ) => {
+      const instanceId = React.useId();
+      const [configs, SetConfig] = React.useState({});
       const { wrapperProps, elementProps } = SmartPropsSplitting({
         style,
         ...rest
       });
+      const addedToTimeLineRef = React.useRef<{
+        theme: string | null;
+        animation: string | null;
+      } | null>(null);
       const internalRef = React.useRef<HTMLDivElement | null>(null);
       const trackRef = React.useRef<HTMLDivElement | null>(null);
       const ogContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -48,10 +68,14 @@ const DyvixMarquee = Object.assign(
       const initialChildrenCount = React.Children.count(compiledChildren);
       const { style: splitElementStyles, ...restElementProps } = elementProps;
       const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
+      const currentAnimation = animation ? (configs as any)['animation'] : null;
+      const currentTheme = theme ? (configs as any)['theme'] : null;
+
       const finalizedWrapperProps = {
         className: 'dyvix-marquee-wrapper',
         style: {
-          ...splitWrapperStyles
+          ...splitWrapperStyles,
+          ...overrides
         },
         ...restWrapperProps
       };
@@ -59,8 +83,9 @@ const DyvixMarquee = Object.assign(
       const props = {
         className: ConstructClasses(
           'dyvix-marquee',
-          'dyvix-marquee-default',
-          className
+          !currentTheme?.class ? 'dyvix-marquee-default' : '',
+          className,
+          currentTheme?.class
         ),
         style: {
           ...splitElementStyles
@@ -68,6 +93,30 @@ const DyvixMarquee = Object.assign(
         ...restElementProps
       };
 
+      React.useEffect(() => {
+        async function validate() {
+          const validator = await ValidateMarquee(
+            animation,
+            theme,
+            children,
+            items,
+            SetConfig,
+            instanceId
+          );
+
+          if (validator.status === GuardStatus.Error) {
+            return EvaluateFailure(validator.error, validator.status);
+          }
+        }
+
+        validate();
+
+        return () => {
+          const key = `DYVIX_${Version['version']}_Marquee_theme_${instanceId}`;
+          const ele = document.getElementById(key);
+          if (ele) ele.remove();
+        };
+      }, [theme, animation]);
       React.useLayoutEffect(() => {
         if (!internalRef.current) return;
 
@@ -148,6 +197,36 @@ const DyvixMarquee = Object.assign(
 
       useGSAP(
         () => {
+          if (!internalRef.current || !currentAnimation) return;
+
+          const toVars: GSAPTweenVars = {
+            ...currentAnimation.to,
+            duration: currentAnimation['default-duration'],
+            ease: currentAnimation.ease
+          };
+          if (timeline) {
+            const normalizedTheme = theme ?? null;
+            const normalizedAnimation = theme ?? null;
+            if (
+              addedToTimeLineRef.current?.theme === normalizedTheme &&
+              addedToTimeLineRef.current?.animation === normalizedAnimation
+            )
+              return;
+
+            timeline.fromTo(internalRef.current, currentAnimation.from, toVars);
+            addedToTimeLineRef.current = {
+              theme: normalizedTheme,
+              animation: normalizedAnimation
+            };
+          } else {
+            gsap.fromTo(internalRef.current, currentAnimation.from, toVars);
+          }
+        },
+        { scope: internalRef, dependencies: [currentAnimation, currentTheme] }
+      );
+
+      useGSAP(
+        () => {
           const track = trackRef.current;
           if (!track) return;
 
@@ -195,11 +274,7 @@ const DyvixMarquee = Object.assign(
                   ? displayItems.originalItems
                   : compiledChildren}
               </div>
-              <div
-                className="dyvix-marquee-content"
-                aria-hidden="true"
-                inert
-              >
+              <div className="dyvix-marquee-content" aria-hidden="true" inert>
                 {displayItems?.duplicateItems.length
                   ? displayItems.duplicateItems
                   : compiledChildren}

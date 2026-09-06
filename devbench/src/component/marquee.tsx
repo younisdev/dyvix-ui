@@ -1,9 +1,11 @@
+import gsap from 'gsap';
 import { DyvixMarquee, DyvixMarqueeItem } from '../../../src';
 
 export function MarqueeTest() {
+  const tl = gsap.timeline();
   return (
     <>
-      <DyvixMarquee repeat={1}>
+      <DyvixMarquee repeat={1} animation={'drift'} timeline={tl}>
         <DyvixMarqueeItem>hi</DyvixMarqueeItem>
         <DyvixMarqueeItem>hei</DyvixMarqueeItem>
         <DyvixMarqueeItem>hi2</DyvixMarqueeItem>
@@ -11,6 +13,7 @@ export function MarqueeTest() {
       </DyvixMarquee>
 
       <DyvixMarquee
+        timeline={tl}
         repeat={1}
         items={[
           { label: 'Next.js', href: 'https://nextjs.org' },
