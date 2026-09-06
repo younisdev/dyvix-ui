@@ -1,0 +1,35 @@
+.dyvix-marquee-singularity {
+  background: var(
+    --dyvix-marquee-bg,
+    radial-gradient(circle at center, #000000 0%, #1a1a1a 100%)
+  );
+  color: var(--dyvix-marquee-color, white);
+  border-width: var(--dyvix-marquee-border-width, 5px);
+  border-style: var(--dyvix-marquee-border-style, solid);
+  border-color: var(--dyvix-marquee-border-color, #3c0349);
+  border-radius: var(--dyvix-marquee-border-radius, 2rem);
+  box-shadow: var(--dyvix-marquee-box-shadow, 0 0 50px #b903e2);
+  transition: var(
+    --dyvix-marquee-transition,
+    transform 0.7s ease-in-out,
+    box-shadow 0.6s ease-in-out,
+    border-color 0.3s ease-in-out,
+    border-radius 0.3s ease-in-out,
+    background 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-marquee-font-family, 'Geist');
+  font-size: var(--dyvix-marquee-font-size, inherit);
+  font-weight: var(--dyvix-marquee-font-weight, inherit);
+}
+.dyvix-marquee-singularity:hover {
+  border-width: var(--dyvix-marquee-hover-border-width, 5px);
+  border-style: var(--dyvix-marquee-hover-border-style, solid);
+  border-color: var(--dyvix-marquee-hover-border-color, #27032f);
+  border-radius: var(--dyvix-marquee-hover-border-radius, 0);
+  background: var(
+    --dyvix-marquee-hover-bg,
+    radial-gradient(circle at center, #000000 0%, #1a1a1a 100%)
+  );
+  box-shadow: var(--dyvix-marquee-hover-box-shadow, 0 0 70px #770292);
+  transform: var(--dyvix-marquee-hover-transform, scale(1.001));
+}

@@ -74,6 +74,8 @@ export interface DyvixMarqueeWrapperOverride {
     | (string & {});
 }
 
+export type DyvixMarqueeThemes = 'Singularity';
+
 /*--!/--*/
 // Edit here safely
 
@@ -94,7 +96,7 @@ export interface DyvixMarqueeProps {
   children?: React.ReactNode;
   className?: string;
   repeat?: number;
-  theme?: string | null;
+  theme?: DyvixMarqueeThemes | null;
   animation?: DyvixMarqueeAnimation | null;
   overrides?: DyvixMarqueeWrapperOverride &
     DyvixMarqueeBaseOverride &

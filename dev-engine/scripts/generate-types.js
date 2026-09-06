@@ -210,6 +210,14 @@ GenerateTypes(
   'animation',
   'marquee'
 );
+GenerateTypes(
+  null,
+  './src/components/marquee/dependencies/style/themes.css',
+  'DyvixMarqueeThemes',
+  './src/components/marquee/dependencies/marquee.types.tsx',
+  '',
+  'marquee'
+);
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
  *
