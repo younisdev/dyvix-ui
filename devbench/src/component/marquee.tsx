@@ -10,7 +10,7 @@ export function MarqueeTest() {
         repeat={1}
         animation={'drift'}
         timeline={tl}
-        theme={'singularity'}
+        theme={'Singularity'}
       >
         <DyvixMarqueeItem>hi</DyvixMarqueeItem>
         <DyvixMarqueeItem>hei</DyvixMarqueeItem>
@@ -19,6 +19,7 @@ export function MarqueeTest() {
       </DyvixMarquee>
 
       <DyvixMarquee
+        theme={'Industrial'}
         timeline={tl}
         repeat={1}
         items={[
