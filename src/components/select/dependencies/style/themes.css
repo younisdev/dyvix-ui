@@ -426,3 +426,49 @@
   .dyvix-select-dropdown-midnight::-webkit-scrollbar-thumb {
   background: rgba(99, 102, 241, 0.6);
 }
+
+.dyvix-select-frost .dyvix-select-input-frost {
+  background: #ffffff1a;
+  border: 5px groove #ffffff40;
+  border-radius: 20px;
+  backdrop-filter: blur(50px);
+  color: #ffffff;
+  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
+  transition:
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.2s ease-in-out;
+}
+
+.dyvix-select-frost .dyvix-select-input-frost:hover {
+  border: 8px groove #f8f8f840;
+  transform: scale(1.01);
+  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+}
+
+.dyvix-select-frost .dyvix-select-dropdown-frost {
+  background: var(--dyvix-select-dropdown-color, #ffffff1a);
+  border: 1px solid #ffffff40;
+  backdrop-filter: blur(50px);
+
+  --dyvix-select-active-bg: rgba(213, 255, 248, 0.3);
+  --dyvix-select-active-text: #ffffff;
+}
+
+.dyvix-select-frost .dyvix-select-dropdown-frost li {
+  color: #ffffff;
+}
+
+.dyvix-select-frost .dyvix-select-dropdown-frost li:hover {
+  background: rgba(213, 255, 248, 0.1);
+}
+
+.dyvix-select-frost .dyvix-select-dropdown-frost::-webkit-scrollbar-thumb {
+  background: rgba(213, 255, 248, 0.4);
+}
