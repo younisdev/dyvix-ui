@@ -78,5 +78,10 @@
     "theme": "Cosmos",
     "class": "dyvix-button-cosmos",
     "default-animation": "pulse"
+  },
+  {
+    "theme": "Obsidian",
+    "class": "dyvix-button-obsidian",
+    "default-animation": "fade"
   }
 ]

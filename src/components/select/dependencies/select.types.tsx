@@ -28,6 +28,7 @@ export type DyvixSelectThemes =
   | 'Singularity'
   | 'Industrial'
   | 'Ember'
+  | 'Frost'
   | 'Blade'
   | 'Neon'
   | 'Sunset'

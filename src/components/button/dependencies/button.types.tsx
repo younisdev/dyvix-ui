@@ -32,6 +32,7 @@ export type DyvixButtonThemes =
   | 'Forest'
   | 'Midnight'
   | 'Crimson'
+  | 'Obsidian'
   | 'Coffee'
   | 'Cosmos'
   | 'Sakura'

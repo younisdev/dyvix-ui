@@ -5,7 +5,13 @@ export function MarqueeTest() {
   const tl = gsap.timeline();
   return (
     <>
-      <DyvixMarquee repeat={1} animation={'drift'} timeline={tl}>
+      <DyvixMarquee
+        pauseOnHover
+        repeat={1}
+        animation={'drift'}
+        timeline={tl}
+        theme={'Singularity'}
+      >
         <DyvixMarqueeItem>hi</DyvixMarqueeItem>
         <DyvixMarqueeItem>hei</DyvixMarqueeItem>
         <DyvixMarqueeItem>hi2</DyvixMarqueeItem>
@@ -13,6 +19,7 @@ export function MarqueeTest() {
       </DyvixMarquee>
 
       <DyvixMarquee
+        theme={'Industrial'}
         timeline={tl}
         repeat={1}
         items={[
