@@ -25,6 +25,8 @@ A config-driven animated button component with support for themed and default co
   - : `string`. Controls the button text color.
 - `onClick`
   - : `function`. A callback function triggered upon button click.
+- `timeline`
+  - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
 
 ## Example
 
