@@ -27,7 +27,7 @@ export function TableTest() {
         ]}
       />
       <DyvixTable theme={'Cosmos'} animation={'bounce'}>
-        <DyvixTable.Header>
+        <DyvixTable.Header className="hi">
           <DyvixTable.Row>
             <DyvixTableHead>Vehicle</DyvixTableHead>
             <DyvixTableHead>Class</DyvixTableHead>
