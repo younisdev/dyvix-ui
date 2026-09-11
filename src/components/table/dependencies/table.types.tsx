@@ -75,3 +75,7 @@ export interface DyvixTableHeadProps extends React.ThHTMLAttributes<HTMLTableCel
   children?: ReactNode;
   className?: string;
 }
+export interface DyvixTableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
+  children?: ReactNode;
+  className?: string;
+}
