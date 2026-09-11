@@ -62,3 +62,8 @@ export interface DyvixTableProps<
   color?: string;
   timeline?: gsap.core.Timeline | null;
 }
+
+export interface DyvixTableBodyProps {
+  children?: ReactNode;
+  className?: string;
+}
