@@ -1,290 +1,429 @@
 .dyvix-table-singularity {
-  border-radius: 1rem;
-  font-family: 'Geist';
-  border: 4px solid #3c0349;
-  color: white;
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  border-width: var(--dyvix-table-border-width, 4px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, #3c0349);
+  color: var(--dyvix-table-color, white);
   background-color: #1f2937;
-  background: radial-gradient(circle, #000000 0%, #1a1a1a 100%);
-  box-shadow: 0 0 30px #b903e2;
-  -webkit-box-shadow: 0 0 30px #b903e2;
-  -moz-box-shadow: 0 0 30px #b903e2;
-  transition:
+  background: var(
+    --dyvix-table-bg,
+    radial-gradient(circle, #000000 0%, #1a1a1a 100%)
+  );
+  box-shadow: var(--dyvix-table-box-shadow, 0 0 30px #b903e2);
+  -webkit-box-shadow: var(--dyvix-table-box-shadow, 0 0 30px #b903e2);
+  -moz-box-shadow: var(--dyvix-table-box-shadow, 0 0 30px #b903e2);
+  transition: var(
+    --dyvix-table-transition,
     transform ease-in-out 0.7s,
     box-shadow ease-in-out 0.6s,
     border ease-in-out 0.3s,
-    background ease-in-out 0.2s;
+    background ease-in-out 0.2s
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-singularity:hover {
-  border: 4px solid #27032f;
-  background: radial-gradient(circle, #000000 0%, #1a1a1a 120%);
-  box-shadow: 0 0 50px #b903e2;
-  transform: scale(1.02);
+  border-width: var(--dyvix-table-hover-border-width, 4px);
+  border-style: var(--dyvix-table-hover-border-style, solid);
+  border-color: var(--dyvix-table-hover-border-color, #27032f);
+  background: var(
+    --dyvix-table-hover-bg,
+    radial-gradient(circle, #000000 0%, #1a1a1a 120%)
+  );
+  box-shadow: var(--dyvix-table-hover-box-shadow, 0 0 50px #b903e2);
+  transform: var(--dyvix-table-hover-transform, scale(1.02));
 }
-
 .dyvix-table-crimson {
-  border-radius: 1rem;
-  font-family: 'Geist';
-  border: 2px solid #ff4d4d;
-  color: #ffd6d6;
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  border-width: var(--dyvix-table-border-width, 2px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, #ff4d4d);
+  color: var(--dyvix-table-color, #ffd6d6);
   background-color: #1a0000;
-  background: radial-gradient(circle, #1a0000 0%, #0d0000 100%);
-  box-shadow: 0 0 30px rgba(255, 77, 77, 0.25);
-  transition:
+  background: var(
+    --dyvix-table-bg,
+    radial-gradient(circle, #1a0000 0%, #0d0000 100%)
+  );
+  box-shadow: var(--dyvix-table-box-shadow, 0 0 30px rgba(255, 77, 77, 0.25));
+  transition: var(
+    --dyvix-table-transition,
     transform ease-in-out 0.7s,
     box-shadow ease-in-out 0.6s,
     border ease-in-out 0.3s,
-    background ease-in-out 0.2s;
+    background ease-in-out 0.2s
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-crimson:hover {
-  background: radial-gradient(circle, #2a0000 0%, #0d0000 120%);
-  box-shadow: 0 0 50px rgba(255, 77, 77, 0.45);
-  transform: scale(1.009);
+  background: var(
+    --dyvix-table-hover-bg,
+    radial-gradient(circle, #2a0000 0%, #0d0000 120%)
+  );
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 0 50px rgba(255, 77, 77, 0.45)
+  );
+  transform: var(--dyvix-table-hover-transform, scale(1.009));
+  border-color: var(--dyvix-table-hover-border-color, inherit);
 }
-
 .dyvix-table-midnight {
-  border-radius: 1rem;
-  font-family: 'Geist';
-  background: radial-gradient(circle at center, #00024d 0%, #000000 100%);
-  border: 1px solid rgba(112, 168, 247, 0.3);
-  color: #c8d8f8;
-  box-shadow:
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(
+    --dyvix-table-bg,
+    radial-gradient(circle at center, #00024d 0%, #000000 100%)
+  );
+  border-width: var(--dyvix-table-border-width, 1px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(112, 168, 247, 0.3));
+  color: var(--dyvix-table-color, #c8d8f8);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -webkit-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -moz-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
   backdrop-filter: blur(10px);
-  transition:
+  transition: var(
+    --dyvix-table-transition,
     transform 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67),
     box-shadow 0.5s ease-in-out,
-    border-color 0.3s ease-in-out;
-}
-
-.dyvix-table-midnight:hover {
-  background: radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%);
-  border-color: rgba(112, 168, 247, 0.6);
-  box-shadow:
-    0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -webkit-box-shadow:
-    0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -moz-box-shadow:
-    0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  transform: translateY(-3px) scale(1.005);
-}
-
-.dyvix-table-forest {
-  border-radius: 1rem;
-  font-family: 'Geist';
-  background: #1f3b2c;
-  background: radial-gradient(
-    circle,
-    rgba(31, 59, 44, 1) 14%,
-    rgba(31, 59, 44, 1) 24%,
-    rgba(75, 58, 42, 1) 71%
+    border-color 0.3s ease-in-out
   );
-  border: 3px double #86a86b;
-  color: #d4eec4;
-  box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.15);
-  -webkit-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.15);
-  -moz-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.15);
-  transition:
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+}
+.dyvix-table-midnight:hover {
+  background: var(
+    --dyvix-table-hover-bg,
+    radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%)
+  );
+  border-color: var(--dyvix-table-hover-border-color, rgba(112, 168, 247, 0.6));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 0 60px 10px rgba(99, 102, 241, 0.4),
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 0 60px 10px rgba(99, 102, 241, 0.4),
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 0 60px 10px rgba(99, 102, 241, 0.4),
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  transform: var(--dyvix-table-hover-transform, translateY(-3px) scale(1.005));
+}
+.dyvix-table-forest {
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(--dyvix-table-bg, #1f3b2c);
+  background: var(
+    --dyvix-table-bg,
+    radial-gradient(
+      circle,
+      rgba(31, 59, 44, 1) 14%,
+      rgba(31, 59, 44, 1) 24%,
+      rgba(75, 58, 42, 1) 71%
+    )
+  );
+  border-width: var(--dyvix-table-border-width, 3px);
+  border-style: var(--dyvix-table-border-style, double);
+  border-color: var(--dyvix-table-border-color, #86a86b);
+  color: var(--dyvix-table-color, #d4eec4);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.15)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.15)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.15)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.dyvix-table-forest:hover {
-  border-color: #a3ec65;
-  box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.28);
-  -webkit-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.28);
-  -moz-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.28);
-  transform: translateY(-2px) scale(1.005);
-}
-
-.dyvix-table-sunset {
-  border-radius: 1rem;
-  font-family: 'Geist';
-
-  background: #1a0a00;
-  background: linear-gradient(
-    135deg,
-    #1a0a00 0%,
-    #3d1a00 40%,
-    #6b2d00 70%,
-    #8b3a00 100%
+    border-color 0.3s ease
   );
-
-  border: 1px solid rgba(255, 198, 15, 0.1);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+}
+.dyvix-table-forest:hover {
+  border-color: var(--dyvix-table-hover-border-color, #a3ec65);
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.28)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.28)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.28)
+  );
+  transform: var(--dyvix-table-hover-transform, translateY(-2px) scale(1.005));
+  background: var(--dyvix-table-hover-bg, inherit);
+}
+.dyvix-table-sunset {
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(--dyvix-table-bg, #1a0a00);
+  background: var(
+    --dyvix-table-bg,
+    linear-gradient(135deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%)
+  );
+  border-width: var(--dyvix-table-border-width, 1px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(255, 198, 15, 0.1));
   border-bottom: 4px solid #a84600;
-  color: #ffd89b;
-
-  box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.5);
-  -webkit-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.5);
-  -moz-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.5);
-
-  transition:
+  color: var(--dyvix-table-color, #ffd89b);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.5)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease-in-out,
-    border-radius 0.2s ease-in-out;
+    border-radius 0.2s ease-in-out
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-sunset:hover {
-  transform: translateY(-2px);
-
-  box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -webkit-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -moz-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-
-  border-radius: 0.9rem;
+  transform: var(--dyvix-table-hover-transform, translateY(-2px));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  border-radius: var(--dyvix-table-hover-border-radius, 0.9rem);
+  background: var(--dyvix-table-hover-bg, inherit);
+  border-color: var(--dyvix-table-hover-border-color, inherit);
 }
-
 .dyvix-table-ocean {
-  border-radius: 1rem;
-  font-family: 'Geist';
-
-  background: linear-gradient(200deg, #001220, #023862);
-  border: 2px solid rgba(0, 150, 255, 0.3);
-  color: #e0f7ff;
-
-  box-shadow:
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(--dyvix-table-bg, linear-gradient(200deg, #001220, #023862));
+  border-width: var(--dyvix-table-border-width, 2px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(0, 150, 255, 0.3));
+  color: var(--dyvix-table-color, #e0f7ff);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-
-  -webkit-box-shadow:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-
-  -moz-box-shadow:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-
-  transition:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-table-transition,
     box-shadow 0.3s ease-in-out,
     border 0.2s ease-in-out,
-    transform 0.4s;
-}
-
-.dyvix-table-ocean:hover {
-  border: 3px solid rgba(0, 150, 255, 0.6);
-
-  box-shadow:
-    0 0 70px rgba(0, 100, 255, 0.25),
-    inset 0 0 40px rgba(0, 150, 255, 0.08);
-
-  -webkit-box-shadow:
-    0 0 70px rgba(0, 100, 255, 0.25),
-    inset 0 0 40px rgba(0, 150, 255, 0.08);
-
-  -moz-box-shadow:
-    0 0 70px rgba(0, 100, 255, 0.25),
-    inset 0 0 40px rgba(0, 150, 255, 0.08);
-
-  transform: translateY(-2px) scale(1.005);
-}
-
-.dyvix-table-neon {
-  border-radius: 1rem;
-  font-family: 'Geist';
-  background: radial-gradient(
-    circle,
-    rgba(77, 238, 234, 0.15) 0%,
-    rgba(112, 186, 239, 0.1) 43%,
-    rgba(240, 0, 255, 0.15) 100%
+    transform 0.4s
   );
-  border: 2px solid rgba(77, 238, 234, 0.5);
-  color: #e0fffe;
-  box-shadow:
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+}
+.dyvix-table-ocean:hover {
+  border-width: var(--dyvix-table-hover-border-width, 3px);
+  border-style: var(--dyvix-table-hover-border-style, solid);
+  border-color: var(--dyvix-table-hover-border-color, rgba(0, 150, 255, 0.6));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 0 70px rgba(0, 100, 255, 0.25),
+    inset 0 0 40px rgba(0, 150, 255, 0.08)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 0 70px rgba(0, 100, 255, 0.25),
+    inset 0 0 40px rgba(0, 150, 255, 0.08)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0 0 70px rgba(0, 100, 255, 0.25),
+    inset 0 0 40px rgba(0, 150, 255, 0.08)
+  );
+  transform: var(--dyvix-table-hover-transform, translateY(-2px) scale(1.005));
+  background: var(--dyvix-table-hover-bg, inherit);
+}
+.dyvix-table-neon {
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(
+    --dyvix-table-bg,
+    radial-gradient(
+      circle,
+      rgba(77, 238, 234, 0.15) 0%,
+      rgba(112, 186, 239, 0.1) 43%,
+      rgba(240, 0, 255, 0.15) 100%
+    )
+  );
+  border-width: var(--dyvix-table-border-width, 2px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(77, 238, 234, 0.5));
+  color: var(--dyvix-table-color, #e0fffe);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 40px rgba(252, 46, 255, 0.3),
     0 0 80px rgba(77, 238, 234, 0.1),
-    inset 0 0 20px rgba(112, 186, 239, 0.05);
-
-  -webkit-box-shadow:
+    inset 0 0 20px rgba(112, 186, 239, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 40px rgba(252, 46, 255, 0.3),
     0 0 80px rgba(77, 238, 234, 0.1),
-    inset 0 0 20px rgba(112, 186, 239, 0.05);
-
-  -moz-box-shadow:
+    inset 0 0 20px rgba(112, 186, 239, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 40px rgba(252, 46, 255, 0.3),
     0 0 80px rgba(77, 238, 234, 0.1),
-    inset 0 0 20px rgba(112, 186, 239, 0.05);
-
-  transition:
+    inset 0 0 20px rgba(112, 186, 239, 0.05)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease,
     border-color 0.3s ease,
-    border-radius 0.2s ease-in-out;
+    border-radius 0.2s ease-in-out
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-neon:hover {
-  border-color: rgba(77, 238, 234, 0.8);
-  border-radius: 0.75rem;
-
-  box-shadow:
+  border-color: var(--dyvix-table-hover-border-color, rgba(77, 238, 234, 0.8));
+  border-radius: var(--dyvix-table-hover-border-radius, 0.75rem);
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     0 0 60px rgba(252, 46, 255, 0.5),
     0 0 120px rgba(77, 238, 234, 0.2),
-    inset 0 0 30px rgba(112, 186, 239, 0.1);
-
-  -webkit-box-shadow:
+    inset 0 0 30px rgba(112, 186, 239, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     0 0 60px rgba(252, 46, 255, 0.5),
     0 0 120px rgba(77, 238, 234, 0.2),
-    inset 0 0 30px rgba(112, 186, 239, 0.1);
-
-  -moz-box-shadow:
+    inset 0 0 30px rgba(112, 186, 239, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     0 0 60px rgba(252, 46, 255, 0.5),
     0 0 120px rgba(77, 238, 234, 0.2),
-    inset 0 0 30px rgba(112, 186, 239, 0.1);
-
-  transform: translateY(-2px) scale(1.009);
+    inset 0 0 30px rgba(112, 186, 239, 0.1)
+  );
+  transform: var(--dyvix-table-hover-transform, translateY(-2px) scale(1.009));
+  background: var(--dyvix-table-hover-bg, inherit);
 }
-
 .dyvix-table-blade {
-  border-radius: 0px;
-  font-family: 'Geist';
+  border-radius: var(--dyvix-table-border-radius, 0px);
+  font-family: var(--dyvix-table-font-family, 'Geist');
   background-color: #0a0a0a;
-  color: #e2e8f0;
+  color: var(--dyvix-table-color, #e2e8f0);
   border-left: 3px solid #e2e8f0;
   border-top: 3px solid #e2e8f0;
   border-right: 1px solid #ffffff20;
   border-bottom: 1px solid #ffffff20;
-  box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -webkit-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -moz-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  transition:
+  box-shadow: var(
+    --dyvix-table-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-table-transition,
     border-left 0.1s ease-in-out,
     border-top 0.1s ease-in-out,
     box-shadow 0.2s ease-in-out,
-    transform 0.3s ease-in-out;
+    transform 0.3s ease-in-out
+  );
+  background: var(--dyvix-table-bg, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
 }
-
 .dyvix-table-blade:hover {
   border-left: 4px solid #ffffff;
   border-top: 4px solid #ffffff;
-  box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -webkit-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -moz-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px) scale(1.005);
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  transform: var(--dyvix-table-hover-transform, translateY(-2px) scale(1.005));
+  background: var(--dyvix-table-hover-bg, inherit);
+  border-color: var(--dyvix-table-hover-border-color, inherit);
 }
-
 .dyvix-table-aurora {
-  font-family: 'Geist';
-  background: linear-gradient(
-      90deg,
-      #14e81e 0%,
-      #00ea8d 21%,
-      #01b1b3 46%,
-      #017ed5 76%,
-      #b53dff 100%
-    )
-    border-box;
-  color: #e6fffb;
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(
+    --dyvix-table-bg,
+    linear-gradient(
+        90deg,
+        #14e81e 0%,
+        #00ea8d 21%,
+        #01b1b3 46%,
+        #017ed5 76%,
+        #b53dff 100%
+      )
+      border-box
+  );
+  color: var(--dyvix-table-color, #e6fffb);
   border-image: linear-gradient(
       90deg,
       rgba(20, 232, 30, 1) 0%,
@@ -294,209 +433,301 @@
       rgba(181, 61, 255, 1) 100%
     )
     1;
-  box-shadow: 0px 0px 35px 0px rgba(1, 176, 179, 0.35);
-  -webkit-box-shadow: 0px 0px 35px 0px rgba(1, 176, 179, 0.35);
-  -moz-box-shadow: 0px 0px 35px 0px rgba(1, 176, 179, 0.35);
-  transition:
+  box-shadow: var(
+    --dyvix-table-box-shadow,
+    0px 0px 35px 0px rgba(1, 176, 179, 0.35)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
+    0px 0px 35px 0px rgba(1, 176, 179, 0.35)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
+    0px 0px 35px 0px rgba(1, 176, 179, 0.35)
+  );
+  transition: var(
+    --dyvix-table-transition,
     box-shadow 0.4s ease-in-out,
     -webkit-box-shadow 0.4s ease-in-out,
     -moz-box-shadow 0.4s ease-in-out,
-    transform 0.3s ease-in-out;
+    transform 0.3s ease-in-out
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
 }
-
 .dyvix-table-aurora:hover {
-  box-shadow: 0px 0px 55px 0px rgba(1, 176, 179, 0.55);
-  -webkit-box-shadow: 0px 0px 55px 0px rgba(1, 176, 179, 0.55);
-  -moz-box-shadow: 0px 0px 55px 0px rgba(1, 176, 179, 0.55);
-  transform: translateY(-2px) scale(1.005);
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0px 0px 55px 0px rgba(1, 176, 179, 0.55)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0px 0px 55px 0px rgba(1, 176, 179, 0.55)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    0px 0px 55px 0px rgba(1, 176, 179, 0.55)
+  );
+  transform: var(--dyvix-table-hover-transform, translateY(-2px) scale(1.005));
+  background: var(--dyvix-table-hover-bg, inherit);
+  border-color: var(--dyvix-table-hover-border-color, inherit);
 }
-
 .dyvix-table-industrial {
-  border-radius: 0.75rem;
-  font-family: 'Geist';
+  border-radius: var(--dyvix-table-border-radius, 0.75rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
   background-color: #0a1429;
-  color: #e5e7eb;
-  border: 4px solid #6a6a6a;
-
-  box-shadow:
+  color: var(--dyvix-table-color, #e5e7eb);
+  border-width: var(--dyvix-table-border-width, 4px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, #6a6a6a);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     inset 0 0 20px rgba(106, 106, 106, 0.1),
-    0 0 20px rgba(106, 106, 106, 0.15);
-
-  transition:
+    0 0 20px rgba(106, 106, 106, 0.15)
+  );
+  transition: var(
+    --dyvix-table-transition,
     box-shadow 0.3s ease,
     border-color 0.3s ease,
     background-color 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease
+  );
+  background: var(--dyvix-table-bg, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 /* HEADER ROW */
-.dyvix-table-industrial thead tr {
+.dyvix-table-industrial .dyvix-table-header tr {
   background: #1b2435;
 }
-
 /* HEADER CELLS */
 .dyvix-table-industrial th {
-  color: #f3f4f6;
+  color: var(--dyvix-table-color, #f3f4f6);
   border-bottom: 2px solid #374151;
+  background: var(--dyvix-table-bg, inherit);
+  font-family: var(--dyvix-table-font-family, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
+  box-shadow: var(--dyvix-table-box-shadow, inherit);
 }
-
 /* BODY CELLS */
 .dyvix-table-industrial td {
-  color: #d1d5db;
+  color: var(--dyvix-table-color, #d1d5db);
   border-bottom: 1px solid #374151;
+  background: var(--dyvix-table-bg, inherit);
+  font-family: var(--dyvix-table-font-family, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
+  box-shadow: var(--dyvix-table-box-shadow, inherit);
 }
-
 /* BODY ROW */
-.dyvix-table-industrial tbody tr {
+.dyvix-table-industrial .dyvix-table-body tr {
   background: #0a1429;
 }
-
 /* ROW HOVER */
-.dyvix-table-industrial tbody tr:hover {
+.dyvix-table-industrial .dyvix-table-body tr:hover {
   background: #16233c;
 }
-
 .dyvix-table-industrial:hover {
-  border-color: #9ca3af;
+  border-color: var(--dyvix-table-hover-border-color, #9ca3af);
   background-color: #101f39;
-
-  box-shadow:
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     inset 0 0 30px rgba(106, 106, 106, 0.15),
-    0 0 30px rgba(106, 106, 106, 0.2);
-
-  transform: translateY(-2px) scale(1.005);
+    0 0 30px rgba(106, 106, 106, 0.2)
+  );
+  transform: var(--dyvix-table-hover-transform, translateY(-2px) scale(1.005));
+  background: var(--dyvix-table-hover-bg, inherit);
 }
-
 .dyvix-table-ember {
-  border-radius: 10px;
+  border-radius: var(--dyvix-table-border-radius, 10px);
   background-color: #0f0a08;
   border-bottom: #ff4500 3px solid;
-  box-shadow:
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -webkit-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -moz-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  transition:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.5s ease-in-out,
     border-bottom 0.4s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
-    -moz-box-shadow 0.3s ease-in-out;
+    -moz-box-shadow 0.3s ease-in-out
+  );
+  background: var(--dyvix-table-bg, inherit);
+  font-family: var(--dyvix-table-font-family, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
 }
 .dyvix-table-ember:hover {
   border-bottom: #ff6b00 3.1px solid;
-  transform: scale(1.002);
-  box-shadow:
+  transform: var(--dyvix-table-hover-transform, scale(1.002));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -webkit-box-shadow:
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -moz-box-shadow:
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  background: var(--dyvix-table-hover-bg, inherit);
+  border-color: var(--dyvix-table-hover-border-color, inherit);
 }
 .dyvix-table-frost {
-  font-family: 'Geist';
+  font-family: var(--dyvix-table-font-family, 'Geist');
   background-color: #ffffff1a;
-  border: 5px groove #ffffff40;
-  border-radius: 20px;
+  border-width: var(--dyvix-table-border-width, 5px);
+  border-style: var(--dyvix-table-border-style, groove);
+  border-color: var(--dyvix-table-border-color, #ffffff40);
+  border-radius: var(--dyvix-table-border-radius, 20px);
   backdrop-filter: blur(50px);
-  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  transition:
+  box-shadow: var(
+    --dyvix-table-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.5s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
-    border 0.2s ease-in-out;
+    border 0.2s ease-in-out
+  );
+  background: var(--dyvix-table-bg, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-frost:hover {
-  border: 5.5px groove #f8f8f840;
-  transform: scale(1.01);
-  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  border-width: var(--dyvix-table-hover-border-width, 5.5px);
+  border-style: var(--dyvix-table-hover-border-style, groove);
+  border-color: var(--dyvix-table-hover-border-color, #f8f8f840);
+  transform: var(--dyvix-table-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  background: var(--dyvix-table-hover-bg, inherit);
 }
 .dyvix-table-obsidian {
-  border-radius: 1rem;
-  font-family: 'Geist';
-
-  background: radial-gradient(
-    circle at top,
-    #2a2a2a 0%,
-    #151515 45%,
-    #050505 100%
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(
+    --dyvix-table-bg,
+    radial-gradient(circle at top, #2a2a2a 0%, #151515 45%, #050505 100%)
   );
-
-  color: #f3f4f6;
-
-  border: 2px solid rgba(160, 130, 255, 0.4);
-
-  box-shadow:
+  color: var(--dyvix-table-color, #f3f4f6);
+  border-width: var(--dyvix-table-border-width, 2px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(160, 130, 255, 0.4));
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     inset 0 0 40px rgba(255, 255, 255, 0.04),
-    0 0 50px rgba(120, 90, 255, 0.18);
-
-  transition:
+    0 0 50px rgba(120, 90, 255, 0.18)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.3s ease,
     box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.dyvix-table-obsidian:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    inset 0 0 30px rgba(255, 255, 255, 0.05),
-    0 0 75px rgba(130, 100, 255, 0.25);
-
-  border-color: rgba(180, 150, 255, 0.7);
-}
-
-.dyvix-table-cosmos {
-  border-radius: 1rem;
-  font-family: 'Geist';
-
-  background: radial-gradient(
-    circle at top,
-    #24104f 0%,
-    #161b4b 40%,
-    #090b1d 75%,
-    #03030a 100%
+    border-color 0.3s ease
   );
-
-  color: #f8fafc;
-  border: 2px solid rgba(140, 120, 255, 0.45);
-
-  box-shadow:
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+}
+.dyvix-table-obsidian:hover {
+  transform: var(--dyvix-table-hover-transform, translateY(-2px));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
+    inset 0 0 30px rgba(255, 255, 255, 0.05),
+    0 0 75px rgba(130, 100, 255, 0.25)
+  );
+  border-color: var(--dyvix-table-hover-border-color, rgba(180, 150, 255, 0.7));
+  background: var(--dyvix-table-hover-bg, inherit);
+}
+.dyvix-table-cosmos {
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(
+    --dyvix-table-bg,
+    radial-gradient(
+      circle at top,
+      #24104f 0%,
+      #161b4b 40%,
+      #090b1d 75%,
+      #03030a 100%
+    )
+  );
+  color: var(--dyvix-table-color, #f8fafc);
+  border-width: var(--dyvix-table-border-width, 2px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(140, 120, 255, 0.45));
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     inset 0 0 35px rgba(255, 255, 255, 0.05),
-    0 0 55px rgba(111, 76, 255, 0.25);
-
-  transition:
+    0 0 55px rgba(111, 76, 255, 0.25)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    border-color 0.35s ease
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-cosmos:hover {
-  transform: translateY(-2px) scale(1.005);
-  border-color: rgba(170, 150, 255, 0.8);
-
-  box-shadow:
+  transform: var(--dyvix-table-hover-transform, translateY(-2px) scale(1.005));
+  border-color: var(--dyvix-table-hover-border-color, rgba(170, 150, 255, 0.8));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     inset 0 0 45px rgba(255, 255, 255, 0.08),
-    0 0 80px rgba(120, 90, 255, 0.45);
+    0 0 80px rgba(120, 90, 255, 0.45)
+  );
+  background: var(--dyvix-table-hover-bg, inherit);
 }
-
 .dyvix-table-sakura {
-  border-radius: 1rem;
-  font-family: 'Geist';
-  background:
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(
+    --dyvix-table-bg,
     radial-gradient(
       circle at top left,
       rgba(255, 183, 197, 0.2),
@@ -507,89 +738,127 @@
       rgba(255, 105, 140, 0.16),
       transparent 45%
     ),
-    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%);
-  border: 2px solid rgba(255, 150, 170, 0.5);
-  color: #fce4ec;
-  box-shadow:
+    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%)
+  );
+  border-width: var(--dyvix-table-border-width, 2px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(255, 150, 170, 0.5));
+  color: var(--dyvix-table-color, #fce4ec);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     inset 0 0 40px rgba(255, 183, 197, 0.08),
-    0 0 50px rgba(255, 105, 140, 0.25);
-  transition:
+    0 0 50px rgba(255, 105, 140, 0.25)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-sakura:hover {
-  transform: translateY(-3px) scale(1.01);
-  border-color: rgba(255, 180, 200, 0.8);
-  box-shadow:
+  transform: var(--dyvix-table-hover-transform, translateY(-3px) scale(1.01));
+  border-color: var(--dyvix-table-hover-border-color, rgba(255, 180, 200, 0.8));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     inset 0 0 35px rgba(255, 183, 197, 0.12),
-    0 0 75px rgba(255, 105, 140, 0.4);
+    0 0 75px rgba(255, 105, 140, 0.4)
+  );
+  background: var(--dyvix-table-hover-bg, inherit);
 }
-
-.dyvix-table-sakura thead tr {
+.dyvix-table-sakura .dyvix-table-header tr {
   background: rgba(255, 183, 197, 0.08);
   border-bottom-color: rgba(255, 183, 197, 0.2);
 }
-
 .dyvix-table-sakura th {
-  color: #fff5f8;
+  color: var(--dyvix-table-color, #fff5f8);
   border-bottom-color: rgba(255, 183, 197, 0.2);
+  background: var(--dyvix-table-bg, inherit);
+  font-family: var(--dyvix-table-font-family, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
+  box-shadow: var(--dyvix-table-box-shadow, inherit);
 }
-
 .dyvix-table-sakura td {
-  color: #fce4ec;
+  color: var(--dyvix-table-color, #fce4ec);
   border-bottom-color: rgba(255, 183, 197, 0.16);
+  background: var(--dyvix-table-bg, inherit);
+  font-family: var(--dyvix-table-font-family, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
+  box-shadow: var(--dyvix-table-box-shadow, inherit);
 }
-
-.dyvix-table-sakura tbody tr:hover {
+.dyvix-table-sakura .dyvix-table-body tr:hover {
   background: rgba(255, 183, 197, 0.08);
 }
-
 .dyvix-table-volcanic {
-  border-radius: 1rem;
-  font-family: 'Geist';
-  background:
+  border-radius: var(--dyvix-table-border-radius, 1rem);
+  font-family: var(--dyvix-table-font-family, 'Geist');
+  background: var(
+    --dyvix-table-bg,
     radial-gradient(
       circle at 50% 80%,
       rgba(255, 80, 0, 0.15) 0%,
       transparent 50%
     ),
-    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%);
-  border: 2px solid rgba(255, 120, 0, 0.35);
-  color: #ffe0c0;
-  box-shadow:
+    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%)
+  );
+  border-width: var(--dyvix-table-border-width, 2px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-color: var(--dyvix-table-border-color, rgba(255, 120, 0, 0.35));
+  color: var(--dyvix-table-color, #ffe0c0);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     0 0 40px rgba(255, 80, 0, 0.15),
-    inset 0 0 30px rgba(255, 100, 0, 0.06);
-  transition:
+    inset 0 0 30px rgba(255, 100, 0, 0.06)
+  );
+  transition: var(
+    --dyvix-table-transition,
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease-in-out,
-    border-color 0.3s ease-in-out;
+    border-color 0.3s ease-in-out
+  );
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
 }
-
 .dyvix-table-volcanic:hover {
-  transform: translateY(-3px) scale(1.01);
-  border-color: rgba(255, 140, 0, 0.65);
-  box-shadow:
+  transform: var(--dyvix-table-hover-transform, translateY(-3px) scale(1.01));
+  border-color: var(--dyvix-table-hover-border-color, rgba(255, 140, 0, 0.65));
+  box-shadow: var(
+    --dyvix-table-hover-box-shadow,
     0 0 60px rgba(255, 80, 0, 0.3),
-    inset 0 0 40px rgba(255, 120, 0, 0.1);
+    inset 0 0 40px rgba(255, 120, 0, 0.1)
+  );
+  background: var(--dyvix-table-hover-bg, inherit);
 }
-
-.dyvix-table-volcanic thead tr {
+.dyvix-table-volcanic .dyvix-table-header tr {
   background: rgba(255, 80, 0, 0.08);
   border-bottom-color: rgba(255, 120, 0, 0.2);
 }
-
 .dyvix-table-volcanic th {
-  color: #fff2e6;
+  color: var(--dyvix-table-color, #fff2e6);
   border-bottom-color: rgba(255, 120, 0, 0.2);
+  background: var(--dyvix-table-bg, inherit);
+  font-family: var(--dyvix-table-font-family, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
+  box-shadow: var(--dyvix-table-box-shadow, inherit);
 }
-
 .dyvix-table-volcanic td {
-  color: #ffe0c0;
+  color: var(--dyvix-table-color, #ffe0c0);
   border-bottom-color: rgba(255, 120, 0, 0.16);
+  background: var(--dyvix-table-bg, inherit);
+  font-family: var(--dyvix-table-font-family, inherit);
+  font-size: var(--dyvix-table-font-size, inherit);
+  font-weight: var(--dyvix-table-font-weight, inherit);
+  border-color: var(--dyvix-table-border-color, inherit);
+  box-shadow: var(--dyvix-table-box-shadow, inherit);
 }
-
-.dyvix-table-volcanic tbody tr:hover {
+.dyvix-table-volcanic .dyvix-table-body tr:hover {
   background: rgba(255, 80, 0, 0.08);
 }

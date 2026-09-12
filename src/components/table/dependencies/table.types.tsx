@@ -38,6 +38,73 @@ export type DyvixTableThemes =
   | 'Sakura'
   | 'Volcanic';
 
+export interface DyvixTableBaseOverride {
+  '--dyvix-table-text-align'?: 'left' | 'right' | (string & {});
+  '--dyvix-table-color'?: string & {};
+  '--dyvix-table-letter-spacing'?:
+    '-0.02em' | '-0.01em' | '0em' | (string & {});
+  '--dyvix-table-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-table-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | 'none' | (string & {});
+  '--dyvix-table-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-table-transition'?: (string & {}) | 'none';
+  '--dyvix-table-hover-color'?: string & {};
+  '--dyvix-table-hover-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+  '--dyvix-table-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-table-hover-border-style'?:
+    'solid' | 'dashed' | (string & {}) | 'none';
+  '--dyvix-table-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+}
+
+export interface DyvixTableDefaultOverride {
+  '--dyvix-table-bg'?: (string & {}) | 'transparent';
+  '--dyvix-table-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-table-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-table-font-weight'?: 400 | 500 | 600 | 700 | (string & {});
+  '--dyvix-table-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-table-box-shadow'?:
+    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
+  '--dyvix-table-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-table-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-table-hover-box-shadow'?:
+    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+}
+
+export interface DyvixTableWrapperOverride {
+  '--dyvix-table-width'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-table-margin'?: '0.3rem auto' | '0' | (string & {});
+  '--dyvix-table-height'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-table-display'?:
+    | 'inline-block'
+    | 'block'
+    | 'inline-flex'
+    | 'flex'
+    | 'inline'
+    | 'grid'
+    | 'none'
+    | 'table'
+    | (string & {});
+}
+
+export interface DyvixTableHeaderOverride {
+  '--dyvix-table-header-bg'?: (string & {}) | 'transparent';
+  '--dyvix-table-header-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-table-header-color'?: (string & {}) | 'transparent';
+  '--dyvix-table-header-hover-color'?: (string & {}) | 'transparent';
+}
+
+export interface DyvixTableBodyOverride {
+  '--dyvix-table-body-bg'?: (string & {}) | 'transparent';
+  '--dyvix-table-body-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-table-body-color'?: (string & {}) | 'transparent';
+  '--dyvix-table-body-hover-color'?: (string & {}) | 'transparent';
+}
+
 /*--!/--*/
 
 // Edit here safely
@@ -58,6 +125,11 @@ export interface DyvixTableProps<
   theme?: DyvixTableThemes | null | undefined;
   columns?: DyvixConfigColumnsProps<T>[];
   data?: T[];
+  overrides?: DyvixTableWrapperOverride &
+    DyvixTableBaseOverride &
+    DyvixTableDefaultOverride &
+    DyvixTableHeaderOverride &
+    DyvixTableBodyOverride;
   style?: React.CSSProperties;
   background?: string;
   color?: string;
@@ -68,8 +140,12 @@ export interface DyvixTableSectionBaseProps extends React.HTMLAttributes<HTMLTab
   className?: string;
 }
 
-export interface DyvixTableHeaderProps extends DyvixTableSectionBaseProps {}
-export interface DyvixTableBodyProps extends DyvixTableSectionBaseProps {}
+export interface DyvixTableHeaderProps extends DyvixTableSectionBaseProps {
+  overrides?: DyvixTableHeaderOverride;
+}
+export interface DyvixTableBodyProps extends DyvixTableSectionBaseProps {
+  overrides?: DyvixTableBodyOverride;
+}
 
 export interface DyvixTableHeadProps extends React.ThHTMLAttributes<HTMLTableCellElement> {
   children?: ReactNode;

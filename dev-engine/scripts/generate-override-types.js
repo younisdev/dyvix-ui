@@ -60,7 +60,16 @@ UseCSSVar(
   'marquee',
   './src/components/marquee/dependencies/marquee.overrides.json'
 );
-
+GenerateOverridesTypes(
+  './src/components/table/dependencies/table.overrides.json',
+  './src/components/table/dependencies/table.types.tsx',
+  'table'
+);
+UseCSSVar(
+  './src/components/table/dependencies/style/themes.css',
+  'table',
+  './src/components/table/dependencies/table.overrides.json'
+);
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;
 

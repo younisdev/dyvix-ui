@@ -30,6 +30,7 @@ const Table = React.forwardRef(function Table<
     className,
     animation = 'fade',
     theme,
+    overrides,
     background,
     color,
     columns,
@@ -61,7 +62,12 @@ const Table = React.forwardRef(function Table<
 
   const { style: splitElementStyles, ...restElementProps } = elementProps;
   const props = {
-    className: ConstructClasses('dyvix-table', currentTheme?.class, className),
+    className: ConstructClasses(
+      'dyvix-table',
+      !currentTheme?.class ? 'dyvix-table-default' : '',
+      currentTheme?.class,
+      className
+    ),
     style: {
       ...(background && { background: background }),
       ...(color && { color: color }),
@@ -229,8 +235,17 @@ const Table = React.forwardRef(function Table<
     [columns, isValid, sortConfig]
   );
   children = children ? children : resultJSX;
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  };
   return (
-    <div className="dyvix-table-wrapper" ref={internalRef} {...wrapperProps}>
+    <div
+      className="dyvix-table-wrapper"
+      ref={internalRef}
+      {...wrapperProps}
+      style={combinedWrapperStyle}
+    >
       <table {...props}>{children}</table>
     </div>
   );
