@@ -1,65 +1,157 @@
 .dyvix-table-wrapper {
-  width: 95%;
-  margin: 0.3rem auto;
-  border-radius: 25px;
+  width: var(--dyvix-table-width, 95%);
+  height: var(--dyvix-table-height, fit-content);
+  margin: var(--dyvix-table-margin, 0.3rem auto);
+  display: var(--dyvix-table-display, table);
 }
 .dyvix-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  text-align: left;
-  font-family:
+  text-align: var(--dyvix-table-text-align, left);
+  color: var(--dyvix-table-color, rgba(255, 255, 255, 0.85));
+  border-width: var(--dyvix-table-border-width, 1px);
+  border-style: var(--dyvix-table-border-style, solid);
+  border-radius: var(--dyvix-table-border-radius, 25px);
+  letter-spacing: var(--dyvix-table-letter-spacing, 0.05em);
+  transition: var(--dyvix-table-transition, all 0.3s ease-in-out);
+}
+.dyvix-table:hover {
+  color: var(--dyvix-table-hover-color, rgb(96, 95, 95));
+  transform: var(--dyvix-table-hover-transform, scale(1.009));
+  border-width: var(
+    --dyvix-table-hover-border-width,
+    var(--dyvix-table-border-width, 1px)
+  );
+  border-style: var(
+    --dyvix-table-hover-border-style,
+    var(--dyvix-table-border-style, solid)
+  );
+  border-radius: var(
+    --dyvix-table-hover-border-radius,
+    var(--dyvix-table-border-radius, 25px)
+  );
+}
+
+.dyvix-table-default {
+  background: var(--dyvix-table-bg, #080808);
+  font-family: var(
+    --dyvix-table-font-family,
     'Geist',
     system-ui,
     -apple-system,
-    sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
-  border-radius: 25px;
-  background: #080808;
-  box-shadow:
+    sans-serif
+  );
+  font-size: var(--dyvix-table-font-size, 14px);
+  font-weight: var(--dyvix-table-font-weight, 800);
+  box-shadow: var(
+    --dyvix-table-box-shadow,
     0 4px 24px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.04)
+  );
+  border-color: var(--dyvix-table-border-color, rgba(238, 237, 237, 0.08));
 }
+.dyvix-table-default:hover {
+  background: var(--dyvix-table-hover-bg, #2a2929);
+  box-shadow: var(--dyvix-table-hover-box-shadow, inherit);
+  border-color: var(--dyvix-table-hover-border-color, inherit);
+}
+
 table[style*='color'] th,
 table[style*='color'] td {
   color: inherit;
 }
+.dyvix-table .dyvix-table-header tr {
+  background: var(
+    --dyvix-table-header-bg,
+    var(--dyvix-table-bg, rgba(255, 255, 255, 0.04))
+  );
+  border-bottom-color: var(
+    --dyvix-table-border-color,
+    rgba(255, 255, 255, 0.08)
+  );
+  border-bottom-width: var(--dyvix-table-border-width, 1px);
+  border-bottom-style: var(--dyvix-table-border-style, solid);
+  color: var(
+    --dyvix-table-header-color,
+    var(--dyvix-table-color, rgba(255, 255, 255, 0.85))
+  );
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
 
-.dyvix-table thead tr {
-  background: rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.dyvix-table .dyvix-table-header tr:hover {
+  background: var(
+    --dyvix-table-header-hover-bg,
+    var(--dyvix-table-hover-bg, #2a2929)
+  );
+  color: var(
+    --dyvix-table-header-hover-color,
+    var(--dyvix-table-hover-color, rgba(255, 255, 255, 0.85))
+  );
 }
-.dyvix-table th {
+
+.dyvix-table .dyvix-table-header th {
   padding: 12px 25px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--dyvix-table-font-size, 14px);
+  font-weight: var(--dyvix-table-font-weight, 600);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: aliceblue;
+  letter-spacing: var(--dyvix-table-letter-spacing, 0.08em);
 }
-.dyvix-table td {
+
+.dyvix-table .dyvix-table-body td {
   padding: 12px 26px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.75);
+  border-bottom-color: var(
+    --dyvix-table-border-color,
+    rgba(255, 255, 255, 0.05)
+  );
+  border-bottom-width: var(--dyvix-table-border-width, 1px);
+  border-bottom-style: var(--dyvix-table-border-style, solid);
 }
-.dyvix-table tbody tr {
-  transition: background 0.15s ease;
+
+.dyvix-table .dyvix-table-body tr:last-child td {
+  border-bottom: none;
 }
-.dyvix-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03);
+
+.dyvix-table .dyvix-table-body tr {
+  background: var(
+    --dyvix-table-body-bg,
+    var(--dyvix-table-bg, rgba(255, 255, 255, 0.04))
+  );
+  color: var(
+    --dyvix-table-body-color,
+    var(--dyvix-table-color, rgba(255, 255, 255, 0.75))
+  );
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
-.dyvix-table thead tr:first-child th:first-child {
-  border-top-left-radius: 21px;
+
+.dyvix-table .dyvix-table-body tr:hover {
+  background: var(
+    --dyvix-table-body-hover-bg,
+    var(--dyvix-table-hover-bg, rgba(255, 255, 255, 0.03))
+  );
+  color: var(
+    --dyvix-table-body-hover-color,
+    var(--dyvix-table-hover-color, rgba(255, 255, 255, 0.75))
+  );
 }
-.dyvix-table thead tr:first-child th:last-child {
-  border-top-right-radius: 21px;
+.dyvix-table .dyvix-table-header tr:first-child th:first-child {
+  border-top-left-radius: var(--dyvix-table-border-radius, 25px);
 }
-.dyvix-table tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 21px;
+
+.dyvix-table .dyvix-table-header tr:first-child th:last-child {
+  border-top-right-radius: var(--dyvix-table-border-radius, 25px);
 }
-.dyvix-table tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 21px;
+
+.dyvix-table .dyvix-table-body tr:last-child td:first-child {
+  border-bottom-left-radius: var(--dyvix-table-border-radius, 25px);
+}
+
+.dyvix-table .dyvix-table-body tr:last-child td:last-child {
+  border-bottom-right-radius: var(--dyvix-table-border-radius, 25px);
 }
 .dyvix-table-sort-icon {
   min-width: 16px;

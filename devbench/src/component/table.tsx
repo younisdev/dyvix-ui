@@ -10,7 +10,6 @@ export function TableTest() {
     <>
       <DyvixTable
         animation={'aurora'}
-        theme={'Volcanic'}
         columns={[
           { key: 'id', label: 'ID', sortable: true },
           { key: 'name', label: 'Name', sortable: true },
