@@ -297,7 +297,7 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
 
     return (
       <div {...props} ref={internalRef}>
-        <div className="dyvix-select">
+        <div className="dyvix-select dyvix-select-default">
           <input {...inputProps} />
         </div>
         <SelectEngine {...engineProps} />

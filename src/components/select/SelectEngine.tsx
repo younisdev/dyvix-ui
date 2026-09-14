@@ -81,14 +81,14 @@ const SelectEngine = forwardRef<HTMLUListElement, DyvixSelectEngineProps>(
       <>
         {is_rendered && (
           <ul
-            className={`dyvix-dropdown-select ${className}`.trim()}
+            className={`dyvix-select-dropdown dyvix-dropdown-default ${className}`.trim()}
 
             role="listbox"
             ref={ref}
             style={
               {
                 ...(background && {
-                  '--dyvix-select-dropdown-color': background
+                  '--dyvix-select-dropdown-bg': background
                 }),
                 ...style
               } as React.CSSProperties
