@@ -188,9 +188,15 @@
   cursor: pointer;
   margin-left: 0;
 }
-.dyvix-select-dropdown-item[data-active="true"] {
-  background-color: var(--dyvix-select-dropdown-hover-bg, var(--dyvix-select-active-bg, #e0f7fa));
-  color: var(--dyvix-select-dropdown-hover-color, var(--dyvix-select-active-text, #141618));
+.dyvix-select-dropdown-item[data-active='true'] {
+  background-color: var(
+    --dyvix-select-dropdown-hover-bg,
+    var(--dyvix-select-active-bg, #e0f7fa)
+  );
+  color: var(
+    --dyvix-select-dropdown-hover-color,
+    var(--dyvix-select-active-text, #141618)
+  );
 }
 .dyvix-select-dropdown .dyvix-select-dropdown-item:hover {
   background: var(--dyvix-select-dropdown-hover-bg, #e0f7fa);
