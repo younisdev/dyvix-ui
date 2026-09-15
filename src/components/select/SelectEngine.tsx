@@ -98,7 +98,7 @@ const SelectEngine = forwardRef<HTMLUListElement, DyvixSelectEngineProps>(
               elements.map((element, index) => (
                 <li
                   role="option"
-                  className='dyvix-select-dropdown-item'
+                  className="dyvix-select-dropdown-item"
                   ref={(ele) => {
                     if (ele) itemsRef.current[index] = ele;
                   }}
