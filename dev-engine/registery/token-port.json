@@ -6,7 +6,8 @@
     "disabled",
     "placeholder",
     "disabled-placeholder",
-    "after"
+    "after",
+    "webkit-scrollbar-thumb"
   ],
   "multi_value_splitting": {
     "border": {

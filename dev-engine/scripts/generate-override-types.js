@@ -75,6 +75,12 @@ GenerateOverridesTypes(
   './src/components/select/dependencies/select.types.tsx',
   'select'
 );
+UseCSSVar(
+  './src/components/select/dependencies/style/themes.css',
+  'select',
+  './src/components/select/dependencies/select.overrides.json'
+);
+
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;
 
@@ -119,6 +125,7 @@ function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
     [updatedDynamicPart, staticPart].join(`\n\n${seperator}`)
   );
 }
+
 function SerializeChoices(choices) {
   const normalizedVal = choices.split('||').map((choice) => choice.trim());
 
@@ -207,7 +214,17 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
 
   const finalizedCSS = parsedCSS
     .map(([selector, attributes]) => {
-      const splitSelector = selector.split(':').filter(Boolean);
+      let pseudoElement = null;
+      let cleanSelector = selector;
+
+      if (selector.includes('::')) {
+        const parts = selector.split('::');
+        cleanSelector = parts[0];
+        pseudoElement = parts[1].replace(/^-+/, '');
+      }
+
+      const splitSelector = cleanSelector.split(':').filter(Boolean);
+
       let matchUnReserve = null;
       let isLayered = false;
 
@@ -228,18 +245,20 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
         ? `--${matchUnReserve}`
         : constantOverrideNamePart;
 
-      // Parses multiple action layers
       const action =
         splitSelector.length > 2
           ? splitSelector.slice(1).join('-')
           : splitSelector[1] || null;
+
       const isValidAction =
-        tokenPort.supported_pseudo_classes.includes(action) || action === null;
+        tokenPort.supported_pseudo_classes.includes(action) ||
+        action === null ||
+        pseudoElement !== null;
 
       if (!isValidAction) {
         return `${selector} {\n  ${attributes.join('\n  ')}\n}`;
       }
-      // stores processed Attributes to autocomplete missing override vals stored in json.
+
       let processedVars = new Set([]);
 
       const SmartAttributes = attributes
@@ -256,6 +275,7 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
               : rawProp.replace(/^-(webkit|moz|ms|o)-/, '');
           const cleanVal = stripDyvixVar(rawVal);
           const ref = tokenPort.multi_value_splitting[rawProp];
+
           if (ref) {
             const expandedProps = ParseCSSMultiVal(rawProp, cleanVal);
 
@@ -266,10 +286,12 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
                 const overrideLookupVal = [
                   parsedConstantOverrideNamePart,
                   action,
+                  pseudoElement,
                   subProp
                 ]
                   .filter(Boolean)
                   .join('-');
+
                 if (!validOverrideKeys.has(overrideLookupVal))
                   return `${subProp}: ${cleanSubVal};`;
                 const constructedLine =
@@ -284,10 +306,12 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
             const overrideLookupVal = [
               parsedConstantOverrideNamePart,
               action,
+              pseudoElement,
               cleanProp
             ]
               .filter(Boolean)
               .join('-');
+
             if (!validOverrideKeys.has(overrideLookupVal))
               return `${rawProp}: ${cleanVal};`;
             const constructedLine =
@@ -305,13 +329,15 @@ function UseCSSVar(targetSourcepath, component, overrideSourcepath) {
         validOverrideBaseKeys,
         processedVars,
         action,
-        overrideGroupKeys
+        overrideGroupKeys,
+        pseudoElement
       );
 
       if (SmartAttributes.length === 0) return null;
       return `${selector} {\n  ${[...SmartAttributes, ...newAttributes].join('\n  ')}\n}`;
     })
     .filter(Boolean);
+
   const cssString = finalizedCSS.join('\n');
   fs.writeFileSync(absoluteSourcePath, cssString, 'utf-8');
 }
@@ -431,7 +457,8 @@ function autoCompleteMissingOverrideAttributes(
   validOverrideKeys,
   processedVars,
   action,
-  overrideGroupKeys = new Set()
+  overrideGroupKeys = new Set(),
+  pseudoElement = null
 ) {
   const sortedActions = [...tokenPort.supported_pseudo_classes].sort(
     (a, b) => -(a.length - b.length)
@@ -439,13 +466,12 @@ function autoCompleteMissingOverrideAttributes(
   prefex = `${prefex}-`;
 
   const ExtractOverrideData = (key) => {
-    if (!key) return { action: null, attribute: '' };
-    const prefexStrippedKey = key.startsWith(prefex)
+    if (!key) return { pseudo: null, action: null, attribute: '' };
+    let prefexStrippedKey = key.startsWith(prefex)
       ? key.slice(prefex.length)
       : key;
 
     const splitTargetAction = prefexStrippedKey.split('-');
-
     let currentAction = null;
 
     for (const act of sortedActions) {
@@ -457,14 +483,21 @@ function autoCompleteMissingOverrideAttributes(
 
       if (isMatch) {
         currentAction = act;
+        prefexStrippedKey = prefexStrippedKey.slice(currentAction.length + 1);
         break;
       }
     }
-    const splitAttribute = currentAction
-      ? prefexStrippedKey.slice(currentAction.length + 1)
-      : prefexStrippedKey;
+    let detectedPseudo = null;
+
+    if (pseudoElement && prefexStrippedKey.startsWith(`${pseudoElement}-`)) {
+      detectedPseudo = pseudoElement;
+      prefexStrippedKey = prefexStrippedKey.slice(detectedPseudo.length + 1);
+    }
+
+    const splitAttribute = prefexStrippedKey;
 
     return {
+      pseudo: detectedPseudo,
       action: currentAction,
       attribute: splitAttribute === 'bg' ? 'background' : splitAttribute
     };
@@ -480,8 +513,12 @@ function autoCompleteMissingOverrideAttributes(
         return false;
       }
     }
-    const currentAction = ExtractOverrideData(key).action;
-    return (action || null) === currentAction;
+    const { action: currentAction, pseudo: currentPseudo } =
+      ExtractOverrideData(key);
+    return (
+      (action || null) === currentAction &&
+      (pseudoElement || null) === currentPseudo
+    );
   });
 
   let newOverrides = new Set([]);
@@ -493,5 +530,6 @@ function autoCompleteMissingOverrideAttributes(
     const overrideResult = `${attribute}: var(${key}, ${defaultVal});`;
     newOverrides.add(overrideResult);
   });
+
   return Array.from(newOverrides);
 }
