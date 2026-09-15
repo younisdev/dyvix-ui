@@ -4,7 +4,6 @@ export function SelectTest() {
   return (
     <DyvixSelect
       animation={'glitch'}
-      theme={'Frost'}
       placeholder="number"
       className="ex-select"
       type="select"

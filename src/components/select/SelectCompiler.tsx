@@ -19,6 +19,7 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
       onChange,
       type = 'select',
       animation = 'fade',
+      overrides,
       theme,
       background,
       dropdownBackground,
@@ -224,15 +225,18 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
 
     const { style: splitElementStyles, ...restElementProps } = elementProps;
     const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
+    const combinedWrapperStyle = {
+      ...splitWrapperStyles,
+      ...overrides
+    };
+
     const props = {
       className: ConstructClasses(
         'dyvix-select-wrapper',
         currentTheme?.class,
         className
       ),
-      style: {
-        ...splitWrapperStyles
-      },
+      style: combinedWrapperStyle,
       ...restWrapperProps
     };
 
@@ -297,7 +301,7 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
 
     return (
       <div {...props} ref={internalRef}>
-        <div className="dyvix-select">
+        <div className="dyvix-select dyvix-select-default">
           <input {...inputProps} />
         </div>
         <SelectEngine {...engineProps} />
