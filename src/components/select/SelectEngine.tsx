@@ -98,21 +98,13 @@ const SelectEngine = forwardRef<HTMLUListElement, DyvixSelectEngineProps>(
               elements.map((element, index) => (
                 <li
                   role="option"
+                  className='dyvix-select-dropdown-item'
                   ref={(ele) => {
                     if (ele) itemsRef.current[index] = ele;
                   }}
                   aria-selected={index === activeIndex}
                   key={`${element}-${index}`}
-                  style={
-                    index === activeIndex
-                      ? {
-                          backgroundColor:
-                            'var(--dyvix-select-active-bg, #e0f7fa)',
-                          color: 'var(--dyvix-select-active-text, #141618)',
-                          cursor: 'pointer'
-                        }
-                      : {}
-                  }
+                  data-active={index === activeIndex}
                   onMouseDown={(e) => {
                     e.preventDefault();
                     ChangeValue(element);

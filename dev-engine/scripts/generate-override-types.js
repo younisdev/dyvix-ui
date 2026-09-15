@@ -70,6 +70,11 @@ UseCSSVar(
   'table',
   './src/components/table/dependencies/table.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/select/dependencies/select.overrides.json',
+  './src/components/select/dependencies/select.types.tsx',
+  'select'
+);
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;
 

@@ -34,8 +34,7 @@
   background: rgba(185, 3, 226, 0.15);
   color: white;
 }
-.dyvix-select-singularity
-  .dyvix-select-dropdown::-webkit-scrollbar-thumb {
+.dyvix-select-singularity .dyvix-select-dropdown::-webkit-scrollbar-thumb {
   background: rgba(185, 3, 226, 0.6);
 }
 /* Industrial Theme */
@@ -54,8 +53,7 @@
 .dyvix-select-industrial .dyvix-select-dropdown li {
   color: #ffffff;
 }
-.dyvix-select-industrial
-  .dyvix-select-dropdown::-webkit-scrollbar-thumb {
+.dyvix-select-industrial .dyvix-select-dropdown::-webkit-scrollbar-thumb {
   background: #0a1429;
 }
 /* Blade Theme */
@@ -422,8 +420,7 @@
   background: rgba(99, 102, 241, 0.2);
 }
 
-.dyvix-select-midnight
-  .dyvix-select-dropdown::-webkit-scrollbar-thumb {
+.dyvix-select-midnight .dyvix-select-dropdown::-webkit-scrollbar-thumb {
   background: rgba(99, 102, 241, 0.6);
 }
 

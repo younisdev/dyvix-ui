@@ -19,6 +19,7 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
       onChange,
       type = 'select',
       animation = 'fade',
+      overrides,
       theme,
       background,
       dropdownBackground,
@@ -224,15 +225,18 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
 
     const { style: splitElementStyles, ...restElementProps } = elementProps;
     const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
+    const combinedWrapperStyle = {
+      ...splitWrapperStyles,
+      ...overrides
+    };
+
     const props = {
       className: ConstructClasses(
         'dyvix-select-wrapper',
         currentTheme?.class,
         className
       ),
-      style: {
-        ...splitWrapperStyles
-      },
+      style: combinedWrapperStyle,
       ...restWrapperProps
     };
 
