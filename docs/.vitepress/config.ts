@@ -60,7 +60,14 @@ export default defineConfig({
               { text: 'Presets', link: 'components/modal/presets' }
             ]
           },
-          { text: 'Select', link: 'components/select/select' },
+          {
+            text: 'Select',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/select/select' },
+              { text: 'Overrides', link: 'components/select/overrides' }
+            ]
+          },
           { text: 'Toast', link: 'components/toast/toast' },
           {
             text: 'Button',

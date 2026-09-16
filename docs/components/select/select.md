@@ -17,6 +17,8 @@ A config-driven animated select component with support for normal and autocomple
   - : `function`. A callback function triggered every time the select value changes. It receives the value directly.
 - `type`
   - : `string`. The type of the select component. Defaults to `select`.
+- `overrides`
+  - : `Record<string, string | number>`. An object of typed CSS Variables allowing deep easy-customization of the component. See [select overrides](/components/select/overrides.md) for more information.
 - `theme`
   - : `string`. Controls the design and the feel of the select. See the [Themes list](/guide/themes) for a full list.
 - `animation`
