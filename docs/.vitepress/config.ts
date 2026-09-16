@@ -88,7 +88,14 @@ export default defineConfig({
             ]
           },
           { text: 'Table', link: 'components/table/table' },
-          { text: 'Navigation', link: 'components/nav/nav' }
+          {
+            text: 'Navigation',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/nav/nav' },
+              { text: 'Overrides', link: 'components/nav/overrides' }
+            ]
+          }
         ]
       }
     ],
