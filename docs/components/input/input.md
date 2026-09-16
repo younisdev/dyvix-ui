@@ -17,6 +17,8 @@ A config-driven animated input component with support for themed and default col
   - : `string`. The text displayed when the input is empty.
 - `autoComplete`
   - : `string`. The autocomplete hint passed to the underlying input element.
+- `overrides`
+  - : `Record<string, string | number>`. An object of typed CSS Variables allowing deep easy-customization of the component. See [input overrides](/components/input/overrides.md) for more information.
 - `theme`
   - : `string`. Controls the design and the feel of the input. See the [Themes list](/guide/themes) for a full list.
 - `background`

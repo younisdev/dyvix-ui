@@ -60,21 +60,56 @@ export default defineConfig({
               { text: 'Presets', link: 'components/modal/presets' }
             ]
           },
-          { text: 'Select', link: 'components/select/select' },
+          {
+            text: 'Select',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/select/select' },
+              { text: 'Overrides', link: 'components/select/overrides' }
+            ]
+          },
           { text: 'Toast', link: 'components/toast/toast' },
           {
             text: 'Button',
-            collapsed: false,
+            collapsed: true,
             items: [
               { text: 'Overview', link: 'components/button/button' },
               { text: 'Overrides', link: 'components/button/overrides' }
             ]
           },
           { text: 'File', link: 'components/file/file' },
-          { text: 'Input', link: 'components/input/input' },
-          { text: 'Label', link: 'components/label/label' },
-          { text: 'Table', link: 'components/table/table' },
-          { text: 'Navigation', link: 'components/nav/nav' }
+          {
+            text: 'Input',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/input/input' },
+              { text: 'Overrides', link: 'components/input/overrides' }
+            ]
+          },
+          {
+            text: 'Label',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/label/label' },
+              { text: 'Overrides', link: 'components/label/overrides' }
+            ]
+          },
+          {
+            text: 'Table',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/table/table' },
+              { text: 'Overrides', link: 'components/table/overrides' }
+            ]
+          },
+          {
+            text: 'Navigation',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/nav/nav' },
+              { text: 'Overrides', link: 'components/nav/overrides' }
+            ]
+          }
         ]
       }
     ],

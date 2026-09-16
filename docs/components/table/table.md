@@ -20,6 +20,8 @@ DyvixTable is an animated, headless table engine that supports both themed and u
   - : `Array<Object>`. Row data for config-driven mode. Each object's keys must match the `key` values defined in `columns`.
 - `children`
   - : `ReactNode`. Used in composable mode to manually build the table using `DyvixTableHeader`, `DyvixTableBody`, `DyvixTableRow`, `DyvixTableHead`, and `DyvixTableCell`.
+- `overrides`
+  - : `Record<string, string | number>`. An object of typed CSS Variables allowing deep easy-customization of the component. See [table overrides](/components/table/overrides.md) for more information.
 - `theme`
   - : `string`. Controls the design and feel of the table. See the [Themes list](/guide/themes) for a full list.
 - `animation`
