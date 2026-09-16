@@ -13,6 +13,8 @@ A config-driven animated label component with support for themed and default col
 
 - `className`
   - : `string`. Contains a custom class for your Label, allowing more control for the developer.
+- `overrides`
+  - : `Record<string, string | number>`. An object of typed CSS Variables allowing deep easy-customization of the component. See [label overrides](/components/label/overrides.md) for more information.
 - `htmlFor`
   - : `string`. Links the label to a form associated element.
 - `animation`

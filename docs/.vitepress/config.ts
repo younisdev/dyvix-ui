@@ -79,7 +79,14 @@ export default defineConfig({
               { text: 'Overrides', link: 'components/input/overrides' }
             ]
           },
-          { text: 'Label', link: 'components/label/label' },
+          {
+            text: 'Label',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/label/label' },
+              { text: 'Overrides', link: 'components/label/overrides' }
+            ]
+          },
           { text: 'Table', link: 'components/table/table' },
           { text: 'Navigation', link: 'components/nav/nav' }
         ]
