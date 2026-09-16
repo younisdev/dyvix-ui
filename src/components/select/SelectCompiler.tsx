@@ -301,7 +301,12 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
 
     return (
       <div {...props} ref={internalRef}>
-        <div className={ConstructClasses('dyvix-select', !currentTheme?.class? 'dyvix-select-default': '')}>
+        <div
+          className={ConstructClasses(
+            'dyvix-select',
+            !currentTheme?.class ? 'dyvix-select-default' : ''
+          )}
+        >
           <input {...inputProps} />
         </div>
         <SelectEngine {...engineProps} />
