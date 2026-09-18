@@ -29,6 +29,8 @@ A config-driven animated File component with support for themed and default colo
   - : `string`. Controls the file text color.
 - `onUpload`
   - : `function`. A callback function triggered upon uploading a file.
+- `timeline`
+  - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
 
 ## Example
 
