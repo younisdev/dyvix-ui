@@ -34,6 +34,8 @@ DyvixTable is an animated, headless table engine that supports both themed and u
   - : `string`. Contains a custom class for your table, allowing more control for the developer.
 - `style`
   - : `Object`. Inline style overrides applied to the table.
+- `timeline`
+  - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
 
 ## Sub-components
 
