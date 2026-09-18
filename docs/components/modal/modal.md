@@ -92,6 +92,8 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
   - : `function`. A callback function triggered every time an input value changes. It receives a single `data` object containing all input names along with their value.
 - `onClose`
   - : `function`. A callback function triggered upon form closure. Available only when the modal `type` is set to `form`.
+- `timeline`
+  - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
 
 ## Understanding Dyvix Constants
 

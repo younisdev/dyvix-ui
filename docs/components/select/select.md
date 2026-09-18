@@ -31,7 +31,9 @@ A config-driven animated select component with support for normal and autocomple
   - : `string`. Controls the dropdown background color.
 - `placeholder`
   - : `string`. The text displayed when no option is selected.
-
+- `timeline`
+  - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
+  
 ## Types
 
 Dyvix Select Includes 2 types of select each type behaving differnetly:

@@ -47,6 +47,8 @@ A config-driven animated input component with support for themed and default col
   - : `function`. A callback function triggered when a key is pressed while the input is focused.
 - `onKeyUp`
   - : `function`. A callback function triggered when a key is released while the input is focused.
+- `timeline`
+  - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
 
 ## Try it
 
