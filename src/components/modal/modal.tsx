@@ -404,7 +404,7 @@ const Modal: React.FC<DyvixModalProps> = ({
           className="dyvix-modal-wrapper"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="modal-header"
+          aria-labelledby={`header_${instanceId}`}
           {...wrapperProps}
         >
           <div
@@ -425,7 +425,7 @@ const Modal: React.FC<DyvixModalProps> = ({
                 ✕
               </button>
             )}
-            <h3 id="modal-header" style={themeTextStyle}>
+            <h3 className="modal-header" id={`header_${instanceId}`} style={themeTextStyle}>
               {title}
             </h3>
             {fields?.map((field, i) => {
