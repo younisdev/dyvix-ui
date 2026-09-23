@@ -40,6 +40,7 @@ export function ModalTest() {
       Id="register-modal"
       className="testmodal"
       type="form"
+      theme={'Singularity'}
       animation={'drift'}
       elements={[
         {

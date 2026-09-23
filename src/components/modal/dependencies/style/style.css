@@ -205,8 +205,6 @@
   font-family: var(--dyvix-modal-button-font-family, inherit);
   font-size: var(--dyvix-modal-button-font-size, 0.9rem);
   font-weight: var(--dyvix-modal-button-font-weight, 500);
-  background: var(--dyvix-modal-button-bg, #ffffff);
-  color: var(--dyvix-modal-button-color, #000000);
   transition: var(
     --dyvix-modal-button-transition,
     transform 0.3s ease-in-out,
@@ -214,15 +212,24 @@
     border 0.1s ease-in-out
   );
 }
+.dyvix-modal-default .dyvix-modal-button {
+  background: var(--dyvix-modal-button-bg, #ffffff);
+  color: var(--dyvix-modal-button-color, #000000);
+}
+
 .dyvix-modal .dyvix-modal-button:hover {
-  background: var(--dyvix-modal-button-hover-bg, #e4e4e7);
-  color: var(--dyvix-modal-button-hover-color, #000000);
   transform: var(--dyvix-modal-button-hover-transform, scale(1.02));
 }
+.dyvix-modal-default .dyvix-modal-button:hover {
+  background: var(--dyvix-modal-button-hover-bg, #e4e4e7);
+  color: var(--dyvix-modal-button-hover-color, #000000);
+}
 .dyvix-modal .dyvix-modal-button:active {
+  transform: var(--dyvix-modal-button-active-transform, scale(0.98));
+}
+.dyvix-modal-default .dyvix-modal-button:active {
   background: var(--dyvix-modal-button-active-bg, #1a1a1b);
   color: var(--dyvix-modal-button-active-color, #efdddd);
-  transform: var(--dyvix-modal-button-active-transform, scale(0.98));
 }
 .modal-close-btn {
   position: absolute;
