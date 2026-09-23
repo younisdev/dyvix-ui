@@ -29,7 +29,7 @@ DyvixNav is an animated navigation component that supports both themed and unsty
   - : `string`. Contains a custom class for your navigation, allowing more control for the developer.
 - `timeline`
   - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
-  
+
 ## Sub-components
 
 Used exclusively in composable mode:
