@@ -39,15 +39,8 @@ export function ModalTest() {
       title="Register"
       Id="register-modal"
       className="testmodal"
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 5,
-        width: '500px'
-      }}
-      dynamicPositioning={false}
       type="form"
-      animation={'fade'}
+      animation={'drift'}
       elements={[
         {
           type: 'text',

@@ -66,6 +66,83 @@ export type DyvixModalElementTypes =
 export type DyvixModalValidators =
   'email' | 'password' | 'number' | 'url' | 'mandatory' | 'date';
 
+export interface DyvixModalBaseOverride {
+  '--dyvix-modal-backdrop-filter'?:
+    'blur(0px)' | 'blur(4px)' | 'blur(8px)' | 'none' | (string & {});
+  '--dyvix-modal-padding'?:
+    '8px 16px' | '10px 22px' | '12px 24px' | (string & {});
+  '--dyvix-modal-color'?: string & {};
+  '--dyvix-modal-letter-spacing'?:
+    '-0.02em' | '-0.01em' | '0em' | (string & {});
+  '--dyvix-modal-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-modal-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | 'none' | (string & {});
+  '--dyvix-modal-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-modal-transition'?: (string & {}) | 'none';
+  '--dyvix-modal-hover-color'?: string & {};
+  '--dyvix-modal-hover-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+  '--dyvix-modal-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-modal-hover-border-style'?:
+    'solid' | 'dashed' | (string & {}) | 'none';
+  '--dyvix-modal-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+}
+
+export interface DyvixModalDefaultOverride {
+  '--dyvix-modal-bg'?: (string & {}) | 'transparent';
+  '--dyvix-modal-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-modal-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-modal-font-weight'?: 400 | 500 | 600 | 700 | (string & {});
+  '--dyvix-modal-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-modal-box-shadow'?:
+    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
+  '--dyvix-modal-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-modal-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-modal-hover-box-shadow'?:
+    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+}
+
+export interface DyvixModalHeaderOverride {
+  '--dyvix-modal-header-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-modal-header-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-modal-header-font-weight'?: 400 | 500 | 600 | 700 | (string & {});
+  '--dyvix-modal-header-color'?: string & {};
+  '--dyvix-modal-header-transition'?: (string & {}) | 'none';
+  '--dyvix-modal-header-hover-color'?: string & {};
+  '--dyvix-modal-header-hover-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+}
+
+export interface DyvixModalButtonOverride {
+  '--dyvix-modal-button-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-modal-button-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-modal-button-font-weight'?: 400 | 500 | 600 | 700 | (string & {});
+  '--dyvix-modal-button-bg'?: string & {};
+  '--dyvix-modal-button-color'?: string & {};
+  '--dyvix-modal-button-transition'?: (string & {}) | 'none';
+  '--dyvix-modal-button-hover-color'?: string & {};
+  '--dyvix-modal-button-hover-bg'?: string & {};
+  '--dyvix-modal-button-hover-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+  '--dyvix-modal-button-active-color'?: string & {};
+  '--dyvix-modal-button-active-bg'?: string & {};
+  '--dyvix-modal-button-active-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+}
+
+export interface DyvixModalWrapperOverride {
+  '--dyvix-modal-z-index'?: 1000 | 9999 | number | (string & {});
+  '--dyvix-modal-display'?: 'flex' | 'grid' | (string & {});
+}
+
 /*--!/--*/
 
 // Edit here safely
@@ -103,6 +180,11 @@ export interface DyvixModalProps {
   theme?: DyvixModalThemes | null;
   background?: string;
   animation?: DyvixModalAnimation | null;
+  overrides?: DyvixModalWrapperOverride &
+    DyvixModalDefaultOverride &
+    DyvixModalBaseOverride &
+    DyvixModalButtonOverride &
+    DyvixModalHeaderOverride;
   Id?: string;
   dynamicPositioning?: boolean;
   className?: string;

@@ -23,7 +23,7 @@ A config-driven animated label component with support for themed and default col
   - : `string`. Controls the design and the feel of the button. See the [Themes list](/guide/themes) for a full list.
 - `timeline`
   - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
-  
+
 ## Example
 
 ```jsx

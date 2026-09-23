@@ -2,7 +2,7 @@ import elementsData from './dependencies/elements.json';
 import DyvixSelect from '../select/SelectCompiler';
 import validationData from './dependencies/validator/validators.json';
 import typesData from './dependencies/types.json';
-import './dependencies/style/elements.css';
+import './dependencies/style/style.css';
 import * as validatorsFunctions from './dependencies/validator/validators';
 import {
   ExecuteValidator,
@@ -40,6 +40,7 @@ const Modal: React.FC<DyvixModalProps> = ({
   type = 'form',
   elements,
   preset,
+  overrides,
   theme,
   background,
   animation,
@@ -183,6 +184,8 @@ const Modal: React.FC<DyvixModalProps> = ({
   };
 
   const serializedClassName = ConstructClasses(
+    `dyvix-modal`,
+    !currentTheme?.class ? 'dyvix-modal-default' : '',
     className,
     currentTheme?.class || '',
     currentType?.class || ''
@@ -228,14 +231,15 @@ const Modal: React.FC<DyvixModalProps> = ({
   });
   const defaultStyle = !currentTheme
     ? {
-        ...(!currentTheme && { background: background || 'white' }),
-        fontFamily: 'Geist, sans-serif',
-        borderRadius: '2rem'
+        ...(!currentTheme && { background: background })
       }
     : {};
 
   const { style: splitElementStyles } = elementProps;
-
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  };
   const modalStyles = {
     ...defaultStyle,
     height: dynamicHeight,
@@ -406,12 +410,9 @@ const Modal: React.FC<DyvixModalProps> = ({
           aria-modal="true"
           aria-labelledby={`header_${instanceId}`}
           {...wrapperProps}
+          style={combinedWrapperStyle}
         >
-          <div
-            className={`modal ${serializedClassName}`}
-            id={Id}
-            style={modalStyles}
-          >
+          <div className={serializedClassName} id={Id} style={modalStyles}>
             {currentType?.closable && (
               <button
                 className="modal-close-btn"
@@ -425,7 +426,11 @@ const Modal: React.FC<DyvixModalProps> = ({
                 ✕
               </button>
             )}
-            <h3 className="modal-header" id={`header_${instanceId}`} style={themeTextStyle}>
+            <h3
+              className="dyvix-modal-header"
+              id={`header_${instanceId}`}
+              style={themeTextStyle}
+            >
               {title}
             </h3>
             {fields?.map((field, i) => {
@@ -500,7 +505,7 @@ const Modal: React.FC<DyvixModalProps> = ({
                         .replace(/[^a-z0-9-]/g, '-');
                     const tagProps = {
                       className:
-                        `modal-element ` + elementDef?.['default-class'],
+                        `dyvix-modal-element ` + elementDef?.['default-class'],
                       name: name,
                       theme: theme,
                       style: {
@@ -530,7 +535,7 @@ const Modal: React.FC<DyvixModalProps> = ({
                       ...(elementDef?.tag === 'DyvixSelect' && {
                         elements: options,
                         animation: '!/',
-                        className: 'modal-element'
+                        className: 'dyvix-modal-element'
                       }),
                       ...(ErrorId && {
                         'aria-describedby': ErrorId
@@ -646,7 +651,7 @@ const Modal: React.FC<DyvixModalProps> = ({
             })}
             {currentType?.submit && (
               <DyvixButton
-                className="modal-btn"
+                className="dyvix-modal-button"
                 onClick={handleSubmit}
                 theme={(theme?.toLowerCase() as DyvixButtonThemes) || null}
                 animation={null}

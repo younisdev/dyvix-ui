@@ -80,6 +80,11 @@ UseCSSVar(
   'select',
   './src/components/select/dependencies/select.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/modal/dependencies/modal.overrides.json',
+  './src/components/modal/dependencies/modal.types.tsx',
+  'modal'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

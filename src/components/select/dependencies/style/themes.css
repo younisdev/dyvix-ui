@@ -111,7 +111,6 @@
 /* Blade Theme */
 .dyvix-select-blade .dyvix-select-input {
   border-radius: var(--dyvix-select-input-border-radius, 0px);
-
   box-shadow: var(
     --dyvix-select-input-box-shadow,
     -4px -4px 20px rgba(255, 255, 255, 0.05)

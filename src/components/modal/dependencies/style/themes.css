@@ -21,7 +21,7 @@
   box-shadow: 0 0 50px #b903e2;
   transform: scale(1.02);
 }
-.dyvix-modal-singularity > div > .modal-text {
+.dyvix-modal-singularity > div > .dyvix-modal-input {
   color: white;
 }
 .dyvix-modal-industrial {
@@ -328,7 +328,7 @@
     0 0 75px rgba(130, 100, 255, 0.25);
   border-color: rgba(180, 150, 255, 0.7);
 }
-.dyvix-modal-obsidian > div > .modal-text {
+.dyvix-modal-obsidian > div > .dyvix-modal-input {
   color: #e5edff;
 }
 .dyvix-modal-coffee {
@@ -359,7 +359,7 @@
     0 0 70px rgba(205, 140, 75, 0.6);
 }
 
-.dyvix-modal-coffee > div > .modal-text {
+.dyvix-modal-coffee > div > .dyvix-modal-input {
   color: #fff6e8;
 }
 .dyvix-modal-cosmos {
@@ -394,7 +394,7 @@
     0 0 80px rgba(120, 90, 255, 0.45);
 }
 
-.dyvix-modal-cosmos > div > .modal-text {
+.dyvix-modal-cosmos > div > .dyvix-modal-input {
   color: #eef2ff;
 }
 .dyvix-modal-sakura {
@@ -432,7 +432,7 @@
     0 0 75px rgba(255, 105, 140, 0.4);
 }
 
-.dyvix-modal-sakura > div > .modal-text {
+.dyvix-modal-sakura > div > .dyvix-modal-input {
   color: #fce4ec;
 }
 .dyvix-modal-volcanic {
@@ -477,6 +477,6 @@
     inset 0 0 40px rgba(255, 120, 0, 0.1);
 }
 
-.dyvix-modal-volcanic > div > .modal-text {
+.dyvix-modal-volcanic > div > .dyvix-modal-input {
   color: #ffe8d0;
 }

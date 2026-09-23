@@ -3,7 +3,7 @@
     "element": "text",
     "tag": "DyvixInput",
     "tag-type": "text",
-    "default-class": "modal-text",
+    "default-class": "dyvix-modal-input",
     "aria": {
       "role": "textbox",
       "aria-label": ""
@@ -27,7 +27,7 @@
   {
     "element": "textarea",
     "tag": "textarea",
-    "default-class": "modal-textarea",
+    "default-class": "dyvix-modal-textarea",
     "aria": {
       "role": "textbox",
       "aria-label": ""
@@ -42,7 +42,7 @@
   {
     "element": "select",
     "tag": "select",
-    "default-class": "modal-select",
+    "default-class": "modal-dyvix-select",
     "aria": {
       "role": "combobox",
       "aria-label": ""
@@ -57,7 +57,7 @@
   {
     "element": "d-select",
     "tag": "DyvixSelect",
-    "default-class": "modal-dyvix-select",
+    "default-class": "dyvix-modal-dselect",
     "aria": {
       "role": "combobox",
       "aria-label": ""
@@ -74,7 +74,7 @@
     "element": "checkbox",
     "tag": "input",
     "tag-type": "checkbox",
-    "default-class": "modal-checkbox",
+    "default-class": "dyvix-modal-checkbox",
     "aria": {
       "role": "checkbox",
       "aria-label": ""
@@ -90,7 +90,7 @@
     "element": "radio",
     "tag": "input",
     "tag-type": "radio",
-    "default-class": "modal-radio",
+    "default-class": "dyvix-modal-radio",
     "aria": {
       "role": "radiogroup",
       "aria-label": ""
@@ -105,7 +105,7 @@
   {
     "element": "file",
     "tag": "DyvixFile",
-    "default-class": "modal-file",
+    "default-class": "dyvix-modal-file",
     "aria": {
       "role": "button",
       "aria-label": "File upload"
