@@ -1,405 +1,707 @@
 .dyvix-modal-singularity {
-  font-family: 'Geist';
-  border: 4px solid #3c0349;
-  color: white;
-  border-radius: 50%;
-  background-color: #1f2937;
-  background: radial-gradient(circle, #000000 0%, #1a1a1a 100%);
-  box-shadow: 0 0 30px #b903e2;
-  -webkit-box-shadow: 0 0 30px #b903e2;
-  -moz-box-shadow: 0 0 30px #b903e2;
+  font-family: var(--dyvix-modal-font-family, 'Geist');
+  border-width: var(--dyvix-modal-border-width, 4px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, #3c0349);
+  color: var(--dyvix-modal-color, white);
+  border-radius: var(--dyvix-modal-border-radius, 50%);
+  background: var(
+    --dyvix-modal-bg,
+    radial-gradient(circle, #000000 0%, #1a1a1a 100%)
+  );
+  box-shadow: var(--dyvix-modal-box-shadow, 0 0 30px #b903e2);
+  -webkit-box-shadow: var(--dyvix-modal-box-shadow, 0 0 30px #b903e2);
+  -moz-box-shadow: var(--dyvix-modal-box-shadow, 0 0 30px #b903e2);
   aspect-ratio: 1 /1;
-  transition:
+  transition: var(
+    --dyvix-modal-transition,
     transform ease-in-out 0.7s,
     box-shadow ease-in-out 0.6s,
     border ease-in-out 0.3s,
-    background ease-in-out 0.2s;
+    background ease-in-out 0.2s
+  );
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
 .dyvix-modal-singularity:hover {
-  border: 4px solid #27032f;
-  background: radial-gradient(circle, #000000 0%, #1a1a1a 120%);
-  border-radius: 50%;
-  box-shadow: 0 0 50px #b903e2;
-  transform: scale(1.02);
+  border-width: var(--dyvix-modal-hover-border-width, 4px);
+  border-style: var(--dyvix-modal-hover-border-style, solid);
+  border-color: var(--dyvix-modal-hover-border-color, #27032f);
+  background: var(
+    --dyvix-modal-hover-bg,
+    radial-gradient(circle, #000000 0%, #1a1a1a 120%)
+  );
+  border-radius: var(--dyvix-modal-hover-border-radius, 50%);
+  box-shadow: var(--dyvix-modal-hover-box-shadow, 0 0 50px #b903e2);
+  transform: var(--dyvix-modal-hover-transform, scale(1.02));
 }
 .dyvix-modal-singularity > div > .dyvix-modal-input {
   color: white;
 }
 .dyvix-modal-industrial {
-  font-family: 'Geist';
-  border: 10px solid #374151;
-  border-radius: 10px;
-  background-color: #0a1429;
-  padding: 0.5rem;
-  transition:
+  font-family: var(--dyvix-modal-font-family, 'Geist');
+  border-width: var(--dyvix-modal-border-width, 10px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, #374151);
+  border-radius: var(--dyvix-modal-border-radius, 10px);
+  background: var(--dyvix-modal-bg, #0a1429);
+  padding: var(--dyvix-modal-padding, 0.5rem);
+  transition: var(
+    --dyvix-modal-transition,
     box-shadow ease-in-out 0.6s,
     border-color ease-in-out 0.3s,
-    background-color ease-in-out 0.2s,
-    transform ease-in-out 0.1s;
+    background ease-in-out 0.2s,
+    transform ease-in-out 0.1s
+  );
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
+  box-shadow: var(--dyvix-modal-box-shadow, inherit);
 }
 .dyvix-modal-industrial:hover {
-  border-color: #6a6a6a;
-  box-shadow:
+  border-color: var(--dyvix-modal-hover-border-color, #6a6a6a);
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     inset 0 0 30px rgba(106, 106, 106, 0.1),
-    0 0 20px rgba(106, 106, 106, 0.15);
-  background-color: #101f39;
-  transform: scale(1.01);
-  border-radius: 11px;
+    0 0 20px rgba(106, 106, 106, 0.15)
+  );
+  background: var(--dyvix-modal-hover-bg, #101f39);
+  transform: var(--dyvix-modal-hover-transform, scale(1.01));
+  border-radius: var(--dyvix-modal-hover-border-radius, 11px);
 }
 .dyvix-modal-ember {
-  border-radius: 10px;
-  background-color: #0f0a08;
-  border-bottom: #ff4500 3px solid;
-  box-shadow:
+  border-radius: var(--dyvix-modal-border-radius, 10px);
+  background: var(--dyvix-modal-bg, #0f0a08);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -webkit-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -moz-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  transition:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.5s ease-in-out,
     border-bottom 0.4s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
-    -moz-box-shadow 0.3s ease-in-out;
+    -moz-box-shadow 0.3s ease-in-out
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
+  border-style: var(--dyvix-modal-border-style, none);
+  border-color: var(--dyvix-modal-border-color, none);
+  border-bottom: #ff4500 3px solid;
 }
 .dyvix-modal-ember:hover {
+  transform: var(--dyvix-modal-hover-transform, scale(1.002));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  border-style: var(--dyvix-modal-hover-border-style, none);
+  border-color: var(--dyvix-modal-hover-border-color, none);
   border-bottom: #ff6b00 3.1px solid;
-  transform: scale(1.002);
-  box-shadow:
-    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -webkit-box-shadow:
-    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -moz-box-shadow:
-    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
+  background: var(--dyvix-modal-hover-bg, #0f0a08);
 }
 .dyvix-modal-frost {
-  background-color: #ffffff1a;
-  border: 5px groove #ffffff40;
-  border-radius: 20px;
-  backdrop-filter: blur(50px);
-  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  transition:
+  background: var(--dyvix-modal-bg, #ffffff1a);
+  border-width: var(--dyvix-modal-border-width, 5px);
+  border-style: var(--dyvix-modal-border-style, groove);
+  border-color: var(--dyvix-modal-border-color, #ffffff40);
+  border-radius: var(--dyvix-modal-border-radius, 20px);
+  backdrop-filter: var(--dyvix-modal-backdrop-filter, blur(50px));
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.5s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
-    border 0.2s ease-in-out;
+    border 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
 .dyvix-modal-frost:hover {
-  border: 8px groove #f8f8f840;
-  transform: scale(1.01);
-  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  border-width: var(--dyvix-modal-hover-border-width, 8px);
+  border-style: var(--dyvix-modal-hover-border-style, groove);
+  border-color: var(--dyvix-modal-hover-border-color, #f8f8f840);
+  transform: var(--dyvix-modal-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  background: var(--dyvix-modal-hover-bg, #ffffff1a);
 }
 .dyvix-modal-blade {
-  background-color: #0a0a0a;
-  border-radius: 0px;
+  background: var(--dyvix-modal-bg, #0a0a0a);
+  border-radius: var(--dyvix-modal-border-radius, 0px);
   border-left: 3px solid #e2e8f0;
   border-top: 3px solid #e2e8f0;
   border-right: 1px solid #ffffff20;
   border-bottom: 1px solid #ffffff20;
-  box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -webkit-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -moz-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  transition:
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     border-left 0.1s ease-in-out,
     border-top 0.1s ease-in-out,
     box-shadow 0.2s ease-in-out,
     -webkit-box-shadow 0.2s ease-in-out,
-    -moz-box-shadow 0.2s ease-in-out;
+    -moz-box-shadow 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
+  border-color: var(--dyvix-modal-border-color, inherit);
 }
 .dyvix-modal-blade:hover {
   border-left: 4px solid #ffffff;
   border-top: 4px solid #ffffff;
-  box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -webkit-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -moz-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  border-color: var(--dyvix-modal-hover-border-color, inherit);
+  background: var(--dyvix-modal-hover-bg, #0a0a0a);
 }
 .dyvix-modal-neon {
-  background: #4deeea;
-  background: radial-gradient(
-    circle,
-    rgba(77, 238, 234, 1) 0%,
-    rgba(112, 186, 239, 1) 43%,
-    rgba(240, 0, 255, 1) 100%
+  background: var(
+    --dyvix-modal-bg,
+    radial-gradient(
+      circle,
+      rgba(77, 238, 234, 1) 0%,
+      rgba(112, 186, 239, 1) 43%,
+      rgba(240, 0, 255, 1) 100%
+    )
   );
-  -webkit-box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 1);
-  -moz-box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 1);
-  box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 1);
-  border-radius: 4rem;
-  transition:
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 1)
+  );
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 1)
+  );
+  border-radius: var(--dyvix-modal-border-radius, 4rem);
+  transition: var(
+    --dyvix-modal-transition,
     border-radius 0.2s ease-in-out,
-    transform 0.3s ease-in-out;
+    transform 0.3s ease-in-out
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
+  border-color: var(--dyvix-modal-border-color, none);
 }
 .dyvix-modal-neon:hover {
-  border-radius: 2rem;
-  transform: scale(1.01);
+  border-radius: var(--dyvix-modal-hover-border-radius, 2rem);
+  transform: var(--dyvix-modal-hover-transform, scale(1.01));
+  border-color: var(--dyvix-modal-hover-border-color, none);
+  box-shadow: var(--dyvix-modal-hover-box-shadow, inherit);
+  background: var(--dyvix-modal-hover-bg,     radial-gradient(
+      circle,
+      rgba(77, 238, 234, 1) 0%,
+      rgba(112, 186, 239, 1) 43%,
+      rgba(240, 0, 255, 1) 100%
+    ));
 }
 .dyvix-modal-aurora {
-  background: #14e81e;
-  background: linear-gradient(
-    90deg,
-    rgba(20, 232, 30, 1) 0%,
-    rgba(0, 234, 141, 1) 21%,
-    rgba(1, 177, 179, 1) 46%,
-    rgba(1, 126, 213, 1) 76%,
-    rgba(181, 61, 255, 1) 100%
+  background: var(
+    --dyvix-modal-bg,
+    linear-gradient(
+      90deg,
+      rgba(20, 232, 30, 1) 0%,
+      rgba(0, 234, 141, 1) 21%,
+      rgba(1, 177, 179, 1) 46%,
+      rgba(1, 126, 213, 1) 76%,
+      rgba(181, 61, 255, 1) 100%
+    )
   );
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  -webkit-box-shadow: 0px 0px 275px 0px rgba(1, 176, 179, 0.9);
-  -moz-box-shadow: 0px 0px 275px 0px rgba(1, 176, 179, 0.9);
-  box-shadow: 0px 0px 275px 0px rgba(1, 176, 179, 0.9);
-  transition:
+  border-radius: var(--dyvix-modal-border-radius, 2rem);
+  border-width: var(--dyvix-modal-border-width, 1px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(255, 255, 255, 0.1));
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 0px 275px 0px rgba(1, 176, 179, 0.9)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 0px 275px 0px rgba(1, 176, 179, 0.9)
+  );
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 0px 275px 0px rgba(1, 176, 179, 0.9)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     box-shadow 0.4s ease-in-out,
     -webkit-box-shadow 0.4s ease-in-out,
     -moz-box-shadow 0.4s ease-in-out,
     transform 0.3s ease-in-out,
-    border-radius 0.2s ease-in-out;
+    border-radius 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
 .dyvix-modal-aurora:hover {
-  border-radius: 3rem;
-  transform: scale(1.01);
-  -webkit-box-shadow: 0px 0px 275px 88px rgba(1, 176, 179, 1);
-  -moz-box-shadow: 0px 0px 275px 88px rgba(1, 176, 179, 1);
-  box-shadow: 0px 0px 275px 88px rgba(1, 176, 179, 1);
+  border-radius: var(--dyvix-modal-hover-border-radius, 3rem);
+  transform: var(--dyvix-modal-hover-transform, scale(1.01));
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0px 0px 275px 88px rgba(1, 176, 179, 1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0px 0px 275px 88px rgba(1, 176, 179, 1)
+  );
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0px 0px 275px 88px rgba(1, 176, 179, 1)
+  );
+  border-color: var(--dyvix-modal-hover-border-color, rgba(255, 255, 255, 0.1));
+  background: var(--dyvix-modal-hover-bg,     linear-gradient(
+      90deg,
+      rgba(20, 232, 30, 1) 0%,
+      rgba(0, 234, 141, 1) 21%,
+      rgba(1, 177, 179, 1) 46%,
+      rgba(1, 126, 213, 1) 76%,
+      rgba(181, 61, 255, 1) 100%
+    ));
 }
 .dyvix-modal-sunset {
-  background: #1a0a00;
-  background: linear-gradient(
-    135deg,
-    #1a0a00 0%,
-    #3d1a00 40%,
-    #6b2d00 70%,
-    #8b3a00 100%
+  background: var(
+    --dyvix-modal-bg,
+    linear-gradient(135deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%)
   );
-  border-radius: 20px;
-  border: 1px solid rgba(255, 198, 15, 0.1);
+  border-radius: var(--dyvix-modal-border-radius, 20px);
+  border-width: var(--dyvix-modal-border-width, 1px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(255, 198, 15, 0.1));
   border-bottom: 5px solid #a84600;
-  box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  -webkit-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  -moz-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  transition:
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
-    border-radius 0.2s ease-in-out;
+    border-radius 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
 .dyvix-modal-sunset:hover {
-  transform: translateY(10px);
-  box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -webkit-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -moz-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  border-radius: 15px;
+  transform: var(--dyvix-modal-hover-transform, translateY(10px));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  border-radius: var(--dyvix-modal-hover-border-radius, 15px);
+  border-color: var(--dyvix-modal-hover-border-color, rgba(255, 198, 15, 0.1));
+  background: var(--dyvix-modal-hover-bg, linear-gradient(135deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%));
 }
 .dyvix-modal-ocean {
-  background: linear-gradient(200deg, #001220, #023862);
-  border: 2px solid rgba(0, 150, 255, 0.3);
-  border-radius: 2rem;
-  box-shadow:
+  background: var(--dyvix-modal-bg, linear-gradient(200deg, #001220, #023862));
+  border-width: var(--dyvix-modal-border-width, 2px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(0, 150, 255, 0.3));
+  border-radius: var(--dyvix-modal-border-radius, 2rem);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-  -webkit-box-shadow:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-  -moz-box-shadow:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-  transition:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     box-shadow 0.3s ease-in-out,
     border 0.2s ease-in-out,
-    transform 0.4s;
+    transform 0.4s
+  );
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
 .dyvix-modal-ocean:hover {
-  border: 3px solid rgba(0, 150, 255, 0.6);
-  transform: perspective(1000px) rotateX(2deg);
-  box-shadow:
+  border-width: var(--dyvix-modal-hover-border-width, 3px);
+  border-style: var(--dyvix-modal-hover-border-style, solid);
+  border-color: var(--dyvix-modal-hover-border-color, rgba(0, 150, 255, 0.6));
+  transform: var(
+    --dyvix-modal-hover-transform,
+    perspective(1000px) rotateX(2deg)
+  );
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 70px rgba(0, 100, 255, 0.25),
-    inset 0 0 40px rgba(0, 150, 255, 0.08);
+    inset 0 0 40px rgba(0, 150, 255, 0.08)
+  );
+  background: var(--dyvix-modal-hover-bg, linear-gradient(200deg, #001220, #023862));
 }
 .dyvix-modal-forest {
-  background: #1f3b2c;
-  background: radial-gradient(
-    circle,
-    rgba(31, 59, 44, 1) 14%,
-    rgba(31, 59, 44, 1) 24%,
-    rgba(75, 58, 42, 1) 71%
+  background: var(
+    --dyvix-modal-bg,
+    radial-gradient(
+      circle,
+      rgba(31, 59, 44, 1) 14%,
+      rgba(31, 59, 44, 1) 24%,
+      rgba(75, 58, 42, 1) 71%
+    )
   );
-  border: 3px double #86a86b;
-  border-radius: 5rem;
-  box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  -webkit-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  -moz-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  transition:
+  border-width: var(--dyvix-modal-border-width, 3px);
+  border-style: var(--dyvix-modal-border-style, double);
+  border-color: var(--dyvix-modal-border-color, #86a86b);
+  border-radius: var(--dyvix-modal-border-radius, 5rem);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
 .dyvix-modal-forest:hover {
-  transform: skewX(-5deg) scale(1.05);
-  box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
-  -webkit-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
-  -moz-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
+  transform: var(--dyvix-modal-hover-transform, skewX(-5deg) scale(1.05));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  border-color: var(--dyvix-modal-hover-border-color, #86a86b);
+  background: var(--dyvix-modal-hover-bg,     radial-gradient(
+      circle,
+      rgba(31, 59, 44, 1) 14%,
+      rgba(31, 59, 44, 1) 24%,
+      rgba(75, 58, 42, 1) 71%
+    ));
 }
 .dyvix-modal-midnight {
-  background: radial-gradient(circle at center, #00024d 0%, #000000 100%);
-  border: 1px solid rgba(112, 168, 247, 0.3);
-  border-radius: 3.67rem;
-  box-shadow:
+  background: var(
+    --dyvix-modal-bg,
+    radial-gradient(circle at center, #00024d 0%, #000000 100%)
+  );
+  border-width: var(--dyvix-modal-border-width, 1px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(112, 168, 247, 0.3));
+  border-radius: var(--dyvix-modal-border-radius, 3.67rem);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -webkit-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -moz-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  transition: all 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67);
-  backdrop-filter: blur(10px);
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  transition: var(
+    --dyvix-modal-transition,
+    all 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67)
+  );
+  backdrop-filter: var(--dyvix-modal-backdrop-filter, blur(10px));
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
 .dyvix-modal-midnight:hover {
-  background: radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%);
-  border-color: rgba(112, 168, 247, 0.6);
-  box-shadow:
+  background: var(
+    --dyvix-modal-hover-bg,
+    radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%)
+  );
+  border-color: var(--dyvix-modal-hover-border-color, rgba(112, 168, 247, 0.6));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -webkit-box-shadow:
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -moz-box-shadow:
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  transform: translateY(-3px) scale(1.01);
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  transform: var(--dyvix-modal-hover-transform, translateY(-3px) scale(1.01));
 }
 .dyvix-modal-crimson {
-  background: linear-gradient(135deg, #200000 0%, #4a0000 100%);
-  border: 2px solid rgba(255, 80, 80, 0.4);
-  border-radius: 2rem;
-  box-shadow:
+  background: var(
+    --dyvix-modal-bg,
+    linear-gradient(135deg, #200000 0%, #4a0000 100%)
+  );
+  border-width: var(--dyvix-modal-border-width, 2px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(255, 80, 80, 0.4));
+  border-radius: var(--dyvix-modal-border-radius, 2rem);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 40px rgba(255, 0, 0, 0.15),
-    inset 0 0 20px rgba(255, 100, 100, 0.08);
-  transition:
+    inset 0 0 20px rgba(255, 100, 100, 0.08)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
-
 .dyvix-modal-crimson:hover {
-  transform: scale(1.01);
-  box-shadow:
+  transform: var(--dyvix-modal-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 60px rgba(255, 0, 0, 0.25),
-    inset 0 0 30px rgba(255, 100, 100, 0.12);
+    inset 0 0 30px rgba(255, 100, 100, 0.12)
+  );
+  border-color: var(--dyvix-modal-hover-border-color, rgba(255, 80, 80, 0.4));
+  background: var(--dyvix-modal-hover-bg, linear-gradient(135deg, #200000 0%, #4a0000 100%));
 }
 .dyvix-modal-obsidian {
-  background: radial-gradient(
-    circle at top,
-    #2a2a2a 0%,
-    #151515 45%,
-    #050505 100%
+  background: var(
+    --dyvix-modal-bg,
+    radial-gradient(circle at top, #2a2a2a 0%, #151515 45%, #050505 100%)
   );
-  border-radius: 1.75rem;
-  color: #f3f4f6;
-  transition:
+  border-radius: var(--dyvix-modal-border-radius, 1.75rem);
+  color: var(--dyvix-modal-color, #f3f4f6);
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.3s ease,
     box-shadow 0.3s ease,
-    border-color 0.3s ease;
-
-  border: 2px solid rgba(160, 130, 255, 0.4);
-
-  box-shadow:
+    border-color 0.3s ease
+  );
+  border-width: var(--dyvix-modal-border-width, 2px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(160, 130, 255, 0.4));
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     inset 0 0 40px rgba(255, 255, 255, 0.04),
-    0 0 50px rgba(120, 90, 255, 0.18);
+    0 0 50px rgba(120, 90, 255, 0.18)
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
-
 .dyvix-modal-obsidian:hover {
-  transform: translateY(-2px);
-  box-shadow:
+  transform: var(--dyvix-modal-hover-transform, translateY(-2px));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     inset 0 0 30px rgba(255, 255, 255, 0.05),
-    0 0 75px rgba(130, 100, 255, 0.25);
-  border-color: rgba(180, 150, 255, 0.7);
+    0 0 75px rgba(130, 100, 255, 0.25)
+  );
+  border-color: var(--dyvix-modal-hover-border-color, rgba(180, 150, 255, 0.7));
+  background: var(--dyvix-modal-hover-bg, inherit);
 }
 .dyvix-modal-obsidian > div > .dyvix-modal-input {
   color: #e5edff;
 }
 .dyvix-modal-coffee {
-  background:
+  background: var(
+    --dyvix-modal-bg,
     radial-gradient(circle at top, rgba(255, 245, 225, 0.18), transparent 45%),
-    linear-gradient(135deg, #2d1b14, #5b3928 45%, #8d6243 100%);
-
-  border: 2px solid #d2a679;
-  border-radius: 2rem;
-
-  box-shadow:
+    linear-gradient(135deg, #2d1b14, #5b3928 45%, #8d6243 100%)
+  );
+  border-width: var(--dyvix-modal-border-width, 2px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, #d2a679);
+  border-radius: var(--dyvix-modal-border-radius, 2rem);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     inset 0 0 30px rgba(255, 244, 230, 0.08),
-    0 0 45px rgba(155, 100, 55, 0.45);
-
-  transition:
+    0 0 45px rgba(155, 100, 55, 0.45)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    border-color 0.35s ease
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
-
 .dyvix-modal-coffee:hover {
-  transform: translateY(-4px);
-
-  border-color: #f3c88c;
-
-  box-shadow:
+  transform: var(--dyvix-modal-hover-transform, translateY(-4px));
+  border-color: var(--dyvix-modal-hover-border-color, #f3c88c);
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     inset 0 0 35px rgba(255, 245, 235, 0.12),
-    0 0 70px rgba(205, 140, 75, 0.6);
+    0 0 70px rgba(205, 140, 75, 0.6)
+  );
+  background: var(--dyvix-modal-hover-bg, inherit);
 }
-
 .dyvix-modal-coffee > div > .dyvix-modal-input {
   color: #fff6e8;
 }
 .dyvix-modal-cosmos {
-  background: radial-gradient(
-    circle at top,
-    #24104f 0%,
-    #161b4b 40%,
-    #090b1d 75%,
-    #03030a 100%
+  background: var(
+    --dyvix-modal-bg,
+    radial-gradient(
+      circle at top,
+      #24104f 0%,
+      #161b4b 40%,
+      #090b1d 75%,
+      #03030a 100%
+    )
   );
-  border: 2px solid rgba(140, 120, 255, 0.45);
-  border-radius: 2rem;
-  color: #f8fafc;
-
-  box-shadow:
+  border-width: var(--dyvix-modal-border-width, 2px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(140, 120, 255, 0.45));
+  border-radius: var(--dyvix-modal-border-radius, 2rem);
+  color: var(--dyvix-modal-color, #f8fafc);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     inset 0 0 35px rgba(255, 255, 255, 0.05),
-    0 0 55px rgba(111, 76, 255, 0.25);
-
-  transition:
+    0 0 55px rgba(111, 76, 255, 0.25)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    border-color 0.35s ease
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
-
 .dyvix-modal-cosmos:hover {
-  transform: translateY(-4px) scale(1.01);
-
-  border-color: rgba(170, 150, 255, 0.8);
-
-  box-shadow:
+  transform: var(--dyvix-modal-hover-transform, translateY(-4px) scale(1.01));
+  border-color: var(--dyvix-modal-hover-border-color, rgba(170, 150, 255, 0.8));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     inset 0 0 45px rgba(255, 255, 255, 0.08),
-    0 0 80px rgba(120, 90, 255, 0.45);
+    0 0 80px rgba(120, 90, 255, 0.45)
+  );
+  background: var(--dyvix-modal-hover-bg, inherit);
 }
-
 .dyvix-modal-cosmos > div > .dyvix-modal-input {
   color: #eef2ff;
 }
 .dyvix-modal-sakura {
-  background:
+  background: var(
+    --dyvix-modal-bg,
     radial-gradient(
       circle at top left,
       rgba(255, 183, 197, 0.25),
@@ -410,74 +712,118 @@
       rgba(255, 105, 140, 0.15),
       transparent 50%
     ),
-    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%);
-  border-radius: 2rem;
-  color: #fce4ec;
-  border: 2px solid rgba(255, 150, 170, 0.5);
-
-  box-shadow:
+    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%)
+  );
+  border-radius: var(--dyvix-modal-border-radius, 2rem);
+  color: var(--dyvix-modal-color, #fce4ec);
+  border-width: var(--dyvix-modal-border-width, 2px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(255, 150, 170, 0.5));
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     inset 0 0 40px rgba(255, 183, 197, 0.08),
-    0 0 50px rgba(255, 105, 140, 0.25);
-
-  transition:
+    0 0 50px rgba(255, 105, 140, 0.25)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
-
 .dyvix-modal-sakura:hover {
-  transform: translateY(-3px) scale(1.01);
-  border-color: rgba(255, 180, 200, 0.8);
-  box-shadow:
+  transform: var(--dyvix-modal-hover-transform, translateY(-3px) scale(1.01));
+  border-color: var(--dyvix-modal-hover-border-color, rgba(255, 180, 200, 0.8));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     inset 0 0 35px rgba(255, 183, 197, 0.12),
-    0 0 75px rgba(255, 105, 140, 0.4);
+    0 0 75px rgba(255, 105, 140, 0.4)
+  );
+  background: var(--dyvix-modal-hover-bg, radial-gradient(
+      circle at top left,
+      rgba(255, 183, 197, 0.25),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 105, 140, 0.15),
+      transparent 50%
+    ),
+    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%));
 }
-
 .dyvix-modal-sakura > div > .dyvix-modal-input {
   color: #fce4ec;
 }
 .dyvix-modal-volcanic {
-  background:
+  background: var(
+    --dyvix-modal-bg,
     radial-gradient(
       circle at 50% 80%,
       rgba(255, 80, 0, 0.15) 0%,
       transparent 50%
     ),
-    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%);
-  border: 2px solid rgba(255, 120, 0, 0.35);
-  border-radius: 2rem;
-  color: #ffe0c0;
-  box-shadow:
+    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%)
+  );
+  border-width: var(--dyvix-modal-border-width, 2px);
+  border-style: var(--dyvix-modal-border-style, solid);
+  border-color: var(--dyvix-modal-border-color, rgba(255, 120, 0, 0.35));
+  border-radius: var(--dyvix-modal-border-radius, 2rem);
+  color: var(--dyvix-modal-color, #ffe0c0);
+  box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 40px rgba(255, 80, 0, 0.15),
-    inset 0 0 30px rgba(255, 100, 0, 0.06);
-  -webkit-box-shadow:
+    inset 0 0 30px rgba(255, 100, 0, 0.06)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 40px rgba(255, 80, 0, 0.15),
-    inset 0 0 30px rgba(255, 100, 0, 0.06);
-  -moz-box-shadow:
+    inset 0 0 30px rgba(255, 100, 0, 0.06)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-box-shadow,
     0 0 40px rgba(255, 80, 0, 0.15),
-    inset 0 0 30px rgba(255, 100, 0, 0.06);
-  transition:
+    inset 0 0 30px rgba(255, 100, 0, 0.06)
+  );
+  transition: var(
+    --dyvix-modal-transition,
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
-    border-color 0.3s ease-in-out;
+    border-color 0.3s ease-in-out
+  );
+  font-family: var(--dyvix-modal-font-family, inherit);
+  font-size: var(--dyvix-modal-font-size, inherit);
+  font-weight: var(--dyvix-modal-font-weight, inherit);
 }
-
 .dyvix-modal-volcanic:hover {
-  transform: translateY(-4px) scale(1.01);
-  border-color: rgba(255, 140, 0, 0.65);
-  box-shadow:
+  transform: var(--dyvix-modal-hover-transform, translateY(-4px) scale(1.01));
+  border-color: var(--dyvix-modal-hover-border-color, rgba(255, 140, 0, 0.65));
+  box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 60px rgba(255, 80, 0, 0.3),
-    inset 0 0 40px rgba(255, 120, 0, 0.1);
-  -webkit-box-shadow:
+    inset 0 0 40px rgba(255, 120, 0, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 60px rgba(255, 80, 0, 0.3),
-    inset 0 0 40px rgba(255, 120, 0, 0.1);
-  -moz-box-shadow:
+    inset 0 0 40px rgba(255, 120, 0, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-modal-hover-box-shadow,
     0 0 60px rgba(255, 80, 0, 0.3),
-    inset 0 0 40px rgba(255, 120, 0, 0.1);
+    inset 0 0 40px rgba(255, 120, 0, 0.1)
+  );
+  background: var(--dyvix-modal-hover-bg, radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 80, 0, 0.15) 0%,
+      transparent 50%
+    ),
+    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%));
 }
-
 .dyvix-modal-volcanic > div > .dyvix-modal-input {
   color: #ffe8d0;
 }
