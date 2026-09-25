@@ -1,444 +1,641 @@
 .dyvix-file-singularity {
-  border: 4px dashed #3c0349;
-  background-color: #1f2937;
-  background: radial-gradient(circle, #000000 0%, #1a1a1a 100%);
-  box-shadow: 0 0 30px #b903e2;
-  -webkit-box-shadow: 0 0 30px #b903e2;
-  -moz-box-shadow: 0 0 30px #b903e2;
-  transition:
+  border-width: var(--dyvix-file-border-width, 4px);
+  border-style: var(--dyvix-file-border-style, dashed);
+  border-color: var(--dyvix-file-border-color, #3c0349);
+  background: var(
+    --dyvix-file-bg,
+    radial-gradient(circle, #000000 0%, #1a1a1a 100%)
+  );
+  box-shadow: var(--dyvix-file-box-shadow, 0 0 30px #b903e2);
+  -webkit-box-shadow: var(--dyvix-file-box-shadow, 0 0 30px #b903e2);
+  -moz-box-shadow: var(--dyvix-file-box-shadow, 0 0 30px #b903e2);
+  color: var(--dyvix-file-color, whitesmoke);
+  transition: var(
+    --dyvix-file-transition,
     border-color 0.2s ease-in-out,
     background 0.3s ease-in-out,
-    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.dyvix-file-singularity p {
-  color: whitesmoke;
-  transition: color 0.2s ease;
+    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
 }
 .dyvix-file-singularity:hover {
-  border-color: #6a2a7a;
-  background: rgb(47, 4, 47);
-  transform: scale(1.02);
-}
-.dyvix-file-singularity:hover p {
-  color: grey;
+  border-color: var(--dyvix-file-hover-border-color, #6a2a7a);
+  background: var(--dyvix-file-hover-bg, rgb(47, 4, 47));
+  transform: var(--dyvix-file-hover-transform, scale(1.02));
+  color: var(--dyvix-file-hover-color, grey);
+  box-shadow: var(--dyvix-file-hover-box-shadow, inherit);
 }
 .dyvix-file-industrial {
-  border: 2px dashed #374151;
-  border-radius: 5px;
-  background-color: #0a1429;
-  transition:
+  border-width: var(--dyvix-file-border-width, 2px);
+  border-style: var(--dyvix-file-border-style, dashed);
+  border-color: var(--dyvix-file-border-color, #374151);
+  border-radius: var(--dyvix-file-border-radius, 5px);
+  background: var(--dyvix-file-bg, #0a1429);
+  font-family: var(--dyvix-file-font-family, 'Geist');
+  color: var(--dyvix-file-color, #9ca3af);
+  transition: var(
+    --dyvix-file-transition,
     border-radius 0.2s ease,
-    background-color 0.3s ease,
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.dyvix-file-industrial p {
-  font-family: 'Geist';
-  color: #9ca3af;
-  transition: color 0.2s ease;
+    background 0.3s ease,
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+  );
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
+  box-shadow: var(--dyvix-file-box-shadow, inherit);
 }
 .dyvix-file-industrial:hover {
-  border-radius: 10px;
-  background-color: #6b7280;
-  transform: scale(1.03);
-}
-.dyvix-file-industrial:hover p {
-  color: #ffffff;
+  border-radius: var(--dyvix-file-hover-border-radius, 10px);
+  background: var(--dyvix-file-hover-bg, #6b7280);
+  color: var(--dyvix-file-hover-color, #ffffff);
+  transform: var(--dyvix-file-hover-transform, scale(1.03));
+  border-color: var(--dyvix-file-hover-border-color, inherit);
+  box-shadow: var(--dyvix-file-hover-box-shadow, inherit);
 }
 .dyvix-file-ember {
-  border-radius: 10px;
-  background-color: #0f0a08;
+  border-radius: var(--dyvix-file-border-radius, 10px);
+  background: var(--dyvix-file-bg, #0f0a08);
   border-bottom: #ff4500 3px dashed;
-  box-shadow:
+  color: var(--dyvix-file-color, rgba(255, 69, 0, 0.9));
+  box-shadow: var(
+    --dyvix-file-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -webkit-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  -moz-box-shadow:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
     0px 17px 12px -9px rgba(255, 69, 0, 0.73),
-    0px 0px 30px -10px rgba(255, 69, 0, 0.3);
-  transition:
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  transition: var(
+    --dyvix-file-transition,
     transform 0.5s ease-in-out,
     border-bottom 0.4s ease-in-out,
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
-    -moz-box-shadow 0.3s ease-in-out;
-}
-.dyvix-file-ember p {
-  color: rgba(255, 69, 0, 0.9);
-  transition:
-    color 0.2s ease-in-out,
-    transform 0.22s ease-in-out;
+    -moz-box-shadow 0.3s ease-in-out
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
+  border-color: var(--dyvix-file-border-color, inherit);
 }
 .dyvix-file-ember:hover {
-  background-color: #0f0a08;
+  background: var(--dyvix-file-hover-bg, #0f0a08);
   border-bottom-color: #ff6b00;
-  transform: translateY(-2px) scale(1.002);
-  box-shadow:
+  color: var(--dyvix-file-hover-color, #ff6b00);
+  transform: var(--dyvix-file-hover-transform, translateY(-2px) scale(1.002));
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -webkit-box-shadow:
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-  -moz-box-shadow:
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     0px 17px 20px -9px rgba(255, 69, 0, 0.9),
-    0px 0px 40px -5px rgba(255, 69, 0, 0.5);
-}
-.dyvix-file-ember:hover p {
-  color: #ff6b00;
-  transform: scale(1.002);
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  border-color: var(--dyvix-file-hover-border-color, inherit);
 }
 .dyvix-file-frost {
-  background-color: #ffffff1a;
-  border: 5px groove #ffffff40;
-  border-radius: 20px;
+  background: var(--dyvix-file-bg, #ffffff1a);
+  border-width: var(--dyvix-file-border-width, 5px);
+  border-style: var(--dyvix-file-border-style, groove);
+  border-color: var(--dyvix-file-border-color, #ffffff40);
+  border-radius: var(--dyvix-file-border-radius, 20px);
+  color: var(--dyvix-file-color, rgba(213, 255, 248, 1));
   backdrop-filter: blur(50px);
-  box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -7px rgba(213, 255, 248, 1) inset;
-  transition:
+  box-shadow: var(
+    --dyvix-file-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  transition: var(
+    --dyvix-file-transition,
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.3s ease,
-    border-width 0.2s ease;
-}
-.dyvix-file-frost p {
-  color: rgba(213, 255, 248, 1);
-  transform: scale(1.01);
-  transition:
-    text-shadow 0.3s ease-in-out,
-    color 0.2s ease-in-out;
+    border-width 0.2s ease
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
 }
 .dyvix-file-frost:hover {
-  background-color: #ffffff1a;
-  border: 8px groove #f8f8f840;
-  transform: scale(1.01);
-  box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -webkit-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
-  -moz-box-shadow: -6px 2px 51px -23px rgba(213, 255, 248, 1) inset;
+  background: var(--dyvix-file-hover-bg, #ffffff1a);
+  border-width: var(--dyvix-file-hover-border-width, 8px);
+  border-style: var(--dyvix-file-hover-border-style, groove);
+  border-color: var(--dyvix-file-hover-border-color, #f8f8f840);
+  transform: var(--dyvix-file-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  color: var(--dyvix-file-hover-color, #f8f8f840);
+  -webkit-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
 }
 .dyvix-file-frost:hover p {
-  color: #f8f8f840;
   text-shadow: 0 0 8px rgba(213, 255, 248, 0.6);
 }
 .dyvix-file-blade {
-  background-color: #0a0a0a;
-  border-radius: 0px;
+  background: var(--dyvix-file-bg, #0a0a0a);
+  border-radius: var(--dyvix-file-border-radius, 0px);
   border-left: 3px solid #e2e8f0;
   border-top: 3px solid #e2e8f0;
   border-right: 1px solid #ffffff20;
   border-bottom: 1px solid #ffffff20;
-  box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -webkit-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  -moz-box-shadow: -4px -4px 20px rgba(255, 255, 255, 0.05);
-  transition:
+  box-shadow: var(
+    --dyvix-file-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  color: var(--dyvix-file-color, #e2e8f0);
+  transition: var(
+    --dyvix-file-transition,
     border-left 0.1s ease-in-out,
     border-top 0.1s ease-in-out,
     box-shadow 0.2s ease-in-out,
     -webkit-box-shadow 0.2s ease-in-out,
-    -moz-box-shadow 0.2s ease-in-out;
-}
-.dyvix-file-blade p {
-  color: #e2e8f0;
-  transition: color 0.1s ease-in-out;
+    -moz-box-shadow 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
+  border-color: var(--dyvix-file-border-color, inherit);
 }
 .dyvix-file-blade:hover {
-  background-color: #0a0a0a;
+  background: var(--dyvix-file-hover-bg, #0a0a0a);
+  color: var(--dyvix-file-hover-color, #ffffff);
   border-left: 4px solid #ffffff;
   border-top: 4px solid #ffffff;
-  box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -webkit-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-  -moz-box-shadow: -6px -6px 30px rgba(255, 255, 255, 0.1);
-}
-.dyvix-file-blade:hover p {
-  color: #ffffff;
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  border-color: var(--dyvix-file-hover-border-color, inherit);
 }
 .dyvix-file-neon {
-  background: #4deeea;
-  background: radial-gradient(
-    circle,
-    rgba(77, 238, 234, 1) 0%,
-    rgba(112, 186, 239, 1) 43%,
-    rgba(240, 0, 255, 1) 100%
+  background: var(
+    --dyvix-file-bg,
+    radial-gradient(
+      circle,
+      rgba(77, 238, 234, 1) 0%,
+      rgba(112, 186, 239, 1) 43%,
+      rgba(240, 0, 255, 1) 100%
+    )
   );
-  -webkit-box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 0.6);
-  -moz-box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 0.6);
-  box-shadow: 0px 0px 64px 0px rgba(252, 46, 255, 0.6);
-  border-radius: 4rem;
-  transition:
+  color: var(--dyvix-file-color, #1b1d1d);
+  font-weight: var(--dyvix-file-font-weight, 700);
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 0.6)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 0.6)
+  );
+  box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 0.6)
+  );
+  border-radius: var(--dyvix-file-border-radius, 4rem);
+  transition: var(
+    --dyvix-file-transition,
     border-radius 0.2s ease-in-out,
     transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.3s ease;
-}
-.dyvix-file-neon p {
-  color: #1b1d1d;
-  font-weight: 700;
-  transition: color 0.1s ease-in-out;
+    box-shadow 0.3s ease
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  border-color: var(--dyvix-file-border-color, inherit);
 }
 .dyvix-file-neon:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 0px 80px 0px rgba(252, 46, 255, 0.8);
+  transform: var(--dyvix-file-hover-transform, scale(1.05));
+  color: var(--dyvix-file-hover-color, #ffffff);
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0px 0px 80px 0px rgba(252, 46, 255, 0.8)
+  );
+  background: var(--dyvix-file-hover-bg, inherit);
+  border-color: var(--dyvix-file-hover-border-color, inherit);
 }
 .dyvix-file-neon:hover p {
-  color: #ffffff;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 .dyvix-file-aurora {
-  background: #14e81e;
-  background: linear-gradient(
-    90deg,
-    rgba(20, 232, 30, 1) 0%,
-    rgba(0, 234, 141, 1) 21%,
-    rgba(1, 177, 179, 1) 46%,
-    rgba(1, 126, 213, 1) 76%,
-    rgba(181, 61, 255, 1) 100%
+  background: var(
+    --dyvix-file-bg,
+    linear-gradient(
+      90deg,
+      rgba(20, 232, 30, 1) 0%,
+      rgba(0, 234, 141, 1) 21%,
+      rgba(1, 177, 179, 1) 46%,
+      rgba(1, 126, 213, 1) 76%,
+      rgba(181, 61, 255, 1) 100%
+    )
   );
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  -webkit-box-shadow: 0px 0px 15px 0px rgba(1, 176, 179, 0.9);
-  -moz-box-shadow: 0px 0px 15px 0px rgba(1, 176, 179, 0.9);
-  box-shadow: 0px 0px 15px 0px rgba(1, 176, 179, 0.9);
-  transition:
+  border-radius: var(--dyvix-file-border-radius, 2rem);
+  border-width: var(--dyvix-file-border-width, 1px);
+  border-style: var(--dyvix-file-border-style, solid);
+  border-color: var(--dyvix-file-border-color, rgba(255, 255, 255, 0.1));
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 0px 15px 0px rgba(1, 176, 179, 0.9)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 0px 15px 0px rgba(1, 176, 179, 0.9)
+  );
+  box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 0px 15px 0px rgba(1, 176, 179, 0.9)
+  );
+  transition: var(
+    --dyvix-file-transition,
     box-shadow 0.4s ease-in-out,
     -webkit-box-shadow 0.4s ease-in-out,
     -moz-box-shadow 0.4s ease-in-out,
     transform 0.3s ease-in-out,
-    border-radius 0.2s ease-in-out;
+    border-radius 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
 }
 .dyvix-file-aurora:hover {
-  border-radius: 3rem;
-  transform: scale(1.01);
+  border-radius: var(--dyvix-file-hover-border-radius, 3rem);
+  transform: var(--dyvix-file-hover-transform, scale(1.01));
   background-size: 110% 110%;
-  -webkit-box-shadow: 0px 0px 15px 8px rgba(1, 176, 179, 1);
-  -moz-box-shadow: 0px 0px 15px 8px rgba(1, 176, 179, 1);
-  box-shadow: 0px 0px 15px 8px rgba(1, 176, 179, 1);
+  -webkit-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0px 0px 15px 8px rgba(1, 176, 179, 1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0px 0px 15px 8px rgba(1, 176, 179, 1)
+  );
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0px 0px 15px 8px rgba(1, 176, 179, 1)
+  );
+  background: var(--dyvix-file-hover-bg, inherit);
+  border-color: var(--dyvix-file-hover-border-color, inherit);
 }
 .dyvix-file-sunset {
-  background: #1a0a00;
-  background: linear-gradient(
-    135deg,
-    #1a0a00 0%,
-    #3d1a00 40%,
-    #6b2d00 70%,
-    #8b3a00 100%
+  background: var(
+    --dyvix-file-bg,
+    linear-gradient(135deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%)
   );
-  border-radius: 20px;
-  border: 1px solid rgba(255, 198, 15, 0.1);
+  border-radius: var(--dyvix-file-border-radius, 20px);
+  border-width: var(--dyvix-file-border-width, 1px);
+  border-style: var(--dyvix-file-border-style, solid);
+  border-color: var(--dyvix-file-border-color, rgba(255, 198, 15, 0.1));
   border-bottom: 5px solid #a84600;
-  box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  -webkit-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  -moz-box-shadow: 0px 15px 38px -10px rgba(255, 198, 15, 0.88);
-  transition:
+  color: var(--dyvix-file-color, #fad2b5);
+  font-weight: var(--dyvix-file-font-weight, 200);
+  box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
+    0px 15px 38px -10px rgba(255, 198, 15, 0.88)
+  );
+  transition: var(
+    --dyvix-file-transition,
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease-in-out,
     -webkit-box-shadow 0.3s ease-in-out,
     -moz-box-shadow 0.3s ease-in-out,
-    border-radius 0.2s ease-in-out;
-}
-.dyvix-file-sunset p {
-  color: #fad2b5;
-  font-weight: 200;
-  transition: color 0.1s ease-in-out;
+    border-radius 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
 }
 .dyvix-file-sunset:hover {
-  transform: translateY(3px);
-  box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -webkit-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  -moz-box-shadow: 0 20px 50px -10px rgba(255, 198, 15, 0.6);
-  border-radius: 15px;
-}
-.dyvix-file-sunset:hover p {
-  color: #ff6a00;
+  transform: var(--dyvix-file-hover-transform, translateY(3px));
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0 20px 50px -10px rgba(255, 198, 15, 0.6)
+  );
+  border-radius: var(--dyvix-file-hover-border-radius, 15px);
+  color: var(--dyvix-file-hover-color, #ff6a00);
+  background: var(--dyvix-file-hover-bg, inherit);
+  border-color: var(--dyvix-file-hover-border-color, inherit);
 }
 .dyvix-file-ocean {
-  background: linear-gradient(200deg, #001220, #023862);
-  border: 2px solid rgba(0, 150, 255, 0.3);
-  border-radius: 2rem;
-  box-shadow:
+  background: var(--dyvix-file-bg, linear-gradient(200deg, #001220, #023862));
+  border-width: var(--dyvix-file-border-width, 2px);
+  border-style: var(--dyvix-file-border-style, solid);
+  border-color: var(--dyvix-file-border-color, rgba(0, 150, 255, 0.3));
+  border-radius: var(--dyvix-file-border-radius, 2rem);
+  color: var(--dyvix-file-color, rgba(255, 255, 255, 0.7));
+  font-weight: var(--dyvix-file-font-weight, 400);
+  box-shadow: var(
+    --dyvix-file-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-  -webkit-box-shadow:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-  -moz-box-shadow:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
     0 0 50px rgba(0, 100, 255, 0.15),
-    inset 0 0 30px rgba(0, 150, 255, 0.05);
-  transition:
+    inset 0 0 30px rgba(0, 150, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-file-transition,
     box-shadow 0.3s ease-in-out,
     border 0.2s ease-in-out,
-    transform 0.4s;
+    transform 0.4s
+  );
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
-}
-.dyvix-file-ocean p {
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 400;
-  transition: color 0.1s ease-in-out;
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
 }
 .dyvix-file-ocean:hover {
-  border: 3px solid rgba(0, 150, 255, 0.6);
-  transform: perspective(1000px) rotateX(2deg);
-  box-shadow:
+  border-width: var(--dyvix-file-hover-border-width, 3px);
+  border-style: var(--dyvix-file-hover-border-style, solid);
+  border-color: var(--dyvix-file-hover-border-color, rgba(0, 150, 255, 0.6));
+  transform: var(
+    --dyvix-file-hover-transform,
+    perspective(1000px) rotateX(2deg)
+  );
+  color: var(--dyvix-file-hover-color, rgba(0, 150, 255, 0.9));
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     0 0 70px rgba(0, 100, 255, 0.25),
-    inset 0 0 40px rgba(0, 150, 255, 0.08);
-}
-.dyvix-file-ocean:hover p {
-  color: rgba(0, 150, 255, 0.9);
+    inset 0 0 40px rgba(0, 150, 255, 0.08)
+  );
+  background: var(--dyvix-file-hover-bg, inherit);
 }
 .dyvix-file-forest {
-  background: #1f3b2c;
-  background: radial-gradient(
-    circle,
-    rgba(31, 59, 44, 1) 14%,
-    rgba(31, 59, 44, 1) 24%,
-    rgba(75, 58, 42, 1) 71%
+  background: var(--dyvix-file-bg, #1f3b2c);
+  background: var(
+    --dyvix-file-bg,
+    radial-gradient(
+      circle,
+      rgba(31, 59, 44, 1) 14%,
+      rgba(31, 59, 44, 1) 24%,
+      rgba(75, 58, 42, 1) 71%
+    )
   );
-  border: 3px double #86a86b;
-  border-radius: 5rem;
-  box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  -webkit-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  -moz-box-shadow: inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3);
-  transition:
+  color: var(--dyvix-file-color, rgba(163, 236, 101, 0.8));
+  border-width: var(--dyvix-file-border-width, 3px);
+  border-style: var(--dyvix-file-border-style, double);
+  border-color: var(--dyvix-file-border-color, #86a86b);
+  border-radius: var(--dyvix-file-border-radius, 5rem);
+  box-shadow: var(
+    --dyvix-file-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
+    inset 0px 0px 30px 10px rgba(163, 236, 101, 0.3)
+  );
+  transition: var(
+    --dyvix-file-transition,
     transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.3s ease;
-}
-.dyvix-file-forest p {
-  color: rgba(163, 236, 101, 0.8);
-  transition: color 0.3s ease-in-out;
+    box-shadow 0.3s ease
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
 }
 .dyvix-file-forest:hover {
-  transform: skewX(-5deg) scale(1.05);
-  box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
-  -webkit-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
-  -moz-box-shadow: inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5);
-}
-.dyvix-file-forest:hover p {
-  color: rgba(168, 238, 107, 0.5);
+  color: var(--dyvix-file-hover-color, rgba(168, 238, 107, 0.5));
+  transform: var(--dyvix-file-hover-transform, skewX(-5deg) scale(1.05));
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
+  );
+  background: var(--dyvix-file-hover-bg, inherit);
+  border-color: var(--dyvix-file-hover-border-color, inherit);
 }
 .dyvix-file-midnight {
-  background: radial-gradient(circle at center, #00024d 0%, #000000 100%);
-  border: 1px solid rgba(112, 168, 247, 0.3);
-  border-radius: 2.67rem;
-  box-shadow:
+  background: var(
+    --dyvix-file-bg,
+    radial-gradient(circle at center, #00024d 0%, #000000 100%)
+  );
+  border-width: var(--dyvix-file-border-width, 1px);
+  border-style: var(--dyvix-file-border-style, solid);
+  border-color: var(--dyvix-file-border-color, rgba(112, 168, 247, 0.3));
+  color: var(--dyvix-file-color, rgba(112, 168, 247, 0.7));
+  border-radius: var(--dyvix-file-border-radius, 2.67rem);
+  box-shadow: var(
+    --dyvix-file-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -webkit-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  -moz-box-shadow:
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-box-shadow,
     0 0 40px 5px rgba(99, 102, 241, 0.2),
-    inset 0 0 15px rgba(112, 168, 247, 0.1);
-  transition: all 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67);
+    inset 0 0 15px rgba(112, 168, 247, 0.1)
+  );
+  transition: var(
+    --dyvix-file-transition,
+    all 0.5s cubic-bezier(0.17, 0.88, 0.3, 1.67)
+  );
   backdrop-filter: blur(10px);
-}
-.dyvix-file-midnight p {
-  color: rgba(112, 168, 247, 0.7);
-  transition: color 0.3s ease-in-out;
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
 }
 .dyvix-file-midnight:hover {
-  background: radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%);
-  border-color: rgba(112, 168, 247, 0.6);
-  box-shadow:
+  background: var(
+    --dyvix-file-hover-bg,
+    radial-gradient(circle at 40% 40%, #000375 0%, #000000 100%)
+  );
+  color: var(--dyvix-file-hover-color, rgba(137, 182, 246, 0.9));
+  border-color: var(--dyvix-file-hover-border-color, rgba(112, 168, 247, 0.6));
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -webkit-box-shadow:
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  -moz-box-shadow:
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  -moz-box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     0 0 60px 10px rgba(99, 102, 241, 0.4),
-    inset 0 0 20px rgba(112, 168, 247, 0.2);
-  transform: translateY(-3px) scale(1.04);
-}
-.dyvix-file-midnight:hover p {
-  color: rgba(137, 182, 246, 0.9);
-  transition: color 0.3s ease-in-out;
+    inset 0 0 20px rgba(112, 168, 247, 0.2)
+  );
+  transform: var(--dyvix-file-hover-transform, translateY(-3px) scale(1.04));
 }
 .dyvix-file-crimson {
-  background: #1a0000;
-  border: 1px solid #ff4d4d;
-  border-radius: 10px;
-  box-shadow: 0 0 18px rgba(255, 77, 77, 0.25);
-  transition:
-    background-color 0.25s ease,
+  background: var(--dyvix-file-bg, #1a0000);
+  border-width: var(--dyvix-file-border-width, 1px);
+  border-style: var(--dyvix-file-border-style, solid);
+  border-color: var(--dyvix-file-border-color, #ff4d4d);
+  color: var(--dyvix-file-color, #ffd6d6);
+  border-radius: var(--dyvix-file-border-radius, 10px);
+  box-shadow: var(--dyvix-file-box-shadow, 0 0 18px rgba(255, 77, 77, 0.25));
+  transition: var(
+    --dyvix-file-transition,
+    background 0.25s ease,
     border-color 0.25s ease,
     transform 0.2s ease,
-    box-shadow 0.25s ease;
-}
-
-.dyvix-file-crimson p {
-  color: #ffd6d6;
-}
-
-.dyvix-file-crimson:hover {
-  background: #2a0000;
-  border-color: #ff6666;
-  transform: scale(1.01);
-  box-shadow: 0 0 26px rgba(255, 77, 77, 0.4);
-}
-
-.dyvix-file-crimson:hover p {
-  color: #ffffff;
-}
-
-.dyvix-file-obsidian {
-  background: radial-gradient(
-    circle at top,
-    #2a2a2a 0%,
-    #151515 45%,
-    #050505 100%
+    box-shadow 0.25s ease
   );
-  border: 2px solid rgba(160, 130, 255, 0.4);
-  border-radius: 1.25rem;
-  box-shadow:
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
+}
+.dyvix-file-crimson:hover {
+  background: var(--dyvix-file-hover-bg, #2a0000);
+  border-color: var(--dyvix-file-hover-border-color, #ff6666);
+  color: var(--dyvix-file-hover-color, #ffffff);
+  transform: var(--dyvix-file-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    0 0 26px rgba(255, 77, 77, 0.4)
+  );
+}
+.dyvix-file-obsidian {
+  background: var(
+    --dyvix-file-bg,
+    radial-gradient(circle at top, #2a2a2a 0%, #151515 45%, #050505 100%)
+  );
+  color: var(--dyvix-file-color, #e5edff);
+  border-width: var(--dyvix-file-border-width, 2px);
+  border-style: var(--dyvix-file-border-style, solid);
+  border-color: var(--dyvix-file-border-color, rgba(160, 130, 255, 0.4));
+  border-radius: var(--dyvix-file-border-radius, 1.25rem);
+  box-shadow: var(
+    --dyvix-file-box-shadow,
     inset 0 0 40px rgba(255, 255, 255, 0.04),
-    0 0 40px rgba(120, 90, 255, 0.18);
-  transition:
+    0 0 40px rgba(120, 90, 255, 0.18)
+  );
+  transition: var(
+    --dyvix-file-transition,
     transform 0.3s ease,
     box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-.dyvix-file-obsidian p {
-  color: #e5edff;
-  transition: color 0.2s ease-in-out;
+    border-color 0.3s ease
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
 }
 .dyvix-file-obsidian:hover {
-  transform: scale(1.02);
-  box-shadow:
+  transform: var(--dyvix-file-hover-transform, scale(1.02));
+  color: var(--dyvix-file-hover-color, #ffffff);
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     inset 0 0 30px rgba(255, 255, 255, 0.05),
-    0 0 65px rgba(130, 100, 255, 0.25);
-  border-color: rgba(180, 150, 255, 0.7);
+    0 0 65px rgba(130, 100, 255, 0.25)
+  );
+  border-color: var(--dyvix-file-hover-border-color, rgba(180, 150, 255, 0.7));
+  background: var(--dyvix-file-hover-bg, inherit);
 }
-.dyvix-file-obsidian:hover p {
-  color: #ffffff;
-}
-
 .dyvix-file-coffee {
-  background:
+  background: var(
+    --dyvix-file-bg,
     radial-gradient(circle at top, rgba(255, 245, 225, 0.18), transparent 45%),
-    linear-gradient(135deg, #2d1b14, #5b3928 45%, #8d6243 100%);
-  color: #fef3e2;
-  border: 2px dashed #d2a679;
-  border-radius: 1rem;
-  box-shadow:
+    linear-gradient(135deg, #2d1b14, #5b3928 45%, #8d6243 100%)
+  );
+  color: var(--dyvix-file-color, #fef3e2);
+  border-width: var(--dyvix-file-border-width, 2px);
+  border-style: var(--dyvix-file-border-style, dashed);
+  border-color: var(--dyvix-file-border-color, #d2a679);
+  border-radius: var(--dyvix-file-border-radius, 1rem);
+  box-shadow: var(
+    --dyvix-file-box-shadow,
     inset 0 0 30px rgba(255, 244, 230, 0.08),
-    0 0 45px rgba(155, 100, 55, 0.45);
-  transition:
+    0 0 45px rgba(155, 100, 55, 0.45)
+  );
+  transition: var(
+    --dyvix-file-transition,
     transform 0.35s ease,
     box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    border-color 0.35s ease
+  );
+  font-family: var(--dyvix-file-font-family, inherit);
+  font-size: var(--dyvix-file-font-size, inherit);
+  font-weight: var(--dyvix-file-font-weight, inherit);
 }
-
-.dyvix-file-coffee p {
-  color: rgba(254, 243, 226, 0.7);
-}
-
 .dyvix-file-coffee:hover {
-  transform: translateY(-3px);
-  border-color: #f3c88c;
-  box-shadow:
+  transform: var(--dyvix-file-hover-transform, translateY(-3px));
+  border-color: var(--dyvix-file-hover-border-color, #f3c88c);
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
     inset 0 0 35px rgba(255, 245, 235, 0.12),
-    0 0 70px rgba(205, 140, 75, 0.6);
-}
-
-.dyvix-file-coffee:hover p {
-  color: #fef3e2;
+    0 0 70px rgba(205, 140, 75, 0.6)
+  );
+  color: var(--dyvix-file-hover-color, #fef3e2);
+  background: var(--dyvix-file-hover-bg, inherit);
 }

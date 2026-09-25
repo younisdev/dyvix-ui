@@ -85,6 +85,21 @@ GenerateOverridesTypes(
   './src/components/modal/dependencies/modal.types.tsx',
   'modal'
 );
+UseCSSVar(
+  './src/components/modal/dependencies/style/themes.css',
+  'modal',
+  './src/components/modal/dependencies/modal.overrides.json'
+);
+GenerateOverridesTypes(
+  './src/components/file/dependencies/file.overrides.json',
+  './src/components/file/dependencies/file.types.tsx',
+  'file'
+);
+UseCSSVar(
+  './src/components/file/dependencies/style/themes.css',
+  'file',
+  './src/components/file/dependencies/file.overrides.json'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

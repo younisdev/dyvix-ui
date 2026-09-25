@@ -1,6 +1,8 @@
 .dyvix-file-wrapper {
   position: relative;
-  width: 200px;
+  width: var(--dyvix-file-width, 200px);
+  height: var(--dyvix-file-height, auto);
+  margin: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,30 +10,71 @@
 }
 .dyvix-file {
   width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
   display: flex;
-  padding: 0 0.5rem;
+  padding: var(--dyvix-file-padding, 0 0.5rem);
   flex-direction: row;
   justify-content: center;
   align-items: center;
   min-height: 42px;
   height: 100%;
   gap: 0.5rem;
-  border: 3px dashed rgba(0, 0, 0, 0.3);
-  border-radius: 2rem;
-  background-color: rgb(73, 220, 237);
-  transition:
+  border-width: var(--dyvix-file-border-width, 3px);
+  border-style: var(--dyvix-file-border-style, dashed);
+  border-radius: var(--dyvix-file-border-radius, 2rem);
+  color: var(
+    --dyvix-file-color,
+    color-mix(in srgb, currentColor 50%, transparent)
+  );
+  letter-spacing: var(--dyvix-file-letter-spacing, normal);
+  transition: var(
+    --dyvix-file-transition,
     transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s ease,
+    border-color 0.2s ease
+  );
 }
 .dyvix-file:hover {
-  transform: scale(1.03);
-  background-color: rgb(63, 210, 227);
-  border-color: rgba(0, 0, 0, 0.6);
+  color: var(
+    --dyvix-file-hover-color,
+    var(--dyvix-file-color, color-mix(in srgb, currentColor 70%, transparent))
+  );
+  transform: var(--dyvix-file-hover-transform, scale(1.03));
+  border-width: var(
+    --dyvix-file-hover-border-width,
+    var(--dyvix-file-border-width, 3px)
+  );
+  border-style: var(
+    --dyvix-file-hover-border-style,
+    var(--dyvix-file-border-style, dashed)
+  );
+  border-radius: var(
+    --dyvix-file-hover-border-radius,
+    var(--dyvix-file-border-radius, 2rem)
+  );
 }
-.dyvix-file:active {
-  transform: scale(0.98);
+.dyvix-file-default {
+  background: var(--dyvix-file-bg, rgb(73, 220, 237));
+  border-color: var(--dyvix-file-border-color, rgba(0, 0, 0, 0.3));
+  font-family: var(--dyvix-file-font-family, system-ui, sans-serif);
+  font-size: var(--dyvix-file-font-size, 0.875rem);
+  font-weight: var(--dyvix-file-font-weight, 500);
+  box-shadow: var(--dyvix-file-box-shadow, none);
+}
+.dyvix-file-default:hover {
+  background: var(
+    --dyvix-file-hover-bg,
+    var(--dyvix-file-bg, rgb(164, 230, 237))
+  );
+  border-color: var(
+    --dyvix-file-hover-border-color,
+    var(--dyvix-file-border-color, rgba(0, 0, 0, 0.6))
+  );
+  box-shadow: var(
+    --dyvix-file-hover-box-shadow,
+    var(--dyvix-file-box-shadow, none)
+  );
 }
 .dyvix-file-hidden {
   display: none !important;
@@ -41,7 +84,7 @@
   padding: 0;
   overflow: hidden;
   border: none;
-  background-color: transparent;
+  background: transparent;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
   white-space: nowrap;
@@ -60,7 +103,7 @@
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
   font-weight: 600;
   margin: 0;
-  color: rgba(0, 0, 0, 0.8);
+  color: inherit;
 }
 .dyvix-file-icon {
   font-size: 2rem;

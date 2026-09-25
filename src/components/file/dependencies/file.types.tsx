@@ -35,6 +35,48 @@ export type DyvixFileThemes =
   | 'Obsidian'
   | 'Coffee';
 
+export interface DyvixFileBaseOverride {
+  '--dyvix-file-padding'?:
+    '8px 16px' | '10px 22px' | '12px 24px' | (string & {});
+  '--dyvix-file-color'?: string & {};
+  '--dyvix-file-letter-spacing'?: '-0.02em' | '-0.01em' | '0em' | (string & {});
+  '--dyvix-file-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-file-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | 'none' | (string & {});
+  '--dyvix-file-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-file-transition'?: (string & {}) | 'none';
+  '--dyvix-file-hover-color'?: string & {};
+  '--dyvix-file-hover-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+  '--dyvix-file-hover-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-file-hover-border-style'?:
+    'solid' | 'dashed' | (string & {}) | 'none';
+  '--dyvix-file-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+}
+
+export interface DyvixFileDefaultOverride {
+  '--dyvix-file-bg'?: (string & {}) | 'transparent';
+  '--dyvix-file-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-file-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-file-font-weight'?: 400 | 500 | 600 | 700 | (string & {});
+  '--dyvix-file-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-file-box-shadow'?:
+    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
+  '--dyvix-file-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-file-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-file-hover-box-shadow'?:
+    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+}
+
+export interface DyvixFileWrapperOverride {
+  '--dyvix-file-width'?: 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-file-height'?: 'fit-content' | '100%' | 'auto' | (string & {});
+}
+
 /*--!/--*/
 
 // Edit here safely
@@ -44,6 +86,9 @@ export interface DyvixFileProps extends React.InputHTMLAttributes<HTMLInputEleme
   theme?: DyvixFileThemes | null;
   className?: string;
   animation?: DyvixFileAnimation | null;
+  overrides?: DyvixFileWrapperOverride &
+    DyvixFileDefaultOverride &
+    DyvixFileBaseOverride;
   background?: string;
   color?: string;
   multiple?: boolean;
