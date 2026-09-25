@@ -90,6 +90,11 @@ UseCSSVar(
   'modal',
   './src/components/modal/dependencies/modal.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/file/dependencies/file.overrides.json',
+  './src/components/file/dependencies/file.types.tsx',
+  'file'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

@@ -261,12 +261,15 @@
   transform: var(--dyvix-modal-hover-transform, scale(1.01));
   border-color: var(--dyvix-modal-hover-border-color, none);
   box-shadow: var(--dyvix-modal-hover-box-shadow, inherit);
-  background: var(--dyvix-modal-hover-bg,     radial-gradient(
+  background: var(
+    --dyvix-modal-hover-bg,
+    radial-gradient(
       circle,
       rgba(77, 238, 234, 1) 0%,
       rgba(112, 186, 239, 1) 43%,
       rgba(240, 0, 255, 1) 100%
-    ));
+    )
+  );
 }
 .dyvix-modal-aurora {
   background: var(
@@ -324,14 +327,17 @@
     0px 0px 275px 88px rgba(1, 176, 179, 1)
   );
   border-color: var(--dyvix-modal-hover-border-color, rgba(255, 255, 255, 0.1));
-  background: var(--dyvix-modal-hover-bg,     linear-gradient(
+  background: var(
+    --dyvix-modal-hover-bg,
+    linear-gradient(
       90deg,
       rgba(20, 232, 30, 1) 0%,
       rgba(0, 234, 141, 1) 21%,
       rgba(1, 177, 179, 1) 46%,
       rgba(1, 126, 213, 1) 76%,
       rgba(181, 61, 255, 1) 100%
-    ));
+    )
+  );
 }
 .dyvix-modal-sunset {
   background: var(
@@ -383,7 +389,10 @@
   );
   border-radius: var(--dyvix-modal-hover-border-radius, 15px);
   border-color: var(--dyvix-modal-hover-border-color, rgba(255, 198, 15, 0.1));
-  background: var(--dyvix-modal-hover-bg, linear-gradient(135deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%));
+  background: var(
+    --dyvix-modal-hover-bg,
+    linear-gradient(135deg, #1a0a00 0%, #3d1a00 40%, #6b2d00 70%, #8b3a00 100%)
+  );
 }
 .dyvix-modal-ocean {
   background: var(--dyvix-modal-bg, linear-gradient(200deg, #001220, #023862));
@@ -431,7 +440,10 @@
     0 0 70px rgba(0, 100, 255, 0.25),
     inset 0 0 40px rgba(0, 150, 255, 0.08)
   );
-  background: var(--dyvix-modal-hover-bg, linear-gradient(200deg, #001220, #023862));
+  background: var(
+    --dyvix-modal-hover-bg,
+    linear-gradient(200deg, #001220, #023862)
+  );
 }
 .dyvix-modal-forest {
   background: var(
@@ -483,12 +495,15 @@
     inset 0px 0px 50px 15px rgba(163, 236, 101, 0.5)
   );
   border-color: var(--dyvix-modal-hover-border-color, #86a86b);
-  background: var(--dyvix-modal-hover-bg,     radial-gradient(
+  background: var(
+    --dyvix-modal-hover-bg,
+    radial-gradient(
       circle,
       rgba(31, 59, 44, 1) 14%,
       rgba(31, 59, 44, 1) 24%,
       rgba(75, 58, 42, 1) 71%
-    ));
+    )
+  );
 }
 .dyvix-modal-midnight {
   background: var(
@@ -577,7 +592,10 @@
     inset 0 0 30px rgba(255, 100, 100, 0.12)
   );
   border-color: var(--dyvix-modal-hover-border-color, rgba(255, 80, 80, 0.4));
-  background: var(--dyvix-modal-hover-bg, linear-gradient(135deg, #200000 0%, #4a0000 100%));
+  background: var(
+    --dyvix-modal-hover-bg,
+    linear-gradient(135deg, #200000 0%, #4a0000 100%)
+  );
 }
 .dyvix-modal-obsidian {
   background: var(
@@ -742,7 +760,9 @@
     inset 0 0 35px rgba(255, 183, 197, 0.12),
     0 0 75px rgba(255, 105, 140, 0.4)
   );
-  background: var(--dyvix-modal-hover-bg, radial-gradient(
+  background: var(
+    --dyvix-modal-hover-bg,
+    radial-gradient(
       circle at top left,
       rgba(255, 183, 197, 0.25),
       transparent 50%
@@ -752,7 +772,8 @@
       rgba(255, 105, 140, 0.15),
       transparent 50%
     ),
-    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%));
+    linear-gradient(135deg, #1a0a12 0%, #3d1528 40%, #5c1e3a 70%, #8b2e52 100%)
+  );
 }
 .dyvix-modal-sakura > div > .dyvix-modal-input {
   color: #fce4ec;
@@ -817,12 +838,15 @@
     0 0 60px rgba(255, 80, 0, 0.3),
     inset 0 0 40px rgba(255, 120, 0, 0.1)
   );
-  background: var(--dyvix-modal-hover-bg, radial-gradient(
+  background: var(
+    --dyvix-modal-hover-bg,
+    radial-gradient(
       circle at 50% 80%,
       rgba(255, 80, 0, 0.15) 0%,
       transparent 50%
     ),
-    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%));
+    linear-gradient(180deg, #1a0800 0%, #2d0e00 30%, #3d1200 60%, #1a0800 100%)
+  );
 }
 .dyvix-modal-volcanic > div > .dyvix-modal-input {
   color: #ffe8d0;
