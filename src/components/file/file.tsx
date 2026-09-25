@@ -154,7 +154,12 @@ const DyvixFile = React.forwardRef<HTMLDivElement, DyvixFileProps>(
       ...overrides
     };
     return (
-      <div className="dyvix-file-wrapper" ref={internalRef} {...wrapperProps} style={combinedWrapperStyle}>
+      <div
+        className="dyvix-file-wrapper"
+        ref={internalRef}
+        {...wrapperProps}
+        style={combinedWrapperStyle}
+      >
         <label {...props} htmlFor={`file-upload-${instanceId}`}>
           <div className="dyvix-file-ui">
             <span className="dyvix-file-icon">📁</span>

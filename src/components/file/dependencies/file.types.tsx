@@ -86,7 +86,9 @@ export interface DyvixFileProps extends React.InputHTMLAttributes<HTMLInputEleme
   theme?: DyvixFileThemes | null;
   className?: string;
   animation?: DyvixFileAnimation | null;
-  overrides?: DyvixFileWrapperOverride & DyvixFileDefaultOverride & DyvixFileBaseOverride;
+  overrides?: DyvixFileWrapperOverride &
+    DyvixFileDefaultOverride &
+    DyvixFileBaseOverride;
   background?: string;
   color?: string;
   multiple?: boolean;

@@ -95,6 +95,11 @@ GenerateOverridesTypes(
   './src/components/file/dependencies/file.types.tsx',
   'file'
 );
+UseCSSVar(
+  './src/components/file/dependencies/style/themes.css',
+  'file',
+  './src/components/file/dependencies/file.overrides.json'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

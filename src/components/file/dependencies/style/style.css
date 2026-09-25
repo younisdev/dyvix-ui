@@ -10,6 +10,7 @@
 }
 .dyvix-file {
   width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
   display: flex;
   padding: var(--dyvix-file-padding, 0 0.5rem);
