@@ -57,7 +57,8 @@ export default defineConfig({
               { text: 'Overview', link: 'components/modal/modal' },
               { text: 'Elements', link: 'components/modal/elements' },
               { text: 'Validations', link: 'components/modal/validation' },
-              { text: 'Presets', link: 'components/modal/presets' }
+              { text: 'Presets', link: 'components/modal/presets' },
+              { text: 'Overrides', link: 'components/modal/overrides' }
             ]
           },
           {
@@ -77,7 +78,14 @@ export default defineConfig({
               { text: 'Overrides', link: 'components/button/overrides' }
             ]
           },
-          { text: 'File', link: 'components/file/file' },
+          {
+            text: 'File',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/file/file' },
+              { text: 'Overrides', link: 'components/modal/overrides' }
+            ]
+          },
           {
             text: 'Input',
             collapsed: true,

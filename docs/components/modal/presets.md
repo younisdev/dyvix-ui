@@ -22,9 +22,9 @@ Dyvix provides a wide range of presets. You can trigger these by passing the str
 ## Usage
 
 ```jsx
-import { Modal } from 'dyvix-ui';
+import { DyvixModal } from 'dyvix-ui';
 
 function AuthModal() {
-  return <Modal preset="Login" title="Welcome Back" theme="Aurora" />;
+  return <DyvixModal preset="Login" title="Welcome Back" theme="Aurora" />;
 }
 ```

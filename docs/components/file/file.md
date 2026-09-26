@@ -23,6 +23,8 @@ A config-driven animated File component with support for themed and default colo
   - : `string`. Contains a custom class for your file, allowing more control for the developer.
 - `theme`
   - : `string`. Controls the design and the feel of the file. See the [Themes list](/guide/themes) for a full list.
+- `overrides`
+  - : `Record<string, string | number>`. An object of typed CSS Variables allowing deep easy-customization of the component. See [file overrides](/components/file/overrides) for more information.
 - `background`
   - : `string`. Controls the file background color and feel.
 - `color`

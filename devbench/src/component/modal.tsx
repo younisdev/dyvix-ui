@@ -1,4 +1,4 @@
-import { Modal, DYVIX_MODAL_ELEMENT } from '../../../src';
+import { DyvixModal, DYVIX_MODAL_ELEMENT } from '../../../src';
 
 export function ModalTest() {
   const types = Object.values(DYVIX_MODAL_ELEMENT);
@@ -35,13 +35,8 @@ export function ModalTest() {
   });
 
   return (
-    <Modal
+    <DyvixModal
       title="Register"
-      Id="register-modal"
-      className="testmodal"
-      type="form"
-      theme={'Singularity'}
-      animation={'drift'}
       elements={[
         {
           type: 'text',
