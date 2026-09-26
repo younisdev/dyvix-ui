@@ -237,6 +237,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
 
   const { style: splitElementStyles } = elementProps;
   const combinedWrapperStyle = {
+    ...(!animation && { opacity: 1 }),
     ...wrapperProps.style,
     ...overrides
   };
@@ -392,6 +393,14 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   useGSAP(() => {
     if (!modalRef.current || !dynamicHeight || !dynamicWidth) return;
 
+    if (!animation) {
+      gsap.set(modalRef.current, {
+        height: dynamicHeight,
+        width: dynamicWidth
+      });
+      return;
+    }
+
     gsap.to(modalRef.current, {
       height: dynamicHeight,
       width: dynamicWidth,
@@ -399,7 +408,8 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
       ease: 'power3.out',
       overwrite: 'auto'
     });
-  }, [dynamicHeight, dynamicWidth]);
+  }, [dynamicHeight, dynamicWidth, animation]);
+
   return (
     <>
       {visibility && (
