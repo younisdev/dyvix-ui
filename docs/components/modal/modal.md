@@ -1,11 +1,11 @@
 ---
-title: Dyvix Modal
+title: DyvixModal
 next:
   text: 'Modal elements'
-  link: 'components/modal/elements'
+  link: '/components/modal/elements'
 ---
 
-# Modal
+# DyvixModal
 
 ## Try it
 
@@ -25,6 +25,8 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
   - : `string`. Represents the type of the modal. Defaults to `form`. Supported types are `form` and `auth`.
 - `theme`
   - : `string`. Controls the design and the feel of the modal. See the [Themes list](/guide/themes) for a full list.
+- `overrides`
+  - : `Record<string, string | number>`. An object of typed CSS Variables allowing deep easy-customization of the component. See [modal overrides](/components/modal/overrides) for more information.
 - `background`
   - : `string`. Controls the modal background color.
 - `dynamicPositioning`
@@ -44,7 +46,7 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
     - `placeholder`
       - : `string | string[]`. The text displayed when the input is empty. If the amount is greater than 1 this must be provided as an array of strings with length matching that of the amount.
     - `id`
-      - : `string | string[]`. A Unique optional ID for indivisual fields, allowing more control for the developer. If the amount is greater than 1 this must be provided as an array of strings with length matching that of the amount.
+      - : `string | string[]`. A Unique optional ID for individual fields, allowing more control for the developer. If the amount is greater than 1 this must be provided as an array of strings with length matching that of the amount.
     - `options`
       - : `Array of Array[values]`. Required when type is `select`, `d-select`, or `autocomplete`. It provides selection data for the supported elements, the amount of sub-arrays must match the amount property. For example:
 
@@ -63,7 +65,7 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
         ```
 
     - `validation`
-      - : `string | string[]`. Defines the validation logic of the field. If the amount is greater than 1 this must be provided as an array of strings with length matching that of the amount. Support built-in preset found in [validators list](/components/modal/validation) or custom patterns by using pattern-embeding prefix `$R`. Moreover, you can embed a custom error message using the | separator. For example:
+      - : `string | string[]`. Defines the validation logic of the field. If the amount is greater than 1 this must be provided as an array of strings with length matching that of the amount. Supports built-in presets found in [validators list](/components/modal/validation) or custom patterns by using pattern-embedding prefix `$R`. Moreover, you can embed a custom error message using the | separator. For example:
 
         ```jsx
         {
@@ -97,12 +99,12 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
 
 ## Understanding Dyvix Constants
 
-Dyvix constants are a built-in configuration engine designed to eliminate "magic strings" and provide a type-safe environment for dyvix users. By using these exported constants you benefit from IDE autocompletion preventing common typos that could break your UI. The modal component currently supports 5 constants groups:
+Dyvix constants are a built-in configuration engine designed to eliminate "magic strings" and provide a type-safe environment for JavaScript dyvix users. By using these exported constants you benefit from IDE autocompletion preventing common typos that could break your UI. The modal component currently supports 5 constants groups:
 
 - `DYVIX_GLOBAL_THEME`
   - : Used in the theme attribute e.g. `theme={DYVIX_GLOBAL_THEME.NEON}`.
 - `DYVIX_GLOBAL_ANIMATION`
-  - : Used in the animation attribute e.g. `animation={DYVIX_GLOBAL_ANIMATION.AURORA}`.
+  - : Used in the animation attribute e.g. `animation={DYVIX_GLOBAL_ANIMATION.SINGULARITY}`.
 - `DYVIX_MODAL_TYPE`
   - : Used in the modal type e.g. `type={DYVIX_MODAL_TYPE.AUTH}`
 - `DYVIX_MODAL_VALIDATION_PRESET`
@@ -123,7 +125,7 @@ function ModalExample() {
       title="Register"
       Id="register-modal"
       className="modal"
-      theme="Aurora"
+      theme="SINGULARITY"
       animation="glitch"
       type="form"
       elements={[
@@ -179,7 +181,7 @@ function ModalExample() {
       title="Register"
       Id="register-modal"
       className="modal"
-      theme={DYVIX_GLOBAL_THEME.AURORA}
+      theme={DYVIX_GLOBAL_THEME.SINGULARITY}
       animation={DYVIX_GLOBAL_ANIMATION.GLITCH}
       type={DYVIX_MODAL_TYPE.AUTH}
       elements={[

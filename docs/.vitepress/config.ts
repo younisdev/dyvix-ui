@@ -57,7 +57,8 @@ export default defineConfig({
               { text: 'Overview', link: 'components/modal/modal' },
               { text: 'Elements', link: 'components/modal/elements' },
               { text: 'Validations', link: 'components/modal/validation' },
-              { text: 'Presets', link: 'components/modal/presets' }
+              { text: 'Presets', link: 'components/modal/presets' },
+              { text: 'Overrides', link: 'components/modal/overrides' }
             ]
           },
           {

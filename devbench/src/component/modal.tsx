@@ -37,11 +37,6 @@ export function ModalTest() {
   return (
     <DyvixModal
       title="Register"
-      Id="register-modal"
-      className="testmodal"
-      type="form"
-      theme={'Singularity'}
-      animation={'drift'}
       elements={[
         {
           type: 'text',
