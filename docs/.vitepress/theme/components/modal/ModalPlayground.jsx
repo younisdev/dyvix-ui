@@ -1,4 +1,4 @@
-import { Modal } from 'dyvix-ui';
+import { DyvixModal } from 'dyvix-ui';
 import Wrapper from '../Wrapper';
 import React from 'react';
 import {
@@ -179,9 +179,9 @@ export default function ModalPlayground() {
     <Wrapper
       componentConfig={config}
       componentCallback={setConfig}
-      tag={'Modal'}
+      tag={'DyvixModal'}
     >
-      <Modal onClick={() => console.log('clicked')} {...probs} />
+      <DyvixModal onClick={() => console.log('clicked')} {...probs} />
     </Wrapper>
   );
 }

@@ -35,7 +35,7 @@ const componentsMap: Record<string, React.ElementType> = {
   DyvixInput: DyvixInput
 };
 
-const Modal: React.FC<DyvixModalProps> = ({
+const DyvixModal: React.FC<DyvixModalProps> = ({
   title,
   type = 'form',
   elements,
@@ -666,4 +666,4 @@ const Modal: React.FC<DyvixModalProps> = ({
   );
 };
 
-export default Modal;
+export default DyvixModal;

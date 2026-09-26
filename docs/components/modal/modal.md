@@ -115,11 +115,11 @@ Dyvix constants are a built-in configuration engine designed to eliminate "magic
 ### Without Dyvix Constants
 
 ```jsx
-import { Modal } from 'dyvix-ui';
+import { DyvixModal } from 'dyvix-ui';
 
 function ModalExample() {
   return (
-    <Modal
+    <DyvixModal
       title="Register"
       Id="register-modal"
       className="modal"
@@ -165,7 +165,7 @@ function ModalExample() {
 
 ```jsx
 import {
-  Modal,
+  DyvixModal,
   DYVIX_GLOBAL_THEME,
   DYVIX_MODAL_VALIDATION_PRESET,
   DYVIX_GLOBAL_ANIMATION,
@@ -175,7 +175,7 @@ import {
 
 function ModalExample() {
   return (
-    <Modal
+    <DyvixModal
       title="Register"
       Id="register-modal"
       className="modal"

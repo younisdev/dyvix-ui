@@ -42,11 +42,11 @@ npm i dyvix-ui
 ### Form Modal Engine
 
 ```jsx
-import { Modal } from 'dyvix-ui';
+import { DyvixModal } from 'dyvix-ui';
 
 function ModalExample() {
   return (
-    <Modal
+    <DyvixModal
       title="Register"
       type="form"
       animation="bubble" // bubble | fade | zoom | unfold | glitch | pulse | aurora | drop | flip | glide | drift | float | swing | slideRight | spiral | bounce

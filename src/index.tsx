@@ -1,4 +1,4 @@
-export { default as Modal } from './components/modal/modal';
+export { default as DyvixModal } from './components/modal/modal';
 export { default as DyvixSelect } from './components/select/SelectCompiler';
 export * from './constants';
 export { default as DyvixToastContainer } from './components/toast/toastContainer';

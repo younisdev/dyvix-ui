@@ -15,11 +15,11 @@ npm i dyvix-ui
 ```jsx
 // Basic usage
 
-import { Modal } from 'dyvix-ui';
+import { DyvixModal } from 'dyvix-ui';
 
 function ModalExample() {
   return (
-    <Modal
+    <DyvixModal
       title="Register"
       animation="bubble"
       Id="register-modal"
