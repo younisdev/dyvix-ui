@@ -1,11 +1,11 @@
 ---
-title: DyvixModal
+title: Dyvix Modal
 next:
   text: 'Modal elements'
   link: '/components/modal/elements'
 ---
 
-# DyvixModal
+# Modal
 
 ## Try it
 

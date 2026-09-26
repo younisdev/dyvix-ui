@@ -78,7 +78,14 @@ export default defineConfig({
               { text: 'Overrides', link: 'components/button/overrides' }
             ]
           },
-          { text: 'File', link: 'components/file/file' },
+          {
+            text: 'File',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: 'components/file/file' },
+              { text: 'Overrides', link: 'components/modal/overrides' }
+            ]
+          },
           {
             text: 'Input',
             collapsed: true,
