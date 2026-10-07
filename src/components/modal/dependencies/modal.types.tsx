@@ -172,11 +172,8 @@ export interface NormalizedDyvixElements extends Omit<
   options?: string[][];
 }
 
-export interface DyvixModalProps {
-  title?: string;
+interface DyvixBaseModalProps {
   type?: DyvixModalTypes;
-  elements?: DyvixElements[];
-  preset?: DyvixModalPresets;
   theme?: DyvixModalThemes | null;
   background?: string;
   animation?: DyvixModalAnimation | null;
@@ -194,3 +191,16 @@ export interface DyvixModalProps {
   style?: React.CSSProperties;
   timeline?: gsap.core.Timeline | null;
 }
+
+type DyvixModalPropsWithoutPreset = DyvixBaseModalProps & {
+  title: string;
+  elements: DyvixElements[];
+  preset?: DyvixModalPresets;
+};
+type DyvixModalPropsWithPreset = DyvixBaseModalProps & {
+  elements?: DyvixElements[];
+  title?: string;
+  preset: DyvixModalPresets;
+};
+export type DyvixModalProps =
+  DyvixModalPropsWithoutPreset | DyvixModalPropsWithPreset;
