@@ -252,8 +252,6 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   };
   if (currentPreset) {
     title = title || currentPreset['default-title'];
-    animation = animation || currentPreset['default-animation'] || 'fade';
-    theme = theme || currentPreset['default-theme'] || 'Singularity';
   }
 
   React.useEffect(() => {

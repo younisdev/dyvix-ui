@@ -173,7 +173,7 @@ export interface NormalizedDyvixElements extends Omit<
 }
 
 export interface DyvixModalProps {
-  title: string;
+  title?: string;
   type?: DyvixModalTypes;
   elements?: DyvixElements[];
   preset?: DyvixModalPresets;

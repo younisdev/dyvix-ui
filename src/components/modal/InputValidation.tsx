@@ -56,7 +56,7 @@ async function getSupportedElements(): Promise<DyvixModalElementTypes[]> {
   return Object.values(DYVIX_MODAL_ELEMENT) as DyvixModalElementTypes[];
 }
 export async function SerializeData(
-  title: string,
+  title: string | undefined,
   type: DyvixModalTypes,
   elements: DyvixElements[] | undefined,
   preset: DyvixModalPresets | undefined,
@@ -104,7 +104,7 @@ export async function SerializeData(
   return normalizedElements;
 }
 export async function ValidateInput(
-  title: string,
+  title: string | undefined,
   type: DyvixModalTypes,
   elements: DyvixElements[] | undefined,
   preset: DyvixModalPresets | undefined,
@@ -130,7 +130,7 @@ export async function ValidateInput(
     component,
     instance
   );
-  if (normalizedTheme && isTheme.status && !normalizedAnimation && preset) {
+  if (normalizedTheme && isTheme.status && !normalizedAnimation) {
     normalizedAnimation = isTheme.config.theme['default-animation'];
   }
   const [isAnimation, isPreset] = await Promise.all([
@@ -169,7 +169,7 @@ export async function ValidateInput(
       error: 'Please provide a valid animation.'
     };
   }
-  if (!isTheme.status && preset && theme) {
+  if (!isTheme.status && normalizedTheme && !allowsNull(normalizedTheme)) {
     return {
       status: GuardStatus.Error,
       error: 'Please provide a valid theme.'
