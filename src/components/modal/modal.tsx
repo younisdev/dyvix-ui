@@ -153,7 +153,8 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
     SetErrors(newErrors);
     return newErrors;
   }
-  function handleSubmit() {
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+    e.preventDefault();
     const newErrors = handleValidation(data);
     const allow = Object.values(newErrors).every((val) => val === null);
     if (typeof onSubmit === 'function' && allow) {
@@ -252,8 +253,6 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   };
   if (currentPreset) {
     title = title || currentPreset['default-title'];
-    animation = animation || currentPreset['default-animation'] || 'fade';
-    theme = theme || currentPreset['default-theme'] || 'Singularity';
   }
 
   React.useEffect(() => {
@@ -422,7 +421,12 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
           {...wrapperProps}
           style={combinedWrapperStyle}
         >
-          <div className={serializedClassName} id={Id} style={modalStyles}>
+          <form
+            className={serializedClassName}
+            id={Id}
+            style={modalStyles}
+            onSubmit={handleSubmit}
+          >
             {currentType?.closable && (
               <button
                 className="modal-close-btn"
@@ -661,15 +665,15 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
             })}
             {currentType?.submit && (
               <DyvixButton
+                type="submit"
                 className="dyvix-modal-button"
-                onClick={handleSubmit}
                 theme={(theme?.toLowerCase() as DyvixButtonThemes) || null}
                 animation={null}
               >
                 {currentType.submitLabel}
               </DyvixButton>
             )}
-          </div>
+          </form>
         </div>
       )}
     </>

@@ -27,11 +27,11 @@ export type DyvixSelectThemes =
   | 'Blade'
   | 'Neon'
   | 'Aurora'
-  | 'Obsidian'
   | 'Sunset'
   | 'Ocean'
   | 'Forest'
-  | 'Midnight';
+  | 'Midnight'
+  | 'Obsidian';
 
 export interface DyvixSelectBaseOverride {
   '--dyvix-select-color'?: string & {};

@@ -26,8 +26,6 @@
         "validation": "password"
       }
     ],
-    "default-animation": "bubble",
-    "default-theme": "Singularity",
     "default-title": "Register"
   },
   {
@@ -49,8 +47,6 @@
         "validation": "password"
       }
     ],
-    "default-animation": "fade",
-    "default-theme": "Industrial",
     "default-title": "Login"
   },
   {
@@ -65,8 +61,6 @@
         "amount": 1
       }
     ],
-    "default-animation": "aurora",
-    "default-theme": "Frost",
     "default-title": "Forgot Password"
   },
   {
@@ -89,8 +83,6 @@
         "amount": 1
       }
     ],
-    "default-animation": "flip",
-    "default-theme": "Aurora",
     "default-title": "Reset Password"
   },
   {
@@ -121,8 +113,6 @@
         "amount": 1
       }
     ],
-    "default-animation": "glide",
-    "default-theme": "Midnight",
     "default-title": "Change Password"
   }
 ]
