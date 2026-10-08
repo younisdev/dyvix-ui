@@ -27,6 +27,7 @@ export type DyvixSelectThemes =
   | 'Blade'
   | 'Neon'
   | 'Aurora'
+  | 'Obsidian'
   | 'Sunset'
   | 'Ocean'
   | 'Forest'

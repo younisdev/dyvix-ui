@@ -75,5 +75,12 @@
     "input-class": "dyvix-select-input-aurora",
     "dropdown-class": "dyvix-select-dropdown-aurora",
     "default-animation": "aurora"
+  },
+  {
+    "theme": "Obsidian",
+    "class": "dyvix-select-obsidian",
+    "input-class": "dyvix-select-input-obsidian",
+    "dropdown-class": "dyvix-select-dropdown-obsidian",
+    "default-animation": "fade"
   }
 ]
