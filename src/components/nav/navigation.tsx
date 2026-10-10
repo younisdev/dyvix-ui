@@ -50,9 +50,12 @@ const DyvixNav = Object.assign(
       // only used when config-driven mode is active for microanimations
       const subRef = React.useRef<(HTMLDivElement | null)[]>([]);
       const currentAnimation = animation ? (configs as any)['animation'] : null;
-      const currentMicroAnimation = microanimation
-        ? (configs as any)['microanimation']
-        : currentAnimation;
+      const currentMicroAnimation =
+        microanimation === null
+          ? null
+          : microanimation !== undefined
+            ? (configs as any)['microanimation']
+            : currentAnimation;
       const currentTheme = theme ? (configs as any)['theme'] : null;
       // Only active when config-driven mode is active
       const ConstructNav = () => {
@@ -117,7 +120,11 @@ const DyvixNav = Object.assign(
 
       useGSAP(
         () => {
-          if (!internalRef.current || !currentAnimation) return;
+          if (
+            !internalRef.current ||
+            (!currentAnimation && !currentMicroAnimation)
+          )
+            return;
           const activeTheme = theme ?? currentTheme ?? null;
           const activeAnim = animation ?? null;
           const activeSubAnim = microanimation ?? currentMicroAnimation ?? null;
@@ -154,9 +161,9 @@ const DyvixNav = Object.assign(
             }
           }
           if (subRef.current.length > 0 && currentMicroAnimation) {
-            const delay = currentAnimation['default-duration']
-              ? currentAnimation['default-duration'] -
-                currentAnimation['default-duration'] / 3.5
+            const delay = currentMicroAnimation['default-duration']
+              ? currentMicroAnimation['default-duration'] -
+                currentMicroAnimation['default-duration'] / 3.5
               : 0;
             gsap.set(subRef.current, currentMicroAnimation.from);
 
