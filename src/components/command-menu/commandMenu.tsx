@@ -20,6 +20,7 @@ const DyvixCommandMenu = React.forwardRef<
   const internalRef = React.useRef<HTMLDivElement | null>(null);
   const [logs, setLogs] = React.useState<Dyvixlogs[]>([]);
   const logContainerRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null)
 
   React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
@@ -63,6 +64,7 @@ const DyvixCommandMenu = React.forwardRef<
     []
   );
   React.useEffect(() => {
+    inputRef.current?.focus();
     const originalLog = console.log;
     const originalWarn = console.warn;
     const originalError = console.error;
@@ -117,6 +119,11 @@ const DyvixCommandMenu = React.forwardRef<
 
     logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
   }, [logs, autoScroll]);
+
+  const handelContainerClick = () => {
+    inputRef.current?.focus();
+  }
+
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
     ...rest
@@ -147,7 +154,7 @@ const DyvixCommandMenu = React.forwardRef<
           <span>Console</span>
           <button>X</button>
         </h1>
-        <div className="dyvix-command-menu-container" ref={logContainerRef}>
+        <div className="dyvix-command-menu-container" ref={logContainerRef} onClick={handelContainerClick}>
           {logs.map((log: Dyvixlogs) => {
             return (
               <div
@@ -166,6 +173,7 @@ const DyvixCommandMenu = React.forwardRef<
               </div>
             );
           })}
+          <input className={`dyvix-command-menu-button`} type='text' ref={inputRef} />
         </div>
       </div>
     </div>

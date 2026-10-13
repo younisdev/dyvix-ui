@@ -25,6 +25,8 @@
   border-color: #141417;
 }
 .dyvix-command-menu-container {
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
@@ -83,4 +85,14 @@
 .dyvix-command-menu-header button:hover {
   background: rgba(252, 129, 129, 0.12);
   color: #fc8181;
+}
+.dyvix-command-menu-button {
+  width: 100%;
+  color: #d4d4d8;
+  background: inherit;
+  border: none;
+  white-space: pre-wrap;
+  font-family: monospace;
+  overflow: hidden;
+  outline: none;
 }
