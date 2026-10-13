@@ -26,6 +26,7 @@
 }
 .dyvix-command-menu-container {
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 .dyvix-command-menu-container::-webkit-scrollbar {
   width: 6px;

@@ -4,4 +4,6 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 // Edit here safely
 
-export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {}
+export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {
+  autoScroll?: boolean;
+}

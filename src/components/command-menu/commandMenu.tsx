@@ -16,9 +16,10 @@ interface Dyvixlogs {
 const DyvixCommandMenu = React.forwardRef<
   HTMLDivElement,
   DyvixCommandMenuProps
->(({ style, className, ...rest }, ref) => {
+>(({ autoScroll = true, style, className, ...rest }, ref) => {
   const internalRef = React.useRef<HTMLDivElement | null>(null);
   const [logs, setLogs] = React.useState<Dyvixlogs[]>([]);
+  const logContainerRef = React.useRef<HTMLDivElement>(null);
 
   React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
@@ -110,6 +111,12 @@ const DyvixCommandMenu = React.forwardRef<
       console.error = originalError;
     };
   }, []);
+
+  React.useEffect(() => {
+    if (!logContainerRef.current || !autoScroll) return;
+
+    logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
+  }, [logs, autoScroll]);
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
     ...rest
@@ -140,7 +147,7 @@ const DyvixCommandMenu = React.forwardRef<
           <span>Console</span>
           <button>X</button>
         </h1>
-        <div className="dyvix-command-menu-container">
+        <div className="dyvix-command-menu-container" ref={logContainerRef}>
           {logs.map((log: Dyvixlogs) => {
             return (
               <div
