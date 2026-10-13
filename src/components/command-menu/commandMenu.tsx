@@ -124,6 +124,15 @@ const DyvixCommandMenu = React.forwardRef<
     inputRef.current?.focus();
   }
 
+  const handleInputSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if(e.key === 'Enter') {
+      const command = e.currentTarget.value.trim();
+      if(!command) return;
+      pushLog('Log', command);
+      e.currentTarget.value = '';
+
+    }
+  }
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
     ...rest
@@ -173,7 +182,7 @@ const DyvixCommandMenu = React.forwardRef<
               </div>
             );
           })}
-          <input className={`dyvix-command-menu-button`} type='text' ref={inputRef} />
+          <input className={`dyvix-command-menu-button`} type='text' ref={inputRef} onKeyDown={handleInputSubmit} />
         </div>
       </div>
     </div>
