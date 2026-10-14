@@ -4,27 +4,25 @@ import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
-import type { DyvixCommandMenuProps } from './dependencies/command-menu.types';
-
-interface Dyvixlogs {
-  id: string;
-  type: 'Error' | 'Warning' | 'Log';
-  text: any;
-  timestamp: string;
-}
+import type {
+  CommandContext,
+  DyvixCommandMenuProps,
+  DyvixLog
+} from './dependencies/command-menu.types';
+import { defaultCommands } from './dependencies/defaultCommands';
 
 const DyvixCommandMenu = React.forwardRef<
   HTMLDivElement,
   DyvixCommandMenuProps
->(({ autoScroll = true, style, className, ...rest }, ref) => {
+>(({ autoScroll = true, style, className, commands, ...rest }, ref) => {
   const internalRef = React.useRef<HTMLDivElement | null>(null);
-  const [logs, setLogs] = React.useState<Dyvixlogs[]>([]);
+  const [logs, setLogs] = React.useState<DyvixLog[]>([]);
   const logContainerRef = React.useRef<HTMLDivElement>(null);
-  const inputRef = React.useRef<HTMLInputElement>(null)
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
 
-  const bufferRef = React.useRef<Dyvixlogs[]>([]);
+  const bufferRef = React.useRef<DyvixLog[]>([]);
   const scheduledRef = React.useRef<boolean>(false);
   const pushLog = React.useCallback(
     (type: 'Error' | 'Warning' | 'Log' = 'Log', ...args: any[]) => {
@@ -122,17 +120,68 @@ const DyvixCommandMenu = React.forwardRef<
 
   const handelContainerClick = () => {
     inputRef.current?.focus();
-  }
+  };
+
+  const executeAction = (cmd: string) => {
+    const [splitCommand, ...args] = cmd.split(/\s+/);
+
+    pushLog('Log', cmd);
+    if (!splitCommand) {
+      return;
+    }
+    const allCommands = [...defaultCommands, ...(commands || [])];
+
+    const action = allCommands?.find(
+      (command) =>
+        command.name === splitCommand || command.aliases?.includes(splitCommand)
+    );
+
+    if (!action) {
+      pushLog('Error', `Unknown command: ${splitCommand}`);
+      return;
+    }
+    if (action.name === 'clear') {
+      setLogs([]);
+      bufferRef.current = [];
+      return;
+    }
+    const context: CommandContext = {
+      clearLogs: () => setLogs([]),
+      printOutput: (message, type = 'Log') => pushLog(type, message),
+      commands: allCommands
+    };
+
+    try {
+      const result = action.execute(args, context);
+
+      if (typeof result === 'string') {
+        pushLog('Log', result);
+      } else if (result instanceof Promise) {
+        result
+          .then((asyncResult) => {
+            if (typeof asyncResult === 'string') {
+              pushLog('Log', asyncResult);
+            }
+          })
+          .catch((asyncError) => {
+            pushLog('Error', `Command error: ${asyncError}`);
+          });
+      }
+    } catch (error) {
+      pushLog('Error', `Command error: ${error}`);
+    }
+  };
 
   const handleInputSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       const command = e.currentTarget.value.trim();
-      if(!command) return;
-      pushLog('Log', command);
-      e.currentTarget.value = '';
+      if (!command) return;
 
+      executeAction(command);
+      e.currentTarget.value = '';
     }
-  }
+  };
+
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
     ...rest
@@ -163,8 +212,12 @@ const DyvixCommandMenu = React.forwardRef<
           <span>Console</span>
           <button>X</button>
         </h1>
-        <div className="dyvix-command-menu-container" ref={logContainerRef} onClick={handelContainerClick}>
-          {logs.map((log: Dyvixlogs) => {
+        <div
+          className="dyvix-command-menu-container"
+          ref={logContainerRef}
+          onClick={handelContainerClick}
+        >
+          {logs.map((log: DyvixLog) => {
             return (
               <div
                 key={log.id}
@@ -182,7 +235,12 @@ const DyvixCommandMenu = React.forwardRef<
               </div>
             );
           })}
-          <input className={`dyvix-command-menu-button`} type='text' ref={inputRef} onKeyDown={handleInputSubmit} />
+          <input
+            className={`dyvix-command-menu-button`}
+            type="text"
+            ref={inputRef}
+            onKeyDown={handleInputSubmit}
+          />
         </div>
       </div>
     </div>

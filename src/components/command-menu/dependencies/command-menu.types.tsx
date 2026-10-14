@@ -3,7 +3,33 @@ import type { HTMLAttributes, ReactNode } from 'react';
 /*--!/--*/
 
 // Edit here safely
+export type LogType = 'Error' | 'Warning' | 'Log';
+export interface DyvixLog {
+  id: string;
+  type: LogType;
+  text: any;
+  timestamp: string;
+}
+
+export interface CommandContext {
+  clearLogs: () => void;
+  printOutput: (message: string, type?: LogType) => void;
+  commands: readonly DyvixCommand[];
+}
+export type CommandResult = void | string;
+
+export interface DyvixCommand {
+  name: string;
+  description: string;
+  usage?: string;
+  aliases?: string[];
+  execute: (
+    args: string[],
+    context: CommandContext
+  ) => CommandResult | Promise<CommandResult>;
+}
 
 export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {
   autoScroll?: boolean;
+  commands?: DyvixCommand[];
 }

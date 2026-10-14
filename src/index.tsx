@@ -20,3 +20,11 @@ export { default as DyvixNavBrand } from './components/nav/DyvixNavBrand';
 export { default as DyvixMarquee } from './components/marquee/marquee';
 export { default as DyvixMarqueeItem } from './components/marquee/DyvixMarqueeItem';
 export { default as DyvixCommandMenu } from './components/command-menu/commandMenu';
+export type {
+  DyvixCommand,
+  CommandContext,
+  CommandResult,
+  DyvixLog,
+  LogType,
+  DyvixCommandMenuProps
+} from './components/command-menu/dependencies/command-menu.types';
