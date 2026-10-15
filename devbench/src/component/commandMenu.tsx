@@ -22,7 +22,6 @@ export function CommandMenuTest() {
           display: 'flex',
           gap: '8px',
           padding: '12px',
-          marginTop: '50px',
           background: '#111',
           border: '1px solid #333'
         }}

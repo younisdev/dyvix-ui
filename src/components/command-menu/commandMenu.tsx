@@ -24,6 +24,40 @@ const DyvixCommandMenu = React.forwardRef<
 
   const bufferRef = React.useRef<DyvixLog[]>([]);
   const scheduledRef = React.useRef<boolean>(false);
+  const isDraggingRef = React.useRef<boolean>(false);
+  const dragOffsetRef = React.useRef({ x: 0, y: 0 });
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLElement>) => {
+    if ((e.target as HTMLElement).tagName === 'button') return;
+
+    isDraggingRef.current = true;
+
+    if (internalRef.current) {
+      const rect = internalRef.current.getBoundingClientRect();
+
+      dragOffsetRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    }
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+  };
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!internalRef.current || !isDraggingRef.current) return;
+
+    const x = e.clientX - dragOffsetRef.current.x;
+    const y = e.clientY - dragOffsetRef.current.y;
+
+    internalRef.current.style.left = `${x}px`;
+    internalRef.current.style.top = `${y}px`;
+    internalRef.current.style.margin = '0';
+  };
+  const handleMouseUp = (e: MouseEvent) => {
+    isDraggingRef.current = false;
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mouseup', handleMouseUp);
+  };
   const pushLog = React.useCallback(
     (type: 'Error' | 'Warning' | 'Log' = 'Log', ...args: any[]) => {
       const formattedText = args
@@ -208,7 +242,7 @@ const DyvixCommandMenu = React.forwardRef<
       style={wrapperProps.style}
     >
       <div {...props}>
-        <h1 className="dyvix-command-menu-header">
+        <h1 className="dyvix-command-menu-header" onMouseDown={handleMouseDown}>
           <span>Console</span>
           <button>X</button>
         </h1>
