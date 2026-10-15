@@ -100,6 +100,16 @@ UseCSSVar(
   'file',
   './src/components/file/dependencies/file.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/command-menu/dependencies/command-menu.overrides.json',
+  './src/components/command-menu/dependencies/command-menu.types.tsx',
+  'commandMenu'
+);
+UseCSSVar(
+  './src/components/command-menu/dependencies/style/themes.css',
+  'command-menu',
+  './src/components/command-menu/dependencies/command-menu.overrides.json'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

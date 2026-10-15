@@ -1,10 +1,10 @@
 .dyvix-command-menu-wrapper {
-  display: block;
-  width: 50vw;
-  height: 30vh;
-  position: fixed;
-  top: 2rem;
-  z-index: 9999;
+  display: var(--dyvix-command-menu-display, block);
+  width: var(--dyvix-command-menu-width, 50vw);
+  height: var(--dyvix-command-menu-height, 30vh);
+  position: var(--dyvix-command-menu-position, fixed);
+  top: var(--dyvix-command-menu-top, 10px);
+  z-index: var(--dyvix-command-menu-z-index, 9999);
 }
 .dyvix-command-menu {
   display: flex;
@@ -12,22 +12,64 @@
   gap: 5px;
   width: 100%;
   height: 100%;
-  color: #d4d4d8;
+  color: var(--dyvix-command-menu-color, #d4d4d8);
+  letter-spacing: var(--dyvix-command-menu-letter-spacing);
   backdrop-filter: blur(10px);
-  border-radius: 6px;
-  border-style: solid;
-  border-width: 15px;
+  border-radius: var(--dyvix-command-menu-border-radius, 6px);
+  border-style: var(--dyvix-command-menu-border-style, solid);
+  border-width: var(--dyvix-command-menu-border-width, 15px);
   box-sizing: border-box;
+  transition: var(--dyvix-command-menu-transition, all 0.2s ease);
+}
+.dyvix-command-menu:hover {
+  color: var(
+    --dyvix-command-menu-hover-color,
+    var(--dyvix-command-menu-color, #d4d4d8)
+  );
+  border-radius: var(
+    --dyvix-command-menu-hover-border-radius,
+    var(--dyvix-command-menu-border-radius, 6px)
+  );
+  border-style: var(
+    --dyvix-command-menu-hover-border-style,
+    var(--dyvix-command-menu-border-style, solid)
+  );
+  border-width: var(
+    --dyvix-command-menu-hover-border-width,
+    var(--dyvix-command-menu-border-width, 15px)
+  );
+  transform: var(--dyvix-command-menu-hover-transform, none);
 }
 .dyvix-command-menu-default {
-  background: rgba(12, 12, 15, 0.96);
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-  font-weight: var(--dyvix-button-font-weight, 500);
-  font-size: 13px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-  border-color: #141417;
+  background: var(--dyvix-command-menu-bg, rgba(12, 12, 15, 0.96));
+  font-family: var(
+    --dyvix-command-menu-font-family,
+    'Consolas',
+    'Monaco',
+    'Courier New',
+    monospace
+  );
+  font-weight: var(--dyvix-command-menu-font-weight, 500);
+  font-size: var(--dyvix-command-menu-font-size, 13px);
+  box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    0 16px 40px rgba(0, 0, 0, 0.7)
+  );
+  border-color: var(--dyvix-command-menu-border-color, #141417);
+}
+.dyvix-command-menu-default:hover {
+  background: var(--dyvix-command-menu-hover-bg, rgba(12, 12, 15, 0.96));
+  box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    0 16px 40px rgba(0, 0, 0, 0.7)
+  );
+  border-color: var(--dyvix-command-menu-hover-border-color, #141417);
 }
 .dyvix-command-menu-container {
+  background: var(
+    --dyvix-command-menu-container-bg,
+    var(--dyvix-command-menu-bg, rgba(12, 12, 15, 0.96))
+  );
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -42,12 +84,19 @@
 }
 
 .dyvix-command-menu-container::-webkit-scrollbar-thumb {
-  background: #27272f;
+  background: var(
+    --dyvix-command-menu-container-webkit-scrollbar-thumb-bg,
+    #27272f
+  );
   border-radius: 3px;
+  transition: all 0.7S ease-in;
 }
 
 .dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: var(
+    --dyvix-command-menu-container-webkit-scrollbar-thumb-hover-bg,
+    #3f3f46
+  );
 }
 .dyvix-command-menu-item {
   display: flex;
@@ -55,6 +104,11 @@
   gap: 7px;
   overflow-wrap: break-word;
   word-break: break-word;
+}
+.dyvix-command-menu-item span:first-child {
+  opacity: 0.7;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .dyvix-command-menu-error {
   color: rgb(252, 103, 103);
@@ -65,14 +119,16 @@
 .dyvix-command-menu-header {
   margin: 0;
   display: flex;
+  padding: 3px;
   padding-bottom: 14px;
   flex-direction: row;
   justify-content: space-between;
-  color: #a1a1aa;
-  background: #141417;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  color: var(--dyvix-command-menu-header-color, #a1a1aa);
+  background: var(--dyvix-command-menu-header-bg, #141417);
+  font-size: var(--dyvix-command-menu-header-font-size, 12px);
+  font-weight: var(--dyvix-command-menu-header-font-weight, 600);
+  letter-spacing: var(--dyvix-command-menu-header-letter-spacing, 0.5px);
+  border-bottom: var(--dyvix-command-menu-header-border-bottom, none);
   user-select: none;
 }
 .dyvix-command-menu-header button {
@@ -101,4 +157,10 @@
   font-family: monospace;
   overflow: hidden;
   outline: none;
+}
+
+@media (max-width: 640px) {
+  .dyvix-command-menu-wrapper {
+    width: var(--dyvix-command-menu-width, 92vw);
+  }
 }

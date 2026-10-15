@@ -1,10 +1,28 @@
+import gsap from 'gsap';
 import { DyvixCommandMenu } from '../../../src';
 import type { DyvixCommand } from '../../../src';
 
 export function CommandMenuTest() {
+  const tl =gsap.timeline();
   return (
     <>
       <DyvixCommandMenu
+      timeline={tl}
+        commands={[
+          {
+            name: 'ping',
+            description:
+              'Tests network round-trip response and echoes arguments',
+            usage: 'ping',
+            execute: (_, context) => {
+              context.printOutput(`pinged`, 'Log');
+            }
+          }
+        ]}
+      />
+            <DyvixCommandMenu
+            timeline={tl}
+            theme={'Singularity'}
         commands={[
           {
             name: 'ping',

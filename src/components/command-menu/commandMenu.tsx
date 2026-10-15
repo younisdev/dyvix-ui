@@ -20,11 +20,13 @@ const DyvixCommandMenu = React.forwardRef<
   (
     {
       autoScroll = true,
-      style,
       className,
       commands,
+      theme,
+      overrides,
       animation = 'fade',
       timeline,
+      style,
       ...rest
     },
     ref
@@ -51,6 +53,7 @@ const DyvixCommandMenu = React.forwardRef<
     const isDraggingRef = React.useRef<boolean>(false);
     const dragOffsetRef = React.useRef({ x: 0, y: 0 });
 
+    const currentTheme = (configs as any)['theme'];
     const currentAnimation = animation ? (configs as any)['animation'] : null;
 
     const handleMouseDown = (e: React.MouseEvent<HTMLElement>) => {
@@ -176,6 +179,7 @@ const DyvixCommandMenu = React.forwardRef<
       async function validate() {
         const validator = await ValidateCommandMenu(
           animation,
+          theme,
           SetConfig,
           instanceId
         );
@@ -187,7 +191,6 @@ const DyvixCommandMenu = React.forwardRef<
 
       validate();
     }, [animation]);
-
     useGSAP(
       () => {
         if (!internalRef.current) return;
@@ -209,10 +212,10 @@ const DyvixCommandMenu = React.forwardRef<
         const ease = currentAnimation.ease ?? 'power2.out';
 
         if (timeline) {
-          const activeTheme = '';
+          const activeTheme = theme ?? null;
           const activeAnim = animation ?? null;
           const isCompleted =
-            // addedToTimeLineRef.current?.theme === activeTheme &&
+            addedToTimeLineRef.current?.theme === activeTheme &&
             addedToTimeLineRef.current?.animation === activeAnim;
 
           if (status === 'entering') {
@@ -257,7 +260,7 @@ const DyvixCommandMenu = React.forwardRef<
           });
         }
       },
-      { scope: internalRef, dependencies: [currentAnimation, status, timeline] }
+      { scope: internalRef, dependencies: [currentAnimation, theme ?? null ,status, timeline] }
     );
     React.useEffect(() => {
       if (!logContainerRef.current || !autoScroll) return;
@@ -340,12 +343,18 @@ const DyvixCommandMenu = React.forwardRef<
       ...restElementProps,
       className: ConstructClasses(
         'dyvix-command-menu',
-        'dyvix-command-menu-default',
+        !currentTheme?.class ? 'dyvix-command-menu-default' : '',
+        currentTheme?.class,
         className
       ),
       style: {
         ...splitElementStyles
       }
+    };
+
+    const combinedWrapperStyle = {
+      ...wrapperProps.style,
+      ...overrides
     };
 
     return (
@@ -355,7 +364,7 @@ const DyvixCommandMenu = React.forwardRef<
             className="dyvix-command-menu-wrapper"
             ref={internalRef}
             {...wrapperProps}
-            style={wrapperProps.style}
+            style={combinedWrapperStyle}
           >
             <div {...props}>
               <h1

@@ -19,6 +19,83 @@ export type DyvixCommandMenuAnimation =
   | 'spiral'
   | 'bounce';
 
+export type DyvixCommandMenuThemes = 'Singularity';
+
+export interface DyvixCommandMenuBaseOverride {
+  '--dyvix-command-menu-color'?: string & {};
+  '--dyvix-command-menu-letter-spacing'?:
+    '-0.02em' | '-0.01em' | '0em' | (string & {});
+  '--dyvix-command-menu-border-width'?: '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-command-menu-border-style'?:
+    'solid' | 'dashed' | 'dotted' | 'double' | 'none' | (string & {});
+  '--dyvix-command-menu-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-command-menu-transition'?: (string & {}) | 'none';
+  '--dyvix-command-menu-hover-color'?: string & {};
+  '--dyvix-command-menu-hover-transform'?:
+    'none' | 'translateY(-1px)' | 'scale(1.02)' | (string & {});
+  '--dyvix-command-menu-hover-border-width'?:
+    '0px' | '1px' | '2px' | (string & {});
+  '--dyvix-command-menu-hover-border-style'?:
+    'solid' | 'dashed' | (string & {}) | 'none';
+  '--dyvix-command-menu-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+}
+
+export interface DyvixCommandMenuDefaultOverride {
+  '--dyvix-command-menu-bg'?: (string & {}) | 'transparent';
+  '--dyvix-command-menu-font-family'?:
+    'Geist' | 'system-ui' | 'monospace' | (string & {});
+  '--dyvix-command-menu-font-size'?:
+    '0.875rem' | '0.9rem' | '1rem' | '1.125rem' | (string & {});
+  '--dyvix-command-menu-font-weight'?: 400 | 500 | 600 | 700 | (string & {});
+  '--dyvix-command-menu-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-command-menu-box-shadow'?:
+    'none' | 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)' | (string & {});
+  '--dyvix-command-menu-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-command-menu-hover-border-color'?: (string & {}) | 'transparent';
+  '--dyvix-command-menu-hover-box-shadow'?:
+    'none' | '0 4px 12px rgba(0, 0, 0, 0.5)' | (string & {});
+}
+
+export interface DyvixCommandMenuWrapperOverride {
+  '--dyvix-command-menu-width'?:
+    'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-command-menu-height'?:
+    'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-command-menu-display'?:
+    | 'inline-block'
+    | 'block'
+    | 'inline-flex'
+    | 'flex'
+    | 'inline'
+    | 'grid'
+    | 'none'
+    | (string & {});
+  '--dyvix-command-menu-position'?:
+    'sticky' | 'relative' | 'absolute' | 'fixed' | 'static' | (string & {});
+  '--dyvix-command-menu-top'?:
+    '1rem' | 'fit-content' | '100%' | 'auto' | (string & {});
+  '--dyvix-command-menu-z-index'?: 1000 | 'none' | number;
+}
+
+export interface DyvixCommandMenuContainerOverride {
+  '--dyvix-command-menu-container-bg'?: string & {};
+  '--dyvix-command-menu-container-webkit-scrollbar-thumb-bg'?: string & {};
+  '--dyvix-command-menu-container-webkit-scrollbar-thumb-hover-bg'?: string & {};
+}
+
+export interface DyvixCommandMenuHeaderOverride {
+  '--dyvix-command-menu-header-color'?: '#a1a1aa' | (string & {});
+  '--dyvix-command-menu-header-bg'?: '#141417' | 'transparent' | (string & {});
+  '--dyvix-command-menu-header-font-size'?: '12px' | '0.75rem' | (string & {});
+  '--dyvix-command-menu-header-font-weight'?: 600 | 500 | 700 | (string & {});
+  '--dyvix-command-menu-header-letter-spacing'?:
+    '0.5px' | 'normal' | (string & {});
+  '--dyvix-command-menu-header-border-bottom'?:
+    'none' | '1px solid rgba(255, 255, 255, 0.1)' | (string & {});
+}
+
 /*--!/--*/
 
 // Edit here safely
@@ -51,6 +128,12 @@ export interface DyvixCommand {
 export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {
   autoScroll?: boolean;
   commands?: DyvixCommand[];
+  theme?: DyvixCommandMenuThemes | null;
   animation?: DyvixCommandMenuAnimation | null;
   timeline?: gsap.core.Timeline | null;
+  overrides?: DyvixCommandMenuBaseOverride &
+    DyvixCommandMenuDefaultOverride &
+    DyvixCommandMenuWrapperOverride &
+    DyvixCommandMenuContainerOverride &
+    DyvixCommandMenuHeaderOverride;
 }
