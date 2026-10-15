@@ -128,6 +128,7 @@ export interface DyvixCommand {
 export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {
   autoScroll?: boolean;
   commands?: DyvixCommand[];
+  headerText?: string;
   theme?: DyvixCommandMenuThemes | null;
   animation?: DyvixCommandMenuAnimation | null;
   timeline?: gsap.core.Timeline | null;

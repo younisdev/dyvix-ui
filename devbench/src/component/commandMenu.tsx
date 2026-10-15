@@ -6,7 +6,6 @@ export function CommandMenuTest() {
   return (
     <>
       <DyvixCommandMenu
-         theme={'Singularity'}
         commands={[
           {
             name: 'ping',

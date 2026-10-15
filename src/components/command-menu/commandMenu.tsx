@@ -22,6 +22,7 @@ const DyvixCommandMenu = React.forwardRef<
       autoScroll = true,
       className,
       commands,
+      headerText,
       theme,
       overrides,
       animation = 'fade',
@@ -380,7 +381,7 @@ const DyvixCommandMenu = React.forwardRef<
                 className="dyvix-command-menu-header"
                 onMouseDown={handleMouseDown}
               >
-                <span>Console</span>
+                <span>{headerText ?? 'Console'}</span>
                 <button onClick={() => SetStatus('leaving')}>X</button>
               </h1>
               <div
