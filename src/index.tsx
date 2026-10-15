@@ -1,6 +1,6 @@
+export * from './constants';
 export { default as DyvixModal } from './components/modal/modal';
 export { default as DyvixSelect } from './components/select/SelectCompiler';
-export * from './constants';
 export { default as DyvixToastContainer } from './components/toast/toastContainer';
 export { default as dyvixToast } from './components/toast/bus';
 export { default as DyvixButton } from './components/button/button';
@@ -19,3 +19,12 @@ export { default as DyvixNavLink } from './components/nav/DyvixNavLink';
 export { default as DyvixNavBrand } from './components/nav/DyvixNavBrand';
 export { default as DyvixMarquee } from './components/marquee/marquee';
 export { default as DyvixMarqueeItem } from './components/marquee/DyvixMarqueeItem';
+export { default as DyvixCommandMenu } from './components/command-menu/commandMenu';
+export type {
+  DyvixCommand,
+  CommandContext,
+  CommandResult,
+  DyvixLog,
+  LogType,
+  DyvixCommandMenuProps
+} from './components/command-menu/dependencies/command-menu.types';

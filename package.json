@@ -69,6 +69,11 @@
       "types": "./dist/marquee.d.ts",
       "import": "./dist/marquee.js",
       "default": "./dist/marquee.js"
+    },
+    "./command-menu": {
+      "types": "./dist/command-menu.d.ts",
+      "import": "./dist/command-menu.js",
+      "default": "./dist/command-menu.js"
     }
   },
   "files": [

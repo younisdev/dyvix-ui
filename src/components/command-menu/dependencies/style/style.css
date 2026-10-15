@@ -1,0 +1,104 @@
+.dyvix-command-menu-wrapper {
+  display: block;
+  width: 50vw;
+  height: 30vh;
+  position: fixed;
+  top: 10px;
+  z-index: 9999;
+}
+.dyvix-command-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+  color: #d4d4d8;
+  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 15px;
+  box-sizing: border-box;
+}
+.dyvix-command-menu-default {
+  background: rgba(12, 12, 15, 0.96);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-weight: var(--dyvix-button-font-weight, 500);
+  font-size: 13px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  border-color: #141417;
+}
+.dyvix-command-menu-container {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.dyvix-command-menu-container::-webkit-scrollbar {
+  width: 6px;
+}
+.dyvix-command-menu-container::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+.dyvix-command-menu-container::-webkit-scrollbar-thumb {
+  background: #27272f;
+  border-radius: 3px;
+}
+
+.dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+.dyvix-command-menu-item {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.dyvix-command-menu-error {
+  color: rgb(252, 103, 103);
+}
+.dyvix-command-menu-warning {
+  color: rgb(249, 252, 103);
+}
+.dyvix-command-menu-header {
+  margin: 0;
+  display: flex;
+  padding-bottom: 14px;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #a1a1aa;
+  background: #141417;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+.dyvix-command-menu-header button {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50px;
+  transition: all 0.15s ease;
+}
+
+.dyvix-command-menu-header button:hover {
+  background: rgba(252, 129, 129, 0.12);
+  color: #fc8181;
+}
+.dyvix-command-menu-button {
+  width: 100%;
+  color: #d4d4d8;
+  background: inherit;
+  border: none;
+  white-space: pre-wrap;
+  font-family: monospace;
+  overflow: hidden;
+  outline: none;
+}
