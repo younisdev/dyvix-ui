@@ -89,7 +89,7 @@
     #27272f
   );
   border-radius: 3px;
-  transition: all 0.7S ease-in;
+  transition: all 0.7s ease-in;
 }
 
 .dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {

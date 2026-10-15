@@ -190,7 +190,13 @@ const DyvixCommandMenu = React.forwardRef<
       }
 
       validate();
-    }, [animation]);
+
+      return () => {
+        const key = `DYVIX_${Version['version']}_command-menu_theme_${instanceId}`;
+        const ele = document.getElementById(key);
+        if (ele) ele.remove();
+      };
+    }, [animation, theme]);
     useGSAP(
       () => {
         if (!internalRef.current) return;
@@ -260,7 +266,10 @@ const DyvixCommandMenu = React.forwardRef<
           });
         }
       },
-      { scope: internalRef, dependencies: [currentAnimation, theme ?? null ,status, timeline] }
+      {
+        scope: internalRef,
+        dependencies: [currentAnimation, theme ?? null, status, timeline]
+      }
     );
     React.useEffect(() => {
       if (!logContainerRef.current || !autoScroll) return;
