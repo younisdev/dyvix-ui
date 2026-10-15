@@ -104,7 +104,7 @@ export interface DyvixLog {
   id: string;
   type: LogType;
   text: any;
-  timestamp: string;
+  timestamp: string | null;
 }
 
 export interface CommandContext {
@@ -129,6 +129,7 @@ export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {
   autoScroll?: boolean;
   commands?: DyvixCommand[];
   headerText?: string;
+  welcomeMessage?: string | string[] | null;
   theme?: DyvixCommandMenuThemes | null;
   animation?: DyvixCommandMenuAnimation | null;
   timeline?: gsap.core.Timeline | null;

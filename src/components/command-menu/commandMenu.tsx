@@ -23,6 +23,10 @@ const DyvixCommandMenu = React.forwardRef<
       className,
       commands,
       headerText,
+      welcomeMessage = [
+        'Welcome to Dyvix UI Console',
+        'Type "help" to see available commands.'
+      ],
       theme,
       overrides,
       animation = 'fade',
@@ -37,7 +41,19 @@ const DyvixCommandMenu = React.forwardRef<
       theme: string | null;
       animation: string | null;
     } | null>(null);
-    const [logs, setLogs] = React.useState<DyvixLog[]>([]);
+    const [logs, setLogs] = React.useState<DyvixLog[]>(() => {
+      if(!welcomeMessage) return [];
+
+      const messages = Array.isArray(welcomeMessage) ? welcomeMessage: [welcomeMessage];
+      
+      return messages.map((msg) => ({
+        id: `welcome-${Math.random().toString(36).substring(2, 9)}`,
+        type: 'Log',
+        text: msg,
+        timestamp: null
+      }))
+
+    });
     const logContainerRef = React.useRef<HTMLDivElement>(null);
     const inputRef = React.useRef<HTMLInputElement>(null);
     const [configs, SetConfig] = React.useState({});
@@ -395,7 +411,7 @@ const DyvixCommandMenu = React.forwardRef<
                       key={log.id}
                       className={`dyvix-command-menu-${log.type.toLocaleLowerCase()} dyvix-command-menu-item`}
                     >
-                      <span style={{ opacity: 0.7 }}>[{log.timestamp}]</span>
+                      {log?.timestamp && <span style={{ opacity: 0.7 }}>[{log.timestamp}]</span>}
                       <span
                         style={{
                           whiteSpace: 'pre-wrap',
