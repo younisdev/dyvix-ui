@@ -218,6 +218,22 @@ GenerateTypes(
   '',
   'marquee'
 );
+GenerateTypes(
+  './src/registry/animations.json',
+  null,
+  'DyvixCommandMenuAnimation',
+  './src/components/command-menu/dependencies/command-menu.types.tsx',
+  'animation',
+  'command-menu'
+);
+GenerateTypes(
+  null,
+  './src/components/command-menu/dependencies/style/themes.css',
+  'DyvixCommandMenuThemes',
+  './src/components/command-menu/dependencies/command-menu.types.tsx',
+  '',
+  'command-menu'
+);
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
  *
