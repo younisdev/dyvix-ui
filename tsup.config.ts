@@ -34,7 +34,8 @@ export default defineConfig({
     table: 'src/components/table/table.tsx',
     navigation: 'src/components/nav/navigation.tsx',
     toast: 'src/components/toast/toastContainer.tsx',
-    marquee: 'src/components/marquee/marquee.tsx'
+    marquee: 'src/components/marquee/marquee.tsx',
+    'command-menu': 'src/components/command-menu/commandMenu.tsx'
   },
   format: ['esm'],
   injectStyle: true,

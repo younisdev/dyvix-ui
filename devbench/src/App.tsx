@@ -1,32 +1,45 @@
-import React from 'react';
-import { ModalTest } from './component/modal';
-import { SelectTest } from './component/select';
-import { ToastTest } from './component/toast';
-import { ButtonTest } from './component/button';
-import { FileTest } from './component/file';
-import { InputTest } from './component/input';
-import { LabelTest } from './component/label';
-import { TableTest } from './component/table';
-import { NavTest } from './component/navigation';
-import { MarqueeTest } from './component/marquee';
-import { CommandMenuTest } from './component/commandMenu';
+import React, { lazy } from 'react';
 import dyvixLogo from './assets/logo.png';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { clear } from 'idb-keyval';
 
-const Links: Record<string, React.ElementType> = {
-  Modal: ModalTest,
-  Toast: ToastTest,
-  Select: SelectTest,
-  Button: ButtonTest,
-  File: FileTest,
-  Input: InputTest,
-  Label: LabelTest,
-  Table: TableTest,
-  Navigation: NavTest,
-  Marquee: MarqueeTest,
-  CommandMenu: CommandMenuTest
+const Links: Record<string, React.LazyExoticComponent<any>> = {
+  Modal: lazy(() =>
+    import('./component/modal').then((m) => ({ default: m.ModalTest }))
+  ),
+  Toast: lazy(() =>
+    import('./component/toast').then((m) => ({ default: m.ToastTest }))
+  ),
+  Select: lazy(() =>
+    import('./component/select').then((m) => ({ default: m.SelectTest }))
+  ),
+  Button: lazy(() =>
+    import('./component/button').then((m) => ({ default: m.ButtonTest }))
+  ),
+  File: lazy(() =>
+    import('./component/file').then((m) => ({ default: m.FileTest }))
+  ),
+  Input: lazy(() =>
+    import('./component/input').then((m) => ({ default: m.InputTest }))
+  ),
+  Label: lazy(() =>
+    import('./component/label').then((m) => ({ default: m.LabelTest }))
+  ),
+  Table: lazy(() =>
+    import('./component/table').then((m) => ({ default: m.TableTest }))
+  ),
+  Navigation: lazy(() =>
+    import('./component/navigation').then((m) => ({ default: m.NavTest }))
+  ),
+  Marquee: lazy(() =>
+    import('./component/marquee').then((m) => ({ default: m.MarqueeTest }))
+  ),
+  CommandMenu: lazy(() =>
+    import('./component/commandMenu').then((m) => ({
+      default: m.CommandMenuTest
+    }))
+  )
 };
 
 function App() {
@@ -133,7 +146,15 @@ function App() {
           const Component = Links[current];
           return (
             <ReleaseBenchmark>
-              <Component />
+              <React.Suspense
+                fallback={
+                  <div className="dyvix-test-loading">
+                    'Loading dyvix component...'
+                  </div>
+                }
+              >
+                <Component />
+              </React.Suspense>
             </ReleaseBenchmark>
           );
         })()}

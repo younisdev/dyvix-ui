@@ -1,6 +1,4 @@
-import gsap from 'gsap';
 import { DyvixCommandMenu } from '../../../src';
-import type { DyvixCommand } from '../../../src';
 
 export function CommandMenuTest() {
   return (
