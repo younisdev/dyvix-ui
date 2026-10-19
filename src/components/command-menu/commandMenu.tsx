@@ -21,6 +21,7 @@ const DyvixCommandMenu = React.forwardRef<
     {
       autoScroll = true,
       triggerKey = '`',
+      showOnRender = true,
       className,
       commands,
       headerText,
@@ -60,8 +61,8 @@ const DyvixCommandMenu = React.forwardRef<
     const inputRef = React.useRef<HTMLInputElement>(null);
     const [configs, SetConfig] = React.useState({});
     const [visibility, SetVisibility] = React.useState<boolean>(true);
-    const [status, SetStatus] = React.useState<'entering' | 'leaving'>(
-      'entering'
+    const [status, SetStatus] = React.useState<'entering' | 'leaving'>(() =>
+      showOnRender ? 'entering' : 'leaving'
     );
     const [background, setBackground] = React.useState<boolean>(false);
     const instanceId = React.useId();
@@ -221,6 +222,14 @@ const DyvixCommandMenu = React.forwardRef<
       () => {
         if (!internalRef.current) return;
 
+        if (!showOnRender && !background) {
+          gsap.set(internalRef.current, {
+            autoAlpha: 0
+          });
+
+          return;
+        }
+
         if (!currentAnimation) {
           if (status === 'leaving') {
             if (background) return;
@@ -230,11 +239,6 @@ const DyvixCommandMenu = React.forwardRef<
 
           return;
         }
-        const toVars: GSAPTweenVars = {
-          ...currentAnimation.to,
-          duration: currentAnimation['default-duration'],
-          ease: currentAnimation.ease
-        };
 
         const duration = currentAnimation['default-duration'] ?? 0.3;
         const ease = currentAnimation.ease ?? 'power2.out';
@@ -262,6 +266,7 @@ const DyvixCommandMenu = React.forwardRef<
             }
           } else if (status === 'leaving') {
             const leavingTween = gsap.timeline().to(internalRef.current, {
+              autoAlpha: 0,
               ...currentAnimation.from,
               duration: duration,
               ease: ease,
@@ -284,6 +289,7 @@ const DyvixCommandMenu = React.forwardRef<
           );
         } else {
           gsap.to(internalRef.current, {
+            autoAlpha: 0,
             ...currentAnimation.from,
             duration: duration,
             ease: ease,
@@ -308,7 +314,10 @@ const DyvixCommandMenu = React.forwardRef<
     React.useEffect(() => {
       const handleKeydown = (e: KeyboardEvent) => {
         const isInputFocused = document.activeElement === inputRef.current;
-        if (e.key.toLowerCase() === triggerKey.toLowerCase() && !isInputFocused) {
+        if (
+          e.key.toLowerCase() === triggerKey.toLowerCase() &&
+          !isInputFocused
+        ) {
           e.preventDefault();
           setBackground(true);
           SetStatus((prev) => (prev === 'leaving' ? 'entering' : 'leaving'));
