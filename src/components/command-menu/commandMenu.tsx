@@ -20,6 +20,7 @@ const DyvixCommandMenu = React.forwardRef<
   (
     {
       autoScroll = true,
+      triggerKey = '`',
       className,
       commands,
       headerText,
@@ -42,17 +43,18 @@ const DyvixCommandMenu = React.forwardRef<
       animation: string | null;
     } | null>(null);
     const [logs, setLogs] = React.useState<DyvixLog[]>(() => {
-      if(!welcomeMessage) return [];
+      if (!welcomeMessage) return [];
 
-      const messages = Array.isArray(welcomeMessage) ? welcomeMessage: [welcomeMessage];
-      
+      const messages = Array.isArray(welcomeMessage)
+        ? welcomeMessage
+        : [welcomeMessage];
+
       return messages.map((msg) => ({
         id: `welcome-${Math.random().toString(36).substring(2, 9)}`,
         type: 'Log',
         text: msg,
         timestamp: null
-      }))
-
+      }));
     });
     const logContainerRef = React.useRef<HTMLDivElement>(null);
     const inputRef = React.useRef<HTMLInputElement>(null);
@@ -61,6 +63,7 @@ const DyvixCommandMenu = React.forwardRef<
     const [status, SetStatus] = React.useState<'entering' | 'leaving'>(
       'entering'
     );
+    const [background, setBackground] = React.useState<boolean>(false);
     const instanceId = React.useId();
 
     React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
@@ -220,6 +223,8 @@ const DyvixCommandMenu = React.forwardRef<
 
         if (!currentAnimation) {
           if (status === 'leaving') {
+            if (background) return;
+
             SetVisibility(false);
           }
 
@@ -260,7 +265,10 @@ const DyvixCommandMenu = React.forwardRef<
               ...currentAnimation.from,
               duration: duration,
               ease: ease,
-              onComplete: () => SetVisibility(false)
+              onComplete: () => {
+                if (background) return;
+                SetVisibility(false);
+              }
             });
             timeline.add(leavingTween, '+=0');
             addedToTimeLineRef.current = null;
@@ -279,7 +287,10 @@ const DyvixCommandMenu = React.forwardRef<
             ...currentAnimation.from,
             duration: duration,
             ease: ease,
-            onComplete: () => SetVisibility(false)
+            onComplete: () => {
+              if (background) return;
+              SetVisibility(false);
+            }
           });
         }
       },
@@ -293,6 +304,21 @@ const DyvixCommandMenu = React.forwardRef<
 
       logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
     }, [logs, autoScroll]);
+
+    React.useEffect(() => {
+      const handleKeydown = (e: KeyboardEvent) => {
+        const isInputFocused = document.activeElement === inputRef.current;
+        if (e.key.toLowerCase() === triggerKey.toLowerCase() && !isInputFocused) {
+          e.preventDefault();
+          setBackground(true);
+          SetStatus((prev) => (prev === 'leaving' ? 'entering' : 'leaving'));
+        }
+      };
+
+      window.addEventListener('keydown', handleKeydown);
+
+      return () => window.removeEventListener('keydown', handleKeydown);
+    }, [triggerKey]);
 
     const handelContainerClick = () => {
       inputRef.current?.focus();
@@ -398,7 +424,14 @@ const DyvixCommandMenu = React.forwardRef<
                 onMouseDown={handleMouseDown}
               >
                 <span>{headerText ?? 'Console'}</span>
-                <button onClick={() => SetStatus('leaving')}>X</button>
+                <button
+                  onClick={() => {
+                    setBackground(false);
+                    SetStatus('leaving');
+                  }}
+                >
+                  X
+                </button>
               </h1>
               <div
                 className="dyvix-command-menu-container"
@@ -411,7 +444,9 @@ const DyvixCommandMenu = React.forwardRef<
                       key={log.id}
                       className={`dyvix-command-menu-${log.type.toLocaleLowerCase()} dyvix-command-menu-item`}
                     >
-                      {log?.timestamp && <span style={{ opacity: 0.7 }}>[{log.timestamp}]</span>}
+                      {log?.timestamp && (
+                        <span style={{ opacity: 0.7 }}>[{log.timestamp}]</span>
+                      )}
                       <span
                         style={{
                           whiteSpace: 'pre-wrap',

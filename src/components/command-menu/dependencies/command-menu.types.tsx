@@ -129,6 +129,7 @@ export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {
   autoScroll?: boolean;
   commands?: DyvixCommand[];
   headerText?: string;
+  triggerKey?: string;
   welcomeMessage?: string | string[] | null;
   theme?: DyvixCommandMenuThemes | null;
   animation?: DyvixCommandMenuAnimation | null;
