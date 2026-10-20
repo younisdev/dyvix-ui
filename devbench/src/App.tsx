@@ -149,7 +149,7 @@ function App() {
               <React.Suspense
                 fallback={
                   <div className="dyvix-test-loading">
-                    'Loading dyvix component...'
+                    Loading dyvix component...
                   </div>
                 }
               >
