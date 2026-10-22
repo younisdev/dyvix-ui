@@ -57,6 +57,14 @@ export { default as DyvixNavLink } from './components/nav/DyvixNavLink';
 export { default as DyvixNavBrand } from './components/nav/DyvixNavBrand';
 export { default as DyvixMarquee } from './components/marquee/marquee';
 export { default as DyvixMarqueeItem } from './components/marquee/DyvixMarqueeItem';
+export type {
+  DyvixMarqueeAnimation,
+  DyvixMarqueeThemes,
+  DyvixConfigItemsProps,
+  DyvixMarqueeItemProps,
+  DyvixMarqueeProps,
+  DyvixMarqueeOverride
+} from './components/marquee/dependencies/marquee.types';
 export { default as DyvixCommandMenu } from './components/command-menu/commandMenu';
 export type {
   DyvixCommand,
