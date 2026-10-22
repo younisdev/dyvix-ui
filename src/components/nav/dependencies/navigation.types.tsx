@@ -158,17 +158,19 @@ export interface DyvixNavLinkProps {
   overrides?: DyvixNavLinkOverride;
 }
 
+export type DyvixNavOverride = DyvixNavBaseOverride &
+  DyvixNavWrapperOverride &
+  DyvixNavDefaultOverride &
+  DyvixNavMenuOverride &
+  DyvixNavLinkOverride &
+  DyvixNavBrandOverride;
+
 export interface DyvixNavProps extends React.HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   className?: string;
   animation?: DyvixNavAnimation | null;
   microanimation?: DyvixNavAnimation | null;
-  overrides?: DyvixNavBaseOverride &
-    DyvixNavWrapperOverride &
-    DyvixNavDefaultOverride &
-    DyvixNavMenuOverride &
-    DyvixNavLinkOverride &
-    DyvixNavBrandOverride;
+  overrides?: DyvixNavOverride;
   theme?: DyvixNavThemes | null;
   brand?: DyvixConfigBrandProps;
   items?: DyvixConfigItemsProps[];
