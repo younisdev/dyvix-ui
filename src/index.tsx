@@ -24,6 +24,13 @@ export type {
 } from './components/select/dependencies/select.types';
 export { default as DyvixToastContainer } from './components/toast/toastContainer';
 export { default as dyvixToast } from './components/toast/bus';
+export type {
+  DyvixToastAnimation,
+  DyvixToastProps,
+  DyvixToastContainerProps,
+  DyvixToastType,
+  DyvixToastPosition
+} from './components/toast/dependencies/toast.types';
 export { default as DyvixButton } from './components/button/button';
 export type {
   DyvixButtonAnimation,

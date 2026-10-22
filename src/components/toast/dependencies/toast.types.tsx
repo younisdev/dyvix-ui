@@ -55,10 +55,10 @@ export interface ToastItem {
   [key: string]: any;
 }
 
-export interface DyvixToast {
+export interface DyvixToastProps {
   className?: string;
   message: string;
-  animation?: DyvixToastAnimationConfig | null | undefined;
+  animation?: DyvixToastAnimationConfig | null;
   type: DyvixToastType;
   onClose: () => void;
   duration?: number;
