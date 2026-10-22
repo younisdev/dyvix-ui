@@ -14,6 +14,14 @@ export type {
   DyvixModalProps
 } from './components/modal/dependencies/modal.types';
 export { default as DyvixSelect } from './components/select/SelectCompiler';
+export type {
+  DyvixSelectAnimation,
+  DyvixSelectThemes,
+  DyvixSelectEngineProps,
+  DyvixSelectProps,
+  DyvixSelectState,
+  DyvixSelectOverride
+} from './components/select/dependencies/select.types';
 export { default as DyvixToastContainer } from './components/toast/toastContainer';
 export { default as dyvixToast } from './components/toast/bus';
 export { default as DyvixButton } from './components/button/button';
