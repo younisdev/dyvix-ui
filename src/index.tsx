@@ -11,6 +11,12 @@ export type {
   DyvixButtonProps
 } from './components/button/dependencies/button.types';
 export { default as DyvixFile } from './components/file/file';
+export type {
+  DyvixFileAnimation,
+  DyvixFileThemes,
+  DyvixFileOverride,
+  DyvixFileProps
+} from './components/file/dependencies/file.types';
 export { default as DyvixInput } from './components/input/input';
 export { default as DyvixLabel } from './components/label/label';
 export { default as DyvixTable } from './components/table/table';
