@@ -4,6 +4,12 @@ export { default as DyvixSelect } from './components/select/SelectCompiler';
 export { default as DyvixToastContainer } from './components/toast/toastContainer';
 export { default as dyvixToast } from './components/toast/bus';
 export { default as DyvixButton } from './components/button/button';
+export type {
+  DyvixButtonAnimation,
+  DyvixButtonThemes,
+  DyvixButtonOverride,
+  DyvixButtonProps
+} from './components/button/dependencies/button.types';
 export { default as DyvixFile } from './components/file/file';
 export { default as DyvixInput } from './components/input/input';
 export { default as DyvixLabel } from './components/label/label';

@@ -106,6 +106,10 @@ export interface DyvixButtonDefaultOverride {
 
 // Edit here safely
 
+export type DyvixButtonOverride = DyvixButtonBaseOverride &
+  DyvixButtonWrapperOverride &
+  DyvixButtonDefaultOverride;
+
 export interface DyvixButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   background?: string;
