@@ -31,6 +31,13 @@ export type {
   DyvixFileProps
 } from './components/file/dependencies/file.types';
 export { default as DyvixInput } from './components/input/input';
+export type {
+  DyvixInputAnimation,
+  DyvixInputThemes,
+  DyvixInputType,
+  DyvixInputProps,
+  DyvixInputOverride
+} from './components/input/dependencies/input.types';
 export { default as DyvixLabel } from './components/label/label';
 export { default as DyvixTable } from './components/table/table';
 export { default as DyvixTableBody } from './components/table/DyvixTableBody';
