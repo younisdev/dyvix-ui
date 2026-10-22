@@ -1,5 +1,18 @@
 export * from './constants';
 export { default as DyvixModal } from './components/modal/modal';
+export type {
+  DyvixModalAnimation,
+  DyvixModalThemes,
+  DyvixModalTypes,
+  DyvixModalPresets,
+  DyvixModalElementTypes,
+  DyvixModalValidators,
+  DyvixModalValidatorsWithRegex,
+  DyvixModalElements,
+  NormalizedDyvixModalElements,
+  DyvixModalOverride,
+  DyvixModalProps
+} from './components/modal/dependencies/modal.types';
 export { default as DyvixSelect } from './components/select/SelectCompiler';
 export { default as DyvixToastContainer } from './components/toast/toastContainer';
 export { default as dyvixToast } from './components/toast/bus';
