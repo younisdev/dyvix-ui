@@ -39,6 +39,12 @@ export type {
   DyvixInputOverride
 } from './components/input/dependencies/input.types';
 export { default as DyvixLabel } from './components/label/label';
+export type {
+  DyvixLabelAnimation,
+  DyvixLabelThemes,
+  DyvixLabelOverride,
+  DyvixLabelProps
+} from './components/label/dependencies/label.types';
 export { default as DyvixTable } from './components/table/table';
 export { default as DyvixTableBody } from './components/table/DyvixTableBody';
 export { default as DyvixTableHeader } from './components/table/DyvixTableHeader';
