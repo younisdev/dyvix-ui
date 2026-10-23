@@ -66,6 +66,20 @@ export { default as DyvixTableHeader } from './components/table/DyvixTableHeader
 export { default as DyvixTableRow } from './components/table/DyvixTableRow';
 export { default as DyvixTableCell } from './components/table/DyvixTableCell';
 export { default as DyvixTableHead } from './components/table/DyvixTableHead';
+export type {
+  DyvixTableAnimation,
+  DyvixTableThemes,
+  DyvixConfigColumnsProps,
+  DyvixConfigDataProps,
+  DyvixTableBodyProps,
+  DyvixTableCellProps,
+  DyvixTableHeadProps,
+  DyvixTableHeaderProps,
+  DyvixTableRowProps,
+  DyvixTableSectionBaseProps,
+  DyvixTableProps,
+  DyvixTableOverride
+} from './components/table/dependencies/table.types';
 export { default as DyvixNav } from './components/nav/navigation';
 export { default as DyvixNavMenu } from './components/nav/DyvixNavMenu';
 export { default as DyvixNavLink } from './components/nav/DyvixNavLink';

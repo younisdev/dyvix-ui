@@ -153,10 +153,10 @@ export interface DyvixSelectDropdownOverride {
 // Edit here safely
 
 export type DyvixSelectOverride = DyvixSelectWrapperOverride &
-    DyvixSelectBaseOverride &
-    DyvixSelectDefaultOverride &
-    DyvixSelectInputOverride &
-    DyvixSelectDropdownOverride
+  DyvixSelectBaseOverride &
+  DyvixSelectDefaultOverride &
+  DyvixSelectInputOverride &
+  DyvixSelectDropdownOverride;
 
 export interface DyvixSelectProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,

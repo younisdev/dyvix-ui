@@ -117,6 +117,12 @@ export interface DyvixConfigColumnsProps<T = Record<string, any>> {
 }
 export type DyvixConfigDataProps = Record<string, any>;
 
+export type DyvixTableOverride = DyvixTableWrapperOverride &
+  DyvixTableBaseOverride &
+  DyvixTableDefaultOverride &
+  DyvixTableHeaderOverride &
+  DyvixTableBodyOverride;
+
 export interface DyvixTableProps<
   T extends Record<string, any> = DyvixConfigDataProps
 > {
@@ -126,11 +132,7 @@ export interface DyvixTableProps<
   theme?: DyvixTableThemes | null | undefined;
   columns?: DyvixConfigColumnsProps<T>[];
   data?: T[];
-  overrides?: DyvixTableWrapperOverride &
-    DyvixTableBaseOverride &
-    DyvixTableDefaultOverride &
-    DyvixTableHeaderOverride &
-    DyvixTableBodyOverride;
+  overrides?: DyvixTableOverride;
   style?: React.CSSProperties;
   background?: string;
   color?: string;
