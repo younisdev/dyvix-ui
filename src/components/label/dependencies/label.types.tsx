@@ -103,15 +103,17 @@ export interface DyvixLabelDefaultOverride {
 
 // Edit here safely
 
+export type DyvixLabelOverride = DyvixLabelWrapperOverride &
+  DyvixLabelBaseOverride &
+  DyvixLabelDefaultOverride;
+
 export interface DyvixLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children: ReactNode;
   className?: string;
   htmlFor?: string;
   theme?: DyvixLabelThemes | null | undefined;
   animation?: DyvixLabelAnimation | null | undefined;
-  overrides?: DyvixLabelWrapperOverride &
-    DyvixLabelBaseOverride &
-    DyvixLabelDefaultOverride;
+  overrides?: DyvixLabelOverride;
   background?: string;
   color?: string;
   style?: React.CSSProperties;

@@ -81,14 +81,16 @@ export interface DyvixFileWrapperOverride {
 
 // Edit here safely
 
+export type DyvixFileOverride = DyvixFileWrapperOverride &
+  DyvixFileDefaultOverride &
+  DyvixFileBaseOverride;
+
 export interface DyvixFileProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   theme?: DyvixFileThemes | null;
   className?: string;
   animation?: DyvixFileAnimation | null;
-  overrides?: DyvixFileWrapperOverride &
-    DyvixFileDefaultOverride &
-    DyvixFileBaseOverride;
+  overrides?: DyvixFileOverride;
   background?: string;
   color?: string;
   multiple?: boolean;

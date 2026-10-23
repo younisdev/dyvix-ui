@@ -141,6 +141,10 @@ export interface DyvixInputDefaultOverride {
 
 // Edit here safely
 
+export type DyvixInputOverride = DyvixInputBaseOverride &
+  DyvixInputWrapperOverride &
+  DyvixInputDefaultOverride;
+
 export interface DyvixInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'type'
@@ -149,9 +153,7 @@ export interface DyvixInputProps extends Omit<
   background?: string;
   color?: string;
   theme?: DyvixInputThemes | null;
-  overrides?: DyvixInputBaseOverride &
-    DyvixInputWrapperOverride &
-    DyvixInputDefaultOverride;
+  overrides?: DyvixInputOverride;
   animation?: DyvixInputAnimation | null;
   timeline?: gsap.core.Timeline | null;
 }

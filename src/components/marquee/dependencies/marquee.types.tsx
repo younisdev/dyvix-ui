@@ -92,6 +92,10 @@ export interface DyvixMarqueeItemProps {
   style?: React.CSSProperties;
 }
 
+export type DyvixMarqueeOverride = DyvixMarqueeWrapperOverride &
+  DyvixMarqueeBaseOverride &
+  DyvixMarqueeDefaultOverride;
+
 export interface DyvixMarqueeProps {
   children?: React.ReactNode;
   className?: string;
@@ -100,9 +104,7 @@ export interface DyvixMarqueeProps {
   reverse?: boolean;
   theme?: DyvixMarqueeThemes | null;
   animation?: DyvixMarqueeAnimation | null;
-  overrides?: DyvixMarqueeWrapperOverride &
-    DyvixMarqueeBaseOverride &
-    DyvixMarqueeDefaultOverride;
+  overrides?: DyvixMarqueeOverride;
   speed?: number;
   pauseOnHover?: boolean;
   items?: DyvixConfigItemsProps[];

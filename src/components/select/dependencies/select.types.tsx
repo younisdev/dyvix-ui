@@ -152,6 +152,12 @@ export interface DyvixSelectDropdownOverride {
 
 // Edit here safely
 
+export type DyvixSelectOverride = DyvixSelectWrapperOverride &
+  DyvixSelectBaseOverride &
+  DyvixSelectDefaultOverride &
+  DyvixSelectInputOverride &
+  DyvixSelectDropdownOverride;
+
 export interface DyvixSelectProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'type' | 'onChange' | 'onFocus' | 'onBlur' | 'onKeyDown'
@@ -166,11 +172,7 @@ export interface DyvixSelectProps extends Omit<
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   background?: string;
-  overrides?: DyvixSelectWrapperOverride &
-    DyvixSelectBaseOverride &
-    DyvixSelectDefaultOverride &
-    DyvixSelectInputOverride &
-    DyvixSelectDropdownOverride;
+  overrides?: DyvixSelectOverride;
   dropdownBackground?: string;
   color?: string;
   placeholder?: string;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import type { DyvixToast } from './dependencies/toast.types';
+import type { DyvixToastProps } from './dependencies/toast.types';
 import { GuardStatus, EvaluateFailure } from '../../utils/DyvixGuard';
 import { ValidateToast } from './validation';
 import { ConstructClasses } from '../../utils/utils';
 
-const DyvixToastItem: React.FC<DyvixToast> = ({
+const DyvixToastItem: React.FC<DyvixToastProps> = ({
   className,
   message,
   animation,

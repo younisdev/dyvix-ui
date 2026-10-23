@@ -106,15 +106,17 @@ export interface DyvixButtonDefaultOverride {
 
 // Edit here safely
 
+export type DyvixButtonOverride = DyvixButtonBaseOverride &
+  DyvixButtonWrapperOverride &
+  DyvixButtonDefaultOverride;
+
 export interface DyvixButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   background?: string;
   color?: string;
   theme?: DyvixButtonThemes | null | undefined;
   animation?: DyvixButtonAnimation | null | undefined;
-  overrides?: DyvixButtonBaseOverride &
-    DyvixButtonWrapperOverride &
-    DyvixButtonDefaultOverride;
+  overrides?: DyvixButtonOverride;
   children: ReactNode;
   style?: React.CSSProperties;
   timeline?: gsap.core.Timeline | null;
