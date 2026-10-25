@@ -108,14 +108,16 @@ const DyvixButton = React.forwardRef<HTMLDivElement, DyvixButtonProps>(
         className
       ),
       style: {
-        ...(background && { background: background }),
-        ...(color && { color: color }),
         ...splitElementStyles
       }
     };
 
     const combinedWrapperStyle = {
       ...wrapperProps.style,
+      ...{
+        ...(background && { '--dyvix-button-bg': background }),
+        ...(color && { '--dyvix-button-color': color })
+      },
       ...overrides
     };
 

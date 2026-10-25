@@ -112,8 +112,8 @@ export type DyvixButtonOverride = DyvixButtonBaseOverride &
 
 export interface DyvixButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  background?: string;
-  color?: string;
+  background?: string & {};
+  color?: string & {};
   theme?: DyvixButtonThemes | null | undefined;
   animation?: DyvixButtonAnimation | null | undefined;
   overrides?: DyvixButtonOverride;
