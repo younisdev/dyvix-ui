@@ -128,6 +128,8 @@ export interface DyvixCommand {
 export interface DyvixCommandMenuProps extends HTMLAttributes<HTMLDivElement> {
   autoScroll?: boolean;
   commands?: DyvixCommand[];
+  background?: string & {};
+  color?: string & {};
   headerText?: string;
   triggerKey?: string;
   showOnRender?: boolean;
