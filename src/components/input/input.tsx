@@ -50,6 +50,10 @@ const DyvixInput = React.forwardRef<HTMLDivElement, DyvixInputProps>(
     });
     const combinedWrapperStyle = {
       ...wrapperProps.style,
+      ...{
+        ...(background && { '--dyvix-input-bg': background }),
+        ...(color && { '--dyvix-input-color': color })
+      },
       ...overrides
     };
     const instanceId = React.useId();

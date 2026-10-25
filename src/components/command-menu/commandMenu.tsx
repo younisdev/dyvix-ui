@@ -22,6 +22,8 @@ const DyvixCommandMenu = React.forwardRef<
       autoScroll = true,
       triggerKey = '`',
       showOnRender = true,
+      background,
+      color,
       className,
       commands,
       headerText,
@@ -64,7 +66,7 @@ const DyvixCommandMenu = React.forwardRef<
     const [status, SetStatus] = React.useState<'entering' | 'leaving'>(() =>
       showOnRender ? 'entering' : 'leaving'
     );
-    const [background, setBackground] = React.useState<boolean>(false);
+    const [backgroundtask, setBackgroundTask] = React.useState<boolean>(false);
     const instanceId = React.useId();
 
     React.useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
@@ -222,7 +224,7 @@ const DyvixCommandMenu = React.forwardRef<
       () => {
         if (!internalRef.current) return;
 
-        if (!showOnRender && !background) {
+        if (!showOnRender && !backgroundtask) {
           gsap.set(internalRef.current, {
             autoAlpha: 0
           });
@@ -232,7 +234,7 @@ const DyvixCommandMenu = React.forwardRef<
 
         if (!currentAnimation) {
           if (status === 'leaving') {
-            if (background) return;
+            if (backgroundtask) return;
 
             SetVisibility(false);
           }
@@ -271,7 +273,7 @@ const DyvixCommandMenu = React.forwardRef<
               duration: duration,
               ease: ease,
               onComplete: () => {
-                if (background) return;
+                if (backgroundtask) return;
                 SetVisibility(false);
               }
             });
@@ -294,7 +296,7 @@ const DyvixCommandMenu = React.forwardRef<
             duration: duration,
             ease: ease,
             onComplete: () => {
-              if (background) return;
+              if (backgroundtask) return;
               SetVisibility(false);
             }
           });
@@ -319,7 +321,7 @@ const DyvixCommandMenu = React.forwardRef<
           !isInputFocused
         ) {
           e.preventDefault();
-          setBackground(true);
+          setBackgroundTask(true);
           SetStatus((prev) => (prev === 'leaving' ? 'entering' : 'leaving'));
         }
       };
@@ -415,6 +417,16 @@ const DyvixCommandMenu = React.forwardRef<
 
     const combinedWrapperStyle = {
       ...wrapperProps.style,
+      ...{
+        ...(background && {
+          '--dyvix-command-menu-bg': background,
+          '--dyvix-command-menu-container-bg': background,
+          '--dyvix-command-menu-header-bg': background,
+          '--dyvix-command-menu-hover-border-color': background,
+          '--dyvix-command-menu-border-color': background
+        }),
+        ...(color && { '--dyvix-command-menu-color': color })
+      },
       ...overrides
     };
 
@@ -435,7 +447,7 @@ const DyvixCommandMenu = React.forwardRef<
                 <span>{headerText ?? 'Console'}</span>
                 <button
                   onClick={() => {
-                    setBackground(false);
+                    setBackgroundTask(false);
                     SetStatus('leaving');
                   }}
                 >
