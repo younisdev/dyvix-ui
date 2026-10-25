@@ -111,6 +111,10 @@ const DyvixLabel = React.forwardRef<HTMLDivElement, DyvixLabelProps>(
 
     const combinedWrapperStyle = {
       ...wrapperProps?.style,
+      ...{
+        ...(background && { '--dyvix-label-bg': background }),
+        ...(color && { '--dyvix-label-color': color })
+      },
       ...overrides
     };
 
