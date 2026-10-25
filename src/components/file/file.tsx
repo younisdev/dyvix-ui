@@ -143,7 +143,6 @@ const DyvixFile = React.forwardRef<HTMLDivElement, DyvixFileProps>(
         className
       ),
       style: {
-        ...(background && { background: background }),
         ...splitElementStyles
       },
       ...restElementProps
@@ -151,6 +150,10 @@ const DyvixFile = React.forwardRef<HTMLDivElement, DyvixFileProps>(
 
     const combinedWrapperStyle = {
       ...wrapperProps.style,
+      ...{
+        ...(background && { '--dyvix-file-bg': background }),
+        ...(color && { '--dyvix-file-color': color })
+      },
       ...overrides
     };
     return (
@@ -163,7 +166,7 @@ const DyvixFile = React.forwardRef<HTMLDivElement, DyvixFileProps>(
         <label {...props} htmlFor={`file-upload-${instanceId}`}>
           <div className="dyvix-file-ui">
             <span className="dyvix-file-icon">📁</span>
-            <p style={{ color: color }}>{file !== null ? file : label}</p>
+            <p>{file !== null ? file : label}</p>
           </div>
           <input
             type="file"
