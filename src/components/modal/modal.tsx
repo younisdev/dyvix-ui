@@ -11,7 +11,7 @@ import {
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { SerializeData } from './InputValidation';
+import { SerializeData } from './validation';
 import Version from '../../../package.json';
 import DyvixButton from '../button/button';
 import DyvixFile from '../file/file';
