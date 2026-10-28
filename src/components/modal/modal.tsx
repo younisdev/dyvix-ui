@@ -19,7 +19,7 @@ import DyvixInput from '../input/input';
 import DyvixLabel from '../label/label';
 import type {
   DyvixModalProps,
-  NormalizedDyvixElements
+  NormalizedDyvixModalElements
 } from './dependencies/modal.types';
 import type { DyvixButtonThemes } from '../button/dependencies/button.types';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
@@ -59,7 +59,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   const [status, SetStatus] = React.useState<string>('entering');
   const [configs, SetConfig] = React.useState({});
 
-  const [fields, SetFields] = React.useState<NormalizedDyvixElements[]>([]);
+  const [fields, SetFields] = React.useState<NormalizedDyvixModalElements[]>([]);
   const instanceId = React.useId();
   const modalRef = React.useRef<HTMLDivElement>(null);
   const addedToTimeLineRef = React.useRef<{

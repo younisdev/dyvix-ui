@@ -6,8 +6,6 @@ export function MarqueeTest() {
   return (
     <>
       <DyvixMarquee
-        background='red'
-        color='green'
         timeline={tl}
         repeat={1}
         items={[
