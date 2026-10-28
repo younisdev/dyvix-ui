@@ -99,6 +99,8 @@ export type DyvixMarqueeOverride = DyvixMarqueeWrapperOverride &
 export interface DyvixMarqueeProps {
   children?: React.ReactNode;
   className?: string;
+  background?: string & {};
+  color?: string & {};
   repeat?: number;
   direction?: 'vertical' | 'horizontal';
   reverse?: boolean;
