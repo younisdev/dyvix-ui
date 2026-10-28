@@ -176,7 +176,7 @@ export type DyvixModalOverride = DyvixModalWrapperOverride &
 export interface DyvixBaseModalProps {
   type?: DyvixModalTypes;
   theme?: DyvixModalThemes | null;
-  background?: string;
+  background?: string & {};
   animation?: DyvixModalAnimation | null;
   overrides?: DyvixModalOverride;
   Id?: string;

@@ -59,7 +59,9 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   const [status, SetStatus] = React.useState<string>('entering');
   const [configs, SetConfig] = React.useState({});
 
-  const [fields, SetFields] = React.useState<NormalizedDyvixModalElements[]>([]);
+  const [fields, SetFields] = React.useState<NormalizedDyvixModalElements[]>(
+    []
+  );
   const instanceId = React.useId();
   const modalRef = React.useRef<HTMLDivElement>(null);
   const addedToTimeLineRef = React.useRef<{
@@ -230,20 +232,17 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
       ...style
     }
   });
-  const defaultStyle = !currentTheme
-    ? {
-        ...(!currentTheme && { background: background })
-      }
-    : {};
 
   const { style: splitElementStyles } = elementProps;
   const combinedWrapperStyle = {
     ...(!animation && { opacity: 1 }),
     ...wrapperProps.style,
+    ...{
+      ...(background && { '--dyvix-modal-bg': background })
+    },
     ...overrides
   };
   const modalStyles = {
-    ...defaultStyle,
     height: dynamicHeight,
     width: dynamicWidth,
     transition: 'all 0.3s ease-out',
