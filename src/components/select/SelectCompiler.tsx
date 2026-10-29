@@ -22,6 +22,7 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
       overrides,
       theme,
       background,
+      color,
       dropdownBackground,
       className,
       placeholder = '',
@@ -227,6 +228,13 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
     const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
     const combinedWrapperStyle = {
       ...splitWrapperStyles,
+      ...{
+        ...(background && {
+          '--dyvix-select-bg': background,
+          '--dyvix-select-input-bg': background
+        }),
+        ...(color && { '--dyvix-select-color': color })
+      },
       ...overrides
     };
 
@@ -246,8 +254,7 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
         : undefined;
     const inputProps: React.ComponentPropsWithRef<'input'> = {
       style: {
-        ...splitElementStyles,
-        ...(background && { background: background })
+        ...splitElementStyles
       },
       ...restElementProps,
       autoComplete: 'off',
@@ -282,7 +289,9 @@ const DyvixSelect = React.forwardRef<HTMLDivElement, DyvixSelectProps>(
     const engineProps = {
       style: {
         ...splitElementStyles,
-        ...(dropdownBackground && { background: dropdownBackground })
+        ...(dropdownBackground && {
+          '--dyvix-select-dropdown-bg': dropdownBackground
+        })
       },
       ...restElementProps,
       elements: Select.elements,

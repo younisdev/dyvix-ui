@@ -171,10 +171,10 @@ export interface DyvixSelectProps extends Omit<
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
-  background?: string;
+  background?: string & {};
   overrides?: DyvixSelectOverride;
-  dropdownBackground?: string;
-  color?: string;
+  dropdownBackground?: string & {};
+  color?: string & {};
   placeholder?: string;
   timeline?: gsap.core.Timeline | null;
 }
@@ -191,7 +191,7 @@ export interface DyvixSelectEngineProps {
   inputRef: React.RefObject<HTMLInputElement | null>;
   OnChangeCallback: (value: string | number) => void;
   type: string;
-  background?: string;
+  background?: string & {};
   className?: string;
   activeOptionId?: string;
 }
