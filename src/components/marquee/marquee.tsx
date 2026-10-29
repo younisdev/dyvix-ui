@@ -15,6 +15,8 @@ const DyvixMarquee = Object.assign(
       {
         children,
         items,
+        background,
+        color,
         className,
         animation = 'fade',
         direction = 'horizantal',
@@ -82,6 +84,10 @@ const DyvixMarquee = Object.assign(
         ),
         style: {
           ...splitWrapperStyles,
+          ...{
+            ...(background && { '--dyvix-marquee-bg': background }),
+            ...(color && { '--dyvix-marquee-color': color })
+          },
           ...overrides
         },
         ...restWrapperProps

@@ -237,6 +237,10 @@ const Table = React.forwardRef(function Table<
   children = children ? children : resultJSX;
   const combinedWrapperStyle = {
     ...wrapperProps.style,
+    ...{
+      ...(background && { '--dyvix-table-bg': background }),
+      ...(color && { '--dyvix-table-color': color })
+    },
     ...overrides
   };
   return (

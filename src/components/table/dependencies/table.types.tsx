@@ -134,8 +134,8 @@ export interface DyvixTableProps<
   data?: T[];
   overrides?: DyvixTableOverride;
   style?: React.CSSProperties;
-  background?: string;
-  color?: string;
+  background?: string & {};
+  color?: string & {};
   timeline?: gsap.core.Timeline | null;
 }
 export interface DyvixTableSectionBaseProps extends React.HTMLAttributes<HTMLTableSectionElement> {

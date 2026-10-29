@@ -229,11 +229,6 @@ const DyvixNav = Object.assign(
 
       const props = {
         style: {
-          ...(background && { '--dyvix-nav-bg': background }),
-          ...(color && {
-            '--dyvix-nav-color': color,
-            '--dyvix-nav-link-color': color
-          }),
           ...splitElementStyles
         },
         className: ConstructClasses(
@@ -247,6 +242,12 @@ const DyvixNav = Object.assign(
 
       const combinedWrapperStyle = {
         ...wrapperProps.style,
+        ...{
+          ...(background && { '--dyvix-nav-bg': background }),
+          ...(color && {
+            '--dyvix-nav-color': color
+          })
+        },
         ...overrides
       };
       return (

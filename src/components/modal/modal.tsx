@@ -11,7 +11,7 @@ import {
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { SerializeData } from './InputValidation';
+import { SerializeData } from './validation';
 import Version from '../../../package.json';
 import DyvixButton from '../button/button';
 import DyvixFile from '../file/file';
@@ -19,7 +19,7 @@ import DyvixInput from '../input/input';
 import DyvixLabel from '../label/label';
 import type {
   DyvixModalProps,
-  NormalizedDyvixElements
+  NormalizedDyvixModalElements
 } from './dependencies/modal.types';
 import type { DyvixButtonThemes } from '../button/dependencies/button.types';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
@@ -59,7 +59,9 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   const [status, SetStatus] = React.useState<string>('entering');
   const [configs, SetConfig] = React.useState({});
 
-  const [fields, SetFields] = React.useState<NormalizedDyvixElements[]>([]);
+  const [fields, SetFields] = React.useState<NormalizedDyvixModalElements[]>(
+    []
+  );
   const instanceId = React.useId();
   const modalRef = React.useRef<HTMLDivElement>(null);
   const addedToTimeLineRef = React.useRef<{
@@ -230,20 +232,17 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
       ...style
     }
   });
-  const defaultStyle = !currentTheme
-    ? {
-        ...(!currentTheme && { background: background })
-      }
-    : {};
 
   const { style: splitElementStyles } = elementProps;
   const combinedWrapperStyle = {
     ...(!animation && { opacity: 1 }),
     ...wrapperProps.style,
+    ...{
+      ...(background && { '--dyvix-modal-bg': background })
+    },
     ...overrides
   };
   const modalStyles = {
-    ...defaultStyle,
     height: dynamicHeight,
     width: dynamicWidth,
     transition: 'all 0.3s ease-out',
