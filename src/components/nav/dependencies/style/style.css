@@ -69,23 +69,32 @@
   font-size: 1.2rem;
   letter-spacing: -0.05em;
   white-space: nowrap;
-  color: var(--dyvix-nav-brand-color, #f3f4f6);
+  color: var(--dyvix-nav-brand-color, var(--dyvix-nav-color, #f3f4f6));
   transition: color 0.2s ease-in-out;
 }
 .dyvix-nav-brand:hover {
-  color: var(--dyvix-nav-brand-hover-color, #bdd0f6);
+  color: var(
+    --dyvix-nav-brand-hover-color,
+    var(--dyvix-nav-hover-color, #bdd0f6)
+  );
 }
 .dyvix-nav-link {
   position: relative;
   text-decoration: none;
-  color: var(--dyvix-nav-link-color, rgba(243, 244, 246, 0.72));
+  color: var(
+    --dyvix-nav-link-color,
+    var(--dyvix-nav-color, rgba(243, 244, 246, 0.72))
+  );
   font-size: 0.85rem;
   font-weight: 650;
   white-space: nowrap;
   transition: color 0.15s ease-in-out;
 }
 .dyvix-nav-link:hover {
-  color: var(--dyvix-nav-link-hover-color, #bed0ff);
+  color: var(
+    --dyvix-nav-link-hover-color,
+    var(--dyvix-nav-hover-color, #bed0ff)
+  );
 }
 .dyvix-nav-link:focus-visible,
 .dyvix-nav-brand:focus-visible {

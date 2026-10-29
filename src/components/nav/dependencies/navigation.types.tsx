@@ -175,7 +175,7 @@ export interface DyvixNavProps extends React.HTMLAttributes<HTMLElement> {
   brand?: DyvixConfigBrandProps;
   items?: DyvixConfigItemsProps[];
   style?: React.CSSProperties;
-  background?: string;
-  color?: string;
+  background?: string & {};
+  color?: string & {};
   timeline?: gsap.core.Timeline | null;
 }
