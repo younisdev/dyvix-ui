@@ -109,6 +109,7 @@ export default function InputPlayground() {
       componentConfig={config}
       componentCallback={setConfig}
       tag={'DyvixInput'}
+      imports={"import { DyvixInput } from 'dyvix-ui';"}
     >
       <DyvixInput
         {...props}

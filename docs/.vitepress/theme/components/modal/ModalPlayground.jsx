@@ -177,6 +177,7 @@ export default function ModalPlayground() {
   }, [probs.elements]);
   return (
     <Wrapper
+      imports={"import { DyvixModal } from 'dyvix-ui';"}
       componentConfig={config}
       componentCallback={setConfig}
       tag={'DyvixModal'}

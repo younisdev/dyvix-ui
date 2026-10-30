@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-import ButtonPlayground from './button/ButtonPlayground';
 import { highlight } from 'sugar-high';
 import { createPortal } from 'react-dom';
 
@@ -9,7 +8,8 @@ export default function Wrapper({
   componentConfig,
   componentCallback,
   tag,
-  imports
+  imports,
+  debug = true
 }) {
   const [snippet, setSnippet] = React.useState('');
   const [copied, setCopied] = React.useState(null);
@@ -92,7 +92,7 @@ export default function Wrapper({
   }
 
   React.useEffect(() => {
-    let curr = `<${tag}\n`;
+    let curr = `${imports ? `${imports}\n\n` : ''}<${tag}\n`;
     for (const ele of componentConfig) {
       if (ele.utility === 'children' || ele.type === 'children') continue;
       const val =

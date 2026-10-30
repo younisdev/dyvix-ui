@@ -70,6 +70,7 @@ export default function SelectPlayground() {
 
   return (
     <Wrapper
+      imports={"import { DyvixSelect } from 'dyvix-ui';"}
       componentConfig={config}
       componentCallback={setConfig}
       tag={'DyvixSelect'}

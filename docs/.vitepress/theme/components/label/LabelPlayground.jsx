@@ -41,6 +41,7 @@ export default function LabelPlayground() {
       componentConfig={config}
       componentCallback={setConfig}
       tag={'DyvixLabel'}
+      imports={"import { DyvixLabel } from 'dyvix-ui';"}
     >
       <DyvixLabel htmlFor="demo-input" {...probs}>
         {children}

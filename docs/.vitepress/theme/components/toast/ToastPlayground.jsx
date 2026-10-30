@@ -74,6 +74,7 @@ export default function ToastPlayground() {
       componentConfig={config}
       componentCallback={setConfig}
       tag={'DyvixToastContainer'}
+      imports={"import { dyvixToast, DyvixToastContainer } from 'dyvix-ui';"}
     >
       <div>
         <DyvixToastContainer
