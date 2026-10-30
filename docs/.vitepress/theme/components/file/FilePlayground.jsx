@@ -79,6 +79,7 @@ export default function FilePlayground() {
       componentConfig={config}
       componentCallback={setConfig}
       tag={'DyvixFile'}
+      imports={"import { DyvixFile } from 'dyvix-ui';"}
     >
       <DyvixFile onUpload={(data) => console.log(data)} {...props} />
     </Wrapper>
