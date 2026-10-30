@@ -57,6 +57,7 @@ export default function ButtonPlayground() {
       componentConfig={config}
       componentCallback={setConfig}
       tag={'DyvixButton'}
+      imports={"import { DyvixButton } from 'dyvix-ui';"}
     >
       <DyvixButton onClick={() => console.log('clicked')} {...probs}>
         {children}
