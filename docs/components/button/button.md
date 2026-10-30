@@ -32,7 +32,7 @@ A config-driven animated button component with support for themed and default co
 
 ```jsx
 import {
-  DyvixLabel,
+  DyvixButton,
   DYVIX_GLOBAL_ANIMATION,
   DYVIX_GLOBAL_THEME
 } from 'dyvix-ui';
@@ -42,7 +42,7 @@ function ButtonExample() {
     <DyvixButton
       onClick={() => console.log('clicked')}
       animation={'bubble'}
-      theme={DYVIX_MODAL_THEME.MIDNIGHT}
+      theme={DYVIX_GLOBAL_THEME.MIDNIGHT}
     >
       Submit
     </DyvixButton>
