@@ -2,6 +2,34 @@ import React from 'react';
 import './style.css';
 import { highlight } from 'sugar-high';
 import { createPortal } from 'react-dom';
+export interface ConfigRule {
+  rule: string;
+  required?: boolean;
+  formats: string[];
+  options?: Record<string, string | number>;
+  max_val?: number;
+  amount_field?: boolean;
+}
+
+interface configProps {
+  utility: string;
+  type: 'select' | 'string' | 'color' | 'config' | 'text' | 'children';
+  options: [];
+  current: any;
+  format: 'string' | 'object';
+  allowNull: false;
+  'config-title': string;
+  'config-rules': ConfigRule[];
+}
+
+export interface wrapperProps {
+  children: React.ReactElement;
+  componentConfig: configProps[];
+  componentCallback: Function;
+  tag: string;
+  imports?: string;
+  debug?: Boolean;
+}
 
 export default function Wrapper({
   children,
@@ -10,11 +38,11 @@ export default function Wrapper({
   tag,
   imports,
   debug = true
-}) {
-  const [snippet, setSnippet] = React.useState('');
-  const [copied, setCopied] = React.useState(null);
+}: wrapperProps) {
+  const [snippet, setSnippet] = React.useState<string>('');
+  const [copied, setCopied] = React.useState<string | null>(null);
   const [activeConfig, setActive] = React.useState('');
-  const [currentConfig, setConfig] = React.useState({});
+  const [currentConfig, setConfig] = React.useState<Record<string, any>>({});
   const [amount, setAmount] = React.useState(3);
   const [showAdd, SetAdd] = React.useState(false);
 
@@ -28,12 +56,16 @@ export default function Wrapper({
       (ele) => ele.utility === activeConfig && ele.type === 'config'
     );
 
-    const currentData = {
+    if (!currentVal || !currentVal['config-rules']) return;
+    const currentData: Record<string, any> = {
       ...currentConfig,
       amount: currentConfig.amount || amount
     };
 
-    const isvalid = { status: 1, message: null };
+    const isvalid: { status: number; message: string | null } = {
+      status: 1,
+      message: null
+    };
 
     for (const rule of currentVal['config-rules']) {
       if (rule.required) {
@@ -45,7 +77,7 @@ export default function Wrapper({
           const isMissingEntry =
             !data ||
             data.length < amount ||
-            data.some((v) => !v || v.toString().trim() === '');
+            data.some((v: any) => !v || v.toString().trim() === '');
 
           if (isMissingEntry) {
             isvalid.status = -1;
@@ -67,7 +99,7 @@ export default function Wrapper({
       return;
     }
 
-    componentCallback((prev) =>
+    componentCallback((prev: configProps[]) =>
       prev.map((item) =>
         item.utility === activeConfig
           ? { ...item, current: [...item.current, currentData] }
@@ -78,13 +110,13 @@ export default function Wrapper({
     setActive('');
   }
 
-  function delconfig(index) {
-    componentCallback((prev) =>
+  function delconfig(index: number) {
+    componentCallback((prev: configProps[]) =>
       prev.map((item) =>
         item.utility === activeConfig
           ? {
               ...item,
-              current: item.current.filter((_, i) => i !== index)
+              current: item.current.filter((_: any, i: number) => i !== index)
             }
           : item
       )
@@ -121,7 +153,7 @@ export default function Wrapper({
                   id={`${ele.utility}-${i}`}
                   value={ele.current}
                   onChange={(e) =>
-                    componentCallback((prev) =>
+                    componentCallback((prev: configProps[]) =>
                       prev.map((item) =>
                         item.utility === ele.utility
                           ? { ...item, current: e.target.value }
@@ -144,7 +176,7 @@ export default function Wrapper({
                   type="color"
                   className="playground-color"
                   onChange={(e) =>
-                    componentCallback((prev) =>
+                    componentCallback((prev: configProps[]) =>
                       prev.map((item) =>
                         item.utility === ele.utility
                           ? { ...item, current: e.target.value }
@@ -161,7 +193,7 @@ export default function Wrapper({
                   type="text"
                   className="playground-text"
                   onChange={(e) =>
-                    componentCallback((prev) =>
+                    componentCallback((prev: configProps[]) =>
                       prev.map((item) =>
                         item.utility === ele.utility
                           ? { ...item, current: e.target.value }
@@ -186,7 +218,7 @@ export default function Wrapper({
                     createPortal(
                       <div className="playground-config-container">
                         <div className="playground-item-cont">
-                          {ele.current.map((val, j) => {
+                          {ele.current.map((val: any, j: number) => {
                             const previewText = Object.entries(val).map(
                               ([key, value]) => (
                                 <span
@@ -199,7 +231,7 @@ export default function Wrapper({
                                   <span className="playgound-property-value">
                                     {Array.isArray(value)
                                       ? value.join(', ')
-                                      : value}
+                                      : String(value)}
                                   </span>
                                 </span>
                               )
@@ -273,7 +305,7 @@ export default function Wrapper({
                                         onChange={(e) => {
                                           const val = Math.min(
                                             Number(e.target.value),
-                                            rule.max_val
+                                            rule.max_val ?? 100
                                           );
                                           const clamped = Math.max(val, 1);
                                           setAmount(clamped);
@@ -373,7 +405,9 @@ export default function Wrapper({
                           </div>
                         )}
                       </div>,
-                      document.querySelector('.dyvix-playground-wrapper')
+                      document.querySelector(
+                        '.dyvix-playground-wrapper'
+                      ) as Element
                     )}
                 </>
               );
