@@ -315,6 +315,8 @@ const DyvixCommandMenu = React.forwardRef<
     }, [logs, autoScroll]);
 
     React.useEffect(() => {
+      if (!triggerKey) return;
+
       const handleKeydown = (e: KeyboardEvent) => {
         const isInputFocused = document.activeElement === inputRef.current;
         if (
