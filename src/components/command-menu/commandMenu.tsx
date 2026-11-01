@@ -22,6 +22,7 @@ const DyvixCommandMenu = React.forwardRef<
       autoScroll = true,
       triggerKey = '`',
       showOnRender = true,
+      draggable = true,
       background,
       color,
       className,
@@ -80,7 +81,7 @@ const DyvixCommandMenu = React.forwardRef<
     const currentAnimation = animation ? (configs as any)['animation'] : null;
 
     const handleMouseDown = (e: React.MouseEvent<HTMLElement>) => {
-      if ((e.target as HTMLElement).tagName === 'button') return;
+      if ((e.target as HTMLElement).tagName === 'button' || !draggable) return;
 
       isDraggingRef.current = true;
 
