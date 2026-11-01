@@ -10,13 +10,13 @@ import {
   type StateSetter
 } from '../../utils/Smart Json Caching/SJCManager.js';
 import type {
-  DyvixElements,
+  DyvixModalElements,
   DyvixModalAnimation,
   DyvixModalElementTypes,
   DyvixModalPresets,
   DyvixModalThemes,
   DyvixModalTypes,
-  NormalizedDyvixElements
+  NormalizedDyvixModalElements
 } from './dependencies/modal.types.js';
 
 const CacheMapping = {
@@ -58,7 +58,7 @@ async function getSupportedElements(): Promise<DyvixModalElementTypes[]> {
 export async function SerializeData(
   title: string | undefined,
   type: DyvixModalTypes,
-  elements: DyvixElements[] | undefined,
+  elements: DyvixModalElements[] | undefined,
   preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
   animation: DyvixModalAnimation | null | undefined,
@@ -89,7 +89,7 @@ export async function SerializeData(
   const presetData = config?.find((item: any) => item?.preset);
   const finalElements = preset ? presetData?.preset?.fields : elements;
   const normalizedElements = normalizeElements(
-    finalElements?.map((ele: Partial<DyvixElements>) => ({
+    finalElements?.map((ele: Partial<DyvixModalElements>) => ({
       ...defaultElement,
       ...ele
     }))
@@ -106,7 +106,7 @@ export async function SerializeData(
 export async function ValidateInput(
   title: string | undefined,
   type: DyvixModalTypes,
-  elements: DyvixElements[] | undefined,
+  elements: DyvixModalElements[] | undefined,
   preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
   animation: DyvixModalAnimation | null | undefined,
@@ -203,7 +203,7 @@ export async function ValidateInput(
 
   return { status: GuardStatus.Success };
 }
-export function validateElements(elements: NormalizedDyvixElements[]) {
+export function validateElements(elements: NormalizedDyvixModalElements[]) {
   const MAX_ROWS = 9;
 
   if (!elements) {
@@ -346,7 +346,7 @@ export function validateElements(elements: NormalizedDyvixElements[]) {
         typeof element.match === 'string' ? [element.match] : element.match;
       for (const matchId of matchTargets) {
         if (!matchId) continue;
-        const exist = elements.find((e: DyvixElements) =>
+        const exist = elements.find((e: DyvixModalElements) =>
           Array.isArray(e.id) ? e.id.includes(matchId) : e.id === matchId
         );
         if (!exist) {
@@ -372,8 +372,8 @@ export function validateElements(elements: NormalizedDyvixElements[]) {
   return { status: GuardStatus.Success };
 }
 export function normalizeElements(
-  elements: DyvixElements[]
-): NormalizedDyvixElements[] {
+  elements: DyvixModalElements[]
+): NormalizedDyvixModalElements[] {
   return elements?.map((ele) => ({
     ...ele,
     placeholder:
@@ -387,11 +387,11 @@ export function normalizeElements(
       : typeof ele.match === 'string'
         ? [ele.match]
         : ele.match
-  })) as NormalizedDyvixElements[];
+  })) as NormalizedDyvixModalElements[];
 }
 function checkDuplicates(
-  elements: DyvixElements[],
-  field: keyof DyvixElements
+  elements: DyvixModalElements[],
+  field: keyof DyvixModalElements
 ) {
   let found = new Set();
 
