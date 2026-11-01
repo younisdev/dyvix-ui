@@ -202,6 +202,7 @@ const DyvixCommandMenu = React.forwardRef<
     React.useEffect(() => {
       async function validate() {
         const validator = await ValidateCommandMenu(
+          commands,
           animation,
           theme,
           SetConfig,
