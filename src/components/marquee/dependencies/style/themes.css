@@ -67,3 +67,58 @@
   border-width: var(--dyvix-marquee-hover-border-width, 6px);
   border-style: var(--dyvix-marquee-hover-border-style, solid);
 }
+.dyvix-marquee-ember {
+  border-radius: var(--dyvix-marquee-border-radius, 10px);
+  background: var(--dyvix-marquee-bg, #0f0a08);
+  color: var(--dyvix-marquee-color, #f8fafc);
+  box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.3)
+  );
+  transition: var(
+    --dyvix-marquee-transition,
+    transform 0.5s ease-in-out,
+    border-bottom 0.4s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    background 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-marquee-font-family, inherit);
+  font-size: var(--dyvix-marquee-font-size, inherit);
+  font-weight: var(--dyvix-marquee-font-weight, inherit);
+  border-bottom: var(--dyvix-marquee-border-bottom, 5px solid #ff4500);
+  box-sizing: border-box;
+}
+
+.dyvix-marquee-ember:hover {
+  transform: var(--dyvix-marquee-hover-transform, scale(1.002));
+  box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    1px 20px 18px 0px rgba(255, 69, 0, 0.4),
+    inset 0px 0px 40px 10px rgba(255, 110, 61, 0.2)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    1px 20px 18px 0px rgba(255, 69, 0, 0.4),
+    inset 0px 0px 40px 10px rgba(255, 110, 61, 0.2)
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    1px 20px 18px 0px rgba(255, 69, 0, 0.4),
+    inset 0px 0px 40px 10px rgba(255, 110, 61, 0.2)
+  );
+  border-bottom: var(--dyvix-marquee-hover-border-bottom, 5px solid #ff6b00);
+  background: var(--dyvix-marquee-hover-bg, #0f0a08);
+}
