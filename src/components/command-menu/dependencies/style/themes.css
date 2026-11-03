@@ -128,3 +128,83 @@
   .dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {
   background: rgba(75, 85, 99, 0.8);
 }
+.dyvix-command-menu-ember {
+  border-radius: var(--dyvix-command-menu-border-radius, 10px);
+  background: var(--dyvix-command-menu-bg, #0f0a08);
+  box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  -moz-box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    0px 17px 12px -9px rgba(255, 69, 0, 0.73),
+    0px 0px 30px -10px rgba(255, 69, 0, 0.3)
+  );
+  transition: var(
+    --dyvix-command-menu-transition,
+    transform 0.5s ease-in-out,
+    border-bottom 0.4s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out
+  );
+  font-family: var(--dyvix-command-menu-font-family, inherit);
+  font-size: var(--dyvix-command-menu-font-size, inherit);
+  font-weight: var(--dyvix-command-menu-font-weight, inherit);
+  border-style: var(--dyvix-command-menu-border-style, none);
+  border-color: var(--dyvix-command-menu-border-color, none);
+  border-bottom: #ff4500 3px solid;
+}
+.dyvix-command-menu-ember:hover {
+  transform: var(--dyvix-command-menu-hover-transform, scale(1.002));
+  border-radius: var(--dyvix-command-menu-hover-border-radius, 10px);
+  box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  -moz-box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    0px 17px 20px -9px rgba(255, 69, 0, 0.9),
+    0px 0px 40px -5px rgba(255, 69, 0, 0.5)
+  );
+  border-style: var(--dyvix-command-menu-hover-border-style, none);
+  border-color: var(--dyvix-command-menu-hover-border-color, none);
+  border-bottom: #ff6b00 3.1px solid;
+  background: var(--dyvix-command-menu-hover-bg, #0f0a08);
+}
+.dyvix-command-menu-ember .dyvix-command-menu-header {
+  background: var(--dyvix-command-menu-header-bg, #b14013);
+  border-radius: 10px;
+  color: var(--dyvix-command-menu-header-color, #e2b1a5);
+  border-bottom: var(
+    --dyvix-command-menu-header-border-bottom,
+    1px solid #a15824
+  );
+  font-size: var(--dyvix-command-menu-header-font-size, 12px);
+  font-weight: var(--dyvix-command-menu-header-font-weight, 600);
+  letter-spacing: var(--dyvix-command-menu-header-letter-spacing, 0.75px);
+  padding: 5px 5px 14px 5px;
+}
+.dyvix-command-menu-ember
+  .dyvix-command-menu-container::-webkit-scrollbar-thumb {
+  background: var(
+    --dyvix-command-menu-container-webkit-scrollbar-thumb-bg,
+    #fd8352
+  );
+}
+.dyvix-command-menu-ember
+  .dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {
+  background: #f45516;
+}
