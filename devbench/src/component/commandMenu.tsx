@@ -1,4 +1,4 @@
-import { DyvixCommandMenu } from '../../../src';
+import { DyvixCommandMenu, fetchCommand } from '../../../src';
 
 export function CommandMenuTest() {
   return (
@@ -11,9 +11,10 @@ export function CommandMenuTest() {
               'Tests network round-trip response and echoes arguments',
             usage: 'ping',
             execute: (_, context) => {
-              context.printOutput(`pinged`, 'Log');
+              context.printOutput(`pinged!`, 'Success');
             }
-          }
+          },
+          fetchCommand
         ]}
       />
 
