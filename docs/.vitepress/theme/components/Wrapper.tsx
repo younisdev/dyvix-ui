@@ -311,10 +311,26 @@ export default function Wrapper({
                                           );
                                           const clamped = Math.max(val, 1);
                                           setAmount(clamped);
-                                          setConfig((prev) => ({
-                                            ...prev,
-                                            [rule.rule]: clamped
-                                          }));
+                                          setConfig((prev) => {
+                                            const updated = {
+                                              ...prev,
+                                              [rule.rule]: clamped
+                                            };
+
+                                            for (const [
+                                              key,
+                                              val
+                                            ] of Object.entries(updated)) {
+                                              if (Array.isArray(val)) {
+                                                updated[key] = val.slice(
+                                                  0,
+                                                  clamped
+                                                );
+                                              }
+                                            }
+
+                                            return updated;
+                                          });
                                         }}
                                       ></input>
                                     </div>
