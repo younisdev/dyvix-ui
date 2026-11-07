@@ -12,6 +12,12 @@ DyvixCommandMenu is an animated console that monitors application output and run
   - : `DyvixCommand[]`. Adds custom commands alongside the built-in commands. No custom commands are provided by default. Commands are matched by name or alias, with built-in commands checked first.
 - `autoScroll`
   - : `boolean`. Defaults to `true`. Scrolls to the latest output when logs change.
+- `draggable`
+  - : `boolean`. Defaults to `true`. Allows the command menu to be dragged by its header. Set to `false` to disable dragging.
+- `background`
+  - : `string`. Sets the background color of the menu, including its header and output container. Also applies the color to the menu's border and hover border.
+- `color`
+  - : `string`. Sets the menu's text color.
 - `showOnRender`
   - : `boolean`. Defaults to `true`. Controls whether the menu is shown initially.
 - `headerText`
