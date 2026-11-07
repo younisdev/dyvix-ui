@@ -2,6 +2,8 @@ import React from 'react';
 import './style.css';
 import { highlight } from 'sugar-high';
 import { createPortal } from 'react-dom';
+import { DyvixCommandMenu } from 'dyvix-ui';
+
 export interface ConfigRule {
   rule: string;
   required?: boolean;
@@ -424,7 +426,11 @@ export default function Wrapper({
             return null;
           })}
         </div>
-
+        {showAdd && (
+          <DyvixCommandMenu
+            style={{ zIndex: 10000, top: '0.5rem', left: '0.5rem' }}
+          />
+        )}
         <div className="dyvix-render-zone">
           <span className="dyvix-render-message">Live Preview</span>
           {React.cloneElement(children, {
