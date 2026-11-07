@@ -112,3 +112,5 @@ export type {
   LogType,
   DyvixCommandMenuProps
 } from './components/command-menu/dependencies/command-menu.types';
+
+export {fetchCommand} from './components/command-menu/dependencies/defaultCommands';

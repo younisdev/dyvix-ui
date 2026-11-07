@@ -99,7 +99,7 @@ export interface DyvixCommandMenuHeaderOverride {
 /*--!/--*/
 
 // Edit here safely
-export type LogType = 'Error' | 'Warning' | 'Log';
+export type LogType = 'Error' | 'Warning' | 'Success' | 'Log';
 export interface DyvixLog {
   id: string;
   type: LogType;

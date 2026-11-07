@@ -8,7 +8,8 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 import type {
   CommandContext,
   DyvixCommandMenuProps,
-  DyvixLog
+  DyvixLog,
+  LogType
 } from './dependencies/command-menu.types';
 import { defaultCommands } from './dependencies/defaultCommands';
 import { ValidateCommandMenu } from './validation';
@@ -112,7 +113,7 @@ const DyvixCommandMenu = React.forwardRef<
       window.removeEventListener('mouseup', handleMouseUp);
     };
     const pushLog = React.useCallback(
-      (type: 'Error' | 'Warning' | 'Log' = 'Log', ...args: any[]) => {
+      (type: LogType = 'Log', ...args: any[]) => {
         const formattedText = args
           .map((arg) => {
             if (arg instanceof Error) return arg.stack || arg.message;

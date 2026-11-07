@@ -113,6 +113,9 @@
 .dyvix-command-menu-error {
   color: rgb(252, 103, 103);
 }
+.dyvix-command-menu-success {
+  color: rgb(103, 252, 118);
+}
 .dyvix-command-menu-warning {
   color: rgb(249, 252, 103);
 }
