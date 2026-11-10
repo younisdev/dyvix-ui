@@ -36,20 +36,28 @@ export function ModalTest() {
 
   return (
     <DyvixModal
-      title="Register"
-      elements={[
+      steps={[
         {
-          type: 'text',
-          name: 'fullName',
-          placeholder: 'Full Name',
-          amount: 1
+          title: 'Account Details',
+          elements: [
+            {
+              type: 'text',
+              name: 'firstName',
+              placeholder: 'First Name',
+              amount: 1
+            }
+          ]
         },
         {
-          type: 'radio',
-          name: 'plan',
-          placeholder: 'Choose a plan',
-          options: ['Free', 'Pro', 'Enterprise'],
-          amount: 1
+          title: 'Security',
+          elements: [
+            {
+              type: 'password',
+              name: 'password',
+              placeholder: 'Password',
+              amount: 1
+            }
+          ]
         }
       ]}
       onSubmit={(data) => console.log(data)}
