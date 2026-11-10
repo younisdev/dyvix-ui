@@ -11,7 +11,7 @@ import {
 import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { SerializeData } from './validation';
+import { SerializeData, ValidateModal } from './validation';
 import Version from '../../../package.json';
 import DyvixButton from '../button/button';
 import DyvixFile from '../file/file';
@@ -19,11 +19,13 @@ import DyvixInput from '../input/input';
 import DyvixLabel from '../label/label';
 import type {
   DyvixModalProps,
-  NormalizedDyvixModalElements
+  NormalizedDyvixModalElements,
+  NormalizedDyvixModalStep
 } from './dependencies/modal.types';
 import type { DyvixButtonThemes } from '../button/dependencies/button.types';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 import type { DyvixLabelThemes } from '../label/dependencies/label.types';
+import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard.js';
 
 export const validType = typesData.map((e) => e.type);
 export const validRules = validationData.map((e) => e.preset);
@@ -39,6 +41,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   title,
   type = 'form',
   elements,
+  steps,
   preset,
   overrides,
   theme,
@@ -59,9 +62,70 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   const [status, SetStatus] = React.useState<string>('entering');
   const [configs, SetConfig] = React.useState({});
 
-  const [fields, SetFields] = React.useState<NormalizedDyvixModalElements[]>(
-    []
-  );
+  const [{ modalSteps, currentStep }, setModalSteps] = React.useState<{
+    modalSteps: NormalizedDyvixModalStep[];
+    currentStep: number;
+  }>({ modalSteps: [], currentStep: 0 });
+
+  // utilized only when steps prop is being used
+  const nextStep = () => {
+    if (!modalSteps || modalSteps.length === 0) return;
+
+    setModalSteps((prev) => ({
+      ...prev,
+      currentStep: Math.min(prev.currentStep + 1, prev.modalSteps.length - 1)
+    }));
+  };
+  const prevStep = () => {
+    if (!modalSteps || modalSteps.length === 0) return;
+
+    setModalSteps((prev) => ({
+      ...prev,
+      currentStep: Math.max(0, prev.currentStep - 1)
+    }));
+  };
+
+  const fields = modalSteps[currentStep]?.elements ?? [];
+
+  React.useEffect(() => {
+    async function GetFields() {
+      const validator = await ValidateModal(
+        title,
+        type,
+        elements,
+        steps,
+        preset,
+        theme,
+        animation,
+        onSubmit,
+        SetConfig,
+        instanceId
+      );
+
+      if (validator.status === GuardStatus.Error) {
+        return EvaluateFailure(validator.error, validator.status);
+      }
+      const data = await SerializeData(title, elements, preset, steps);
+
+      if (!data) {
+        return;
+      }
+
+      setModalSteps((prev) => ({
+        ...prev,
+        modalSteps: data,
+        currentStep: 0
+      }));
+    }
+
+    GetFields();
+    return () => {
+      const key = `DYVIX_${Version['version']}_Modal_theme_${instanceId}`;
+      const ele = document.getElementById(key);
+      if (ele) ele.remove();
+    };
+  }, [theme, steps, preset, elements, animation, title]);
+
   const instanceId = React.useId();
   const modalRef = React.useRef<HTMLDivElement>(null);
   const addedToTimeLineRef = React.useRef<{
@@ -159,7 +223,11 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
     e.preventDefault();
     const newErrors = handleValidation(data);
     const allow = Object.values(newErrors).every((val) => val === null);
-    if (typeof onSubmit === 'function' && allow) {
+    if (
+      typeof onSubmit === 'function' &&
+      allow &&
+      currentStep === modalSteps.length - 1
+    ) {
       onSubmit(data);
     }
   }
@@ -185,7 +253,6 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
       border: currentTheme['input-border']
     })
   };
-
   const serializedClassName = ConstructClasses(
     `dyvix-modal`,
     !currentTheme?.class ? 'dyvix-modal-default' : '',
@@ -250,48 +317,24 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
       currentTheme?.radiused && { borderRadius: '47%' }),
     ...splitElementStyles
   };
+
+  title = modalSteps[currentStep]?.title || title;
+
   if (currentPreset) {
-    title = title || currentPreset['default-title'];
+    title = currentPreset['default-title'] || title;
   }
-
   React.useEffect(() => {
-    async function GetFields() {
-      const data = await SerializeData(
-        title,
-        type,
-        elements,
-        preset,
-        theme,
-        animation,
-        Id,
-        className,
-        onSubmit,
-        SetConfig,
-        instanceId
-      );
-
-      SetFields(data || []);
-    }
-
-    GetFields();
-    return () => {
-      const key = `DYVIX_${Version['version']}_Modal_theme_${instanceId}`;
-      const ele = document.getElementById(key);
-      if (ele) ele.remove();
-    };
-  }, [theme, preset, elements, animation, title]);
-
-  React.useEffect(() => {
-    fields?.forEach((field) => {
-      field.name.forEach((name) => {
-        SetData((prev: Record<string, string | number>) => ({
-          ...prev,
-          [name]: ''
-        }));
-      });
-    });
-  }, [fields]);
-
+    modalSteps.forEach((fields) =>
+      fields.elements?.forEach((field) => {
+        field.name.forEach((name) => {
+          SetData((prev: Record<string, string | number>) => ({
+            ...prev,
+            [name]: ''
+          }));
+        });
+      })
+    );
+  }, [modalSteps]);
   // Auto-focus for the first input when modal opens
   React.useEffect(() => {
     if (visibility && modalRef.current) {
@@ -446,6 +489,18 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
             >
               {title}
             </h3>
+
+            {modalSteps.length > 1 && (
+              <div className="dyvix-modal-step-indicator">
+                {modalSteps.map((step, idx) => (
+                  <span
+                    key={`step-${idx}`}
+                    className={`step-dot${currentStep === idx ? ' active' : ''}${currentStep > idx ? ' completed' : ''}`}
+                    aria-label={`step ${idx + 1}: ${step.title}`}
+                  />
+                ))}
+              </div>
+            )}
             {fields?.map((field, i) => {
               const elementDef =
                 elementsData.find((e) => e.element === field.type) ||
@@ -662,16 +717,51 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
                 </div>
               );
             })}
-            {currentType?.submit && (
-              <DyvixButton
-                type="submit"
-                className="dyvix-modal-button"
-                theme={(theme?.toLowerCase() as DyvixButtonThemes) || null}
-                animation={null}
-              >
-                {currentType.submitLabel}
-              </DyvixButton>
-            )}
+            <div className="dyvix-modal-button-holder">
+              {modalSteps.length > 1 && currentStep !== 0 && (
+                <DyvixButton
+                  type="button"
+                  className="dyvix-modal-button"
+                  onClick={prevStep}
+                  theme={(theme?.toLowerCase() as DyvixButtonThemes) || null}
+                  animation={null}
+                >
+                  Back
+                </DyvixButton>
+              )}
+              {currentType?.submit && (
+                <DyvixButton
+                  type={
+                    modalSteps.length > 1 &&
+                    currentStep !== modalSteps.length - 1
+                      ? 'button'
+                      : 'submit'
+                  }
+                  className="dyvix-modal-button"
+                  onClick={() => {
+                    const isIntermediateStep =
+                      modalSteps.length > 1 &&
+                      currentStep !== modalSteps.length - 1;
+                    if (isIntermediateStep) {
+                      const currentErrors = handleValidation(data);
+                      const hasErrors = Object.values(currentErrors).some(
+                        (val) => val !== null && val !== undefined && val !== ''
+                      );
+                      if (!hasErrors) {
+                        nextStep();
+                      }
+                    }
+                  }}
+                  theme={(theme?.toLowerCase() as DyvixButtonThemes) || null}
+                  animation={null}
+                >
+                  {modalSteps.length > 1 &&
+                  currentStep !== modalSteps.length - 1
+                    ? 'Next'
+                    : currentType.submitLabel}
+                </DyvixButton>
+              )}
+            </div>
           </form>
         </div>
       )}

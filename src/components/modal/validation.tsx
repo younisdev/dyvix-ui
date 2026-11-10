@@ -16,7 +16,9 @@ import type {
   DyvixModalPresets,
   DyvixModalThemes,
   DyvixModalTypes,
-  NormalizedDyvixModalElements
+  NormalizedDyvixModalElements,
+  DyvixModalStep,
+  NormalizedDyvixModalStep
 } from './dependencies/modal.types.js';
 
 const CacheMapping = {
@@ -57,61 +59,57 @@ async function getSupportedElements(): Promise<DyvixModalElementTypes[]> {
 }
 export async function SerializeData(
   title: string | undefined,
-  type: DyvixModalTypes,
   elements: DyvixModalElements[] | undefined,
   preset: DyvixModalPresets | undefined,
-  theme: DyvixModalThemes | null | undefined,
-  animation: DyvixModalAnimation | null | undefined,
-  Id: string | undefined,
-  Class: string | undefined,
-  onSubmit: Function | undefined,
-  callback: StateSetter,
-  instance: string | number
-) {
-  const validator = await ValidateInput(
-    title,
-    type,
-    elements,
-    preset,
-    theme,
-    animation,
-    Id,
-    Class,
-    onSubmit,
-    callback,
-    instance
-  );
+  steps: DyvixModalStep[] | undefined
+): Promise<NormalizedDyvixModalStep[] | null> {
   supportedTypes = await getSupportedElements();
-
-  if (validator.status === GuardStatus.Error) {
-    return EvaluateFailure(validator.error, validator.status);
-  }
+  let finalElements: DyvixModalStep[];
   const presetData = config?.find((item: any) => item?.preset);
-  const finalElements = preset ? presetData?.preset?.fields : elements;
-  const normalizedElements = normalizeElements(
-    finalElements?.map((ele: Partial<DyvixModalElements>) => ({
-      ...defaultElement,
-      ...ele
-    }))
+
+  if (steps && steps?.length > 0) {
+    finalElements = steps;
+  } else {
+    const fallbackElements = preset
+      ? presetData?.preset?.fields || []
+      : elements || [];
+    finalElements = [
+      {
+        title: title || '',
+        elements: fallbackElements
+      }
+    ];
+  }
+
+  const normalizedSteps: NormalizedDyvixModalStep[] = finalElements.map(
+    (step) => ({
+      title: step.title,
+      elements: normalizeElements(
+        step.elements?.map((ele: Partial<DyvixModalElements>) => ({
+          ...defaultElement,
+          ...ele
+        })) as NormalizedDyvixModalElements[]
+      )
+    })
   );
   if (!presetData) {
-    const eleValidator = validateElements(normalizedElements);
-
-    if (eleValidator.status === GuardStatus.Error) {
-      return EvaluateFailure(eleValidator.error, eleValidator.status);
+    for (const ele of normalizedSteps) {
+      const isValid = validateElements(ele.elements);
+      if (isValid.status === GuardStatus.Error) {
+        return EvaluateFailure(isValid.error, isValid.status);
+      }
     }
   }
-  return normalizedElements;
+  return normalizedSteps;
 }
-export async function ValidateInput(
+export async function ValidateModal(
   title: string | undefined,
   type: DyvixModalTypes,
   elements: DyvixModalElements[] | undefined,
+  steps: DyvixModalStep[] | undefined,
   preset: DyvixModalPresets | undefined,
   theme: DyvixModalThemes | null | undefined,
   animation: DyvixModalAnimation | null | undefined,
-  Id: string | undefined,
-  Class: string | undefined,
   onSubmit: Function | undefined,
   callback: StateSetter,
   instance: string | number
@@ -184,21 +182,46 @@ export async function ValidateInput(
       error: 'onSubmit should be provided as a function.'
     };
   }
-  if (!title) {
-    return { status: GuardStatus.Error, error: 'Please provide a title' };
-  }
-  if (!validType.includes(type)) {
-    return { status: GuardStatus.Error, error: 'Please provide a valid type.' };
-  }
   if (
-    !isPreset.config &&
-    (!Array.isArray(elements) ||
-      !elements.every((ele) => typeof ele === 'object'))
+    steps !== undefined &&
+    (!Array.isArray(steps) ||
+      !steps.every((step) => {
+        if (
+          !step.title ||
+          !step.elements.every((ele) => typeof ele === 'object' && ele !== null)
+        ) {
+          return false;
+        }
+        return true;
+      }))
   ) {
     return {
       status: GuardStatus.Error,
-      error: 'Element should be provided as an array of objects.'
+      error:
+        'Each step must have a title and elements provided as an array of objects.'
     };
+  }
+
+  if (!steps) {
+    if (!title && !preset) {
+      return { status: GuardStatus.Error, error: 'Please provide a title' };
+    }
+    if (!validType.includes(type)) {
+      return {
+        status: GuardStatus.Error,
+        error: 'Please provide a valid type.'
+      };
+    }
+    if (
+      !isPreset.config &&
+      (!Array.isArray(elements) ||
+        !elements.every((ele) => typeof ele === 'object'))
+    ) {
+      return {
+        status: GuardStatus.Error,
+        error: 'Element should be provided as an array of objects.'
+      };
+    }
   }
 
   return { status: GuardStatus.Success };
