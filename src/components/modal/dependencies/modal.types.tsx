@@ -189,15 +189,39 @@ export interface DyvixBaseModalProps {
   timeline?: gsap.core.Timeline | null;
 }
 
+export type DyvixModalStep = {
+  title: string;
+  elements: DyvixModalElements[];
+};
+
+export type NormalizedDyvixModalStep = {
+  title: string;
+  elements: NormalizedDyvixModalElements[];
+};
+
+// Standard custom modal (requires title and elements)
 type DyvixModalPropsWithoutPreset = DyvixBaseModalProps & {
   title: string;
   elements: DyvixModalElements[];
-  preset?: DyvixModalPresets;
+  steps?: never;
+  preset?: never;
 };
+// Preset-driven modal (requires preset only)
 type DyvixModalPropsWithPreset = DyvixBaseModalProps & {
   elements?: DyvixModalElements[];
+  steps?: DyvixModalStep[];
   title?: string;
   preset: DyvixModalPresets;
 };
+
+// Multi-step modal(requires steps array only)
+type DyvixModalPropsWithStep = DyvixBaseModalProps & {
+  elements?: DyvixModalElements[];
+  steps: DyvixModalStep[];
+  title?: string;
+  preset?: DyvixModalPresets;
+};
 export type DyvixModalProps =
-  DyvixModalPropsWithoutPreset | DyvixModalPropsWithPreset;
+  | DyvixModalPropsWithStep
+  | DyvixModalPropsWithoutPreset
+  | DyvixModalPropsWithPreset;
