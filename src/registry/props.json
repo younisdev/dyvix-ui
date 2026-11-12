@@ -38,6 +38,8 @@
     "placeSelf",
     "display",
     "inset",
-    "justifySelf"
+    "alignItems",
+    "justifyContent",
+    "boxSizing"
   ]
 }
