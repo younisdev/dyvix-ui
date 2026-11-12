@@ -34,6 +34,11 @@ const typesValTargetMap: Record<string, string> = {
   radio: 'checked',
   switch: 'checked'
 };
+const defaultVals: Record<string, any> = {
+  checkbox: false,
+  radio: '',
+  switch: false
+};
 
 export const eleData = elementsData;
 const componentsMap: Record<string, React.ElementType> = {
@@ -348,7 +353,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
         field.name.forEach((name) => {
           SetData((prev: Record<string, string | number>) => ({
             ...prev,
-            [name]: ''
+            [name]: prev[name] !== undefined ? prev[name] : (defaultVals[field.type] ?? '')
           }));
         });
       })
@@ -356,18 +361,24 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   }, [modalSteps]);
   // Auto-focus for the first input when modal opens
   React.useEffect(() => {
-    if (visibility && wrapperRef.current) {
-      // Search the first input, select or textarea inside the modal
-      const firstInput = wrapperRef.current.querySelector<HTMLElement>(
-        'input, select, textarea'
-      );
+    if (visibility && modalRef.current && modalSteps.length > 0) {
+      const rafId = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (!modalRef.current) return;
+          // Search the first input, select or textarea inside the modal
+          const firstInput = modalRef.current.querySelector<HTMLElement>(
+            'input:not([tabindex="-1"]):not([type="hidden"]), select, textarea, [tabindex="0"]'
+          );
+          // If input exist make focus
+          if (firstInput) {
+            firstInput.focus();
+          }
+        });
+      });
 
-      // If input exist make focus
-      if (firstInput) {
-        firstInput.focus();
-      }
+      return () => cancelAnimationFrame(rafId);
     }
-  }, [visibility]); // It only runs when the modal opens/closes
+  }, [visibility, modalSteps, currentStep]); // It only runs when the modal opens/closes
 
   useGSAP(
     () => {
