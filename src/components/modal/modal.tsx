@@ -472,6 +472,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
             {currentType?.closable && (
               <button
                 className="modal-close-btn"
+                type="button"
                 onClick={() => handleModalClose()}
                 aria-label="Close modal"
                 style={{
