@@ -29,6 +29,11 @@ import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard.js';
 
 export const validType = typesData.map((e) => e.type);
 export const validRules = validationData.map((e) => e.preset);
+const typesValTargetMap: Record<string, string> = {
+  checkbox: 'checked',
+  radio: 'checked',
+  switch: 'checked'
+};
 
 export const eleData = elementsData;
 const componentsMap: Record<string, React.ElementType> = {
@@ -545,6 +550,8 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
                   {Array.from({ length: field.amount }, (_, j) => {
                     const name = field.name[j] || '';
                     const id = field.id?.[j];
+                    const valTarget = typesValTargetMap[field.type] || 'value';
+                    const val = data[name] || '';
                     const fontSize = field.amount === 3 ? '0.6rem' : 'normal';
                     const fontWeight = field.amount === 3 ? '520' : '200';
                     // Spread aria props safely to avoid runtime errors if elementDef.aria is missing or null
@@ -583,6 +590,11 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
                       ariaAttributes['aria-required'] =
                         ariaProps['aria-required'];
                     }
+
+                    if (valTarget === 'checked') {
+                      ariaAttributes['aria-checked'] = val || false;
+                    }
+
                     const options = elementDef?.['requires-options']
                       ? field.options && Array.isArray(field.options[0])
                         ? field.options[j]
@@ -605,6 +617,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
                           ...themeInputStyle
                         })
                       },
+                      [valTarget]: val,
                       ...ariaAttributes,
                       ...(id && id !== '!/' && { id: id }),
                       ...(elementDef?.['is_custom'] && { animation: null }),
@@ -613,7 +626,10 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
                         'aria-label': field.placeholder[j]
                       }),
                       ...(elementDef?.['supports-label'] && {
-                        label: field.placeholder[j]
+                        label:
+                          field.type === 'file' && val !== ''
+                            ? val.name
+                            : field.placeholder[j]
                       }),
                       ...(elementDef?.['supports_type'] && {
                         type: field.type

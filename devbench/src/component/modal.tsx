@@ -36,6 +36,7 @@ export function ModalTest() {
 
   return (
     <DyvixModal
+     animation={'aurora'}
       steps={[
         {
           title: 'Account Details',
