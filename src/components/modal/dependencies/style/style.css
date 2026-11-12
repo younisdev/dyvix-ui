@@ -1,11 +1,24 @@
 .dyvix-modal-wrapper {
   margin-top: auto;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, currentColor 20%, rgb(1, 1, 1))
+    transparent;
   width: fit-content;
   height: fit-content;
   display: var(--dyvix-modal-display, flex);
   background: transparent;
   opacity: 0;
   z-index: var(--dyvix-modal-z-index, 500);
+}
+.dyvix-modal-radiused,
+.dyvix-modal-radiused * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dyvix-modal-radiused::-webkit-scrollbar,
+.dyvix-modal-radiused *::-webkit-scrollbar {
+  display: none;
 }
 .dyvix-modal {
   display: flex;

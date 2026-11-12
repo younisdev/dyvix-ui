@@ -86,9 +86,14 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   };
 
   const fields = modalSteps[currentStep]?.elements ?? [];
+  const stepsKey = JSON.stringify(steps ?? null);
+  const elementsKey = JSON.stringify(elements ?? null);
+  const latestConfig = React.useRef({ steps, elements });
+  latestConfig.current = { steps, elements };
 
   React.useEffect(() => {
     async function GetFields() {
+      const { steps, elements } = latestConfig.current;
       const validator = await ValidateModal(
         title,
         type,
@@ -124,10 +129,11 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
       const ele = document.getElementById(key);
       if (ele) ele.remove();
     };
-  }, [theme, steps, preset, elements, animation, title]);
+  }, [theme, stepsKey, elementsKey, preset, animation, title]);
 
   const instanceId = React.useId();
-  const modalRef = React.useRef<HTMLDivElement>(null);
+  const modalRef = React.useRef<HTMLFormElement | null>(null);
+  const wrapperRef = React.useRef<HTMLDivElement | null>(null);
   const addedToTimeLineRef = React.useRef<{
     theme: string | null;
     animation: string | null;
@@ -268,7 +274,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
     radio: 65
   };
   const ROW_GAP = 25;
-  const BASEHEIGHT = 200; // Ceiling space + Floor space combined
+  const BASEHEIGHT = 210; // Ceiling space + Floor space combined
   const safeField = fields || [];
 
   let TOTAL_HEIGHT =
@@ -289,13 +295,18 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
     ? `min(${TOTAL_HEIGHT}px, 95vh)`
     : `${TOTAL_HEIGHT}px`;
   const dynamicWidth = `min(${TOTAL_HEIGHT}px, 95vw, 95vh)`;
-  const isCentered = fields?.length <= 4;
-  const dynamicMargin = isCentered ? '12vh auto' : '1.5rem auto';
+
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style: {
-      ...(dynamicPositioning
-        ? { margin: dynamicMargin, justifySelf: 'center' }
-        : {}),
+      ...(dynamicPositioning && {
+        position: 'fixed',
+        inset: 0,
+        width: 'auto',
+        height: 'auto',
+        overflowY: 'auto',
+        padding: '20px',
+        overflowBehavior: 'contain'
+      }),
       ...style
     }
   });
@@ -310,8 +321,11 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
     ...overrides
   };
   const modalStyles = {
+    margin: 'auto',
     height: dynamicHeight,
     width: dynamicWidth,
+    maxHeight: 'calc(100dvh - 6rem)',
+    maxWidth: 'min(100%, 95vh)',
     transition: 'all 0.3s ease-out',
     ...(fields?.length > 7 &&
       currentTheme?.radiused && { borderRadius: '47%' }),
@@ -337,9 +351,9 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
   }, [modalSteps]);
   // Auto-focus for the first input when modal opens
   React.useEffect(() => {
-    if (visibility && modalRef.current) {
+    if (visibility && wrapperRef.current) {
       // Search the first input, select or textarea inside the modal
-      const firstInput = modalRef.current.querySelector<HTMLElement>(
+      const firstInput = wrapperRef.current.querySelector<HTMLElement>(
         'input, select, textarea'
       );
 
@@ -352,7 +366,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
 
   useGSAP(
     () => {
-      if (!modalRef.current) return;
+      if (!wrapperRef.current) return;
 
       if (!currentAnimation) {
         if (status === 'leaving') {
@@ -383,11 +397,11 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
 
             const childTween = gsap
               .timeline()
-              .set(modalRef.current, {
+              .set(wrapperRef.current, {
                 autoAlpha: 0,
                 ...currentAnimation.from
               })
-              .to(modalRef.current, {
+              .to(wrapperRef.current, {
                 autoAlpha: 1,
                 ...toVars
               });
@@ -395,7 +409,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
             timeline.add(childTween, '+=0');
           }
         } else if (status === 'leaving') {
-          const leavingTween = gsap.timeline().to(modalRef.current, {
+          const leavingTween = gsap.timeline().to(wrapperRef.current, {
             ...currentAnimation.from,
             duration: currentAnimation['default-duration'],
             ease: currentAnimation.ease,
@@ -408,19 +422,19 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
       }
 
       if (status === 'entering') {
-        gsap.set(modalRef.current, {
+        gsap.set(wrapperRef.current, {
           autoAlpha: 0,
           ...currentAnimation.from
         });
 
-        gsap.to(modalRef.current, {
+        gsap.to(wrapperRef.current, {
           autoAlpha: 1,
           ...currentAnimation.to,
           duration: currentAnimation['default-duration'] ?? 0.3,
           ease: currentAnimation.ease ?? 'power2.out'
         });
       } else {
-        gsap.to(modalRef.current, {
+        gsap.to(wrapperRef.current, {
           ...currentAnimation.from,
           duration: currentAnimation['default-duration'],
           ease: currentAnimation.ease,
@@ -428,7 +442,10 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
         });
       }
     },
-    { scope: modalRef, dependencies: [currentAnimation, status, currentTheme] }
+    {
+      scope: wrapperRef,
+      dependencies: [currentAnimation, status, currentTheme]
+    }
   );
 
   useGSAP(() => {
@@ -455,8 +472,11 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
     <>
       {visibility && (
         <div
-          ref={modalRef}
-          className="dyvix-modal-wrapper"
+          ref={wrapperRef}
+          className={ConstructClasses(
+            'dyvix-modal-wrapper',
+            currentTheme?.radiused ? 'dyvix-modal-radiused' : ''
+          )}
           role="dialog"
           aria-modal="true"
           aria-labelledby={`header_${instanceId}`}
@@ -465,6 +485,7 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
         >
           <form
             className={serializedClassName}
+            ref={modalRef}
             id={Id}
             style={modalStyles}
             onSubmit={handleSubmit}
