@@ -10,7 +10,7 @@ export function ModalTest() {
     placeholder: `Extended Field ${i + 1}`,
     amount: 1
   }));
-  const stressTestData = Array.from({ length: 7 }, (_, i) => {
+  const stressTestData = Array.from({ length: 2 }, (_, i) => {
     const randomEleType = types[Math.floor(Math.random() * types.length)];
     let props = { type: randomEleType, amount: (i % 3) + 1 };
     let placeholder = [];
@@ -36,6 +36,7 @@ export function ModalTest() {
 
   return (
     <DyvixModal
+     animation={'aurora'}
       steps={[
         {
           title: 'Account Details',
