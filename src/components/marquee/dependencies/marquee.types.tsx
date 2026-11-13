@@ -75,7 +75,7 @@ export interface DyvixMarqueeWrapperOverride {
 }
 
 export type DyvixMarqueeThemes =
-  'Singularity' | 'Industrial' | 'Ember' | 'Frost';
+  'Singularity' | 'Industrial' | 'Ember' | 'Frost' | 'Blade';
 
 /*--!/--*/
 // Edit here safely
