@@ -123,3 +123,53 @@
   background: var(--dyvix-marquee-hover-bg, #0f0a08);
   border-color: var(--dyvix-marquee-hover-border-color, inherit);
 }
+.dyvix-marquee-frost {
+  background: var(--dyvix-marquee-bg, #ffffff1a);
+  border-width: var(--dyvix-marquee-border-width, 5px);
+  border-style: var(--dyvix-marquee-border-style, groove);
+  border-color: var(--dyvix-marquee-border-color, #ffffff40);
+  border-radius: var(--dyvix-marquee-border-radius, 30px);
+  backdrop-filter: blur(50px);
+  box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  transition: var(
+    --dyvix-marquee-transition,
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-marquee-font-family, inherit);
+  font-size: var(--dyvix-marquee-font-size, inherit);
+  font-weight: var(--dyvix-marquee-font-weight, inherit);
+}
+.dyvix-marquee-frost:hover {
+  border-width: var(--dyvix-marquee-hover-border-width, 8px);
+  border-style: var(--dyvix-marquee-hover-border-style, groove);
+  border-color: var(--dyvix-marquee-hover-border-color, #f8f8f840);
+  transform: var(--dyvix-marquee-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  background: var(--dyvix-marquee-hover-bg, #ffffff1a);
+}
