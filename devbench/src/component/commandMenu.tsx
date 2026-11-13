@@ -4,7 +4,7 @@ export function CommandMenuTest() {
   return (
     <>
       <DyvixCommandMenu
-        theme={'Frost'}
+        theme={'Blade'}
         commands={[
           {
             name: 'ping',
