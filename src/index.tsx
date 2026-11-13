@@ -10,8 +10,11 @@ export type {
   DyvixModalValidatorsWithRegex,
   DyvixModalElements,
   NormalizedDyvixModalElements,
+  DyvixModalStep,
+  NormalizedDyvixModalStep,
+  DyvixBaseModalProps,
   DyvixModalOverride,
-  DyvixModalProps
+  DyvixModalProps,
 } from './components/modal/dependencies/modal.types';
 export { default as DyvixSelect } from './components/select/SelectCompiler';
 export type {
