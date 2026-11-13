@@ -98,10 +98,10 @@
   font-family: var(--dyvix-marquee-font-family, inherit);
   font-size: var(--dyvix-marquee-font-size, inherit);
   font-weight: var(--dyvix-marquee-font-weight, inherit);
-  border-bottom: var(--dyvix-marquee-border-bottom, 5px solid #ff4500);
+  border-bottom: 5px solid #ff4500;
   box-sizing: border-box;
+  border-color: var(--dyvix-marquee-border-color, inherit);
 }
-
 .dyvix-marquee-ember:hover {
   transform: var(--dyvix-marquee-hover-transform, scale(1.002));
   box-shadow: var(
@@ -119,6 +119,107 @@
     1px 20px 18px 0px rgba(255, 69, 0, 0.4),
     inset 0px 0px 40px 10px rgba(255, 110, 61, 0.2)
   );
-  border-bottom: var(--dyvix-marquee-hover-border-bottom, 5px solid #ff6b00);
+  border-bottom: 5px solid #ff6b00;
   background: var(--dyvix-marquee-hover-bg, #0f0a08);
+  border-color: var(--dyvix-marquee-hover-border-color, inherit);
+}
+.dyvix-marquee-frost {
+  background: var(--dyvix-marquee-bg, #ffffff1a);
+  border-width: var(--dyvix-marquee-border-width, 5px);
+  border-style: var(--dyvix-marquee-border-style, groove);
+  border-color: var(--dyvix-marquee-border-color, #ffffff40);
+  border-radius: var(--dyvix-marquee-border-radius, 30px);
+  backdrop-filter: blur(50px);
+  box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  transition: var(
+    --dyvix-marquee-transition,
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-marquee-font-family, inherit);
+  font-size: var(--dyvix-marquee-font-size, inherit);
+  font-weight: var(--dyvix-marquee-font-weight, inherit);
+}
+.dyvix-marquee-frost:hover {
+  border-width: var(--dyvix-marquee-hover-border-width, 8px);
+  border-style: var(--dyvix-marquee-hover-border-style, groove);
+  border-color: var(--dyvix-marquee-hover-border-color, #f8f8f840);
+  transform: var(--dyvix-marquee-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  background: var(--dyvix-marquee-hover-bg, #ffffff1a);
+}
+.dyvix-marquee-blade {
+  background: var(--dyvix-marquee-bg, #0a0a0a);
+  border-radius: var(--dyvix-marquee-border-radius, 0px);
+  box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-marquee-transition,
+    border-left 0.1s ease-in-out,
+    border-top 0.1s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out,
+    -moz-box-shadow 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-marquee-font-family, inherit);
+  font-size: var(--dyvix-marquee-font-size, inherit);
+  font-weight: var(--dyvix-marquee-font-weight, inherit);
+  border-color: var(--dyvix-marquee-border-color, inherit);
+  border-left: 3px solid #e2e8f0;
+  border-top: 3px solid #e2e8f0;
+  border-right: 1px solid #ffffff20;
+  border-bottom: 1px solid #ffffff20;
+}
+.dyvix-marquee-blade:hover {
+  box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-marquee-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  border-color: var(--dyvix-marquee-hover-border-color, inherit);
+  background: var(--dyvix-marquee-hover-bg, #0a0a0a);
+  border-left: 4px solid #ffffff;
+  border-top: 4px solid #ffffff;
 }

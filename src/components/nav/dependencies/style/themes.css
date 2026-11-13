@@ -234,3 +234,76 @@
   background: rgba(213, 255, 248, 1);
   box-shadow: 0 0 8px #d5fff8a6;
 }
+.dyvix-nav-blade {
+  background: var(--dyvix-nav-bg, #0a0a0a);
+  border-radius: var(--dyvix-nav-border-radius, 0px);
+  box-shadow: var(
+    --dyvix-nav-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-nav-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  -moz-box-shadow: var(
+    --dyvix-nav-box-shadow,
+    -4px -4px 20px rgba(255, 255, 255, 0.05)
+  );
+  transition: var(
+    --dyvix-nav-transition,
+    border-left 0.1s ease-in-out,
+    border-top 0.1s ease-in-out,
+    border-radius 0.1s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out,
+    -moz-box-shadow 0.2s ease-in-out
+  );
+  font-family: var(--dyvix-nav-font-family, inherit);
+  font-size: var(--dyvix-nav-font-size, inherit);
+  font-weight: var(--dyvix-nav-font-weight, inherit);
+  border-color: var(--dyvix-nav-border-color, inherit);
+  border-left: 3px solid #e2e8f0;
+  border-top: 3px solid #e2e8f0;
+  border-right: 1px solid #ffffff20;
+  border-bottom: 1px solid #ffffff20;
+}
+.dyvix-nav-blade:hover {
+  border-radius: var(--dyvix-nav-hover-border-radius, 10px);
+  box-shadow: var(
+    --dyvix-nav-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-nav-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-nav-hover-box-shadow,
+    -6px -6px 30px rgba(255, 255, 255, 0.1)
+  );
+  border-color: var(--dyvix-nav-hover-border-color, inherit);
+  border-left: 4px solid #ffffff;
+  border-top: 4px solid #ffffff;
+  border-right: 1px solid #ffffff20;
+  border-bottom: 1px solid #ffffff20;
+  background: var(--dyvix-nav-hover-bg, #0a0a0a);
+}
+.dyvix-nav-blade .dyvix-nav-brand {
+  color: var(--dyvix-nav-brand-color, #e2e8f0);
+  text-shadow:
+    0 0 8px rgba(213, 255, 248, 0.65),
+    0 0 20px rgba(248, 248, 248, 0.25);
+}
+.dyvix-nav-blade .dyvix-nav-brand:hover {
+  color: var(--dyvix-nav-brand-hover-color, #d2cdcd);
+}
+.dyvix-nav-blade .dyvix-nav-link {
+  color: var(--dyvix-nav-link-color, #d2cdcd);
+}
+.dyvix-nav-blade .dyvix-nav-link:hover {
+  color: var(--dyvix-nav-link-hover-color, #f6eaea);
+}
+.dyvix-nav-blade .dyvix-nav-link::after {
+  background: #ddd8d8;
+  box-shadow: 0 0 8px #d5fff8a6;
+}

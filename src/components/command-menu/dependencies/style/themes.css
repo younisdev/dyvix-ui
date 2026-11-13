@@ -208,3 +208,153 @@
   .dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {
   background: #f45516;
 }
+.dyvix-command-menu-frost {
+  background: var(--dyvix-command-menu-bg, #ffffff1a);
+  border-width: var(--dyvix-command-menu-border-width, 7px);
+  border-style: var(--dyvix-command-menu-border-style, groove);
+  border-color: var(--dyvix-command-menu-border-color, #ffffff40);
+  border-radius: var(--dyvix-command-menu-border-radius, 20px);
+  backdrop-filter: blur(50px);
+  box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    -6px 2px 51px -7px rgba(213, 255, 248, 1) inset
+  );
+  transition: var(
+    --dyvix-command-menu-transition,
+    transform 0.5s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    -webkit-box-shadow 0.3s ease-in-out,
+    -moz-box-shadow 0.3s ease-in-out,
+    border 0.4s ease-in-out
+  );
+  font-family: var(--dyvix-command-menu-font-family, inherit);
+  font-size: var(--dyvix-command-menu-font-size, inherit);
+  font-weight: var(--dyvix-command-menu-font-weight, inherit);
+}
+.dyvix-command-menu-frost:hover {
+  border-width: var(--dyvix-command-menu-hover-border-width, 8px);
+  border-style: var(--dyvix-command-menu-hover-border-style, groove);
+  border-color: var(--dyvix-command-menu-hover-border-color, #f8f8f840);
+  transform: var(--dyvix-command-menu-hover-transform, scale(1.01));
+  box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -webkit-box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  -moz-box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    -6px 2px 51px -23px rgba(213, 255, 248, 1) inset
+  );
+  background: var(--dyvix-command-menu-hover-bg, #ffffff1a);
+}
+.dyvix-command-menu-frost .dyvix-command-menu-header {
+  background: var(--dyvix-command-menu-header-bg, #ffffff40);
+  border-radius: 10px;
+  color: var(--dyvix-command-menu-header-color, #ffffff);
+  border-bottom: var(
+    --dyvix-command-menu-header-border-bottom,
+    1px solid #ffffff40
+  );
+  font-size: var(--dyvix-command-menu-header-font-size, 12px);
+  font-weight: var(--dyvix-command-menu-header-font-weight, 600);
+  letter-spacing: var(--dyvix-command-menu-header-letter-spacing, 0.75px);
+  padding: 5px 5px 14px 5px;
+}
+.dyvix-command-menu-frost
+  .dyvix-command-menu-container::-webkit-scrollbar-thumb {
+  background: var(
+    --dyvix-command-menu-container-webkit-scrollbar-thumb-bg,
+    #3e3e3e40
+  );
+}
+.dyvix-command-menu-frost
+  .dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {
+  background: #ffffff40;
+}
+.dyvix-command-menu-blade {
+  background: var(--dyvix-command-menu-bg, #0f132b);
+  border-radius: var(--dyvix-command-menu-border-radius, 8px);
+  box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    -4px -4px 18px rgba(255, 255, 255, 0.03)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    -4px -4px 18px rgba(255, 255, 255, 0.03)
+  );
+  -moz-box-shadow: var(
+    --dyvix-command-menu-box-shadow,
+    -4px -4px 18px rgba(255, 255, 255, 0.03)
+  );
+  transition: var(
+    --dyvix-command-menu-transition,
+    border-left 0.2s ease-in-out,
+    border-top 0.2s ease-in-out,
+    box-shadow 0.3s ease-out,
+    -webkit-box-shadow 0.3s ease-out,
+    -moz-box-shadow 0.3s ease-out
+  );
+  font-family: var(--dyvix-command-menu-font-family, inherit);
+  font-size: var(--dyvix-command-menu-font-size, 14px);
+  font-weight: var(--dyvix-command-menu-font-weight, 500);
+  border-color: var(--dyvix-command-menu-border-color, inherit);
+  border-left: 3px solid #e2e8f0;
+  border-top: 3px solid #e2e8f0;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dyvix-command-menu-blade:hover {
+  box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    -8px -8px 40px rgba(255, 255, 255, 0.15)
+  );
+  -webkit-box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    -8px -8px 40px rgba(255, 255, 255, 0.15)
+  );
+  -moz-box-shadow: var(
+    --dyvix-command-menu-hover-box-shadow,
+    -8px -8px 40px rgba(255, 255, 255, 0.15)
+  );
+  border-color: var(--dyvix-command-menu-hover-border-color, #ffffff);
+  background: var(--dyvix-command-menu-hover-bg, #1a2b47);
+  border-left: 6px solid #ffffff;
+  border-top: 6px solid #ffffff;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dyvix-command-menu-blade .dyvix-command-menu-header {
+  background: var(--dyvix-command-menu-header-bg, #dce6f1);
+  border-radius: 0px;
+  color: var(--dyvix-command-menu-header-color, #2c3e50);
+  border-bottom: var(
+    --dyvix-command-menu-header-border-bottom,
+    1px solid rgba(255, 255, 255, 0.4)
+  );
+  font-size: var(--dyvix-command-menu-header-font-size, 13px);
+  font-weight: var(--dyvix-command-menu-header-font-weight, 600);
+  letter-spacing: var(--dyvix-command-menu-header-letter-spacing, 0.5px);
+  padding: 8px 15px 14px 15px;
+}
+.dyvix-command-menu-blade
+  .dyvix-command-menu-container::-webkit-scrollbar-thumb {
+  background: var(
+    --dyvix-command-menu-container-webkit-scrollbar-thumb-bg,
+    #2c344a70
+  );
+}
+.dyvix-command-menu-blade
+  .dyvix-command-menu-container::-webkit-scrollbar-thumb:hover {
+  background: #38415b;
+}

@@ -19,7 +19,8 @@ export type DyvixCommandMenuAnimation =
   | 'spiral'
   | 'bounce';
 
-export type DyvixCommandMenuThemes = 'Singularity' | 'Industrial' | 'Ember';
+export type DyvixCommandMenuThemes =
+  'Singularity' | 'Industrial' | 'Ember' | 'Frost' | 'Blade';
 
 export interface DyvixCommandMenuBaseOverride {
   '--dyvix-command-menu-color'?: string & {};

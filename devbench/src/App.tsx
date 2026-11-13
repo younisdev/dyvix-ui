@@ -54,8 +54,11 @@ function App() {
     SetCurrent(sender);
   }
 
-  localStorage.clear(); // Never do in production. Only in development env.
-  clear();
+  React.useEffect(() => {
+    localStorage.clear(); // Never do in production. Only in development env.
+    clear();
+  }, []);
+
   useGSAP(() => {
     let tl = gsap.timeline();
 
