@@ -98,10 +98,10 @@
   font-family: var(--dyvix-marquee-font-family, inherit);
   font-size: var(--dyvix-marquee-font-size, inherit);
   font-weight: var(--dyvix-marquee-font-weight, inherit);
-  border-bottom: var(--dyvix-marquee-border-bottom, 5px solid #ff4500);
+  border-bottom: 5px solid #ff4500;
   box-sizing: border-box;
+  border-color: var(--dyvix-marquee-border-color, inherit);
 }
-
 .dyvix-marquee-ember:hover {
   transform: var(--dyvix-marquee-hover-transform, scale(1.002));
   box-shadow: var(
@@ -119,6 +119,7 @@
     1px 20px 18px 0px rgba(255, 69, 0, 0.4),
     inset 0px 0px 40px 10px rgba(255, 110, 61, 0.2)
   );
-  border-bottom: var(--dyvix-marquee-hover-border-bottom, 5px solid #ff6b00);
+  border-bottom: 5px solid #ff6b00;
   background: var(--dyvix-marquee-hover-bg, #0f0a08);
+  border-color: var(--dyvix-marquee-hover-border-color, inherit);
 }

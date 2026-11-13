@@ -19,7 +19,8 @@ export type DyvixNavAnimation =
   | 'spiral'
   | 'bounce';
 
-export type DyvixNavThemes = 'Singularity' | 'Industrial' | 'Ember' | 'Frost';
+export type DyvixNavThemes =
+  'Singularity' | 'Industrial' | 'Ember' | 'Frost' | 'Blade';
 
 export interface DyvixNavBaseOverride {
   '--dyvix-nav-display'?:

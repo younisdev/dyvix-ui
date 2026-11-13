@@ -353,7 +353,10 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
         field.name.forEach((name) => {
           SetData((prev: Record<string, string | number>) => ({
             ...prev,
-            [name]: prev[name] !== undefined ? prev[name] : (defaultVals[field.type] ?? '')
+            [name]:
+              prev[name] !== undefined
+                ? prev[name]
+                : (defaultVals[field.type] ?? '')
           }));
         });
       })
