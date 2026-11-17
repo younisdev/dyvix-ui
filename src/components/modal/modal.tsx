@@ -313,9 +313,11 @@ const DyvixModal: React.FC<DyvixModalProps> = ({
         inset: 0,
         width: 'auto',
         height: 'auto',
-        overflowY: 'auto',
-        padding: '20px',
-        overflowBehavior: 'contain'
+        ...(safeField.length > 4 && {
+          overflowY: 'auto',
+          padding: '20px',
+          overscrollBehavior: 'contain'
+        })
       }),
       ...style
     }

@@ -1,10 +1,14 @@
-import { DyvixModal, DYVIX_MODAL_ELEMENT } from '../../../src';
+import {
+  DyvixModal,
+  DYVIX_MODAL_ELEMENT,
+  type DyvixModalElements
+} from '../../../src';
 
 export function ModalTest() {
   const types = Object.values(DYVIX_MODAL_ELEMENT);
   const optionatedTypes = ['select', 'd-select', 'autocomplete'];
 
-  const simpleHeightTestData = Array.from({ length: 9 }, (_, i) => ({
+  const simpleHeightTestData = Array.from({ length:9}, (_, i) => ({
     type: 'text',
     name: `field_${i}`,
     placeholder: `Extended Field ${i + 1}`,
@@ -40,14 +44,7 @@ export function ModalTest() {
       steps={[
         {
           title: 'Account Details',
-          elements: [
-            {
-              type: 'text',
-              name: 'firstName',
-              placeholder: 'First Name',
-              amount: 1
-            }
-          ]
+          elements: simpleHeightTestData as DyvixModalElements[]
         },
         {
           title: 'Security',
