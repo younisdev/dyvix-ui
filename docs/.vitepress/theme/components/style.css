@@ -52,7 +52,7 @@
 }
 .dyvix-render-zone {
   flex: 1;
-  min-height: 400px;
+  min-height: 500px;
   max-height: 900px;
   overflow: hidden;
   display: flex;
