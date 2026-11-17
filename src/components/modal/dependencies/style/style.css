@@ -8,7 +8,8 @@
   display: var(--dyvix-modal-display, flex);
   background: transparent;
   opacity: 0;
-  z-index: var(--dyvix-modal-z-index, 500);
+  z-index: var(--dyvix-modal-z-index, 300);
+  pointer-events: none;
 }
 .dyvix-modal-radiused,
 .dyvix-modal-radiused * {
@@ -21,6 +22,7 @@
   display: none;
 }
 .dyvix-modal {
+  pointer-events: all;
   display: flex;
   flex-direction: column;
   position: relative;

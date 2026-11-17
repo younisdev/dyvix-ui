@@ -44,7 +44,14 @@ export function ModalTest() {
       steps={[
         {
           title: 'Account Details',
-          elements: simpleHeightTestData as DyvixModalElements[]
+          elements: [
+            {
+              amount: 1,
+              type: 'text',
+              name: 'username',
+              placeholder: 'username'
+            }
+          ]
         },
         {
           title: 'Security',
