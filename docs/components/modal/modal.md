@@ -134,7 +134,6 @@ function ModalExample() {
           placeholder: ['First Name', 'Last Name'],
           id: 'name',
           name: ['firstName', 'lastName'],
-          className: 'ex-text',
           amount: 2
         },
         {
@@ -143,7 +142,6 @@ function ModalExample() {
           validation: 'email',
           id: 'email',
           name: 'email',
-          className: 'ex-text',
           amount: 1
         },
         {
@@ -152,7 +150,6 @@ function ModalExample() {
           validation: 'password',
           id: 'password',
           name: 'password',
-          className: 'ex-text',
           amount: 1
         }
       ]}
@@ -190,7 +187,6 @@ function ModalExample() {
           placeholder: ['First Name', 'Last Name'],
           id: 'name',
           name: ['firstName', 'lastName'],
-          className: 'ex-text',
           amount: 2
         },
         {
@@ -199,7 +195,6 @@ function ModalExample() {
           validation: [DYVIX_MODAL_VALIDATION_PRESET.EMAIL],
           id: 'email',
           name: 'email',
-          className: 'ex-text',
           amount: 1
         },
         {
@@ -208,7 +203,6 @@ function ModalExample() {
           validation: [DYVIX_MODAL_VALIDATION_PRESET.PASSWORD],
           id: 'password',
           name: 'password',
-          className: 'ex-text',
           amount: 1
         },
         {
