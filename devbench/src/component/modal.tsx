@@ -8,7 +8,7 @@ export function ModalTest() {
   const types = Object.values(DYVIX_MODAL_ELEMENT);
   const optionatedTypes = ['select', 'd-select', 'autocomplete'];
 
-  const simpleHeightTestData = Array.from({ length:9}, (_, i) => ({
+  const simpleHeightTestData = Array.from({ length: 9 }, (_, i) => ({
     type: 'text',
     name: `field_${i}`,
     placeholder: `Extended Field ${i + 1}`,

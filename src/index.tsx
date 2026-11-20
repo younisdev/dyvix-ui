@@ -117,3 +117,5 @@ export type {
 } from './components/command-menu/dependencies/command-menu.types';
 
 export { fetchCommand } from './components/command-menu/dependencies/defaultCommands';
+export { default as DyvixContextMenu } from './components/context-menu/contextMenu';
+export { default as DyvixContextMenuItem } from './components/context-menu/DyvixContextMenuItem';

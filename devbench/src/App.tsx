@@ -39,6 +39,11 @@ const Links: Record<string, React.LazyExoticComponent<any>> = {
     import('./component/commandMenu').then((m) => ({
       default: m.CommandMenuTest
     }))
+  ),
+  ContextMenu: lazy(() =>
+    import('./component/contextMenu').then((m) => ({
+      default: m.CommandMenuTest
+    }))
   )
 };
 
