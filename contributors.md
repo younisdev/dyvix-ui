@@ -67,4 +67,3 @@ Thanks for everyone who has contributed to Dyvix UI!
 - [@Vamsi-2581](https://github.com/Vamsi-2581)
 - [@sahithib20](https://github.com/sahithib20)
 - [@Golden007-prog](https://github.com/Golden007-prog)
-

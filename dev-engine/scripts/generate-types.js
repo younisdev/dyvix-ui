@@ -234,6 +234,14 @@ GenerateTypes(
   '',
   'command-menu'
 );
+GenerateTypes(
+  './src/registry/animations.json',
+  null,
+  'DyvixContextMenuAnimation',
+  './src/components/context-menu/dependencies/context-menu.types.tsx',
+  'animation',
+  'context-menu'
+);
 /**
  * Generates TypeScript union types for dynamic properties (themes, animations, etc.)
  *
