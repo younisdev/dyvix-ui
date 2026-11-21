@@ -88,6 +88,8 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
         }
         ```
 
+- `steps`
+  - : `DyvixModalStep[]`. Turns the modal into a multi-step workflow (added in v0.5.9). Each step has its own `title` and `elements`, and the modal shows one step at a time. When `steps` is provided, use it instead of the top-level `elements`/`title`. See [Multi-step modals](#multi-step-modals).
 - `onSubmit`
   - : `function`. A callback function triggered upon form submission. It receives a single `data` object containing all input names along with their value.
 - `onChange`
@@ -96,6 +98,99 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
   - : `function`. A callback function triggered upon form closure. Available only when the modal `type` is set to `form`.
 - `timeline`
   - : `function`. A GSAP callback function that allows an external `gsap.timeline()` instance to control the component's internal animations.
+
+## Multi-step modals
+
+Added in v0.5.9, the `steps` prop splits a modal into a guided workflow: one step is shown at a time, with a step indicator, Back / Next navigation, and per-step validation. The values entered on every step are collected into a single object that is passed to `onSubmit` when the last step is submitted.
+
+### How it works
+
+- Each step is an object with a `title` and an `elements` array. The step's `title` is shown as the modal header while that step is active.
+- A row of step indicator dots is rendered above the fields whenever the modal has more than one step. The current step's dot is highlighted, and completed steps are marked.
+- The action button reads `Next` on every step except the last, where it becomes the modal's submit button. A `Back` button appears from the second step onward.
+- Moving to the next step validates only the fields of the current step. If any field is invalid, the modal stays on that step and shows the error.
+- `onSubmit` is only called on the last step, and only when every field in that step passes validation. `onChange` fires on every input change and receives the accumulated data from all steps so far.
+- Each step's `elements` follow the same rules as the top-level `elements` attribute: the same element types, validation presets, and `match` rules apply, with a maximum of 9 rows per step.
+
+### Example
+
+```jsx
+import { DyvixModal } from 'dyvix-ui';
+
+function MultiStepModalExample() {
+  return (
+    <DyvixModal
+      type="form"
+      steps={[
+        {
+          title: 'Account Details',
+          elements: [
+            {
+              type: 'text',
+              placeholder: 'Username',
+              name: 'username',
+              validation: 'mandatory',
+              amount: 1
+            }
+          ]
+        },
+        {
+          title: 'Security',
+          elements: [
+            {
+              type: 'password',
+              placeholder: 'Password',
+              validation: 'password',
+              id: 'password',
+              name: 'password',
+              amount: 1
+            },
+            {
+              type: 'password',
+              placeholder: 'Confirm Password',
+              validation: 'password',
+              id: 'confirm-password',
+              name: 'confirmPassword',
+              match: 'password',
+              amount: 1
+            }
+          ]
+        }
+      ]}
+      onSubmit={(data) => console.log(data)}
+      onChange={(data) => console.log(data)}
+    />
+  );
+}
+```
+
+### Exported types
+
+The step types are exported from `dyvix-ui`, so the `steps` array can be typed outside the JSX:
+
+```tsx
+import { DyvixModal, type DyvixModalStep } from 'dyvix-ui';
+
+const steps: DyvixModalStep[] = [
+  {
+    title: 'Account Details',
+    elements: [
+      {
+        type: 'text',
+        placeholder: 'Username',
+        name: 'username',
+        validation: 'mandatory',
+        amount: 1
+      }
+    ]
+  }
+];
+```
+
+- `DyvixModalStep`
+  - : `{ title: string; elements: DyvixModalElements[] }`. One step of a multi-step modal.
+- `NormalizedDyvixModalStep`
+  - : The normalized form of a step used internally, with every element field expanded to arrays.
 
 ## Understanding Dyvix Constants
 
