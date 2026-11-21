@@ -5,7 +5,7 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 const DyvixContextMenuSeparator = React.forwardRef<
   HTMLDivElement,
   DyvixContextMenuSeparatorProps
->(({ className, style, ...rest }, ref) => {
+>(({ className, style, overrides, ...rest }, ref) => {
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
     ...rest
@@ -18,13 +18,16 @@ const DyvixContextMenuSeparator = React.forwardRef<
     ...(splitElementStyles && { style: splitElementStyles }),
     ...restElementProps
   };
-
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  };
   return (
     <div
       className="dyvix-context-menu-separator-wrapper"
       ref={ref}
       {...restWrapperProps}
-      style={{ ...splitWrapperStyles }}
+      style={combinedWrapperStyle}
     >
       <span role="separator" {...props} />
     </div>

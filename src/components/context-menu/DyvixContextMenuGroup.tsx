@@ -5,7 +5,7 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 const DyvixContextMenuGroup = React.forwardRef<
   HTMLDivElement,
   DyvixContextMenuGroupProps
->(({ children, className, style, ...rest }, ref) => {
+>(({ children, className, style, overrides, ...rest }, ref) => {
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
     ...rest
@@ -18,6 +18,10 @@ const DyvixContextMenuGroup = React.forwardRef<
     ...(splitElementStyles && { style: splitElementStyles }),
     ...restElementProps
   };
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  };
 
   return (
     <div
@@ -25,7 +29,7 @@ const DyvixContextMenuGroup = React.forwardRef<
       role="group"
       ref={ref}
       {...restWrapperProps}
-      style={{ ...splitWrapperStyles }}
+      style={combinedWrapperStyle}
     >
       <div {...props}>{children}</div>
     </div>

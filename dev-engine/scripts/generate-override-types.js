@@ -110,6 +110,16 @@ UseCSSVar(
   'command-menu',
   './src/components/command-menu/dependencies/command-menu.overrides.json'
 );
+GenerateOverridesTypes(
+  './src/components/context-menu/dependencies/context-menu.overrides.json',
+  './src/components/context-menu/dependencies/context-menu.types.tsx',
+  'contextMenu'
+);
+UseCSSVar(
+  './src/components/context-menu/dependencies/style/themes.css',
+  'context-menu',
+  './src/components/context-menu/dependencies/context-menu.overrides.json'
+);
 
 function GenerateOverridesTypes(targetSourcepath, outputPath, targetComponent) {
   if (!targetSourcepath || !outputPath || !targetComponent) return;

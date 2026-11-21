@@ -1,31 +1,65 @@
 .dyvix-context-menu-wrapper {
-  display: block;
-  width: fit-content;
-  height: fit-content;
+  display: var(--dyvix-context-menu-display, block);
+  width: var(--dyvix-context-menu-width, fit-content);
+  height: var(--dyvix-context-menu-height, fit-content);
+  min-width: var(--dyvix-context-menu-min-width, 200px);
 }
-
 .dyvix-context-menu {
   display: flex;
+  user-select: none;
   flex-direction: column;
   align-items: stretch;
-  color: rgba(255, 255, 255, 0.96);
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
-  box-shadow:
-    0 14px 36px -6px rgba(0, 0, 0, 0.48),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+  color: var(--dyvix-context-menu-color, rgba(255, 255, 255, 0.96));
+  border-width: var(--dyvix-context-menu-border-width, 1px);
+  border-style: var(--dyvix-context-menu-border-style, solid);
+  border-radius: var(--dyvix-context-menu-border-radius, 10px);
+
   backdrop-filter: blur(30px) saturate(160%);
   -webkit-backdrop-filter: blur(30px) saturate(160%);
-  padding: 10px 8px;
-  gap: 5px;
-  min-width: 185px;
+  padding: var(--dyvix-context-menu-padding, 10px 8px);
+  gap: var(--dyvix-context-menu-gap, 5px);
+  transition: var(
+    --dyvix-context-menu-transition,
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out
+  );
+}
+.dyvix-context-menu:hover {
+  transform: var(--dyvix-context-menu-hover-transform, none);
+  color: var(--dyvix-context-menu-hover-color, rgba(255, 255, 255, 0.96));
+  border-width: var(--dyvix-context-menu-hover-border-width, 1px);
+  border-style: var(--dyvix-context-menu-hover-border-style, solid);
+  border-radius: var(--dyvix-context-menu-hover-border-radius, 10px);
 }
 
 .dyvix-context-menu-default {
-  background: rgba(130, 132, 245, 0.2);
-  border-color: rgba(215, 216, 255, 0.22);
+  background: var(--dyvix-context-menu-bg, rgba(130, 132, 245, 0.2));
+  border-color: var(
+    --dyvix-context-menu-border-color,
+    rgba(215, 216, 255, 0.22)
+  );
+  font-size: var(--dyvix-context-menu-font-size, 0.8rem);
+  font-weight: var(--dyvix-context-menu-font-weight, 400);
+  font-family: var(--dyvix-context-menu-font-family, 'Geist', sans-serif);
+  letter-spacing: var(--dyvix-context-menu-letter-spacing, -0.01em);
+  box-shadow: var(
+    --dyvix-context-menu-box-shadow,
+    0 14px 36px -6px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.14)
+  );
+}
+.dyvix-context-menu-default:hover {
+  background: var(--dyvix-context-menu-hover-bg, rgba(130, 132, 245, 0.2));
+  border-color: var(
+    --dyvix-context-menu-hover-border-color,
+    rgba(215, 216, 255, 0.22)
+  );
+  box-shadow: var(
+    --dyvix-context-menu-hover-box-shadow,
+    0 14px 36px -6px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.14)
+  );
 }
 
 .dyvix-context-menu-item-wrapper {
@@ -37,20 +71,39 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  background: inherit;
-  gap: 16px;
+  gap: 15px;
   width: 100%;
   box-sizing: border-box;
-  background: transparent;
-  color: rgba(235, 255, 255, 0.96);
+  background: var(--dyvix-context-menu-item-bg, transparent);
+  color: var(--dyvix-context-menu-item-color, rgba(235, 255, 255, 0.96));
   font-size: 13.5px;
   line-height: 1.3;
   padding: 7px 10px;
-  border-radius: 5px;
+  border-radius: var(--dyvix-context-menu-item-border-radius, 5px);
   transition:
     background-color 0.12s ease,
     color 0.12s ease;
 }
 .dyvix-context-menu-item:hover {
-  background: rgba(95, 114, 118, 0.7);
+  background: var(
+    --dyvix-context-menu-item-hover-bg,
+    rgba(255, 255, 255, 0.12)
+  );
+}
+.dyvix-context-menu-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dyvix-context-menu-group-gap, 4px);
+}
+.dyvix-context-menu-separator-wrapper {
+  display: block;
+  width: 100%;
+}
+.dyvix-context-menu-separator {
+  display: block;
+  width: 100%;
+  height: var(--dyvix-context-menu-separator-height, 1.2px);
+  background: var(--dyvix-context-menu-separator-bg, rgba(215, 216, 255, 0.16));
+  border: none;
+  border-radius: 999px;
 }

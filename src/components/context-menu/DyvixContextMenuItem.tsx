@@ -6,7 +6,7 @@ import type { DyvixContextMenuItemProps } from './dependencies/context-menu.type
 const DyvixContextMenuItem = React.forwardRef<
   HTMLDivElement,
   DyvixContextMenuItemProps
->(({ children, className, href, onClick, style, ...rest }, ref) => {
+>(({ children, className, href, onClick, style, overrides, ...rest }, ref) => {
   const { wrapperProps, elementProps } = SmartPropsSplitting({
     style,
     ...rest
@@ -22,13 +22,16 @@ const DyvixContextMenuItem = React.forwardRef<
     ...restElementProps
   };
   const Component = href ? 'a' : 'div';
-
+  const combinedWrapperStyle = {
+    ...wrapperProps.style,
+    ...overrides
+  };
   return (
     <div
       className="dyvix-context-menu-item-wrapper"
       ref={ref}
       {...restWrapperProps}
-      style={{ ...splitWrapperStyles }}
+      style={combinedWrapperStyle}
     >
       <Component {...props}>{children}</Component>
     </div>
