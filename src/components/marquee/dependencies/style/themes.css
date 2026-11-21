@@ -262,6 +262,10 @@
   font-family: var(--dyvix-marquee-font-family, inherit);
   font-size: var(--dyvix-marquee-font-size, inherit);
   font-weight: var(--dyvix-marquee-font-weight, inherit);
+  color: var(--dyvix-marquee-color, white);
+}
+.dyvix-marquee-aurora a {
+  color: inherit;
 }
 .dyvix-marquee-aurora:hover {
   border-radius: var(--dyvix-marquee-hover-border-radius, 3rem);
