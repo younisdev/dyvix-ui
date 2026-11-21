@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "theme": "Singularity",
+    "class": "dyvix-marquee-singularity",
+    "default-animation": "bubble",
+    "radiused": false
+  },
+  {
+    "theme": "Industrial",
+    "class": "dyvix-marquee-industrial",
+    "default-animation": "fade",
+    "radiused": false
+  },
+  {
+    "theme": "Ember",
+    "class": "dyvix-marquee-ember",
+    "default-animation": "glitch",
+    "radiused": false
+  },
+  {
+    "theme": "Frost",
+    "class": "dyvix-marquee-frost",
+    "default-animation": "unfold",
+    "radiused": false
+  },
+  {
+    "theme": "Blade",
+    "class": "dyvix-marquee-blade",
+    "default-animation": "zoom",
+    "radiused": false
+  },
+  {
+    "theme": "Aurora",
+    "class": "dyvix-marquee-aurora",
+    "default-animation": "aurora",
+    "radiused": false
+  }
+]
