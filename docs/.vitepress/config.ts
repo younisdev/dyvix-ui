@@ -126,7 +126,17 @@ export default defineConfig({
               { text: 'Overrides', link: 'components/marquee/overrides' }
             ]
           },
-          { text: 'Command Menu', link: 'components/command-menu/command-menu' }
+          {
+            text: 'Command Menu',
+            collapsed: true,
+            items: [
+              {
+                text: 'Overview',
+                link: 'components/command-menu/command-menu'
+              },
+              { text: 'Overrides', link: 'components/command-menu/overrides' }
+            ]
+          }
         ]
       }
     ],
