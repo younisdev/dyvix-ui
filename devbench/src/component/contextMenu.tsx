@@ -3,7 +3,7 @@ import { DyvixContextMenu, DyvixContextMenuItem } from '../../../src';
 export function CommandMenuTest() {
   return (
     <div>
-      <DyvixContextMenu>
+      <DyvixContextMenu animation={'flip'}>
         <DyvixContextMenuItem onClick={() => console.log('refresh')}>
           Refresh
         </DyvixContextMenuItem>

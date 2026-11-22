@@ -104,7 +104,7 @@ export interface DyvixContextMenuItemProps extends React.HTMLAttributes<HTMLDivE
   children: React.ReactNode;
   className?: string;
   href?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   disabled?: boolean;
   style?: React.CSSProperties;
   overrides?: DyvixContextMenuItemOverride;

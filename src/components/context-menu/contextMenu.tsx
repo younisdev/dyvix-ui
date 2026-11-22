@@ -7,6 +7,10 @@ import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
 import type { DyvixContextMenuProps } from './dependencies/context-menu.types';
 import { ValidateContextMenu } from './validation';
 
+export const DyvixContextMenuContext = React.createContext<{
+  close: () => void;
+} | null>(null);
+
 const DyvixContextMenu = React.forwardRef<
   HTMLDivElement,
   DyvixContextMenuProps
@@ -44,6 +48,7 @@ const DyvixContextMenu = React.forwardRef<
       style,
       ...rest
     });
+    const close = React.useCallback(() => SetStatus('leaving'), []);
     React.useEffect(() => {
       async function validate() {
         const validator = await ValidateContextMenu(animation, SetConfig);
@@ -77,9 +82,9 @@ const DyvixContextMenu = React.forwardRef<
     }, []);
 
     React.useLayoutEffect(() => {
-      if (!mounted || !controllerRef.current) return;
+      if (!mounted || !internalRef.current) return;
 
-      const rect = controllerRef.current.getBoundingClientRect();
+      const rect = internalRef.current.getBoundingClientRect();
       const padding = 10;
 
       let nextX = rawCord.x;
@@ -99,7 +104,14 @@ const DyvixContextMenu = React.forwardRef<
     React.useEffect(() => {
       const handleOutsideClick = (e: MouseEvent) => {
         if (e.button !== 0) return;
-
+        const target = e.target as Node | null;
+        if (
+          internalRef.current &&
+          target &&
+          internalRef.current.contains(target)
+        ) {
+          return;
+        }
         SetStatus('leaving');
       };
       const handleExitClick = (e: KeyboardEvent) => {
@@ -196,7 +208,7 @@ const DyvixContextMenu = React.forwardRef<
     };
 
     return (
-      <>
+      <DyvixContextMenuContext.Provider value={{ close }}>
         <span aria-hidden style={{ display: 'none' }} ref={controllerRef} />
         {mounted && (
           <div
@@ -207,7 +219,7 @@ const DyvixContextMenu = React.forwardRef<
             <div {...props}>{children}</div>
           </div>
         )}
-      </>
+      </DyvixContextMenuContext.Provider>
     );
   }
 );
