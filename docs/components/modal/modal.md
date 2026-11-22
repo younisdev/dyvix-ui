@@ -166,7 +166,7 @@ function MultiStepModalExample() {
 
 ### Exported types
 
-The step types are exported from `dyvix-ui`, so the `steps` array can be typed outside the JSX:
+The types for `multi-step modals` are exported from `dyvix-ui`, allowing you to define a typed `steps` array outside the JSX:
 
 ```tsx
 import { DyvixModal, type DyvixModalStep } from 'dyvix-ui';
