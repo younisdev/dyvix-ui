@@ -27,7 +27,7 @@ DyvixCommandMenu is an animated console that monitors application output and run
 - `triggerKey`
   - : `string`. Defaults to the backtick key (`` ` ``). Toggles the menu when its command input is not focused. Key matching is case-insensitive.
 - `overrides`
-  - : `DyvixCommandMenuProps['overrides']`. An object of typed CSS variables applied to the wrapper. Supports base, default, wrapper, container, and header overrides, such as `--dyvix-command-menu-color`, `--dyvix-command-menu-bg`, `--dyvix-command-menu-width`, `--dyvix-command-menu-container-bg`, and `--dyvix-command-menu-header-color`.
+  - : `DyvixCommandMenuProps['overrides']`. An object of typed CSS variables applied to the wrapper. Supports base, default, wrapper, container, and header overrides, such as `--dyvix-command-menu-color`, `--dyvix-command-menu-bg`, `--dyvix-command-menu-width`, `--dyvix-command-menu-container-bg`, and `--dyvix-command-menu-header-color`. See [command menu overrides](/components/command-menu/overrides.md) for more information.
 - `theme`
   - : `'Singularity' | null`. Selects a theme. Supports `Singularity`. Omit this prop or pass `null` to use the default styles; no theme is selected by default.
 - `animation`
