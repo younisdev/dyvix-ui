@@ -68,3 +68,4 @@ Thanks for everyone who has contributed to Dyvix UI!
 - [@sahithib20](https://github.com/sahithib20)
 - [@Golden007-prog](https://github.com/Golden007-prog)
 - [@ahmadfaizan18](https://github.com/ahmadfaizan18)
+- [@noble-meteor-97](https://github.com/noble-meteor-97)
