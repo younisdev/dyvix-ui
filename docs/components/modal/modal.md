@@ -89,7 +89,7 @@ The modal component is a core Dyvix UI component. It's a config driven, animated
         ```
 
 - `steps`
-  - : `DyvixModalStep[]`. Turns the modal into a multi-step workflow (added in v0.5.9). Each step has its own `title` and `elements`, and the modal shows one step at a time. When `steps` is provided, use it instead of the top-level `elements`/`title`. See [Multi-step modals](#multi-step-modals).
+  - : `DyvixModalStep[]`. Turns the modal into a multi-step workflow. Each step has its own `title` and `elements`, and the modal shows one step at a time. When `steps` is provided, the top-level `title` and `elements` props are ignored. See [Multi-step modals](#multi-step-modals).
 - `onSubmit`
   - : `function`. A callback function triggered upon form submission. It receives a single `data` object containing all input names along with their value.
 - `onChange`
@@ -105,12 +105,12 @@ Added in v0.5.9, the `steps` prop splits a modal into a guided workflow: one ste
 
 ### How it works
 
-- Each step is an object with a `title` and an `elements` array. The step's `title` is shown as the modal header while that step is active.
+- Each step is an object with a `title` and an `elements` array. The active step's `title` is displayed as the modal header.
 - A row of step indicator dots is rendered above the fields whenever the modal has more than one step. The current step's dot is highlighted, and completed steps are marked.
 - The action button reads `Next` on every step except the last, where it becomes the modal's submit button. A `Back` button appears from the second step onward.
 - Moving to the next step validates only the fields of the current step. If any field is invalid, the modal stays on that step and shows the error.
-- `onSubmit` is only called on the last step, and only when every field in that step passes validation. `onChange` fires on every input change and receives the accumulated data from all steps so far.
-- Each step's `elements` follow the same rules as the top-level `elements` attribute: the same element types, validation presets, and `match` rules apply, with a maximum of 9 rows per step.
+- `onSubmit` is called only when the final step is submitted and all its fields pass validation. `onChange` fires on every input change and receives the accumulated data from all steps so far.
+- Each step's `elements` follow the same rules as the top-level `elements` attribute: the same element types, validation presets, and `match` rules apply within each step. Each step supports a maximum of 9 rows.
 
 ### Example
 
