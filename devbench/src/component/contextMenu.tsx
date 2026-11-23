@@ -38,8 +38,17 @@ export function CommandMenuTest() {
   ];
   return (
     <div>
-      <DyvixContextMenu items={menuItems} />
-
+      <DyvixContextMenu animation={'flip'}>
+        <DyvixContextMenu.Item onClick={() => console.log('refresh')}>
+          Refresh
+        </DyvixContextMenu.Item>
+        <DyvixContextMenu.Item onClick={() => console.log('delete')}>
+          Delete
+        </DyvixContextMenu.Item>
+        <DyvixContextMenu.Item onClick={() => console.log('delete')}>
+          Delete
+        </DyvixContextMenu.Item>
+      </DyvixContextMenu>
       <span
         style={{
           display: 'flex',
