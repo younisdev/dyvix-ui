@@ -4,8 +4,15 @@ import { EvaluateFailure, GuardStatus } from '../../utils/DyvixGuard';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ConstructClasses, SmartPropsSplitting } from '../../utils/utils';
-import type { DyvixContextMenuProps } from './dependencies/context-menu.types';
+import type {
+  DyvixContextMenuGroupConfig,
+  DyvixContextMenuItemConfig,
+  DyvixContextMenuProps
+} from './dependencies/context-menu.types';
 import { ValidateContextMenu } from './validation';
+import DyvixContextMenuItem from './DyvixContextMenuItem';
+import DyvixContextMenuSeparator from './DyvixContextMenuSeparator';
+import DyvixContextMenuGroup from './DyvixContextMenuGroup';
 
 export const DyvixContextMenuContext = React.createContext<{
   close: () => void;
@@ -18,6 +25,7 @@ const DyvixContextMenu = React.forwardRef<
   (
     {
       children,
+      items,
       animation,
       timeline,
       theme,
@@ -128,6 +136,63 @@ const DyvixContextMenu = React.forwardRef<
       };
     }, [mounted]);
 
+    const compiledChildren = React.useMemo(() => {
+      if (children || !items) return children;
+
+      const renderItems = (
+        entries: DyvixContextMenuItemConfig[],
+        index: string,
+        separated?: boolean
+      ): React.ReactElement[] =>
+        entries.flatMap((ele, eleIndex) => {
+          const renderedProps = {
+            ...(ele.href && { href: ele.href }),
+            ...(ele.onClick && { onClick: ele.onClick }),
+            ...(ele.disabled !== undefined && { disabled: ele.disabled })
+          };
+          const itemEl = (
+            <DyvixContextMenuItem
+              key={`${index}-${eleIndex}`}
+              {...renderedProps}
+            >
+              {ele.label}
+            </DyvixContextMenuItem>
+          );
+
+          if (separated && eleIndex < entries.length - 1) {
+            return [
+              itemEl,
+              <DyvixContextMenuSeparator key={`sep-${index}-${eleIndex}`} />
+            ];
+          }
+
+          return [itemEl];
+        });
+
+      return items?.map((entry, index) => {
+        const type = entry.type;
+
+        if (type === 'separator') {
+          return <DyvixContextMenuSeparator key={`separtor-${index}`} />;
+        }
+
+        if (type === 'group') {
+          const result = renderItems(
+            entry.items,
+            `group-item-${index}`,
+            entry.separated
+          );
+          return (
+            <DyvixContextMenuGroup key={`group-${index}`}>
+              {result}
+            </DyvixContextMenuGroup>
+          );
+        }
+
+        return renderItems([entry], `item-${index}`)[0];
+      });
+    }, [children, items]);
+
     const currentAnimation = animation ? (configs as any)['animation'] : null;
 
     useGSAP(
@@ -216,7 +281,7 @@ const DyvixContextMenu = React.forwardRef<
             ref={internalRef}
             style={compinedWrapperStyles}
           >
-            <div {...props}>{children}</div>
+            <div {...props}>{compiledChildren}</div>
           </div>
         )}
       </DyvixContextMenuContext.Provider>
