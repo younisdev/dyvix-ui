@@ -59,7 +59,12 @@ const DyvixContextMenu = React.forwardRef<
     const close = React.useCallback(() => SetStatus('leaving'), []);
     React.useEffect(() => {
       async function validate() {
-        const validator = await ValidateContextMenu(animation, SetConfig);
+        const validator = await ValidateContextMenu(
+          animation,
+          children,
+          items,
+          SetConfig
+        );
 
         if (validator.status === GuardStatus.Error) {
           return EvaluateFailure(validator.error, validator.status);
