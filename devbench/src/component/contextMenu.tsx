@@ -32,7 +32,7 @@ export function CommandMenuTest() {
       items: [
         { label: 'Archive', onClick: () => console.log('Archive') },
         { label: 'Export JSON', href: '#export-json' },
-        { label: 'Delete', disabled: true }
+        { label: 'Delete', disabled: true, onClick: (e) => console.log('unfo') }
       ]
     }
   ];
