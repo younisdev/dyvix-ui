@@ -38,7 +38,7 @@ export function CommandMenuTest() {
   ];
   return (
     <div>
-      <DyvixContextMenu items={[{ label: 'Bad', href: 123 as any },{type: 'separator'}]}/>
+      <DyvixContextMenu items={menuItems} />
 
       <span
         style={{
