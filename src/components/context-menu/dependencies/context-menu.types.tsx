@@ -82,7 +82,10 @@ export interface DyvixContextMenuItemOverride {
   '--dyvix-context-menu-item-bg'?: (string & {}) | 'transparent';
   '--dyvix-context-menu-item-border-radius'?:
     '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
+  '--dyvix-context-menu-item-hover-color'?: string & {};
   '--dyvix-context-menu-item-hover-bg'?: (string & {}) | 'transparent';
+  '--dyvix-context-menu-item-hover-border-radius'?:
+    '0px' | '4px' | '6px' | '8px' | '9999px' | (string & {});
 }
 
 export interface DyvixContextMenuGroupOverride {
@@ -94,6 +97,8 @@ export interface DyvixContextMenuSeparatorOverride {
     'fit-content' | '100%' | 'auto' | (string & {});
   '--dyvix-context-menu-separator-bg'?: (string & {}) | 'transparent';
 }
+
+export type DyvixContextMenuThemes = 'Singularity';
 
 /*--!/--*/
 
@@ -152,7 +157,7 @@ export type DyvixContextMenuOverride = DyvixContextMenuBaseOverride &
 export interface DyvixContextMenuBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   timeline?: gsap.core.Timeline | null;
   animation?: DyvixContextMenuAnimation | null;
-  theme?: any;
+  theme?: DyvixContextMenuThemes | null;
   overrides?: DyvixContextMenuOverride;
 }
 

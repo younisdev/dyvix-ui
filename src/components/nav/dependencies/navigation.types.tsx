@@ -20,7 +20,13 @@ export type DyvixNavAnimation =
   | 'bounce';
 
 export type DyvixNavThemes =
-  'Singularity' | 'Industrial' | 'Ember' | 'Frost' | 'Blade' | 'Neon';
+  | 'Singularity'
+  | 'Industrial'
+  | 'Ember'
+  | 'Frost'
+  | 'Blade'
+  | 'Neon'
+  | 'Aurora';
 
 export interface DyvixNavBaseOverride {
   '--dyvix-nav-display'?:

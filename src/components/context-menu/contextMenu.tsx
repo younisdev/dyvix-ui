@@ -51,6 +51,7 @@ const DyvixContextMenu = Object.assign(
         'idle' | 'entering' | 'leaving'
       >('idle');
       const [configs, SetConfig] = React.useState({});
+      const instanceId = React.useId();
 
       const { wrapperProps, elementProps } = SmartPropsSplitting({
         style,
@@ -61,9 +62,11 @@ const DyvixContextMenu = Object.assign(
         async function validate() {
           const validator = await ValidateContextMenu(
             animation,
+            theme,
             children,
             items,
-            SetConfig
+            SetConfig,
+            instanceId
           );
 
           if (validator.status === GuardStatus.Error) {
@@ -115,7 +118,7 @@ const DyvixContextMenu = Object.assign(
       }, [rawCord, mounted]);
 
       React.useEffect(() => {
-        if(!mounted) return;
+        if (!mounted) return;
 
         const handleOutsideClick = (e: MouseEvent) => {
           if (e.button !== 0) return;
@@ -201,6 +204,7 @@ const DyvixContextMenu = Object.assign(
       }, [children, items]);
 
       const currentAnimation = animation ? (configs as any)['animation'] : null;
+      const currentTheme = (configs as any)['theme'];
 
       useGSAP(
         () => {
@@ -262,12 +266,13 @@ const DyvixContextMenu = Object.assign(
         }
       );
       const { style: splitElementStyles, ...restElementProps } = elementProps;
-       const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
+      const { style: splitWrapperStyles, ...restWrapperProps } = wrapperProps;
       const props = {
         ...restElementProps,
         className: ConstructClasses(
           'dyvix-context-menu',
-          'dyvix-context-menu-default',
+          !currentTheme?.class ? 'dyvix-context-menu-default' : '',
+          currentTheme?.class,
           className
         ),
         style: {
@@ -278,7 +283,6 @@ const DyvixContextMenu = Object.assign(
         position: 'fixed',
         top: computedCord.y,
         left: computedCord.x,
-        zIndex: 9999,
         ...splitWrapperStyles,
         ...overrides
       };

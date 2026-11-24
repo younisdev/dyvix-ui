@@ -24,6 +24,8 @@ import marqueeThemesJSON from '../../components/marquee/dependencies/themes.json
 import marqueeThemesCSS from '../../components/marquee/dependencies/style/themes.css?raw';
 import commandMenuThemesJSON from '../../components/command-menu/dependencies/themes.json?raw';
 import commandMenuThemesCSS from '../../components/command-menu/dependencies/style/themes.css?raw';
+import contextMenuThemesJSON from '../../components/context-menu/dependencies/themes.json?raw';
+import contextMenuThemesCSS from '../../components/context-menu/dependencies/style/themes.css?raw';
 
 export const JSON_LIBRARY: Record<string, string> = {
   '../../registry/themes.json': globalThemesJSON,
@@ -42,7 +44,9 @@ export const JSON_LIBRARY: Record<string, string> = {
   '../../components/toast/dependencies/positions.json': toastPostionsJSON,
   '../../components/marquee/dependencies/themes.json': marqueeThemesJSON,
   '../../components/command-menu/dependencies/themes.json':
-    commandMenuThemesJSON
+    commandMenuThemesJSON,
+  '../../components/context-menu/dependencies/themes.json':
+    contextMenuThemesJSON
 };
 
 export const CSS_LIBRARY: Record<string, string> = {
@@ -56,5 +60,7 @@ export const CSS_LIBRARY: Record<string, string> = {
   '../../components/nav/dependencies/style/themes.css': navThemesCSS,
   '../../components/marquee/dependencies/style/themes.css': marqueeThemesCSS,
   '../../components/command-menu/dependencies/style/themes.css':
-    commandMenuThemesCSS
+    commandMenuThemesCSS,
+  '../../components/context-menu/dependencies/style/themes.css':
+    contextMenuThemesCSS
 };

@@ -4,7 +4,8 @@ import type { StateSetter } from '../../utils/Smart Json Caching/SJCManager';
 import type {
   DyvixContextMenuAnimation,
   DyvixContextMenuConfigItems,
-  DyvixContextMenuItemConfig
+  DyvixContextMenuItemConfig,
+  DyvixContextMenuThemes
 } from './dependencies/context-menu.types';
 const component = 'context-menu';
 const CacheMapping = {
@@ -32,12 +33,29 @@ const isValidItem = (entries: DyvixContextMenuItemConfig[]) => {
 
 export async function ValidateContextMenu(
   animation: DyvixContextMenuAnimation | null | undefined,
+  theme: DyvixContextMenuThemes | null | undefined,
   children: React.ReactNode,
   items: DyvixContextMenuConfigItems[] | undefined,
-  callback: StateSetter
+  callback: StateSetter,
+  instance: string | number
 ) {
   let normalizedAnimation = animation?.trim().toLowerCase() || '';
+  const trimedTheme = theme?.trim();
+  const normalizedTheme = trimedTheme
+    ? trimedTheme.charAt(0).toUpperCase() + trimedTheme.slice(1)
+    : '';
 
+  const isTheme = await ValidateAndLoadJSON(
+    CacheMapping,
+    normalizedTheme,
+    callback,
+    'theme',
+    component,
+    instance
+  );
+  if (normalizedTheme && isTheme.status && !normalizedAnimation) {
+    normalizedAnimation = (isTheme as any)?.config?.theme['default-animation'];
+  }
   const isAnimation = await ValidateAndLoadJSON(
     CacheMapping,
     normalizedAnimation,
