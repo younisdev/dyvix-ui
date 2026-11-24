@@ -234,6 +234,71 @@
   background: rgba(213, 255, 248, 1);
   box-shadow: 0 0 8px #d5fff8a6;
 }
+.dyvix-nav-neon {
+  background: var(
+    --dyvix-nav-bg,
+    radial-gradient(
+      circle,
+      rgba(77, 238, 234, 1) 0%,
+      rgba(112, 186, 239, 1) 43%,
+      rgba(240, 0, 255, 1) 100%
+    )
+  );
+  -webkit-box-shadow: var(
+    --dyvix-nav-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 1)
+  );
+  -moz-box-shadow: var(
+    --dyvix-nav-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 1)
+  );
+  box-shadow: var(
+    --dyvix-nav-box-shadow,
+    0px 0px 64px 0px rgba(252, 46, 255, 1)
+  );
+  border-radius: var(--dyvix-nav-border-radius, 4rem);
+  transition: var(
+    --dyvix-nav-transition,
+    border-radius 0.2s ease-in-out,
+    transform 0.3s ease-in-out
+  );
+  font-family: var(--dyvix-nav-font-family, inherit);
+  font-size: var(--dyvix-nav-font-size, inherit);
+  font-weight: var(--dyvix-nav-font-weight, inherit);
+  border-color: var(--dyvix-nav-border-color, none);
+}
+.dyvix-nav-neon:hover {
+  border-radius: var(--dyvix-nav-hover-border-radius, 2rem);
+  transform: var(--dyvix-nav-hover-transform, scale(1.01));
+  border-color: var(--dyvix-nav-hover-border-color, none);
+  box-shadow: var(--dyvix-nav-hover-box-shadow, inherit);
+  background: var(
+    --dyvix-nav-hover-bg,
+    radial-gradient(
+      circle,
+      rgba(77, 238, 234, 1) 0%,
+      rgba(112, 186, 239, 1) 43%,
+      rgba(240, 0, 255, 1) 100%
+    )
+  );
+}
+.dyvix-nav-neon .dyvix-nav-brand {
+  color: var(--dyvix-nav-brand-color, #ffffff);
+  text-shadow: 0 0 8px rgba(252, 46, 255, 0.8);
+}
+.dyvix-nav-neon .dyvix-nav-brand:hover {
+  color: var(--dyvix-nav-brand-hover-color, #f8f8f8);
+}
+.dyvix-nav-neon .dyvix-nav-link {
+  color: var(--dyvix-nav-link-color, rgba(255, 255, 255, 0.75));
+}
+.dyvix-nav-neon .dyvix-nav-link:hover {
+  color: var(--dyvix-nav-link-hover-color, #ffffff);
+}
+.dyvix-nav-neon .dyvix-nav-link::after {
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(252, 46, 255, 0.8);
+}
 .dyvix-nav-blade {
   background: var(--dyvix-nav-bg, #0a0a0a);
   border-radius: var(--dyvix-nav-border-radius, 0px);
