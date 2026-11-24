@@ -246,32 +246,46 @@
   );
   -webkit-box-shadow: var(
     --dyvix-nav-box-shadow,
-    0px 0px 64px 0px rgba(252, 46, 255, 1)
+    0px 0px 24px 0px rgba(252, 46, 255, 0.5)
   );
   -moz-box-shadow: var(
     --dyvix-nav-box-shadow,
-    0px 0px 64px 0px rgba(252, 46, 255, 1)
+    0px 0px 24px 0px rgba(252, 46, 255, 0.5)
   );
   box-shadow: var(
     --dyvix-nav-box-shadow,
-    0px 0px 64px 0px rgba(252, 46, 255, 1)
+    0px 0px 24px 0px rgba(252, 46, 255, 0.5)
   );
   border-radius: var(--dyvix-nav-border-radius, 4rem);
   transition: var(
     --dyvix-nav-transition,
+    box-shadow 0.3s ease-in-out,
     border-radius 0.2s ease-in-out,
     transform 0.3s ease-in-out
   );
+  color: var(--dyvix-nav-color, #12002b);
   font-family: var(--dyvix-nav-font-family, inherit);
   font-size: var(--dyvix-nav-font-size, inherit);
   font-weight: var(--dyvix-nav-font-weight, inherit);
-  border-color: var(--dyvix-nav-border-color, none);
+  border-color: var(--dyvix-nav-border-color, transparent);
 }
 .dyvix-nav-neon:hover {
+  color: var(--dyvix-nav-hover-color, #12002b);
   border-radius: var(--dyvix-nav-hover-border-radius, 2rem);
   transform: var(--dyvix-nav-hover-transform, scale(1.01));
-  border-color: var(--dyvix-nav-hover-border-color, none);
-  box-shadow: var(--dyvix-nav-hover-box-shadow, inherit);
+  border-color: var(--dyvix-nav-hover-border-color, transparent);
+  -webkit-box-shadow: var(
+    --dyvix-nav-hover-box-shadow,
+    0px 0px 44px 4px rgba(252, 46, 255, 0.75)
+  );
+  -moz-box-shadow: var(
+    --dyvix-nav-hover-box-shadow,
+    0px 0px 44px 4px rgba(252, 46, 255, 0.75)
+  );
+  box-shadow: var(
+    --dyvix-nav-hover-box-shadow,
+    0px 0px 44px 4px rgba(252, 46, 255, 0.75)
+  );
   background: var(
     --dyvix-nav-hover-bg,
     radial-gradient(
@@ -283,20 +297,20 @@
   );
 }
 .dyvix-nav-neon .dyvix-nav-brand {
-  color: var(--dyvix-nav-brand-color, #ffffff);
-  text-shadow: 0 0 8px rgba(252, 46, 255, 0.8);
+  color: var(--dyvix-nav-brand-color, #12002b);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 .dyvix-nav-neon .dyvix-nav-brand:hover {
-  color: var(--dyvix-nav-brand-hover-color, #f8f8f8);
+  color: var(--dyvix-nav-brand-hover-color, #2a003b);
 }
 .dyvix-nav-neon .dyvix-nav-link {
-  color: var(--dyvix-nav-link-color, rgba(255, 255, 255, 0.75));
+  color: var(--dyvix-nav-link-color, #12002b);
 }
 .dyvix-nav-neon .dyvix-nav-link:hover {
-  color: var(--dyvix-nav-link-hover-color, #ffffff);
+  color: var(--dyvix-nav-link-hover-color, #2a003b);
 }
 .dyvix-nav-neon .dyvix-nav-link::after {
-  background: #ffffff;
+  background: #12002b;
   box-shadow: 0 0 8px rgba(252, 46, 255, 0.8);
 }
 .dyvix-nav-blade {
