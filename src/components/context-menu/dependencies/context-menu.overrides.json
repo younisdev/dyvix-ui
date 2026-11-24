@@ -35,7 +35,9 @@
     "--dyvix-context-menu-item-color": "color || string",
     "--dyvix-context-menu-item-bg": "color || transparent || string",
     "--dyvix-context-menu-item-border-radius": "0px || 4px || 6px || 8px || 9999px || string",
-    "--dyvix-context-menu-item-hover-bg": "color || transparent || string"
+    "--dyvix-context-menu-item-hover-color": "color || string",
+    "--dyvix-context-menu-item-hover-bg": "color || transparent || string",
+    "--dyvix-context-menu-item-hover-border-radius": "0px || 4px || 6px || 8px || 9999px || string"
   },
   "group": {
     "--dyvix-context-menu-group-gap": "string"

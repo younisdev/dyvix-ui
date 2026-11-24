@@ -3,8 +3,10 @@
   width: var(--dyvix-context-menu-width, fit-content);
   height: var(--dyvix-context-menu-height, fit-content);
   min-width: var(--dyvix-context-menu-min-width, 200px);
+  z-index: 500;
 }
 .dyvix-context-menu {
+  z-index: 500;
   display: flex;
   user-select: none;
   flex-direction: column;
@@ -75,7 +77,10 @@
   width: 100%;
   box-sizing: border-box;
   background: var(--dyvix-context-menu-item-bg, transparent);
-  color: var(--dyvix-context-menu-item-color, rgba(235, 255, 255, 0.96));
+  color: var(
+    --dyvix-context-menu-item-color,
+    var(--dyvix-context-menu-color, rgba(235, 255, 255, 0.96))
+  );
   font-size: 13.5px;
   line-height: 1.3;
   padding: 7px 10px;
@@ -89,6 +94,11 @@
     --dyvix-context-menu-item-hover-bg,
     rgba(255, 255, 255, 0.12)
   );
+  color: var(
+    --dyvix-context-menu-item-hover-color,
+    var(--dyvix-context-menu-hover-color, rgba(235, 255, 255, 0.96))
+  );
+  border-radius: var(--dyvix-context-menu-item-hover-border-radius, 5px);
 }
 .dyvix-context-menu-item.disabled {
   opacity: 0.45;
