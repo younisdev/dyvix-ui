@@ -1,0 +1,59 @@
+.dyvix-context-menu-singularity {
+  font-family: var(--dyvix-context-menu-font-family, 'Geist');
+  border-width: var(--dyvix-context-menu-border-width, 4px);
+  border-style: var(--dyvix-context-menu-border-style, solid);
+  border-color: var(--dyvix-context-menu-border-color, #3c0349);
+  color: var(--dyvix-context-menu-color, white);
+  border-radius: var(--dyvix-context-menu-border-radius, 1.2rem);
+  background: var(
+    --dyvix-context-menu-bg,
+    radial-gradient(circle, rgba(0, 0, 0, 0.55) 0%, rgba(26, 26, 26, 0.72) 100%)
+  );
+  box-shadow: var(--dyvix-context-menu-box-shadow, 0 0 30px #b903e2);
+  -webkit-box-shadow: var(--dyvix-context-menu-box-shadow, 0 0 30px #b903e2);
+  -moz-box-shadow: var(--dyvix-context-menu-box-shadow, 0 0 30px #b903e2);
+  transition: var(
+    --dyvix-context-menu-transition,
+    transform ease-in-out 0.7s,
+    box-shadow ease-in-out 0.6s,
+    border ease-in-out 0.3s,
+    background ease-in-out 0.2s
+  );
+  font-size: var(--dyvix-context-menu-font-size, inherit);
+  font-weight: var(--dyvix-context-menu-font-weight, inherit);
+  letter-spacing: var(--dyvix-context-menu-letter-spacing, inherit);
+}
+.dyvix-context-menu-singularity:hover {
+  border-width: var(--dyvix-context-menu-hover-border-width, 4px);
+  border-style: var(--dyvix-context-menu-hover-border-style, solid);
+  border-color: var(--dyvix-context-menu-hover-border-color, #27032f);
+  background: var(
+    --dyvix-context-menu-hover-bg,
+    radial-gradient(circle, rgba(0, 0, 0, 0.65) 0%, rgba(26, 26, 26, 0.82) 120%)
+  );
+  border-radius: var(--dyvix-context-menu-hover-border-radius, 1.2rem);
+  box-shadow: var(--dyvix-context-menu-hover-box-shadow, 0 0 50px #b903e2);
+  transform: var(--dyvix-context-menu-hover-transform, scale(1.02));
+}
+.dyvix-context-menu-singularity .dyvix-context-menu-separator {
+  background: var(
+    --dyvix-context-menu-separator-bg,
+    linear-gradient(
+      90deg,
+      rgba(185, 3, 226, 0) 0%,
+      rgba(185, 3, 226, 0.45) 50%,
+      rgba(185, 3, 226, 0) 100%
+    )
+  );
+  height: var(--dyvix-context-menu-separator-height, 1px);
+}
+.dyvix-context-menu-singularity .dyvix-context-menu-item {
+  color: var(--dyvix-context-menu-item-color, white);
+  background: var(--dyvix-context-menu-item-bg, transparent);
+  border-radius: var(--dyvix-context-menu-item-border-radius, inherit);
+}
+.dyvix-context-menu-singularity .dyvix-context-menu-item:hover {
+  color: var(--dyvix-context-menu-item-hover-color, rgb(137, 129, 129));
+  background: var(--dyvix-context-menu-item-hover-bg, transparent);
+  border-radius: var(--dyvix-context-menu-item-hover-border-radius, inherit);
+}

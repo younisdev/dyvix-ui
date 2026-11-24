@@ -265,7 +265,13 @@
   color: var(--dyvix-marquee-color, white);
 }
 .dyvix-marquee-aurora a {
-  color: inherit;
+  color: var(--dyvix-marquee-color, inherit);
+  background: var(--dyvix-marquee-bg, inherit);
+  font-family: var(--dyvix-marquee-font-family, inherit);
+  font-size: var(--dyvix-marquee-font-size, inherit);
+  font-weight: var(--dyvix-marquee-font-weight, inherit);
+  border-color: var(--dyvix-marquee-border-color, inherit);
+  box-shadow: var(--dyvix-marquee-box-shadow, inherit);
 }
 .dyvix-marquee-aurora:hover {
   border-radius: var(--dyvix-marquee-hover-border-radius, 3rem);
