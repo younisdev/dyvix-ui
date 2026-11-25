@@ -26,7 +26,8 @@ export type DyvixNavThemes =
   | 'Frost'
   | 'Blade'
   | 'Neon'
-  | 'Aurora';
+  | 'Aurora'
+  | 'Sunset';
 
 export interface DyvixNavBaseOverride {
   '--dyvix-nav-display'?:
