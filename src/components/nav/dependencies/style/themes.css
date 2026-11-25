@@ -472,8 +472,6 @@
   background: #ffffff;
   box-shadow: 0 0 8px rgba(1, 177, 179, 0.65);
 }
-
-
 .dyvix-nav-sunset {
   background: var(
     --dyvix-nav-bg,
@@ -539,7 +537,7 @@
   color: var(--dyvix-nav-brand-hover-color, #ffd166);
 }
 .dyvix-nav-sunset .dyvix-nav-link {
-  color: var(--dyvix-nav-link-color, rgba(255, 247, 230, 0.65));
+  color: var(--dyvix-nav-link-color, rgba(255, 247, 230, 0.75));
 }
 .dyvix-nav-sunset .dyvix-nav-link:hover {
   color: var(--dyvix-nav-link-hover-color, #ffd166);
