@@ -121,3 +121,23 @@ export { default as DyvixContextMenu } from './components/context-menu/contextMe
 export { default as DyvixContextMenuItem } from './components/context-menu/DyvixContextMenuItem';
 export { default as DyvixContextMenuGroup } from './components/context-menu/DyvixContextMenuGroup';
 export { default as DyvixContextMenuSeparator } from './components/context-menu/DyvixContextMenuSeparator';
+
+export type {
+  DyvixContextMenuProps,
+  DyvixContextMenuPropsWithChildren,
+  DyvixContextMenuPropsWithItems,
+  DyvixContextMenuBaseProps,
+  DyvixContextMenuItemProps,
+  DyvixContextMenuGroupProps,
+  DyvixContextMenuSeparatorProps,
+  DyvixContextMenuConfigItems,
+  DyvixContextMenuItemConfig,
+  DyvixContextMenuGroupConfig,
+  DyvixContextMenuSeparatorConfig,
+  DyvixContextMenuAnimation,
+  DyvixContextMenuThemes,
+  DyvixContextMenuOverride,
+  DyvixContextMenuItemOverride,
+  DyvixContextMenuGroupOverride,
+  DyvixContextMenuSeparatorOverride,
+} from './components/context-menu/dependencies/context-menu.types';
