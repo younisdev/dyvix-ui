@@ -35,7 +35,8 @@ export default defineConfig({
     navigation: 'src/components/nav/navigation.tsx',
     toast: 'src/components/toast/toastContainer.tsx',
     marquee: 'src/components/marquee/marquee.tsx',
-    'command-menu': 'src/components/command-menu/commandMenu.tsx'
+    'command-menu': 'src/components/command-menu/commandMenu.tsx',
+    'context-menu': 'src/components/context-menu/contextMenu.tsx'
   },
   format: ['esm'],
   injectStyle: true,

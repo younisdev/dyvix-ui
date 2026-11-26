@@ -117,7 +117,7 @@ export type DyvixContextMenuGroupConfig = {
   separated?: boolean;
 };
 
-type DyvixContextMenuSeparatorConfig = { type: 'separator' };
+export type DyvixContextMenuSeparatorConfig = { type: 'separator' };
 
 export type DyvixContextMenuConfigItems =
   | DyvixContextMenuItemConfig
@@ -161,12 +161,12 @@ export interface DyvixContextMenuBaseProps extends React.HTMLAttributes<HTMLDivE
   overrides?: DyvixContextMenuOverride;
 }
 
-type DyvixContextMenuPropsWithChildren = DyvixContextMenuBaseProps & {
+export type DyvixContextMenuPropsWithChildren = DyvixContextMenuBaseProps & {
   children: React.ReactNode;
   items?: never;
 };
 
-type DyvixContextMenuPropsWithItems = DyvixContextMenuBaseProps & {
+export type DyvixContextMenuPropsWithItems = DyvixContextMenuBaseProps & {
   items: DyvixContextMenuConfigItems[];
   children?: never;
 };
